@@ -23,9 +23,3 @@ Existing solutions
     > The reported application of PhenoGraph to high-dimensional data of human bone marrow derived from healthy donors as well as acute myeloid leukemia (AML) patients \[45\] suggests that this method is superior to previously available clustering methods, and can resolve subpopulations as rare as 1 in 2000 cells. <a name=cite-Levine_2015></a>[Levine, Simonds, Bendall, et al. (2015)](https://doi.org/10.1016%2Fj.cell.2015.05.047)
 
 **Computational flow cytometry: helping to make sense of high-dimensional immunology data <a name=cite-Saeys_2016></a>[Saeys, Gassen, and Lambrecht (2016)](https://doi.org/10.1038%2Fnri.2016.56)**
-
-``` r
-file.copy('./Notes.md','./README.md')
-```
-
-    ## [1] FALSE
