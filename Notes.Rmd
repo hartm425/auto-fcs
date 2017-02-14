@@ -37,5 +37,7 @@ To initialize automatic processing of Phase I, FlowGM requires the input of a fe
 
     > The reported application of PhenoGraph to high-dimensional data of human bone marrow derived from healthy donors as well as acute myeloid leukemia (AML) patients [45] suggests that this method is superior to previously available clustering methods, and can resolve subpopulations as rare as 1 in 2000 cells. `r citet("10.1016/j.cell.2015.05.047")`
 
-
+```{r cp, include=FALSE}
+file.copy('./Notes.md','./README.md')
+```
 
