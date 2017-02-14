@@ -41,3 +41,10 @@ To initialize automatic processing of Phase I, FlowGM requires the input of a fe
 **Computational flow cytometry: helping to make sense of high-dimensional immunology data `r citet("10.1038/nri.2016.56")`**
 
 **Cluster stability in the analysis of mass cytometry data `r citet("10.1002/cyto.a.23001")`**
+
+
+//TODO
+
+1. Maaten and Hinton (2008). “Visualizing data using t-SNE.” Journal of Machine Learning Research, 9: 2579–2605.
+
+2. Wallach, I.; Liliean, R. (2009). “The Protein-Small-Molecule Database, A Non-Redundant Structural Resource for the Analysis of Protein-Ligand Binding”. Bioinformatics 25 (5): 615–620.

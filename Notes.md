@@ -25,3 +25,9 @@ Existing solutions
 **Computational flow cytometry: helping to make sense of high-dimensional immunology data <a name=cite-Saeys_2016></a>[Saeys, Gassen, and Lambrecht (2016)](https://doi.org/10.1038%2Fnri.2016.56)**
 
 **Cluster stability in the analysis of mass cytometry data <a name=cite-Melchiotti_2016></a>[Melchiotti, Gracio, Kordasti, et al. (2016)](https://doi.org/10.1002%2Fcyto.a.23001)**
+
+//TODO
+
+1.  Maaten and Hinton (2008). “Visualizing data using t-SNE.” Journal of Machine Learning Research, 9: 2579–2605.
+
+2.  Wallach, I.; Liliean, R. (2009). “The Protein-Small-Molecule Database, A Non-Redundant Structural Resource for the Analysis of Protein-Ligand Binding”. Bioinformatics 25 (5): 615–620.
