@@ -4,19 +4,19 @@ author: "JL"
 date: "2/15/2017"
 output: html_document
 ---
-```{r analyze}
+```{r analyze, eval=TRUE}
 library(cytofkit)
 library(flowCore)
 
 file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
-# params = as.character(names(read.FCS("~/temp/fcs/cytofkit_analyzedFCS/cytofkit_2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs", transformation=NULL,alter.names=FALSE))[1:17])
+manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
 
-
- data_transformed <- cytof_exprsExtract(fcsFile = file, markers = NULL, 
+data_transformed <- cytof_exprsExtract(fcsFile = file, markers = NULL, 
                                        comp = FALSE,
                                        transformMethod = "autoLgcl")
- 
-data_transformed_xk <- data_transformed[1:50000, ]
+# data_transformed =cbind(data_transformed, manual)
+
+data_transformed_xk <- data_transformed[ which(manual$V1>0), ]
 
 
 ## run PhenoGraph
@@ -37,12 +37,12 @@ save(data_xk_all,file = "~/temp/fcs/testRun.rdata")
 
 ```{r plot}
 library(ggplot2)
+library(cytofkit)
+library(flowCore)
 
-fcs = read.FCS("~/temp/fcs/cytofkit_analyzedFCS/cytofkit_2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs", transformation=NULL,alter.names=TRUE)
-theme_set(theme_bw(20))
-t =as.data.frame(exprs(fcs))
+load("~/temp/fcs/testRun.rdata")
 
-ggplot(t , aes(x = tsne_1,y=tsne_2)) +geom_point()
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=PhenoGraph)) +geom_point()
 
 ```
 
