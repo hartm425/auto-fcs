@@ -28,6 +28,9 @@ Existing solutions
 
 **Cytofkit: A Bioconductor Package for an Integrated Mass Cytometry Data Analysis Pipeline <a name=cite-Chen_2016></a>[Chen, Lau, Wong, et al. (2016)](https://doi.org/10.1371%2Fjournal.pcbi.1005112)** - <https://www.bioconductor.org/packages/devel/bioc/vignettes/cytofkit/inst/doc/cytofkit_workflow.html>
 
+    library("cytofkit") 
+    cytofkit_GUI()  
+
 //TODO
 
 1.  Maaten and Hinton (2008). “Visualizing data using t-SNE.” Journal of Machine Learning Research, 9: 2579–2605.
