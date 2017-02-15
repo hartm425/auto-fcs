@@ -2,47 +2,85 @@
 title: "plotTSNE"
 author: "JL"
 date: "2/15/2017"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
-```{r analyze, eval=TRUE}
+
+## Analysis
+```{r analyze, eval=FALSE}
 library(cytofkit)
 library(flowCore)
 
 file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
 manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
 
+#load example fcs, logicle scaling on load
 data_transformed <- cytof_exprsExtract(fcsFile = file, markers = NULL, 
                                        comp = FALSE,
                                        transformMethod = "autoLgcl")
-# data_transformed =cbind(data_transformed, manual)
 
+#sub-setting to points that were manually gate already, for comparison
 data_transformed_xk <- data_transformed[ which(manual$V1>0), ]
 
-
+manualUsed = manual[ which(manual$V1>0), ]
 ## run PhenoGraph
 cluster_PhenoGraph <- cytof_cluster(xdata = data_transformed_xk, method = "Rphenograph")
 
+# run tsne
 data_transformed_xk_tsne <- cytof_dimReduction(data=data_transformed_xk, method = "tsne")
 
-data_xk_all <- cbind(data_transformed_xk, data_transformed_xk_tsne, 
+#combine with original
+data_xk_all <- cbind(data_transformed_xk, data_transformed_xk_tsne, manualUsed,
                      PhenoGraph = cluster_PhenoGraph)
 data_xk_all <- as.data.frame(data_xk_all)
 
-save(data_xk_all,file = "~/temp/fcs/testRun.rdata")
+save(data_xk_all,file = "~/temp/fcs/testRun2.rdata")
 
 # cytof_addToFCS(data_xk_all, rawFCSdir=dir, analyzedFCSdir="analysed_FCS", 
 #                transformed_cols = c("tsne_1", "tsne_2"), 
 #                cluster_cols = c("PhenoGraph", "ClusterX", "FlowSOM"))
 ```
 
-```{r plot}
+```{r echo=FALSE}
 library(ggplot2)
-library(cytofkit)
-library(flowCore)
+# library(cytofkit)
+# library(flowCore)
+theme_set(theme_bw(20))
+load("~/temp/fcs/testRun2.rdata")
 
-load("~/temp/fcs/testRun.rdata")
-
-ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=PhenoGraph)) +geom_point()
+mapping = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding_map.txt",header = FALSE)
+mapping$code=gsub(".*=", "", mapping$V1, fixed = FALSE)
+data_xk_allM  = merge( mapping,data_xk_all, by.x=c("code"),by.y=c("manualUsed"))
 
 ```
 
+## TSNE results
+```{r plot,fig.width=10,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+```
+
+## TSNE results, colored by Phenograph clusters detected
+```{r plot1,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+```
+
+## TSNE results, colored by manual gates 
+```{r plot2,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+```
+
+## TSNE results, Manually gated (minus Live PBMCs)
+```{r plot3,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM[ which(data_xk_allM$code!=3), ] , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+```
+
+## TSNE results, Manually gated 
+```{r plot4,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4))) +facet_wrap(~V1)
+
+```
