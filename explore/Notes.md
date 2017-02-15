@@ -29,11 +29,11 @@ Existing solutions
 **Cytofkit: A Bioconductor Package for an Integrated Mass Cytometry Data Analysis Pipeline <a name=cite-Chen_2016></a>[Chen, Lau, Wong, et al. (2016)](https://doi.org/10.1371%2Fjournal.pcbi.1005112)**
 
 -   <https://www.bioconductor.org/packages/devel/bioc/vignettes/cytofkit/inst/doc/cytofkit_workflow.html>
+-   `library("cytofkit")  cytofkit_GUI()`
 
-<!-- -->
+**Standardizing Flow Cytometry Immunophenotyping Analysis from the Human ImmunoPhenotyping Consortium <a name=cite-Finak_2016></a>[Finak, Langweiler, Jaimes, et al. (2016)](https://doi.org/10.1038%2Fsrep20686)**
 
-    library("cytofkit") 
-    cytofkit_GUI()  
+-   Seems like decent folks to take advice from
 
 //TODO
 

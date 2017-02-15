@@ -1,0 +1,28 @@
+---
+title: "plotTSNE"
+author: "JL"
+date: "2/15/2017"
+output: html_document
+---
+```{r analyze}
+library(cytofkit)
+file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
+
+data_transformed <- cytof_exprsExtract(fcsFile = file, markers = parameters, 
+                                       comp = FALSE, 
+                                       transformMethod = "cytofAsinh")
+
+```
+
+```{r plot}
+library(flowCore)
+library(ggplot2)
+
+fcs = read.FCS("~/temp/fcs/cytofkit_analyzedFCS/cytofkit_2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs", transformation=NULL,alter.names=TRUE)
+theme_set(theme_bw(20))
+t =as.data.frame(exprs(fcs))
+
+ggplot(t , aes(x = tsne_1,y=tsne_2)) +geom_point()
+
+```
+

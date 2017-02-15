@@ -47,11 +47,18 @@ To initialize automatic processing of Phase I, FlowGM requires the input of a fe
 **Cytofkit: A Bioconductor Package for an Integrated Mass Cytometry Data Analysis Pipeline `r citet("10.1371/journal.pcbi.1005112")`**
 
 - https://www.bioconductor.org/packages/devel/bioc/vignettes/cytofkit/inst/doc/cytofkit_workflow.html
-
-```
+  - 
+  ```
 library("cytofkit") 
 cytofkit_GUI()  
 ``` 
+
+**Standardizing Flow Cytometry Immunophenotyping Analysis from the Human ImmunoPhenotyping Consortium `r citet("10.1038/srep20686")`**
+
+- Seems like decent folks to take advice from
+
+
+
 //TODO
 
 1. Maaten and Hinton (2008). “Visualizing data using t-SNE.” Journal of Machine Learning Research, 9: 2579–2605.
