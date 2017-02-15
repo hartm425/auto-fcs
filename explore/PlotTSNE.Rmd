@@ -6,16 +6,36 @@ output: html_document
 ---
 ```{r analyze}
 library(cytofkit)
+library(flowCore)
+
 file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
+# params = as.character(names(read.FCS("~/temp/fcs/cytofkit_analyzedFCS/cytofkit_2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs", transformation=NULL,alter.names=FALSE))[1:17])
 
-data_transformed <- cytof_exprsExtract(fcsFile = file, markers = parameters, 
-                                       comp = FALSE, 
-                                       transformMethod = "cytofAsinh")
 
+ data_transformed <- cytof_exprsExtract(fcsFile = file, markers = NULL, 
+                                       comp = FALSE,
+                                       transformMethod = "autoLgcl")
+ 
+data_transformed_xk <- data_transformed[1:50000, ]
+
+
+## run PhenoGraph
+cluster_PhenoGraph <- cytof_cluster(xdata = data_transformed_xk, method = "Rphenograph")
+
+data_transformed_xk_tsne <- cytof_dimReduction(data=data_transformed_xk, method = "tsne")
+
+data_xk_all <- cbind(data_transformed_xk, data_transformed_xk_tsne, 
+                     PhenoGraph = cluster_PhenoGraph)
+data_xk_all <- as.data.frame(data_xk_all)
+
+save(data_xk_all,file = "~/temp/fcs/testRun.rdata")
+
+# cytof_addToFCS(data_xk_all, rawFCSdir=dir, analyzedFCSdir="analysed_FCS", 
+#                transformed_cols = c("tsne_1", "tsne_2"), 
+#                cluster_cols = c("PhenoGraph", "ClusterX", "FlowSOM"))
 ```
 
 ```{r plot}
-library(flowCore)
 library(ggplot2)
 
 fcs = read.FCS("~/temp/fcs/cytofkit_analyzedFCS/cytofkit_2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs", transformation=NULL,alter.names=TRUE)

@@ -123,8 +123,20 @@ $(document).ready(function () {
 </div>
 
 
+<pre class="r"><code>library(cytofkit)</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## Loading required package: plyr</code></pre>
 <pre class="r"><code>library(flowCore)
-library(ggplot2)
+
+file = &quot;~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs&quot;
+params = as.character(names(read.FCS(&quot;~/temp/fcs/cytofkit_analyzedFCS/cytofkit_2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs&quot;, transformation=NULL,alter.names=FALSE))[1:17])
+
+
+ data_transformed &lt;- cytof_exprsExtract(fcsFile = file, markers = NULL, 
+                                       comp = FALSE,
+                                       transformMethod = &quot;cytofAsinh&quot;)</code></pre>
+<pre class="r"><code>library(ggplot2)
+
 fcs = read.FCS(&quot;~/temp/fcs/cytofkit_analyzedFCS/cytofkit_2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs&quot;, transformation=NULL,alter.names=TRUE)
 theme_set(theme_bw(20))
 t =as.data.frame(exprs(fcs))
