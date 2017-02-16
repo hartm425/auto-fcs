@@ -6,7 +6,7 @@ output:
   html_document: 
     keep_md: yes
 ---
-```{r func, eval=TRUE ,echo=FALSE}
+```{r func, eval=TRUE ,echo=FALSE,results='hide'}
 library(ggplot2)
 run <- function(file, manual,manualRemove,markers) {
 require(cytofkit)
@@ -37,66 +37,33 @@ return(data_xk_all)
 
 
 ## Analysis
-```{r analyze, eval=TRUE ,echo=FALSE}
+```{r analyze, eval=FALSE ,echo=FALSE,results='hide'}
 library(cytofkit)
 library(flowCore)
 file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
 manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
-markers = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
+markersDNM = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 manualRemove =c(0,1,2,3)# removing these
 # subset(dat, hospital %in% goodHosp)
-data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove,markers=markers)
+data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove,markers=markersDNM)
 
 
 
 save(data_xk_all,file = "~/temp/fcs/testRunDendritic.rdata")
 markers = unique(c("SSC-A","FSC-A","FSC-H","FSC-W","PE-A","CD45","HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 
-# file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
-# manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
-# manualRemove =c(0)# removing these
-# # subset(dat, hospital %in% goodHosp)
-# data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove)
-# save(data_xk_all,file = "~/temp/fcs/testRunPBMC.rdata")
-
-```
-
-# Starting from PBMCs, I think
-
-## TSNE results
-```{r plot,fig.width=10,fig.height=10,echo=FALSE}
-theme_set(theme_bw(20))
-load("~/temp/fcs/testRunPBMC.rdata")
-
-mapping = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding_map.txt",header = FALSE)
-mapping$code=gsub(".*=", "", mapping$V1, fixed = FALSE)
-data_xk_allM  = merge( mapping,data_xk_all, by.x=c("code"),by.y=c("manualUsed"))
-
-ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
-
-```
-
-## TSNE results, colored by Phenograph clusters detected
-```{r plot1,fig.width=15,fig.height=10,echo=FALSE}
-ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
-
-```
-
-## TSNE results, colored by manual gates 
-```{r plot2,fig.width=15,fig.height=10,echo=FALSE}
-ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
-
-```
-
-## TSNE results, Manually gated 
-```{r plot4,fig.width=15,fig.height=10,echo=FALSE}
-ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4))) +facet_wrap(~V1)
-
 ```
 
 
-# Starting from Dendritic cells,Natural killer cells, Monocytes, I think
+![](./images/Screen Shot 2017-02-15 at 9.09.05 PM.png)
 
+### Used these markers
+
+```{r echo=FALSE}
+library(knitr)
+markersDNM = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
+kable(as.data.frame(markersDNM), format = "markdown")
+```
 ## TSNE results
 ```{r plot5,fig.width=10,fig.height=10,echo=FALSE}
 theme_set(theme_bw(20))
@@ -122,8 +89,14 @@ ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(
 
 ```
 
-## TSNE results, Manually gated 
+## TSNE results, colored by manual gates 
 ```{r plot8,fig.width=15,fig.height=10,echo=FALSE}
 ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4))) +facet_wrap(~V1)
+
+```
+
+## TSNE results, colored by Phenograph clusters detected
+```{r plot9,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4))) +facet_wrap(~PhenoGraph)
 
 ```
