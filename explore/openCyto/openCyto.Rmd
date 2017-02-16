@@ -6,7 +6,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+require(flowCore)
+fcsFiles <- list.files(pattern = "CytoTrol", flowDataPath, full = TRUE)
+
 ```
 
 ## R Markdown
