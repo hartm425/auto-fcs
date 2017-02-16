@@ -8,13 +8,13 @@ output:
 ---
 ```{r func, eval=TRUE ,echo=FALSE}
 library(ggplot2)
-run <- function(file, manual,manualRemove) {
+run <- function(file, manual,manualRemove,markers) {
 require(cytofkit)
 require(flowCore)
-
-  #load example fcs, logicle scaling on load
-  data_transformed <- cytof_exprsExtract(fcsFile = file, markers = NULL, 
-                                         comp = FALSE,
+library(igraph)
+  #load example fcs, compensation and logicle scaling on load
+  data_transformed <- cytof_exprsExtract(fcsFile = file, markers = markers, 
+                                         comp = TRUE,
                                          transformMethod = "autoLgcl")
   
   #sub-setting to points that were manually gate already, for comparison
@@ -23,9 +23,8 @@ require(flowCore)
   manualUsed = manual[ which(!manual$V1 %in% manualRemove), ]
   ## run PhenoGraph
   cluster_PhenoGraph <- cytof_cluster(xdata = data_transformed_xk, method = "Rphenograph")
-  
   # run tsne
-  data_transformed_xk_tsne <- cytof_dimReduction(data=data_transformed_xk, method = "tsne")
+  data_transformed_xk_tsne <- cytof_dimReduction(data=data_transformed_xk, method = "tsne",out_dim = 4)
   
   #combine with original
   data_xk_all <- cbind(data_transformed_xk, data_transformed_xk_tsne, manualUsed,
@@ -38,27 +37,28 @@ return(data_xk_all)
 
 
 ## Analysis
-```{r analyze, eval=FALSE ,echo=FALSE}
+```{r analyze, eval=TRUE ,echo=FALSE}
 library(cytofkit)
 library(flowCore)
 file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
 manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
-
+markers = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 manualRemove =c(0,1,2,3)# removing these
 # subset(dat, hospital %in% goodHosp)
-data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove)
+data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove,markers=markers)
+
+
+
 save(data_xk_all,file = "~/temp/fcs/testRunDendritic.rdata")
+markers = unique(c("SSC-A","FSC-A","FSC-H","FSC-W","PE-A","CD45","HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 
-file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
-manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
-manualRemove =c(0)# removing these
-# subset(dat, hospital %in% goodHosp)
-data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove)
-save(data_xk_all,file = "~/temp/fcs/testRunPBMC.rdata")
+# file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
+# manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
+# manualRemove =c(0)# removing these
+# # subset(dat, hospital %in% goodHosp)
+# data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove)
+# save(data_xk_all,file = "~/temp/fcs/testRunPBMC.rdata")
 
-# cytof_addToFCS(data_xk_all, rawFCSdir=dir, analyzedFCSdir="analysed_FCS", 
-#                transformed_cols = c("tsne_1", "tsne_2"), 
-#                cluster_cols = c("PhenoGraph", "ClusterX", "FlowSOM"))
 ```
 
 # Starting from PBMCs, I think
@@ -95,7 +95,7 @@ ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(
 ```
 
 
-# Starting from Dendritic, I think
+# Starting from Dendritic cells,Natural killer cells, Monocytes, I think
 
 ## TSNE results
 ```{r plot5,fig.width=10,fig.height=10,echo=FALSE}
