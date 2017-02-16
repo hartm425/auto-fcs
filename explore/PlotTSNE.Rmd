@@ -7,7 +7,7 @@ output:
     keep_md: yes
 ---
 ```{r func, eval=TRUE ,echo=FALSE}
-
+library(ggplot2)
 run <- function(file, manual,manualRemove) {
 require(cytofkit)
 require(flowCore)
