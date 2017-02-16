@@ -8,70 +8,111 @@ output:
 ---
 
 
-```{r,eval=TRUE,echo=FALSE,results='hide',include=FALSE}
+```{r,eval=TRUE,echo=FALSE,results='hide',include=FALSE,warning=FALSE}
 library(openCyto)
 library(ggcyto)
-ws <- openWorkspace("~/temp/fcs/513-520 HRS p1&p2.wsp")
-fcsFiles <- list.files("~/temp/fcs/fcsFiles/", pattern=".fcs",full = FALSE)
-gs <- parseWorkspace(ws, path = "~/temp/fcs/fcsFiles/", name = 1,subset=fcsFiles,isNcdf = FALSE)
+ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
+fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
+gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles,isNcdf = FALSE)
 ```
 
-```{r,echo=FALSE,results='hide'}
+
+```{r,echo=FALSE,results='hide',fig.width=10,fig.height=5,warning=FALSE}
 gh <- gs[[1]]
 plot(gh)
-fcs <- read.FCS("~/temp/fcs/fcsFiles/2016-05-20_PANEL 1_ZF_panel one_F1631997_009.fcs", transformation = FALSE)
-autoplot(fcs, x = 'FSC-A', y = 'FSC-H', bins = 64)
+# fcs <- read.FCS("~/temp/fcs/fcsFiles/2016-05-20_PANEL 1_ZF_panel one_F1631997_009.fcs", transformation = FALSE)
+# autoplot(fcs, x = 'FSC-A', y = 'FSC-H', bins = 64)
 # fcs <- read.FCS("~/temp/fcs/fcsFiles/2016-05-20_PANEL 1_ZF_panel one_F1631993_003.fcs", transformation = FALSE)
 # autoplot(fcs, x = 'FSC-A', y = 'SSC-A', bins = 64)
 
 
-Rm("Singlets",gs)
+# Rm("Singlets",gs)
 Rm("Lymphocytes (SSC-A v FSC-A)",gs)
 
-
 # boundary,boundary,root,"FSC-A,SSC-A",boundary,"max=c(2.5e5,2.5e5)",,,,
+# Rm("boundary",gs)
 
 template = add_pop(
-  gs, alias = "boundary", pop = "boundary", parent = "root", dims = "FSC-A,SSC-A",gating_method ="boundary",gating_args ="max=c(2.5e5,2.5e5)"
-  )
+  gs,
+  alias = "boundary",
+  pop = "boundary",
+  parent = "root",
+  dims = "FSC-A,SSC-A",
+  gating_method = "boundary",
+  gating_args = "max=c(2.5e5,2.5e5)"
+)
 
-ggcyto(gs,mapping = aes(x = `FSC-A`,y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary") + xlim(c(0,2e5))
+
+ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary") + xlim(c(0, 2e5))
+ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+
 
 # nonDebris,nonDebris+,boundary,FSC-A,mindensity,"gate_range=c(5e4,1e5),adjust=1.5",,,,
 template = rbind(
-  template,add_pop(
-  gs, alias = "nonDebris", pop = "nonDebris+", parent = "boundary", dims = "FSC-A",gating_method ="mindensity",gating_args ="gate_range=c(5e4,1e5),adjust=1.5"
-  
+  template,
+  add_pop(
+    gs,
+    alias = "nonDebris",
+    pop = "nonDebris+",
+    parent = "boundary",
+    dims = "FSC-A",
+    gating_method = "mindensity",
+    gating_args = "gate_range=c(5e4,1e5),adjust=1.5"
+    
   )
 )
+
+
+ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("nonDebris") + xlim(c(0, 2e5))
+ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("nonDebris")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 # lymph,lymph,nonDebris,"FSC-A,SSC-A",flowClust,"K=2,quantile=0.95,target=c(1e5,5e4)",,,prior_flowClust,K=2
 
 template = rbind(
-  template,add_pop(
-  gs, alias = "lymph", pop = "lymph", parent = "nonDebris", dims = "FSC-A,SSC-A",gating_method ="flowClust",gating_args ="K=2,quantile=0.95,target=c(1e5,5e4)",preprocessing_method = "prior_flowClust",preprocessing_args = "K=2"
-  
+  template,
+  add_pop(
+    gs,
+    alias = "lymph",
+    pop = "lymph",
+    parent = "nonDebris",
+    dims = "FSC-A,SSC-A",
+    gating_method = "flowClust",
+    gating_args = "K=2,quantile=0.95,target=c(1e5,5e4)",
+    preprocessing_method = "prior_flowClust",
+    preprocessing_args = "K=2"
+    
   )
 )
+
 ggcyto(gs,mapping = aes(x = `FSC-A`,y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("lymph") + xlim(c(0,2e5))
+ggcyto(gs,mapping = aes(x = `FSC-A`,y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("lymph")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 
 template = rbind(
-  template,add_pop(
-  gs, alias = "Singlets", pop = "Singlets", parent = "lymph",  dims = "FSC-H,FSC-W",gating_method = "singletGate",gating_args =
-  "wider_gate=TRUE,subsample_pct=0.1"
+  template,
+  add_pop(
+    gs,
+    alias = "Singlets",
+    pop = "Singlets",
+    parent = "lymph",
+    dims = "FSC-H,FSC-W",
+    gating_method = "singletGate",
+    gating_args =
+      "wider_gate=TRUE,subsample_pct=0.1"
   )
 )
+
 ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets") + xlim(c(0,2e5))
+ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 # Live	Live-	lymph	Live	cytokine	tol=5e-2		Center	standardize_flowset
 
-template = rbind(
-  template,add_pop(
-  gs, alias = "PE-A", pop = "PE-A-", parent = "Singlets",  dims = "PE-A",gating_method = "cytokine",gating_args =
-  "tol=5e-2",preprocessing_method = "standardize_flowset",groupBy = "Center"
-  )
-)
+# template = rbind(
+#   template,add_pop(
+#   gs, alias = "PE-A", pop = "PE-A-", parent = "Singlets",  dims = "PE-A",gating_method = "cytokine",gating_args =
+#   "tol=5e-2",preprocessing_method = "standardize_flowset",groupBy = "Center"
+#   )
+# )
 
 ```
 
