@@ -2,31 +2,28 @@
 title: "openCyto"
 author: "JL"
 date: "2/16/2017"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
-```{r setup, include=FALSE}
-require(flowCore)
-fcsFiles <- list.files(pattern = "CytoTrol", flowDataPath, full = TRUE)
 
+```{r,eval=TRUE,echo=FALSE,results='hide',include=FALSE}
+library(openCyto)
+
+ws <- openWorkspace("~/temp/fcs/513-520 HRS p1&p2.wsp")
+fcsFiles <- list.files("~/temp/fcs/fcsFiles/", pattern=".fcs",full = FALSE)
+gs <- parseWorkspace(ws, path = "~/temp/fcs/", name = 1,subset=fcsFiles)
+# gs <- parseWorkspace(ws, name= "P2", subset =2, isNcdf = TRUE,path="~/temp/fcs/")
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r,echo=FALSE,results='hide'}
+gh <- gs[[1]]
+plot(gh)
+# gs <- parseWorkspace(ws, path = "~/temp/fcs/", name = 2,subset=fcsFiles)
+# gh <- gs[[1]]
+# plot(gh)
+# plotGate(gh)
+# head(getPopStats(gs,satistic="count"))
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
