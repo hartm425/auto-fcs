@@ -43,7 +43,7 @@ template = add_pop(
 )
 
 
-ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary") + xlim(c(0, 2e5))
+ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 100) + geom_gate("boundary") + xlim(c(0, 2e5))
 # ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 
@@ -63,8 +63,8 @@ template = rbind(
 )
 
 
-ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("nonDebris") + xlim(c(0, 2e5))
-ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("nonDebris")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 100) + geom_gate("nonDebris") + xlim(c(0, 2e5))
+ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 100) + geom_gate("nonDebris")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 # lymph,lymph,nonDebris,"FSC-A,SSC-A",flowClust,"K=2,quantile=0.95,target=c(1e5,5e4)",,,prior_flowClust,K=2
 
@@ -80,30 +80,62 @@ template = rbind(
     gating_args = "K=2,quantile=0.95,target=c(1e5,5e4)",
     preprocessing_method = "prior_flowClust",
     preprocessing_args = "K=2"
-    
+
   )
 )
+# 
+# template = rbind(
+#     template, add_pop(
+#     gs,alias = "lymph",pop = "lymph+",parent = "nonDebris",dims = "FSC-A,SSC-A",gating_method =
+#     "flowClust.2d",preprocessing_method = "prior_flowClust",preprocessing_args="K=3",collapseDataForGating = FALSE,gating_args =
+#     "quantile=0.95,target=c(80000,50000),K=3"
+#     )
+#     )
 
-ggcyto(gs,mapping = aes(x = `FSC-A`,y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("lymph") + xlim(c(0,2e5))
-ggcyto(gs,mapping = aes(x = `FSC-A`,y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("lymph")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-
+ggcyto(gs,mapping = aes(x = `FSC-A`,y = `SSC-A`)) + geom_hex(bins = 100) + geom_gate("lymph") + xlim(c(0,2e5))
+ggcyto(gs,mapping = aes(x = `FSC-A`,y = `SSC-A`)) + geom_hex(bins = 100) + geom_gate("lymph")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 template = rbind(
   template,
   add_pop(
     gs,
     alias = "Singlets",
-    pop = "Singlets",
+    pop = "FSC-W-",
     parent = "lymph",
-    dims = "FSC-H,FSC-W",
-    gating_method = "singletGate",
+    dims = "FSC-W",
+    gating_method = "tailgate",
     gating_args =
-      "wider_gate=TRUE,subsample_pct=0.1"
+      "tol=1e-2",
+    preprocessing_method = "standardize_flowset"
   )
 )
-
-ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets") + xlim(c(0,2e5))
-ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+# 
+#  template = rbind(
+#     template, add_pop(
+#   gs, alias = "Singlets", pop = "Singlets", parent = "lymph", dims = "FSC-W,FSC-H",gating_method = "singletGate",gating_args =
+#   "wider_gate=FALSE,subsample_pct=0.1"
+#   )
+#  )
+ 
+ ggcyto(gs, mapping = aes(x = `FSC-W`, y = `FSC-H`)) + geom_hex(bins = 100) + geom_gate("Singlets") + xlim(c(0, 2e5))
+  ggcyto(gs, mapping = aes(x = `FSC-W`, y = `FSC-H`)) + geom_hex(bins = 100) + geom_gate("Singlets") + xlim(c(0, 2e5))
+# 
+# template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "Singlets",
+#     pop = "Singlets",
+#     parent = "lymph",
+#     dims = "FSC-H,FSC-W",
+#     gating_method = "singletGate",
+#     gating_args =
+#       "wider_gate=TRUE,subsample_pct=0.1"
+#   )
+# )
+# 
+# ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets") + xlim(c(0,2e5))
+# ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 # Live	Live-	lymph	Live	cytokine	tol=5e-2		Center	standardize_flowset
 
@@ -120,60 +152,47 @@ template = rbind(
     dims = "PE-A",
     gating_method = "tailgate",
     gating_args =
-      "tol=5e-2",
+      "tol=1e-2",
     preprocessing_method = "standardize_flowset"
   )
 )
 
-ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 50) + geom_gate("PE-A") + xlim(c(0,2e5))
-ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 50) + geom_gate("PE-A")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-# 
-# # CD3A	CD3+	Live	CD3	mindensity	gate_range=c(1000,2200)
-# 
-# 
-# template = rbind(
-#   template,
-#   add_pop(
-#     gs,
-#     alias = "CD3A",
-#     pop = "CD3+",
-#     parent = "PE-A",
-#     dims = "CD3",
-#     gating_method = "mindensity",
-#     gating_args =
-#       "gate_range=c(1000,2200)"
-#   )
-# )
-# # CD3B	CD3+	CD3A	CD3	mindensity	gate_range=c(1500,2200)
-# template = rbind(
-#   template,
-#   add_pop(
-#     gs,
-#     alias = "CD3B",
-#     pop = "CD3+",
-#     parent = "CD3A",
-#     dims = "CD3",
-#     gating_method = "mindensity",
-#     gating_args =
-#       "gate_range=c(1500,2200)"
-#   )
-# )
-# # CD3	CD3	Live	CD3	refGate	CD3B
-# 
-# template = rbind(
-#   template,
-#   add_pop(
-#     gs,
-#     alias = "CD3",
-#     pop = "CD3",
-#     parent = "PE-A",
-#     dims = "CD3",
-#     gating_method = "refGate",
-#     gating_args =
-#       "CD3B"
-#   )
-# )
-# ggcyto(gs,mapping = aes(x = `CD3`,y = `PE-A`)) + geom_hex(bins = 50) + geom_gate("CD3") + xlim(c(0,2e5))
-# ggcyto(gs,mapping = aes(x = `CD3`,y = `PE-A`)) + geom_hex(bins = 50) + geom_gate("PE-A")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+# ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 50) + geom_gate("PE-A") + xlim(c(0,2e5))
+ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 100) + geom_gate("PE-A")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+
+template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "CD3",
+    pop = "CD3+",
+    parent = "PE-A",
+    dims = "CD3",
+    gating_method = "mindensity",
+    gating_args =
+      "gate_range=c(80,120)"
+  )
+)
+
+ggcyto(gs,mapping = aes(x = `CD3`,y = `CD19`)) + geom_hex(bins = 100) + geom_gate("CD3")
+ggcyto(gs,mapping = aes(x = `CD3`,y = `CD19`)) + geom_hex(bins = 100) + geom_gate("CD3")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+
+template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "hi",
+    pop = "CD4+/-CD8+/-",
+    parent = "CD3",
+    dims =  "CD4,CD8",
+    gating_method = "mindensity2",
+    gating_args =
+      "gate_range=c(80,220)"
+  )
+)
+
+ ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+
 ```
 
