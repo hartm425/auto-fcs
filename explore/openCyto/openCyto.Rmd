@@ -181,7 +181,7 @@ template = rbind(
   template,
   add_pop(
     gs,
-    alias = "hi",
+    alias = "*",
     pop = "CD4+/-CD8+/-",
     parent = "CD3",
     dims =  "CD4,CD8",
