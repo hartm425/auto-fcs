@@ -44,7 +44,7 @@ template = add_pop(
 
 
 ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary") + xlim(c(0, 2e5))
-ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+# ggcyto(gs, mapping = aes(x = `FSC-A`, y = `SSC-A`)) + geom_hex(bins = 50) + geom_gate("boundary")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 
 # nonDebris,nonDebris+,boundary,FSC-A,mindensity,"gate_range=c(5e4,1e5),adjust=1.5",,,,
@@ -107,12 +107,73 @@ ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_g
 
 # Live	Live-	lymph	Live	cytokine	tol=5e-2		Center	standardize_flowset
 
+
+# The latest version of OpenCyto contains some changes to the way templates are written for cytokine or tailgate gates. We have moved the preprocessing for tailgate to be explicit. The collapseDataForGating should be set to FALSE and the preprocessing_method should be set to standardize_flowset, in order to get the same behavior as previously by default when collapseDataForGating was set to TRUE.
+
+template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "PE-A",
+    pop = "PE-A-",
+    parent = "Singlets",
+    dims = "PE-A",
+    gating_method = "tailgate",
+    gating_args =
+      "tol=5e-2",
+    preprocessing_method = "standardize_flowset"
+  )
+)
+
+ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 50) + geom_gate("PE-A") + xlim(c(0,2e5))
+ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 50) + geom_gate("PE-A")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+# 
+# # CD3A	CD3+	Live	CD3	mindensity	gate_range=c(1000,2200)
+# 
+# 
 # template = rbind(
-#   template,add_pop(
-#   gs, alias = "PE-A", pop = "PE-A-", parent = "Singlets",  dims = "PE-A",gating_method = "cytokine",gating_args =
-#   "tol=5e-2",preprocessing_method = "standardize_flowset",groupBy = "Center"
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "CD3A",
+#     pop = "CD3+",
+#     parent = "PE-A",
+#     dims = "CD3",
+#     gating_method = "mindensity",
+#     gating_args =
+#       "gate_range=c(1000,2200)"
 #   )
 # )
-
+# # CD3B	CD3+	CD3A	CD3	mindensity	gate_range=c(1500,2200)
+# template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "CD3B",
+#     pop = "CD3+",
+#     parent = "CD3A",
+#     dims = "CD3",
+#     gating_method = "mindensity",
+#     gating_args =
+#       "gate_range=c(1500,2200)"
+#   )
+# )
+# # CD3	CD3	Live	CD3	refGate	CD3B
+# 
+# template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "CD3",
+#     pop = "CD3",
+#     parent = "PE-A",
+#     dims = "CD3",
+#     gating_method = "refGate",
+#     gating_args =
+#       "CD3B"
+#   )
+# )
+# ggcyto(gs,mapping = aes(x = `CD3`,y = `PE-A`)) + geom_hex(bins = 50) + geom_gate("CD3") + xlim(c(0,2e5))
+# ggcyto(gs,mapping = aes(x = `CD3`,y = `PE-A`)) + geom_hex(bins = 50) + geom_gate("PE-A")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 ```
 
