@@ -22,7 +22,8 @@ library(openCyto)
 library(ggcyto)
 ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
-gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset="2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",isNcdf = FALSE)
+# gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset="2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",isNcdf = FALSE)
+gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:4],isNcdf = FALSE)
 ```
 
 
@@ -228,23 +229,43 @@ template = rbind(
   ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
+# 
+# template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "*",
+#     pop = "CD45RA+/-CCR7+/-",
+#     parent = "CD4+CD8-",
+#     dims =  "CD45RA,CCR7",
+#     gating_method = "mindensity2",
+#     gating_args =
+#       "gate_range=c(80,150)"
+#   )
+# )
+# 
+# ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4+CD8-") +
+#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+# 
+# 
+# template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "*",
+#     pop = "CD95+/-CD28+/-",
+#     parent = "CD4+CD8-",
+#     dims =  "CD95,CD28",
+#     gating_method = "mindensity2",
+#     gating_args =
+#       "gate_range=c(80,150)"
+#   )
+# )
+# 
+# ggcyto(gs,mapping = aes(x = "CD95",y = "CD28"),subset = "CD4+CD8-") +
+#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+# 
 
-template = rbind(
-  template,
-  add_pop(
-    gs,
-    alias = "*",
-    pop = "CD45RA+/-CCR7+/-",
-    parent = "CD4+CD8-",
-    dims =  "CD45RA,CCR7",
-    gating_method = "mindensity2",
-    gating_args =
-      "gate_range=c(80,150)"
-  )
-)
-
-ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4+CD8-") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 
 gh <- gs[[1]]
