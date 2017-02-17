@@ -1,0 +1,33 @@
+---
+title: "Lymph"
+author: "JL"
+date: "2/17/2017"
+output: html_document
+---
+
+# 
+
+```{r setup, include=FALSE}
+library(openCyto)
+library(data.table)
+
+```
+
+```{r warning=FALSE,results='hide'}
+gt_lymph <- gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
+fcsFiles <- list.files(pattern = ".fcs", "/Volumes/Beta/data/flow/fcs/", full = TRUE)
+ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
+gs <- parseWorkspace(ws, path = "/Volumes/Beta/data/flow/fcs", name = 1,subset=fcsFiles,isNcdf = FALSE)
+
+ncfs  <- read.ncdfFlowSet(fcsFiles)
+
+https://github.com/RGLab/openCyto/issues/110
+# ncfs  <- read.ncdfFlowSet(fcsFiles)
+# ncfs
+# chnls <- parameters(compMat)
+# transFuncts <- estimateLogicle(ncfs[[1]], channels = chnls)
+# ncfs_trans <- transform(ncfs_comp, transFuncts)
+```
+
+
+
