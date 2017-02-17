@@ -95,7 +95,7 @@ template = rbind(
     parent = "nonDebris",
     dims = "FSC-A,SSC-A",
     gating_method = "flowClust",
-    gating_args = "K=2,quantile=0.95,target=c(1e5,5e4)",
+    gating_args = "K=2,quantile=0.90,target=c(1e5,5e4)",
     preprocessing_method = "prior_flowClust",
     preprocessing_args = "K=2"
 
@@ -216,18 +216,17 @@ template = rbind(
   add_pop(
     gs,
     alias = "HLA-DR",
-    pop = "HLA-DR+",
+    pop = "CD4_HLADR",
     parent = "CD4+CD8-",
     dims =  "HLA-DR",
-    gating_method = "flowDensity",
+     gating_method = "tailgate",
     gating_args =
-      "percentile=.95,use.percentile=T"
+      "tol=1e-2",
+    preprocessing_method = "standardize_flowset"
   )
 )
   ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-gh <- gs[[1]]
-plot(gh)
 
 
 template = rbind(
@@ -248,6 +247,8 @@ ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4+CD8-") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 
+gh <- gs[[1]]
+plot(gh)
 
 
 ```
