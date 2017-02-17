@@ -22,16 +22,25 @@ library(openCyto)
 library(ggcyto)
 ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
-gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles,isNcdf = FALSE)
+gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset="2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",isNcdf = FALSE)
 ```
 
 
 ```{r,echo=FALSE,results='hide',fig.width=10,fig.height=5,warning=FALSE}
 gh <- gs[[1]]
 plot(gh)
+
+flowDensityEx <- function(fr, pp_res, channels, ...){
+  if(length(channels)==2)
+    flowDensity::.flowDensity(fr, pp_res, channels[1], channels[2], ...)
+  else
+    flowDensity::.flowDensity(fr, pp_res, yChannel = channels, ...)
+}
+registerPlugins(fun=flowDensityEx,methodName="flowDensity",dep="flowDensity")
 # fcs <- read.FCS("~/temp/fcs/fcsFiles/2016-05-20_PANEL 1_ZF_panel one_F1631997_009.fcs", transformation = FALSE)
 # autoplot(fcs, x = 'FSC-A', y = 'FSC-H', bins = 64)
 # fcs <- read.FCS("~/temp/fcs/fcsFiles/2016-05-20_PANEL 1_ZF_panel one_F1631993_003.fcs", transformation = FALSE)
+# fcs@parameters@data
 # autoplot(fcs, x = 'FSC-A', y = 'SSC-A', bins = 64)
 
 
@@ -174,7 +183,7 @@ template = rbind(
   add_pop(
     gs,
     alias = "CD3",
-    pop = "CD3+",
+    pop = "CD3+/-",
     parent = "PE-A",
     dims = "CD3",
     gating_method = "mindensity",
@@ -182,17 +191,16 @@ template = rbind(
       "gate_range=c(80,120)"
   )
 )
-
-ggcyto(gs,mapping = aes(x = `CD3`,y = `CD19`)) + geom_hex(bins = 100) + geom_gate("CD3")
-ggcyto(gs,mapping = aes(x = `CD3`,y = `CD19`)) + geom_hex(bins = 100) + geom_gate("CD3")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-
+ ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ 
 template = rbind(
   template,
   add_pop(
     gs,
     alias = "*",
     pop = "CD4+/-CD8+/-",
-    parent = "CD3",
+    parent = "CD3+",
     dims =  "CD4,CD8",
     gating_method = "mindensity2",
     gating_args =
@@ -200,8 +208,25 @@ template = rbind(
   )
 )
 
- ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3") +
+ ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
+ template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "HLA-DR",
+    pop = "HLA-DR+",
+    parent = "CD4+CD8-",
+    dims =  "HLA-DR",
+    gating_method = "flowDensity",
+    gating_args =
+      "percentile=.95,use.percentile=T"
+  )
+)
+  ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+gh <- gs[[1]]
+plot(gh)
 ```
 
