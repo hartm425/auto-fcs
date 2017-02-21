@@ -12,85 +12,106 @@ library(openCyto)
 library(flowCore)
 library(data.table)
 library(ggcyto)
+library(gridExtra)
 
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
-theme_set(theme_bw(15))
-gt_lymph <- gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
-fcsFiles <- list.files("/Volumes/Beta/data/flow/fcs/", pattern=".fcs",full = TRUE)[1:2]
-# pdf(file ="/Volumes/Beta/data/flow/test.pdf")
+theme_set(theme_bw(5))
+gt_lymph <-
+  gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
+fcsFilesAll <-
+  list.files("/Volumes/Beta/data/flow/fcs/",
+             pattern = ".fcs",
+             full = TRUE)[1:5]
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 2))
+# 3:38
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
-for (file in fcsFiles){
-  print(paste("loading ....", file))
-  frame = read.FCS(file)
-  print(paste("compensating ....", file))
+i = 1
+for (files in fcsFilesAll) {
+  # fcsFiles = files
+  print(files)
+  pdf(file = paste("/Volumes/Beta/data/flow/test", i, ".pdf",sep = ""))
+  i=i+1
+  for (file in files) {
+    print(paste("loading ....", file))
+    frame = read.FCS(file)
+    print(paste("compensating ....", file))
+    
+    comp <- compensation(keyword(frame)$`SPILL`)
+    
+    chnls <- parameters(comp)
+    biexpTrans <-
+      flowJo_biexp_trans(
+        channelRange = 256,
+        maxValue = 262144 ,
+        pos = 4.418539922,
+        neg = 0,
+        widthBasis = -100
+      )
+    tf <- transformerList(chnls, biexpTrans)
+    
+    print(paste("gating ....", file))
+    # gs <- GatingSet(c(new_frame))
+    frames = c(frame)
+    names(frames) = c(basename(file))
+    fs =  as(frames, "flowSet")
+    gs1 <- GatingSet(fs)
+    gs1 <- compensate(gs1, comp)
+    gs1 <- transform(gs1, tf)
+    
+    gh <- gs1[[1]]
+    gating(gt_lymph, gs1)
+    print(paste("plotting ....", file))
 
-  comp <- compensation(keyword(frame)$`SPILL`)
-
-  chnls <- parameters(comp)
-  biexpTrans <- flowJo_biexp_trans(channelRange=256, maxValue=262144 , pos=4.418539922,neg=0, widthBasis=-100)
-  tf <- transformerList(chnls, biexpTrans)
-  
-  print(paste("gating ....", file))
-  # gs <- GatingSet(c(new_frame))
-  frames =c(frame)
-  names(frames) =c(basename(file))
- fs =  as(frames, "flowSet")
-gs1<- GatingSet(fs)
-gs1 <- compensate(gs1, comp)
-gs1 <- transform(gs1, tf)
-
-gh <- gs1[[1]]
-gating(gt_lymph, gs1)
-  # print (plotGate(gs1[[1]]))
-  
-    t1 =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "root") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- # print(t)
-   t2 =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "boundary") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-   # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- # print(t)
- 
-  t3 =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "nonDebris") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- # print(t)
- 
- # t =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "lymph") +
- # geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- # print(t)
- 
-  t4 =ggcyto(gs1,mapping = aes(x = "FSC-W",y = "FSC-H"),subset = "lymph") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- # print(t)
- 
-  t5 =ggcyto(gs1,mapping = aes(x = "PE-A",y = "FSC-H"),subset = "Singlets") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- # print(t)
- 
-   t6 =ggcyto(gs1,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-   # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- # print(t)
-#    t = ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
-#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-# print(t)
- grid.arrange(as.ggplot(t1),as.ggplot(t2),as.ggplot(t3),as.ggplot(t4),as.ggplot(t5),as.ggplot(t6), ncol = 3)
+    t1 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "root") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5))
+    
+    t2 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "boundary") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5))
+    
+    t3 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "nonDebris") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5))
+    
+    
+    t4 = ggcyto(gs1,
+                mapping = aes(x = "FSC-W", y = "FSC-H"),
+                subset = "lymph") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t5 = ggcyto(gs1,
+                mapping = aes(x = "PE-A", y = "FSC-H"),
+                subset = "Singlets") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t6 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "PE-A") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    grid.arrange(
+      as.ggplot(t1),
+      as.ggplot(t2),
+      as.ggplot(t3),
+      as.ggplot(t4),
+      as.ggplot(t5),
+      as.ggplot(t6),
+      ncol = 2
+    )
+  }
+  dev.off()
 }
 
-# dev.off()
+
 # https://github.com/RGLab/openCyto/issues/110
-# ncfs  <- read.ncdfFlowSet(fcsFiles)
-# ncfs
-# chnls <- parameters(compMat)
-# transFuncts <- estimateLogicle(ncfs[[1]], channels = chnls)
-# ncfs_trans <- transform(ncfs_comp, transFuncts)
+
 ```
 
 
