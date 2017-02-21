@@ -10,6 +10,7 @@ output: html_document
 ```{r setup, include=FALSE}
 library(openCyto)
 library(data.table)
+library(ggcyto)
 
 ```
 
@@ -24,9 +25,10 @@ library(data.table)
 # ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 # gs <- parseWorkspace(ws, path = "/Volumes/Beta/data/flow/fcs", name = 1,subset=fcsFiles,isNcdf = TRUE)
 
+gt_lymph <- gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
 fcsFiles <- list.files(pattern = ".fcs", "/Volumes/Beta/data/flow/fcs/", full = TRUE)
-
-for (file in fcsFiles){
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
+for (file in fcsFiles[1:5]){
   print(paste("loading ....", file))
   frame = read.FCS(file)
   print(paste("compensating ....", file))
@@ -34,8 +36,17 @@ for (file in fcsFiles){
   comp <- keyword(frame)$`SPILL`
   new_frame <- compensate(frame,comp)
   print(paste("gating ....", file))
-  gs <- GatingSet(c(new_frame))
-
+  # gs <- GatingSet(c(new_frame))
+  frames =c(new_frame)
+  names(frames) <- sapply(frames, keyword, "SAMPLE ID")
+ fs =  as(frames, "flowSet")
+gs <- GatingSet(fs)
+gh <- gs[[1]]
+gating(gt_lymph, gs)
+ 
+  t = ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+print(t)
 }
 # https://github.com/RGLab/openCyto/issues/110
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
