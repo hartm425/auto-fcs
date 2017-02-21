@@ -15,17 +15,28 @@ library(data.table)
 
 ```{r warning=FALSE,results='hide'}
 
-comp <- keyword(fcs)$`SPILL`
-new_frame <- compensate(frame,comp)
+# comp <- keyword(fcs)$`SPILL`
+# new_frame <- compensate(frame,comp)
+# 
+# setwd("/Volumes/Beta/data/flow/")
+# gt_lymph <- gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
+# fcsFiles <- list.files(pattern = ".fcs", "/Volumes/Beta/data/flow/fcs/", full = TRUE)
+# ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
+# gs <- parseWorkspace(ws, path = "/Volumes/Beta/data/flow/fcs", name = 1,subset=fcsFiles,isNcdf = TRUE)
 
-setwd("/Volumes/Beta/data/flow/")
-gt_lymph <- gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
 fcsFiles <- list.files(pattern = ".fcs", "/Volumes/Beta/data/flow/fcs/", full = TRUE)
-ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
-gs <- parseWorkspace(ws, path = "/Volumes/Beta/data/flow/fcs", name = 1,subset=fcsFiles,isNcdf = TRUE)
 
-ncfs  <- read.ncdfFlowSet(fcsFiles)
+for (file in fcsFiles){
+  print(paste("loading ....", file))
+  frame = read.FCS(file)
+  print(paste("compensating ....", file))
 
+  comp <- keyword(frame)$`SPILL`
+  new_frame <- compensate(frame,comp)
+  print(paste("gating ....", file))
+  gs <- GatingSet(c(new_frame))
+
+}
 # https://github.com/RGLab/openCyto/issues/110
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
 # ncfs

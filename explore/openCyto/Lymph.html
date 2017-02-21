@@ -125,17 +125,26 @@ $(document).ready(function () {
 
 <div id="section" class="section level1">
 <h1></h1>
-<pre class="r"><code>gt_lymph &lt;- gatingTemplate(&quot;~/git/auto-fcs/explore/openCyto/lymph.csv&quot;, autostart = 1L)</code></pre>
-<pre><code>## expanding pop: CD3+/-</code></pre>
-<pre><code>## Adding population:boundary</code></pre>
-<pre><code>## Adding population:nonDebris</code></pre>
-<pre><code>## Adding population:lymph</code></pre>
-<pre><code>## Adding population:FSC-W+</code></pre>
-<pre><code>## Adding population:Singlets</code></pre>
-<pre><code>## Adding population:PE-A+</code></pre>
-<pre><code>## Adding population:PE-A</code></pre>
-<pre><code>## Adding population:CD3+</code></pre>
-<pre><code>## Adding population:CD3-</code></pre>
+<pre class="r"><code># comp &lt;- keyword(fcs)$`SPILL`
+# new_frame &lt;- compensate(frame,comp)
+# 
+# setwd(&quot;/Volumes/Beta/data/flow/&quot;)
+# gt_lymph &lt;- gatingTemplate(&quot;~/git/auto-fcs/explore/openCyto/lymph.csv&quot;, autostart = 1L)
+# fcsFiles &lt;- list.files(pattern = &quot;.fcs&quot;, &quot;/Volumes/Beta/data/flow/fcs/&quot;, full = TRUE)
+# ws &lt;- openWorkspace(&quot;/Users/Kitty/temp/fcs/513-520 HRS p1&amp;p2.wsp&quot;)
+# gs &lt;- parseWorkspace(ws, path = &quot;/Volumes/Beta/data/flow/fcs&quot;, name = 1,subset=fcsFiles,isNcdf = TRUE)
+
+fcsFiles &lt;- list.files(pattern = &quot;.fcs&quot;, &quot;/Volumes/Beta/data/flow/fcs/&quot;, full = TRUE)
+
+for (file in fcsFiles){
+  print(paste(&quot;The year is&quot;, file))
+}
+# https://github.com/RGLab/openCyto/issues/110
+# ncfs  &lt;- read.ncdfFlowSet(fcsFiles)
+# ncfs
+# chnls &lt;- parameters(compMat)
+# transFuncts &lt;- estimateLogicle(ncfs[[1]], channels = chnls)
+# ncfs_trans &lt;- transform(ncfs_comp, transFuncts)</code></pre>
 </div>
 
 
