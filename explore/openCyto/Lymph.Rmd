@@ -23,17 +23,18 @@ gt_lymph <-
 fcsFilesAll <-
   list.files("/Volumes/Beta/data/flow/fcs/",
              pattern = ".fcs",
-             full = TRUE)[1:5]
-fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 2))
+             full = TRUE)
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 3:38
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
 i = 1
+d = data.frame()
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
-  pdf(file = paste("/Volumes/Beta/data/flow/test", i, ".pdf",sep = ""))
-  i=i+1
+  pdf(file = paste("/Volumes/Beta/data/flow/test", i, ".pdf", sep = ""))
+  i = i + 1
   for (file in files) {
     print(paste("loading ....", file))
     frame = read.FCS(file)
@@ -64,21 +65,21 @@ for (files in fcsFilesAll) {
     gh <- gs1[[1]]
     gating(gt_lymph, gs1)
     print(paste("plotting ....", file))
-
+    
     t1 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "root") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
     t2 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "boundary") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
     t3 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "nonDebris") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
     
     t4 = ggcyto(gs1,
@@ -105,12 +106,20 @@ for (files in fcsFilesAll) {
       as.ggplot(t6),
       ncol = 2
     )
+    d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
   }
+  
   dev.off()
 }
 
-
-# https://github.com/RGLab/openCyto/issues/110
+write.table(
+  d,
+  sep = "\t",
+  quote = FALSE,
+  file = "/Volumes/Beta/data/flow/testTypes.txt",
+  row.names = FALSE
+  )
+  # https://github.com/RGLab/openCyto/issues/110
 
 ```
 
