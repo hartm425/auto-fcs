@@ -9,45 +9,82 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(openCyto)
+library(flowCore)
 library(data.table)
 library(ggcyto)
 
 ```
 
-```{r warning=FALSE,results='hide'}
-
-# comp <- keyword(fcs)$`SPILL`
-# new_frame <- compensate(frame,comp)
-# 
-# setwd("/Volumes/Beta/data/flow/")
-# gt_lymph <- gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
-# fcsFiles <- list.files(pattern = ".fcs", "/Volumes/Beta/data/flow/fcs/", full = TRUE)
-# ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
-# gs <- parseWorkspace(ws, path = "/Volumes/Beta/data/flow/fcs", name = 1,subset=fcsFiles,isNcdf = TRUE)
-
+```{r warning=FALSE,results='hide',echo=FALSE}
+theme_set(theme_bw(15))
 gt_lymph <- gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
-fcsFiles <- list.files(pattern = ".fcs", "/Volumes/Beta/data/flow/fcs/", full = TRUE)
+fcsFiles <- list.files("/Volumes/Beta/data/flow/fcs/", pattern=".fcs",full = TRUE)[1:2]
+# pdf(file ="/Volumes/Beta/data/flow/test.pdf")
+
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
-for (file in fcsFiles[1:5]){
+for (file in fcsFiles){
   print(paste("loading ....", file))
   frame = read.FCS(file)
   print(paste("compensating ....", file))
 
-  comp <- keyword(frame)$`SPILL`
-  new_frame <- compensate(frame,comp)
+  comp <- compensation(keyword(frame)$`SPILL`)
+
+  chnls <- parameters(comp)
+  biexpTrans <- flowJo_biexp_trans(channelRange=256, maxValue=262144 , pos=4.418539922,neg=0, widthBasis=-100)
+  tf <- transformerList(chnls, biexpTrans)
+  
   print(paste("gating ....", file))
   # gs <- GatingSet(c(new_frame))
-  frames =c(new_frame)
-  names(frames) <- sapply(frames, keyword, "SAMPLE ID")
+  frames =c(frame)
+  names(frames) =c(basename(file))
  fs =  as(frames, "flowSet")
-gs <- GatingSet(fs)
-gh <- gs[[1]]
-gating(gt_lymph, gs)
+gs1<- GatingSet(fs)
+gs1 <- compensate(gs1, comp)
+gs1 <- transform(gs1, tf)
+
+gh <- gs1[[1]]
+gating(gt_lymph, gs1)
+  # print (plotGate(gs1[[1]]))
+  
+    t1 =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "root") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ # print(t)
+   t2 =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "boundary") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+   # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ # print(t)
  
-  t = ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-print(t)
+  t3 =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "nonDebris") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ # print(t)
+ 
+ # t =ggcyto(gs1,mapping = aes(x = "FSC-A",y = "SSC-A"),subset = "lymph") +
+ # geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ # print(t)
+ 
+  t4 =ggcyto(gs1,mapping = aes(x = "FSC-W",y = "FSC-H"),subset = "lymph") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ # print(t)
+ 
+  t5 =ggcyto(gs1,mapping = aes(x = "PE-A",y = "FSC-H"),subset = "Singlets") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ # print(t)
+ 
+   t6 =ggcyto(gs1,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+   # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+ # print(t)
+#    t = ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
+#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+# print(t)
+ grid.arrange(as.ggplot(t1),as.ggplot(t2),as.ggplot(t3),as.ggplot(t4),as.ggplot(t5),as.ggplot(t6), ncol = 3)
 }
+
+# dev.off()
 # https://github.com/RGLab/openCyto/issues/110
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
 # ncfs
