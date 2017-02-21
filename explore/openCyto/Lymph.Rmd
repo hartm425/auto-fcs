@@ -25,7 +25,7 @@ fcsFilesAll <-
              pattern = ".fcs",
              full = TRUE)
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
-# 3:38
+# 4:44
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
 i = 1
