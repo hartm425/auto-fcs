@@ -23,7 +23,7 @@ gt_lymph <-
 fcsFilesAll <-
   list.files("/Volumes/Beta/data/flow/fcs/",
              pattern = ".fcs",
-             full = TRUE)
+             full = TRUE)[30:33]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 4:44
 
@@ -46,7 +46,7 @@ for (files in fcsFilesAll) {
     biexpTrans <-
       flowJo_biexp_trans(
         channelRange = 256,
-        maxValue = 262144 ,
+        maxValue = 262144.0000291775 ,
         pos = 4.418539922,
         neg = 0,
         widthBasis = -100
@@ -107,8 +107,14 @@ for (files in fcsFilesAll) {
       ncol = 2
     )
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
+    outFile <-
+    paste("/Volumes/Beta/data/flow/gates/",
+    basename(file),
+    "_gate.wsp")
+    GatingSet2flowJo(gs1)
+    
   }
-  
+
   dev.off()
 }
 
