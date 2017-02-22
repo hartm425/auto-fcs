@@ -13,7 +13,7 @@ library(flowCore)
 library(data.table)
 library(ggcyto)
 library(gridExtra)
-
+library(CytoML)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
@@ -33,7 +33,7 @@ d = data.frame()
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
-  pdf(file = paste("/Volumes/Beta/data/flow/test", i, ".pdf", sep = ""))
+  pdf(file = paste("/Volumes/Beta/data/flow/panel1_test", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
     print(paste("loading ....", file))
@@ -110,8 +110,8 @@ for (files in fcsFilesAll) {
     outFile <-
     paste("/Volumes/Beta/data/flow/gates/",
     basename(file),
-    "_gate.wsp")
-    GatingSet2flowJo(gs1)
+    "_panel1.wsp")
+    GatingSet2flowJo(gs1,outFile)
     
   }
 
@@ -125,8 +125,24 @@ write.table(
   file = "/Volumes/Beta/data/flow/testTypes.txt",
   row.names = FALSE
   )
-  # https://github.com/RGLab/openCyto/issues/110
+  # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
 
+```
+
+
+ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
+ gs <- parseWorkspace(ws, path = "/Volumes/Beta/data/flow/fcs/", name = 1,subset="2016-05-18_PANEL 1_ZF_panel one_F1632164_009.fcs",isNcdf = FALSE)
+t3 = ggcyto(gs,
+            mapping = aes(x = "FSC-A", y = "SSC-A"),
+            subset = "Lymphocytes (SSC-A v FSC-A)") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+write.table(
++     getPopStats(gs),
++     sep = "\t",
++     quote = FALSE,
++     file = "/Volumes/Beta/data/flow/testTypesManual.txt",
++     row.names = FALSE
++ )
 ```
 
 
