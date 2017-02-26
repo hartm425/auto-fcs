@@ -1,4 +1,4 @@
----
+  ---
 title: "Lymph"
 author: "JL"
 date: "2/17/2017"
@@ -17,11 +17,14 @@ library(CytoML)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
+inputFCSDir = "/Volumes/Beta/data/flow/fcs/"
+outputDir = "/Volumes/Beta/data/flow/"
+
 theme_set(theme_bw(5))
 gt_lymph <-
   gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
 fcsFilesAll <-
-  list.files("/Volumes/Beta/data/flow/fcs/",
+  list.files(inputFCSDir,
              pattern = ".fcs",
              full = TRUE)[30:33]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
@@ -33,7 +36,7 @@ d = data.frame()
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
-  pdf(file = paste("/Volumes/Beta/data/flow/panel1_test", i, ".pdf", sep = ""))
+  pdf(file = paste(outputDir, "panel1_test_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
     print(paste("loading ....", file))
@@ -108,13 +111,13 @@ for (files in fcsFilesAll) {
     )
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
     outFile <-
-    paste("/Volumes/Beta/data/flow/gates/",
-    basename(file),
-    "_panel1.wsp")
-    GatingSet2flowJo(gs1,outFile)
+      paste(outputDir, "/gates/",
+            basename(file),
+            "_panel1.wsp")
+    GatingSet2flowJo(gs1, outFile)
     
   }
-
+  
   dev.off()
 }
 
@@ -122,9 +125,9 @@ write.table(
   d,
   sep = "\t",
   quote = FALSE,
-  file = "/Volumes/Beta/data/flow/testTypes.txt",
+  file = paste(outputDir, "testTypes.txt"),
   row.names = FALSE
-  )
+)
   # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
 
 ```
@@ -143,6 +146,7 @@ write.table(
 +     file = "/Volumes/Beta/data/flow/testTypesManual.txt",
 +     row.names = FALSE
 + )
+
 ```
 
 
