@@ -19,10 +19,11 @@ library(CytoML)
 ```{r warning=FALSE,results='hide',echo=FALSE}
 inputFCSDir = "/Volumes/Beta/data/flow/fcs/"
 outputDir = "/Volumes/Beta/data/flow/"
-
+template = "~/git/auto-fcs/explore/openCyto/lymph.csv"
+# getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
-  gatingTemplate("~/git/auto-fcs/explore/openCyto/lymph.csv", autostart = 1L)
+  gatingTemplate(template, autostart = 1L)
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
