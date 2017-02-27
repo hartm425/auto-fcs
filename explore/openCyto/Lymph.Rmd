@@ -112,10 +112,26 @@ for (files in fcsFilesAll) {
     )
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
     outFile <-
-      paste(outputDir, "/gates/",
+      paste(outputDir, "gates/",
             basename(file),
-            "_panel1.wsp")
+            "_panel1.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
+    
+    gateDef = data.frame(
+      lymph = getIndiceMat(gs1, "lymph"),
+      Singlets = getIndiceMat(gs1, "Singlets"),
+      PE_A_Minus = getIndiceMat(gs1, "PE-A"),
+      CD3Plus = getIndiceMat(gs1, "CD3+")
+    )
+    
+    write.table(
+      gateDef,
+      sep = "\t",
+      quote = FALSE,
+      file = paste(outputDir, "gates/", basename(file),
+                   "_gate_def.txt", sep = ""),
+      row.names = FALSE
+    )
     
   }
   
@@ -129,7 +145,7 @@ write.table(
   file = paste(outputDir, "testTypes.txt"),
   row.names = FALSE
 )
-  # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
+# https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
 
 ```
 
