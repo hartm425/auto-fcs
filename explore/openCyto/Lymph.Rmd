@@ -27,9 +27,10 @@ gt_lymph <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = TRUE)[30:33]
+             full = TRUE)
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
-# 4:44
+# 19:49
+# [30:33]
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
 i = 1
@@ -128,8 +129,13 @@ for (files in fcsFilesAll) {
       gateDef,
       sep = "\t",
       quote = FALSE,
-      file = paste(outputDir, "gates/", basename(file),
-                   "_gate_def.txt", sep = ""),
+      file = paste(
+        outputDir,
+        "gates/",
+        basename(file),
+        "_panel1_gate_def.txt",
+        sep = ""
+      ),
       row.names = FALSE
     )
     
