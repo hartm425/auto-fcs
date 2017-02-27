@@ -29,7 +29,7 @@ fcsFilesAll <-
              pattern = ".fcs",
              full = TRUE)
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
-# 19:49
+# 19:49 -> 20:31
 # [30:33]
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
