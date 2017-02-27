@@ -148,7 +148,7 @@ write.table(
   d,
   sep = "\t",
   quote = FALSE,
-  file = paste(outputDir, "testTypes.txt"),
+  file = paste(outputDir, "testTypes.txt", sep = ""),
   row.names = FALSE
 )
 # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
