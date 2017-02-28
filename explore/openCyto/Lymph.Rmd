@@ -39,9 +39,11 @@ d = data.frame()
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
+  i
   pdf(file = paste(outputDir, "panel1_test2_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
+    
     print(paste("loading ....", file))
     frame = read.FCS(file)
     print(paste("compensating ....", file))
