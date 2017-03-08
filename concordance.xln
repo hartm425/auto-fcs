@@ -1,0 +1,429 @@
+FILE	GATE	INDEX	TP	TN	FP	FN	ACC
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs	Live cells (PE-)	3	177881	267928	8796	15846	0.947620475
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs	Single Cells (FSC-H v FSC-W)	2	178057	267876	8801	15717	0.947884052
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs	Lymphocytes (SSC-A v FSC-A)	1	180838	267494	8811	13308	0.952983414
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs	Tcells (CD3+ CD19-)	4	150566	299937	10752	9196	0.957598135
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs	Live cells (PE-)	3	181125	256253	2519	15321	0.960809986
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs	Single Cells (FSC-H v FSC-W)	2	181392	256097	2525	15204	0.961053825
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs	Live cells (PE-)	3	174264	479463	3873	21884	0.962093294
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636837_007.fcs	Live cells (PE-)	3	182151	305987	1469	17709	0.962197132
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs	Single Cells (FSC-H v FSC-W)	2	174534	479322	3883	21745	0.962283144
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636837_007.fcs	Single Cells (FSC-H v FSC-W)	2	182359	305893	1479	17585	0.962421844
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636802_005.fcs	Live cells (PE-)	3	104700	163633	1857	8270	0.96363212
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636802_005.fcs	Single Cells (FSC-H v FSC-W)	2	104864	163558	1876	8162	0.963951735
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632284_029.fcs	Tcells (CD3+ CD19-)	4	166956	330359	4342	14007	0.964416752
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636528_002.fcs	Live cells (PE-)	3	107041	235724	304	12333	0.964443081
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636528_002.fcs	Single Cells (FSC-H v FSC-W)	2	107225	235677	303	12197	0.96482856
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632284_029.fcs	Live cells (PE-)	3	184800	313254	1	17609	0.965849856
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632284_029.fcs	Single Cells (FSC-H v FSC-W)	2	185060	313173	0	17431	0.966196981
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030B_007.fcs	Live cells (PE-)	3	179909	285709	1090	15177	0.966242983
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631147_029.fcs	Single Cells (FSC-H v FSC-W)	2	183231	360410	0	18972	0.966278774
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631147_029.fcs	Live cells (PE-)	3	182794	360878	6	18935	0.966333874
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030B_007.fcs	Single Cells (FSC-H v FSC-W)	2	180173	285583	1106	15023	0.966529359
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs	Lymphocytes (SSC-A v FSC-A)	1	178716	478159	3930	18679	0.966726222
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636802_005.fcs	Lymphocytes (SSC-A v FSC-A)	1	106157	163220	1918	7165	0.967381311
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636823_026.fcs	Live cells (PE-)	3	145546	432669	4466	15022	0.967395178
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636823_026.fcs	Single Cells (FSC-H v FSC-W)	2	145794	432533	4474	14902	0.967582562
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636837_007.fcs	Lymphocytes (SSC-A v FSC-A)	1	185500	305403	1489	14924	0.967647383
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs	Lymphocytes (SSC-A v FSC-A)	1	184761	255761	2532	12164	0.967716567
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631147_029.fcs	Lymphocytes (SSC-A v FSC-A)	1	185669	359718	0	17226	0.969382151
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636528_002.fcs	Lymphocytes (SSC-A v FSC-A)	1	109187	235397	336	10482	0.969561229
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1631284_003.fcs	Live cells (PE-)	3	14481	23062	0	1150	0.970278862
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1631284_003.fcs	Single Cells (FSC-H v FSC-W)	2	14506	23048	0	1139	0.970563151
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632284_029.fcs	Lymphocytes (SSC-A v FSC-A)	1	188314	312804	0	14546	0.971791709
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636823_026.fcs	Lymphocytes (SSC-A v FSC-A)	1	149215	431836	4497	12155	0.972140009
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030B_007.fcs	Lymphocytes (SSC-A v FSC-A)	1	183775	284892	1190	12028	0.972570219
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs	Live cells (PE-)	3	182841	544652	0	20074	0.973147557
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631332_012.fcs	Single Cells (FSC-H v FSC-W)	2	114124	378048	0	13510	0.973283605
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs	Single Cells (FSC-H v FSC-W)	2	183075	544582	0	19910	0.973366936
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636517_010.fcs	Live cells (PE-)	3	107959	316850	648	10831	0.973689398
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636517_010.fcs	Single Cells (FSC-H v FSC-W)	2	108128	316800	647	10713	0.973962153
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631332_012.fcs	Live cells (PE-)	3	113947	378596	1	13138	0.974017268
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632351_006.fcs	Live cells (PE-)	3	182668	523724	0	18700	0.974210169
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632351_006.fcs	Single Cells (FSC-H v FSC-W)	2	182817	523594	0	18681	0.974236373
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632102_026.fcs	Live cells (PE-)	3	184231	423693	4	15937	0.974447998
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632359_004.fcs	Live cells (PE-)	3	182011	605784	0	20540	0.974589743
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs	Live cells (PE-)	3	173641	870500	3	27150	0.974654017
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632359_004.fcs	Single Cells (FSC-H v FSC-W)	2	182280	605604	0	20451	0.974699846
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs	Single Cells (FSC-H v FSC-W)	2	174142	870095	0	27057	0.974743628
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1631284_003.fcs	Lymphocytes (SSC-A v FSC-A)	1	14679	23038	0	976	0.974775799
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632102_026.fcs	Single Cells (FSC-H v FSC-W)	2	184607	423548	5	15705	0.97481827
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs	Tcells (CD3+ CD19-)	4	139169	304605	3895	7549	0.974860397
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631148_028.fcs	Live cells (PE-)	3	179904	964044	927	27967	0.975364116
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631148_028.fcs	Single Cells (FSC-H v FSC-W)	2	180137	963914	927	27864	0.975451936
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631330_031.fcs	Live cells (PE-)	3	148792	681403	3981	16674	0.975724276
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631330_031.fcs	Single Cells (FSC-H v FSC-W)	2	149118	681211	4024	16497	0.975881765
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs	Tcells (CD3+ CD19-)	4	161233	646623	4720	15217	0.975915476
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636814_004.fcs	Live cells (PE-)	3	117182	436754	885	12401	0.976577072
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636814_004.fcs	Single Cells (FSC-H v FSC-W)	2	117309	436692	879	12342	0.976691666
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs	Live cells (PE-)	3	186402	622167	36	19188	0.976776803
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs	Single Cells (FSC-H v FSC-W)	2	186558	622072	1	19162	0.976850493
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632343_030.fcs	Live cells (PE-)	3	177420	814676	1	23436	0.976921479
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632343_030.fcs	Single Cells (FSC-H v FSC-W)	2	177597	814589	0	23347	0.977010102
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636523_008.fcs	Live cells (PE-)	3	179867	822026	1858	21697	0.977029552
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636523_008.fcs	Single Cells (FSC-H v FSC-W)	2	180068	821892	1861	21627	0.977094889
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632379_031.fcs	Live cells (PE-)	3	183985	534744	0	16832	0.977116786
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636859_028.fcs	Live cells (PE-)	3	68414	331519	1294	8031	0.977214862
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631383_031.fcs	Single Cells (FSC-H v FSC-W)	2	173961	500286	0	15698	0.977247462
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636859_028.fcs	Single Cells (FSC-H v FSC-W)	2	68517	331448	1315	7978	0.977293052
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632379_031.fcs	Single Cells (FSC-H v FSC-W)	2	184330	534630	0	16601	0.977430832
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636851_001.fcs	Single Cells (FSC-H v FSC-W)	2	48264	150920	0	4595	0.977451062
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030B_007.fcs	Tcells (CD3+ CD19-)	4	148449	322584	3412	7440	0.977480104
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636783_009.fcs	Live cells (PE-)	3	42018	151126	104	4338	0.97751865
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636851_001.fcs	Live cells (PE-)	3	48191	151023	1	4564	0.97759828
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs	Lymphocytes (SSC-A v FSC-A)	1	178468	868828	0	23998	0.977599053
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636783_009.fcs	Single Cells (FSC-H v FSC-W)	2	42103	151068	107	4308	0.977655299
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636823_026.fcs	Tcells (CD3+ CD19-)	4	96978	487384	4899	8442	0.97767955
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632363_026.fcs	Live cells (PE-)	3	178645	870475	0	23886	0.977739174
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1649319_028.fcs	Live cells (PE-)	3	182851	649997	0	18897	0.977813782
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632102_026.fcs	Lymphocytes (SSC-A v FSC-A)	1	187501	422587	7	13770	0.977916697
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1649319_028.fcs	Single Cells (FSC-H v FSC-W)	2	183124	649854	0	18767	0.97796641
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632363_026.fcs	Single Cells (FSC-H v FSC-W)	2	179000	870391	0	23615	0.977991735
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631147_029.fcs	Tcells (CD3+ CD19-)	4	136029	414327	2969	9288	0.978214154
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631332_012.fcs	Lymphocytes (SSC-A v FSC-A)	1	117255	377499	0	10928	0.978389581
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631383_031.fcs	Live cells (PE-)	3	173591	501453	10	14891	0.978402626
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636517_010.fcs	Lymphocytes (SSC-A v FSC-A)	1	110319	316556	648	8765	0.978424802
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636802_005.fcs	Tcells (CD3+ CD19-)	4	79296	193166	2639	3359	0.978460102
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636790_006.fcs	Single Cells (FSC-H v FSC-W)	2	149194	439067	0	12910	0.978525245
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636850_009.fcs	Live cells (PE-)	3	188595	588167	2	16990	0.978592864
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636850_009.fcs	Single Cells (FSC-H v FSC-W)	2	188992	587774	0	16988	0.978597903
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631332_012.fcs	Tcells (CD3+ CD19-)	4	94506	400384	603	10189	0.978658525
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636790_006.fcs	Live cells (PE-)	3	148686	439715	0	12770	0.978758124
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632350_008.fcs	Live cells (PE-)	3	9650	36095	4	983	0.978879569
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632351_006.fcs	Lymphocytes (SSC-A v FSC-A)	1	187420	522382	0	15290	0.978913021
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632383_031.fcs	Live cells (PE-)	3	119519	618190	0	15663	0.979209474
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs	Tcells (CD3+ CD19-)	4	137822	527579	5443	8640	0.979273978
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632383_031.fcs	Single Cells (FSC-H v FSC-W)	2	119662	618104	0	15606	0.979285134
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632350_008.fcs	Single Cells (FSC-H v FSC-W)	2	9682	36085	0	965	0.979350338
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632044_004.fcs	Live cells (PE-)	3	187977	592045	120	16127	0.979596091
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636814_004.fcs	Lymphocytes (SSC-A v FSC-A)	1	119294	436444	879	10605	0.979753959
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631148_028.fcs	Lymphocytes (SSC-A v FSC-A)	1	186342	962812	927	22761	0.979802906
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632044_004.fcs	Single Cells (FSC-H v FSC-W)	2	188313	591890	88	15978	0.979823401
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636525_024.fcs	Live cells (PE-)	3	182514	951685	1255	21967	0.979936428
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636525_024.fcs	Single Cells (FSC-H v FSC-W)	2	182760	951540	1260	21861	0.980023691
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636783_009.fcs	Lymphocytes (SSC-A v FSC-A)	1	42805	150870	114	3797	0.980206087
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs	Lymphocytes (SSC-A v FSC-A)	1	188793	544047	0	14727	0.980300094
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631330_031.fcs	Lymphocytes (SSC-A v FSC-A)	1	153775	680398	4042	12635	0.9803996
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632044_004.fcs	Tcells (CD3+ CD19-)	4	156804	623891	5824	9750	0.980441283
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1631285_030.fcs	Live cells (PE-)	3	182204	846891	2	20270	0.980681687
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632358_028.fcs	Live cells (PE-)	3	185888	732766	0	18080	0.980698896
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636859_028.fcs	Lymphocytes (SSC-A v FSC-A)	1	70265	331097	1326	6570	0.980706547
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636851_001.fcs	Lymphocytes (SSC-A v FSC-A)	1	48997	150868	0	3914	0.980792918
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1631285_030.fcs	Single Cells (FSC-H v FSC-W)	2	182469	846797	0	20101	0.980844643
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632358_028.fcs	Single Cells (FSC-H v FSC-W)	2	186318	732593	0	17823	0.980973254
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632359_004.fcs	Lymphocytes (SSC-A v FSC-A)	1	188021	605001	0	15313	0.981056122
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631383_031.fcs	Lymphocytes (SSC-A v FSC-A)	1	177716	499207	0	13022	0.981126032
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636523_008.fcs	Lymphocytes (SSC-A v FSC-A)	1	185042	821259	1862	17285	0.981328161
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1649319_028.fcs	Lymphocytes (SSC-A v FSC-A)	1	186683	649221	0	15841	0.981401711
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631199_031.fcs	Live cells (PE-)	3	114133	714576	1826	13747	0.981554741
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs	Live cells (PE-)	3	186178	764447	0	17784	0.981635858
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632350_008.fcs	Lymphocytes (SSC-A v FSC-A)	1	9808	36066	0	858	0.98163999
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs	Single Cells (FSC-H v FSC-W)	2	186381	764365	0	17663	0.981760806
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632400_006.fcs	Single Cells (FSC-H v FSC-W)	2	124682	720148	289	15404	0.981763416
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632400_006.fcs	Live cells (PE-)	3	124580	720250	291	15402	0.981763416
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631199_031.fcs	Single Cells (FSC-H v FSC-W)	2	114388	714502	1831	13561	0.981769125
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636515_032.fcs	Live cells (PE-)	3	182410	1183234	2564	22003	0.982328582
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs	Single Cells (FSC-H v FSC-W)	2	100486	350467	2	8096	0.982359259
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636515_032.fcs	Single Cells (FSC-H v FSC-W)	2	182591	1183143	2572	21905	0.98239332
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636850_009.fcs	Lymphocytes (SSC-A v FSC-A)	1	192371	587431	0	13952	0.982422766
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632383_031.fcs	Lymphocytes (SSC-A v FSC-A)	1	122490	617655	0	13227	0.982442937
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636784_033.fcs	Live cells (PE-)	3	91777	1121797	5783	15744	0.982570656
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636784_033.fcs	Single Cells (FSC-H v FSC-W)	2	91953	1121631	5817	15700	0.982578753
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs	Live cells (PE-)	3	100258	350807	4	7982	0.98260324
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632379_031.fcs	Lymphocytes (SSC-A v FSC-A)	1	188902	533926	0	12733	0.982689403
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632369_008.fcs	Live cells (PE-)	3	183373	1041832	644	20898	0.982721434
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631224_003.fcs	Live cells (PE-)	3	185095	859376	522	17770	0.98278826
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636535_004.fcs	Live cells (PE-)	3	186933	791934	310	16792	0.982828783
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632369_008.fcs	Single Cells (FSC-H v FSC-W)	2	183754	1041601	643	20749	0.982841747
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632372_024.fcs	Live cells (PE-)	3	182554	1017993	0	20937	0.982859374
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631224_003.fcs	Single Cells (FSC-H v FSC-W)	2	185303	859247	523	17690	0.982862595
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs	Tcells (CD3+ CD19-)	4	131327	603485	1624	11131	0.982937984
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636535_004.fcs	Single Cells (FSC-H v FSC-W)	2	187176	791807	311	16675	0.982945252
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632372_024.fcs	Single Cells (FSC-H v FSC-W)	2	182815	1017872	0	20797	0.982973989
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1649319_028.fcs	Tcells (CD3+ CD19-)	4	148177	689071	2857	11640	0.982979648
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636790_006.fcs	Lymphocytes (SSC-A v FSC-A)	1	152660	438310	0	10201	0.98303145
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs	Tcells (CD3+ CD19-)	4	137979	915215	6831	11269	0.983104545
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs	Lymphocytes (SSC-A v FSC-A)	1	192334	621586	1	13872	0.983240979
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632384_007.fcs	Live cells (PE-)	3	184422	953791	980	18050	0.983555744
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631274_024.fcs	Live cells (PE-)	3	165620	1211566	465	22469	0.983619975
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1631284_003.fcs	Tcells (CD3+ CD19-)	4	11040	27020	101	532	0.983640452
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632384_007.fcs	Single Cells (FSC-H v FSC-W)	2	184650	953679	982	17932	0.983655982
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631274_024.fcs	Single Cells (FSC-H v FSC-W)	2	165855	1211434	477	22354	0.983693541
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632343_030.fcs	Lymphocytes (SSC-A v FSC-A)	1	185916	813299	0	16318	0.983931591
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631199_031.fcs	Lymphocytes (SSC-A v FSC-A)	1	116789	713949	1832	11712	0.983957967
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030_006.fcs	Live cells (PE-)	3	8507	36674	3	733	0.983971078
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636859_028.fcs	Tcells (CD3+ CD19-)	4	46750	355974	3815	2719	0.984034521
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636517_010.fcs	Tcells (CD3+ CD19-)	4	76920	352415	1485	5468	0.984063279
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636531_001.fcs	Live cells (PE-)	3	163535	928698	450	17193	0.98410363
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636531_001.fcs	Single Cells (FSC-H v FSC-W)	2	164012	928406	453	17005	0.984270315
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636806_025.fcs	Live cells (PE-)	3	143250	925517	271	16786	0.984291193
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631269_003.fcs	Single Cells (FSC-H v FSC-W)	2	103171	759483	1	13746	0.984314258
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631269_003.fcs	Live cells (PE-)	3	102928	759728	1	13744	0.98431654
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030_006.fcs	Single Cells (FSC-H v FSC-W)	2	8543	36657	0	717	0.984384868
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs	Lymphocytes (SSC-A v FSC-A)	1	38655	790786	11063	2084	0.984396882
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636806_025.fcs	Single Cells (FSC-H v FSC-W)	2	143550	925436	271	16567	0.984492883
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636796_027.fcs	Live cells (PE-)	3	168997	1759371	10475	19812	0.984536838
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636796_027.fcs	Single Cells (FSC-H v FSC-W)	2	169125	1759266	10501	19763	0.984548581
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631111_029.fcs	Live cells (PE-)	3	76943	1110662	4715	13626	0.984791193
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631111_029.fcs	Single Cells (FSC-H v FSC-W)	2	77211	1110398	4805	13532	0.98479451
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs	Single Cells (FSC-H v FSC-W)	2	38399	791441	10677	2071	0.984870423
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs	Live cells (PE-)	3	38242	791769	10614	1963	0.985073369
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636525_024.fcs	Lymphocytes (SSC-A v FSC-A)	1	189667	950479	1267	16008	0.985074575
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs	Tcells (CD3+ CD19-)	4	159248	794751	2912	11498	0.985119924
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1631100_003.fcs	Single Cells (FSC-H v FSC-W)	2	67633	804899	6610	6555	0.985136
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1631285_030.fcs	Lymphocytes (SSC-A v FSC-A)	1	187746	846215	0	15406	0.985318768
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs	Lymphocytes (SSC-A v FSC-A)	1	190129	764085	0	14195	0.985341937
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636523_008.fcs	Tcells (CD3+ CD19-)	4	136419	874064	3264	11701	0.985406378
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636784_033.fcs	Lymphocytes (SSC-A v FSC-A)	1	96292	1120800	5831	12178	0.985419006
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs	Live cells (PE-)	3	27198	142776	0	2508	0.985459352
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632057_001.fcs	Live cells (PE-)	3	131479	824982	38	14031	0.985503797
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632044_004.fcs	Lymphocytes (SSC-A v FSC-A)	1	193613	591120	88	11448	0.985512434
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632057_001.fcs	Single Cells (FSC-H v FSC-W)	2	131707	824793	18	14012	0.985543981
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs	Live cells (PE-)	3	114008	482206	1026	7637	0.98567808
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631224_003.fcs	Lymphocytes (SSC-A v FSC-A)	1	188785	858793	523	14662	0.985711772
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs	Single Cells (FSC-H v FSC-W)	2	27358	142661	0	2463	0.985720249
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs	Single Cells (FSC-H v FSC-W)	2	114829	481440	1153	7455	0.985769008
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1631100_003.fcs	Live cells (PE-)	3	67470	805636	5971	6620	0.985784077
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631269_003.fcs	Lymphocytes (SSC-A v FSC-A)	1	106177	757771	1	12452	0.985790751
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs	Lymphocytes (SSC-A v FSC-A)	1	102511	350018	2	6520	0.985792428
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636850_009.fcs	Tcells (CD3+ CD19-)	4	139472	643010	630	10642	0.985799127
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632277_010.fcs	Single Cells (FSC-H v FSC-W)	2	181308	1581353	787	24536	0.985837122
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632277_010.fcs	Live cells (PE-)	3	180976	1581719	782	24507	0.985856137
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs	Live cells (PE-)	3	370893	2361209	3919	35128	0.985909455
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632358_028.fcs	Lymphocytes (SSC-A v FSC-A)	1	191516	732059	0	13159	0.985952255
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632363_026.fcs	Lymphocytes (SSC-A v FSC-A)	1	188392	869562	0	15052	0.985972119
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs	Single Cells (FSC-H v FSC-W)	2	371470	2361024	3950	34705	0.986050912
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632400_006.fcs	Lymphocytes (SSC-A v FSC-A)	1	128799	719785	288	11651	0.986125879
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636775_013.fcs	Single Cells (FSC-H v FSC-W)	2	160381	704589	117	12011	0.986172583
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636535_004.fcs	Lymphocytes (SSC-A v FSC-A)	1	190910	791373	310	13376	0.986258608
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636847_014.fcs	Single Cells (FSC-H v FSC-W)	2	87758	422741	0	7112	0.986259952
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631274_024.fcs	Lymphocytes (SSC-A v FSC-A)	1	171774	1209161	449	18736	0.986297603
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632385_027.fcs	Live cells (PE-)	3	182632	1406835	0	21895	0.986412116
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632351_006.fcs	Tcells (CD3+ CD19-)	4	140082	575212	1270	8528	0.986487232
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636775_013.fcs	Live cells (PE-)	3	159935	705319	105	11739	0.986496378
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632385_027.fcs	Single Cells (FSC-H v FSC-W)	2	182933	1406684	0	21745	0.986505205
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632384_007.fcs	Lymphocytes (SSC-A v FSC-A)	1	188466	953218	982	14577	0.986555114
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030_006.fcs	Lymphocytes (SSC-A v FSC-A)	1	8677	36623	0	617	0.986562711
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632369_008.fcs	Lymphocytes (SSC-A v FSC-A)	1	189020	1040980	643	16104	0.986567443
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632381_005.fcs	Live cells (PE-)	3	104351	781225	1	12019	0.986608675
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636515_032.fcs	Lymphocytes (SSC-A v FSC-A)	1	190121	1181502	2597	15991	0.986629368
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636531_001.fcs	Lymphocytes (SSC-A v FSC-A)	1	167255	927824	452	14345	0.98666788
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632381_005.fcs	Single Cells (FSC-H v FSC-W)	2	104522	781119	0	11955	0.98668109
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632105_027.fcs	Live cells (PE-)	3	180735	1494751	1	22596	0.986692641
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632343_030.fcs	Tcells (CD3+ CD19-)	4	138543	863476	1380	12134	0.986692702
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636531_001.fcs	Tcells (CD3+ CD19-)	4	126845	968305	4862	9864	0.986731851
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636796_027.fcs	Lymphocytes (SSC-A v FSC-A)	1	174436	1758327	10586	15306	0.986780725
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636847_014.fcs	Live cells (PE-)	3	87259	423510	3	6839	0.986781579
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632105_027.fcs	Single Cells (FSC-H v FSC-W)	2	180988	1494680	0	22415	0.986799821
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs	Lymphocytes (SSC-A v FSC-A)	1	27598	142614	0	2270	0.986839206
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632103_010.fcs	Live cells (PE-)	3	174749	1661284	531	23902	0.986867269
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632103_010.fcs	Single Cells (FSC-H v FSC-W)	2	174996	1661078	554	23838	0.986889306
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1631100_003.fcs	Lymphocytes (SSC-A v FSC-A)	1	70083	804018	7123	4473	0.986907486
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636814_004.fcs	Tcells (CD3+ CD19-)	4	86869	472981	1898	5474	0.987003325
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636784_033.fcs	Tcells (CD3+ CD19-)	4	77954	1141154	7052	8941	0.987051261
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636806_025.fcs	Lymphocytes (SSC-A v FSC-A)	1	147625	924423	266	13510	0.987312861
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632383_031.fcs	Tcells (CD3+ CD19-)	4	103178	640642	2784	6768	0.987321005
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631269_003.fcs	Tcells (CD3+ CD19-)	4	77044	788276	2693	8388	0.987356244
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs	Live cells (PE-)	3	135323	1238288	14	17536	0.987384638
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632372_024.fcs	Tcells (CD3+ CD19-)	4	152404	1053853	1580	13647	0.987534016
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636542_006.fcs	Single Cells (FSC-H v FSC-W)	2	25222	223582	854	2282	0.987552592
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs	Single Cells (FSC-H v FSC-W)	2	135645	1238205	0	17311	0.987556437
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632369_008.fcs	Tcells (CD3+ CD19-)	4	145284	1085956	2669	12838	0.987562031
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632372_024.fcs	Lymphocytes (SSC-A v FSC-A)	1	189138	1017178	0	15168	0.987582318
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632379_031.fcs	Tcells (CD3+ CD19-)	4	125971	600489	1444	7657	0.987627131
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636528_002.fcs	Tcells (CD3+ CD19-)	4	73675	277330	1102	3295	0.987628094
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs	Live cells (PE-)	3	59642	896482	219	11690	0.987697733
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636525_024.fcs	Tcells (CD3+ CD19-)	4	117181	1026012	2259	11969	0.987707152
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs	Single Cells (FSC-H v FSC-W)	2	59803	896341	215	11674	0.987718394
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636542_006.fcs	Live cells (PE-)	3	25150	223696	802	2292	0.987719298
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632112_009.fcs	Live cells (PE-)	3	140789	1200395	63	16458	0.987831672
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632400_006.fcs	Tcells (CD3+ CD19-)	4	102233	747832	1861	8597	0.987846926
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636826_007.fcs	Tcells (CD3+ CD19-)	4	126824	1203440	5612	10643	0.987928132
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632054_032.fcs	Live cells (PE-)	3	13563	174489	0	2297	0.987932692
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632054_032.fcs	Single Cells (FSC-H v FSC-W)	2	13627	174430	0	2292	0.98795896
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632112_009.fcs	Single Cells (FSC-H v FSC-W)	2	141121	1200278	30	16276	0.987990027
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631377_003.fcs	Single Cells (FSC-H v FSC-W)	2	159198	850536	90	12183	0.987991276
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs	Lymphocytes (SSC-A v FSC-A)	1	379525	2358369	3963	29292	0.987999563
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631377_003.fcs	Live cells (PE-)	3	158810	851050	94	12053	0.988114563
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631383_031.fcs	Tcells (CD3+ CD19-)	4	107185	574594	1333	6833	0.988164274
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632340_001.fcs	Live cells (PE-)	3	180648	1945794	12	25415	0.98818376
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632396_009.fcs	Live cells (PE-)	3	154080	1196371	1	16025	0.988272031
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632340_001.fcs	Single Cells (FSC-H v FSC-W)	2	181125	1945576	13	25155	0.988304121
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632396_009.fcs	Single Cells (FSC-H v FSC-W)	2	154388	1196136	0	15953	0.988325453
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632057_001.fcs	Lymphocytes (SSC-A v FSC-A)	1	135154	824060	18	11298	0.988340391
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636837_007.fcs	Tcells (CD3+ CD19-)	4	109419	391996	1602	4299	0.988368197
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636520_029.fcs	Live cells (PE-)	3	175684	2419209	1607	28549	0.988512214
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636520_029.fcs	Single Cells (FSC-H v FSC-W)	2	175927	2419084	1610	28428	0.988557166
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631111_029.fcs	Lymphocytes (SSC-A v FSC-A)	1	82965	1109219	4880	8882	0.988588212
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636826_007.fcs	Single Cells (FSC-H v FSC-W)	2	163069	1168116	1	15333	0.988612118
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632117_007.fcs	Live cells (PE-)	3	187193	1313665	12	17187	0.988670386
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636826_007.fcs	Live cells (PE-)	3	162055	1169252	5	15207	0.988702722
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636790_006.fcs	Tcells (CD3+ CD19-)	4	103311	491095	383	6382	0.988746962
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs	Lymphocytes (SSC-A v FSC-A)	1	117538	480603	1209	5527	0.988863852
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632117_007.fcs	Single Cells (FSC-H v FSC-W)	2	187654	1313505	12	16886	0.988868666
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs	Lymphocytes (SSC-A v FSC-A)	1	61462	895841	201	10529	0.988915667
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs	Single Cells (FSC-H v FSC-W)	2	183304	1393911	224	17296	0.989013849
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs	Live cells (PE-)	3	182594	1394643	202	17296	0.989027644
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636532_005.fcs	Live cells (PE-)	3	160383	1895805	379	22346	0.989068807
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636542_006.fcs	Lymphocytes (SSC-A v FSC-A)	1	25870	223321	890	1859	0.989088672
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636532_005.fcs	Single Cells (FSC-H v FSC-W)	2	160622	1895698	380	22213	0.989132301
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636775_013.fcs	Lymphocytes (SSC-A v FSC-A)	1	164055	703523	121	9399	0.989146025
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636521_024.fcs	Live cells (PE-)	3	197338	1472318	1520	16562	0.989286252
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632112_009.fcs	Tcells (CD3+ CD19-)	4	118507	1224659	2974	11565	0.989291488
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632161_033.fcs	Live cells (PE-)	3	4913	33208	0	412	0.989307866
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632385_027.fcs	Lymphocytes (SSC-A v FSC-A)	1	188227	1405907	0	17228	0.989308424
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs	Tcells (CD3+ CD19-)	4	72441	381721	539	4350	0.989349767
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632057_001.fcs	Tcells (CD3+ CD19-)	4	97100	863097	2546	7787	0.98935324
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631330_031.fcs	Tcells (CD3+ CD19-)	4	70091	771736	3430	5593	0.989395311
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632381_005.fcs	Lymphocytes (SSC-A v FSC-A)	1	107839	780258	0	9499	0.989417288
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636521_024.fcs	Single Cells (FSC-H v FSC-W)	2	197748	1472130	1522	16338	0.989417789
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632277_010.fcs	Lymphocytes (SSC-A v FSC-A)	1	189051	1580065	785	18083	0.989447333
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636775_013.fcs	Tcells (CD3+ CD19-)	4	128087	739768	1741	7502	0.989461839
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636535_004.fcs	Tcells (CD3+ CD19-)	4	109994	875516	3768	6691	0.989498669
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632340_001.fcs	Lymphocytes (SSC-A v FSC-A)	1	188640	1940756	13	22460	0.98955652
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632161_033.fcs	Single Cells (FSC-H v FSC-W)	2	4940	33192	0	401	0.989593336
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs	Lymphocytes (SSC-A v FSC-A)	1	76393	2462383	22216	4427	0.989614562
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632359_004.fcs	Tcells (CD3+ CD19-)	4	129315	670648	1678	6694	0.989642908
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631366_002.fcs	Live cells (PE-)	3	26363	181573	2	2155	0.989733118
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631366_002.fcs	Single Cells (FSC-H v FSC-W)	2	26427	181515	0	2151	0.989761677
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632384_007.fcs	Tcells (CD3+ CD19-)	4	147146	998258	2178	9661	0.989769651
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs	Single Cells (FSC-H v FSC-W)	2	75253	2464142	22020	4004	0.989855848
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs	Live cells (PE-)	3	75156	2464474	21910	3879	0.989947451
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632102_026.fcs	Tcells (CD3+ CD19-)	4	96838	520756	2398	3873	0.989948146
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636847_014.fcs	Lymphocytes (SSC-A v FSC-A)	1	90298	422129	0	5184	0.989984757
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631199_031.fcs	Tcells (CD3+ CD19-)	4	85809	750037	3992	4444	0.990008078
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632153_004.fcs	Live cells (PE-)	3	89245	634196	1	7201	0.990142929
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632153_004.fcs	Single Cells (FSC-H v FSC-W)	2	89508	634006	1	7128	0.990242841
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636818_005.fcs	Single Cells (FSC-H v FSC-W)	2	145969	1083421	0	12103	0.990251254
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs	Live cells (PE-)	3	159704	1525307	0	16485	0.990311467
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs	Single Cells (FSC-H v FSC-W)	2	159924	1525193	0	16379	0.990373765
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636818_005.fcs	Live cells (PE-)	3	145440	1084178	1	11874	0.990434904
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632103_010.fcs	Tcells (CD3+ CD19-)	4	131649	1711027	3586	14204	0.99043788
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632363_026.fcs	Tcells (CD3+ CD19-)	4	107971	954810	1601	8624	0.990470696
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632161_033.fcs	Tcells (CD3+ CD19-)	4	4458	33708	53	314	0.990475696
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632105_027.fcs	Lymphocytes (SSC-A v FSC-A)	1	188229	1493872	0	15982	0.99058821
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1631148_028.fcs	Tcells (CD3+ CD19-)	4	128050	1033765	2740	8287	0.990598052
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1636796_027.fcs	Tcells (CD3+ CD19-)	4	133601	1806664	11277	7113	0.990610904
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632161_033.fcs	Lymphocytes (SSC-A v FSC-A)	1	4983	33190	0	360	0.990657359
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632396_009.fcs	Lymphocytes (SSC-A v FSC-A)	1	159300	1194412	0	12765	0.99065846
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631265_006.fcs	Live cells (PE-)	3	69473	696338	0	7196	0.990690899
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636851_001.fcs	Tcells (CD3+ CD19-)	4	34477	167415	152	1735	0.990739968
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631265_006.fcs	Single Cells (FSC-H v FSC-W)	2	69704	696169	0	7134	0.990771106
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1631285_030.fcs	Tcells (CD3+ CD19-)	4	126312	913429	1269	8357	0.990826851
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631369_009.fcs	Live cells (PE-)	3	82347	1335345	956	12123	0.990858775
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group two_F1631111_029.fcs	Tcells (CD3+ CD19-)	4	46608	1148316	4984	6038	0.990860287
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631369_009.fcs	Single Cells (FSC-H v FSC-W)	2	82471	1335249	957	12094	0.990878345
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636826_007.fcs	Lymphocytes (SSC-A v FSC-A)	1	167173	1167070	1	12275	0.990883159
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636521_024.fcs	Lymphocytes (SSC-A v FSC-A)	1	201412	1471013	1518	13795	0.990926909
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636520_029.fcs	Tcells (CD3+ CD19-)	4	132324	2468966	7254	16505	0.990949121
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632117_007.fcs	Lymphocytes (SSC-A v FSC-A)	1	192903	1311506	12	13636	0.99100956
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636533_004.fcs	Single Cells (FSC-H v FSC-W)	2	88700	909356	2316	6691	0.99105617
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636533_004.fcs	Live cells (PE-)	3	88289	909878	2259	6637	0.991166392
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632346_008.fcs	Live cells (PE-)	3	160766	1899534	1	18119	0.991281839
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs	Tcells (CD3+ CD19-)	4	222887	2524130	11066	13066	0.991291699
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636783_009.fcs	Tcells (CD3+ CD19-)	4	28044	167823	599	1120	0.991299991
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632346_008.fcs	Single Cells (FSC-H v FSC-W)	2	161091	1899357	1	17971	0.991353047
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636806_025.fcs	Tcells (CD3+ CD19-)	4	76383	1000065	1522	7854	0.991365083
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631224_003.fcs	Tcells (CD3+ CD19-)	4	127006	926589	1925	7243	0.991373429
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631366_002.fcs	Lymphocytes (SSC-A v FSC-A)	1	26824	181461	0	1808	0.991394287
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632380_005.fcs	Single Cells (FSC-H v FSC-W)	2	65263	1418908	9847	2899	0.991485166
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636785_030.fcs	Live cells (PE-)	3	137351	1908887	752	16810	0.991490455
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631265_006.fcs	Lymphocytes (SSC-A v FSC-A)	1	71438	695025	0	6544	0.991534359
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs	Lymphocytes (SSC-A v FSC-A)	1	142265	1237163	0	11733	0.991566037
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636785_030.fcs	Single Cells (FSC-H v FSC-W)	2	137625	1908811	755	16609	0.991586394
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632380_005.fcs	Live cells (PE-)	3	64996	1419338	9646	2937	0.991594056
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632380_005.fcs	Lymphocytes (SSC-A v FSC-A)	1	67627	1416735	9476	3079	0.991612761
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632103_010.fcs	Lymphocytes (SSC-A v FSC-A)	1	186066	1658979	581	14840	0.991711216
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs	Single Cells (FSC-H v FSC-W)	2	22258	552425	349	4447	0.9917236
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs	Live cells (PE-)	3	22147	552572	346	4414	0.991785725
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632345_001.fcs	Live cells (PE-)	3	26926	332709	3	2972	0.991795593
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632345_001.fcs	Single Cells (FSC-H v FSC-W)	2	27070	332606	3	2931	0.991908662
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632358_028.fcs	Tcells (CD3+ CD19-)	4	112367	816815	1102	6450	0.991937946
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636520_029.fcs	Lymphocytes (SSC-A v FSC-A)	1	186832	2417082	1615	19520	0.991948722
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631274_024.fcs	Tcells (CD3+ CD19-)	4	113881	1275037	4707	6495	0.991999257
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632105_027.fcs	Tcells (CD3+ CD19-)	4	131126	1553386	1172	12399	0.992008047
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs	Lymphocytes (SSC-A v FSC-A)	1	190901	1391258	243	12333	0.99211405
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636847_014.fcs	Tcells (CD3+ CD19-)	4	55768	457785	333	3725	0.992160136
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632117_007.fcs	Tcells (CD3+ CD19-)	4	113006	1393162	3210	8679	0.992168278
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631366_002.fcs	Tcells (CD3+ CD19-)	4	20772	187683	464	1174	0.992203453
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632054_032.fcs	Lymphocytes (SSC-A v FSC-A)	1	14619	174250	0	1480	0.992224808
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632112_009.fcs	Lymphocytes (SSC-A v FSC-A)	1	148105	1199080	28	10492	0.992251631
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs	Tcells (CD3+ CD19-)	4	90910	509281	1730	2956	0.99225297
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632385_027.fcs	Tcells (CD3+ CD19-)	4	132970	1465919	2226	10247	0.992259343
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636532_005.fcs	Lymphocytes (SSC-A v FSC-A)	1	168958	1893948	375	15632	0.992300303
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs	Tcells (CD3+ CD19-)	4	23176	147991	190	1125	0.992376016
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636533_004.fcs	Lymphocytes (SSC-A v FSC-A)	1	92776	906649	3591	4047	0.992415569
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636515_032.fcs	Tcells (CD3+ CD19-)	4	92810	1286864	3131	7406	0.992420575
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632153_004.fcs	Lymphocytes (SSC-A v FSC-A)	1	91811	633377	1	5454	0.992533974
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs	Lymphocytes (SSC-A v FSC-A)	1	164765	1524052	0	12679	0.992548322
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs	Tcells (CD3+ CD19-)	4	131936	1450923	3458	8418	0.992552995
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631265_006.fcs	Tcells (CD3+ CD19-)	4	53827	713456	2173	3551	0.992595151
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632399_007.fcs	Live cells (PE-)	3	105930	1619481	1	12753	0.992662377
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632030_006.fcs	Tcells (CD3+ CD19-)	4	5602	39981	142	192	0.992726006
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632399_007.fcs	Single Cells (FSC-H v FSC-W)	2	106223	1619332	1	12609	0.992745223
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1636532_005.fcs	Tcells (CD3+ CD19-)	4	126932	1936912	2743	12326	0.9927515
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632076_032.fcs	Live cells (PE-)	3	181931	2793134	1459	19720	0.992931484
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632076_032.fcs	Single Cells (FSC-H v FSC-W)	2	182258	2793018	1483	19485	0.993001905
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632381_005.fcs	Tcells (CD3+ CD19-)	4	69333	821995	367	5901	0.993016903
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632346_008.fcs	Tcells (CD3+ CD19-)	4	133165	1930847	2013	12395	0.993067811
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632350_008.fcs	Tcells (CD3+ CD19-)	4	6715	39694	95	228	0.993088248
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636785_030.fcs	Tcells (CD3+ CD19-)	4	103757	1945855	2794	11394	0.993125303
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1632277_010.fcs	Tcells (CD3+ CD19-)	4	116835	1658938	1551	10660	0.993170521
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632153_004.fcs	Tcells (CD3+ CD19-)	4	66720	659066	1570	3287	0.993352431
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636818_005.fcs	Lymphocytes (SSC-A v FSC-A)	1	151104	1082257	0	8132	0.993449822
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631270_010.fcs	Live cells (PE-)	3	19807	296848	52	2009	0.993533428
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636785_030.fcs	Lymphocytes (SSC-A v FSC-A)	1	142731	1907749	755	12565	0.993545886
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631270_010.fcs	Single Cells (FSC-H v FSC-W)	2	19891	296802	53	1970	0.993652656
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632346_008.fcs	Lymphocytes (SSC-A v FSC-A)	1	168293	1897153	1	12973	0.993757758
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636521_024.fcs	Tcells (CD3+ CD19-)	4	133578	1543629	3088	7443	0.993760287
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs	Tcells (CD3+ CD19-)	4	72193	1310288	1338	7342	0.993760607
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs	Tcells (CD3+ CD19-)	4	109569	1581342	2760	7825	0.993779004
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631369_009.fcs	Lymphocytes (SSC-A v FSC-A)	1	87304	1334756	959	7752	0.993911674
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636818_005.fcs	Tcells (CD3+ CD19-)	4	101789	1132153	2035	5516	0.993917807
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632345_001.fcs	Lymphocytes (SSC-A v FSC-A)	1	28315	332093	4	2198	0.99392736
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632399_007.fcs	Tcells (CD3+ CD19-)	4	83005	1644806	2836	7518	0.994043143
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs	Tcells (CD3+ CD19-)	4	42509	919781	1620	4123	0.994067351
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632342_002.fcs	Single Cells (FSC-H v FSC-W)	2	11118	298984	0	1712	0.994509547
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632342_002.fcs	Live cells (PE-)	3	11072	299034	0	1708	0.994522376
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632396_009.fcs	Tcells (CD3+ CD19-)	4	98396	1260952	1519	5610	0.994782935
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs	Lymphocytes (SSC-A v FSC-A)	1	25838	550652	1456	1533	0.994841918
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631270_010.fcs	Lymphocytes (SSC-A v FSC-A)	1	20584	296493	55	1584	0.994857491
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636533_004.fcs	Tcells (CD3+ CD19-)	4	65962	935947	1220	3934	0.994882147
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631377_003.fcs	Lymphocytes (SSC-A v FSC-A)	1	167427	849426	90	5064	0.994956982
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group one_F1632340_001.fcs	Tcells (CD3+ CD19-)	4	140558	2000803	2791	7717	0.995116803
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs	Live cells (PE-)	3	29908	499611	68	2530	0.995117615
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs	Single Cells (FSC-H v FSC-W)	2	30034	499489	70	2524	0.995125132
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631377_003.fcs	Tcells (CD3+ CD19-)	4	104190	912843	480	4494	0.995133106
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group one_F1631369_009.fcs	Tcells (CD3+ CD19-)	4	48403	1375661	1901	4806	0.995312318
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632076_032.fcs	Tcells (CD3+ CD19-)	4	121217	2861292	2068	11667	0.995415927
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632399_007.fcs	Lymphocytes (SSC-A v FSC-A)	1	111753	1618468	0	7944	0.995429663
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632054_032.fcs	Tcells (CD3+ CD19-)	4	8481	181012	169	687	0.995502997
+/home/pankrat2/shared/flow/fcs2/2016-07-07_PANEL 1_ZF_Group two_F1632076_032.fcs	Lymphocytes (SSC-A v FSC-A)	1	193755	2789464	1547	11478	0.995652891
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs	Lymphocytes (SSC-A v FSC-A)	1	31026	498812	82	2197	0.995717107
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632038_003.fcs	Live cells (PE-)	3	168409	3074880	327	12564	0.996041067
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632038_003.fcs	Tcells (CD3+ CD19-)	4	138948	3104640	3999	8593	0.996132892
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632038_003.fcs	Single Cells (FSC-H v FSC-W)	2	169054	3074725	310	12091	0.99619155
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632342_002.fcs	Tcells (CD3+ CD19-)	4	7981	302651	141	1041	0.996209279
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632342_002.fcs	Lymphocytes (SSC-A v FSC-A)	1	11943	298714	0	1157	0.996289455
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632345_001.fcs	Tcells (CD3+ CD19-)	4	11526	349754	377	953	0.996332147
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs	Tcells (CD3+ CD19-)	4	16151	514026	690	1250	0.996354185
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632380_005.fcs	Tcells (CD3+ CD19-)	4	31172	1460962	2895	1888	0.996804766
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631107_010.fcs	Tcells (CD3+ CD19-)	4	82363	2223153	3238	3858	0.996931608
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631107_010.fcs	Single Cells (FSC-H v FSC-W)	2	105573	2199986	1261	5792	0.996950202
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631107_010.fcs	Live cells (PE-)	3	105275	2200340	1234	5763	0.996974417
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632038_003.fcs	Lymphocytes (SSC-A v FSC-A)	1	173191	3073486	321	9182	0.99708155
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1636542_006.fcs	Tcells (CD3+ CD19-)	4	9180	242025	320	415	0.997082639
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1631107_010.fcs	Lymphocytes (SSC-A v FSC-A)	1	107751	2198689	1582	4590	0.997331156
+/home/pankrat2/shared/flow/fcs2/2016-07-29_PANEL 1_ZF_Group one_F1631100_003.fcs	Tcells (CD3+ CD19-)	4	23270	860105	1097	1225	0.997378336
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs	Tcells (CD3+ CD19-)	4	8189	569779	109	1402	0.997392485
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs	Tcells (CD3+ CD19-)	4	50213	2509065	4870	1271	0.997606239
+/home/pankrat2/shared/flow/fcs2/2016-07-08_PANEL 1_ZF_Group one_F1631270_010.fcs	Tcells (CD3+ CD19-)	4	10903	307149	145	519	0.997916641
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636821_026.fcs	Live cells (PE-)	3	76264	4372794	1822	7200	0.997976259
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636821_026.fcs	Single Cells (FSC-H v FSC-W)	2	76597	4372574	1852	7057	0.998001606
+/home/pankrat2/shared/flow/fcs2/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs	Tcells (CD3+ CD19-)	4	17004	824041	709	834	0.998168737
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636821_026.fcs	Lymphocytes (SSC-A v FSC-A)	1	80156	4369901	2183	5840	0.998200346
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632325_002.fcs	Live cells (PE-)	3	48100	1317881	834	1255	0.998473031
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632325_002.fcs	Single Cells (FSC-H v FSC-W)	2	48254	1317841	827	1148	0.99855636
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632325_002.fcs	Lymphocytes (SSC-A v FSC-A)	1	48954	1317497	914	705	0.998816581
+/home/pankrat2/shared/flow/fcs2/2016-07-27_PANEL 1_ZF_Group two_F1636821_026.fcs	Tcells (CD3+ CD19-)	4	51767	4401129	2240	2944	0.998837168
+/home/pankrat2/shared/flow/fcs2/2016-07-06_PANEL 1_ZF_Group one_F1632325_002.fcs	Tcells (CD3+ CD19-)	4	22155	1345533	197	185	0.999720775

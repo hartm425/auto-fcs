@@ -17,10 +17,10 @@ library(CytoML)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
-inputFCSDir = "/Volumes/Beta/data/flow/fcs2/"
+inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 outputDir = "/Volumes/Beta/data/flow/"
 template = "~/git/auto-fcs/explore/openCyto/lymph.csv"
-gateDir = "gates2/"
+gateDir = "gates3/"
 # getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
@@ -40,7 +40,7 @@ for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
   i
-  pdf(file = paste(outputDir, "panel1_test2_", i, ".pdf", sep = ""))
+  pdf(file = paste(outputDir, "panel1_test3_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
     
@@ -157,7 +157,7 @@ write.table(
   d,
   sep = "\t",
   quote = FALSE,
-  file = paste(outputDir, "testTypesTest2.txt", sep = ""),
+  file = paste(outputDir, "testTypesTest3.txt", sep = ""),
   row.names = FALSE
 )
 # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
