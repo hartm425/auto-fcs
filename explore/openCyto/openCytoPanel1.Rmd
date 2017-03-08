@@ -211,7 +211,7 @@ template = rbind(
     dims =  "CD4,CD8",
     gating_method = "quadGate.tmix",
     gating_args =
-      "K=3,usePrior='no'"
+      "K=3"
     # preprocessing_args = "K=3"
 
   )
@@ -236,22 +236,22 @@ template = rbind(
  ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
- template = rbind(
-  template,
-  add_pop(
-    gs,
-    alias = "HLA-DR",
-    pop = "CD4_HLADR",
-    parent = "CD4+CD8-",
-    dims =  "HLA-DR",
-     gating_method = "tailgate",
-    gating_args =
-      "tol=1e-2",
-    preprocessing_method = "standardize_flowset"
-  )
-)
-  ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+#  template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "HLA-DR",
+#     pop = "CD4_HLADR",
+#     parent = "CD4+CD8-",
+#     dims =  "HLA-DR",
+#      gating_method = "tailgate",
+#     gating_args =
+#       "tol=1e-2",
+#     preprocessing_method = "standardize_flowset"
+#   )
+# )
+#   ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
+#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 # 
 # template = rbind(
