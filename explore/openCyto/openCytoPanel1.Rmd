@@ -24,7 +24,7 @@ library(flowCore)
 ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
 # gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset="2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",isNcdf = FALSE)
-gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:4],isNcdf = FALSE)
+gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:2],isNcdf = FALSE)
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
 # gs <- GatingSet(ncfs)
 ```
@@ -197,6 +197,7 @@ template = rbind(
       "gate_range=c(80,120)"
   )
 )
+
  ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
  
@@ -208,11 +209,27 @@ template = rbind(
     pop = "CD4+/-CD8+/-",
     parent = "CD3+",
     dims =  "CD4,CD8",
-    gating_method = "mindensity2",
+    gating_method = "quadGate.tmix",
     gating_args =
-      "gate_range=c(80,220)"
+      "K=3,usePrior=no"
   )
 )
+#  ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
+#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+#  
+# template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "*",
+#     pop = "CD4+/-CD8+/-",
+#     parent = "CD3+",
+#     dims =  "CD4,CD8",
+#     gating_method = "mindensity2",
+#     gating_args =
+#       "gate_range=c(80,220)"
+#   )
+# )
 
  ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
