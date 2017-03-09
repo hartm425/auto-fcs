@@ -24,7 +24,7 @@ library(flowCore)
 ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
 # gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset="2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",isNcdf = FALSE)
-gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:2],isNcdf = FALSE)
+gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:4],isNcdf = FALSE)
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
 # gs <- GatingSet(ncfs)
 ```
