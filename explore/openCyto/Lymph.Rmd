@@ -17,8 +17,12 @@ library(CytoML)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
-inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
-outputDir = "/Volumes/Beta/data/flow/"
+# inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
+# outputDir = "/Volumes/Beta/data/flow/"
+
+inputFCSDir = "/Users/Kitty/temp/fcs/controls/"
+outputDir = "/Users/Kitty/temp/fcs/controls/"
+
 template = "~/git/auto-fcs/explore/openCyto/lymph.csv"
 gateDir = "gates3/"
 # getIndiceMat()
