@@ -206,14 +206,15 @@ template = rbind(
   add_pop(
     gs,
     alias = "*",
-    pop = "CD4+/-",
+    pop = "CDTest",
     parent = "CD3+",
     dims =  "CD4,CD8",
     gating_method = "quadGate.tmix",
     gating_args =
-      "K=3"
+      "K=3",
+    preprocessing_method = "prior_flowClust",
+    preprocessing_args = "K=3"
     # preprocessing_args = "K=3"
-
   )
 )
 #  ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
