@@ -17,14 +17,10 @@ library(CytoML)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
-# inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
-# outputDir = "/Volumes/Beta/data/flow/"
-
-inputFCSDir = "/Users/Kitty/temp/fcs/controls/"
-outputDir = "/Users/Kitty/temp/fcs/controls/"
-
+inputFCSDir = "/Volumes/Beta/data/flow/fcs2/"
+outputDir = "/Volumes/Beta/data/flow/"
 template = "~/git/auto-fcs/explore/openCyto/lymph.csv"
-gateDir = "gates3/"
+gateDir = "gates2/"
 # getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
@@ -44,7 +40,7 @@ for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
   i
-  pdf(file = paste(outputDir, "panel1_test3_", i, ".pdf", sep = ""))
+  pdf(file = paste(outputDir, "panel1_test2_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
     
@@ -108,10 +104,6 @@ for (files in fcsFilesAll) {
                 mapping = aes(x = "CD3", y = "CD19"),
                 subset = "PE-A") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    t7 = ggcyto(gs1,
-                mapping = aes(x = "CD4", y = "CD8"),
-                subset = "CD3+") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     grid.arrange(
       as.ggplot(t1),
@@ -120,8 +112,6 @@ for (files in fcsFilesAll) {
       as.ggplot(t4),
       as.ggplot(t5),
       as.ggplot(t6),
-      as.ggplot(t7),
-
       ncol = 2
     )
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
@@ -161,7 +151,7 @@ write.table(
   d,
   sep = "\t",
   quote = FALSE,
-  file = paste(outputDir, "testTypesTest3.txt", sep = ""),
+  file = paste(outputDir, "testTypesTest2.txt", sep = ""),
   row.names = FALSE
 )
 # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])

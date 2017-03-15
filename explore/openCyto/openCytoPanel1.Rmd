@@ -27,6 +27,7 @@ fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = F
 gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:4],isNcdf = FALSE)
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
 # gs <- GatingSet(ncfs)
+
 ```
 
 
