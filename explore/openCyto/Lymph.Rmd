@@ -112,6 +112,11 @@ for (files in fcsFilesAll) {
                 subset = "PE-A") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
+     t7 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "CD8"),
+                subset = "CD3+") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+     
     grid.arrange(
       as.ggplot(t1),
       as.ggplot(t2),
@@ -119,6 +124,7 @@ for (files in fcsFilesAll) {
       as.ggplot(t4),
       as.ggplot(t5),
       as.ggplot(t6),
+      as.ggplot(t7),
       ncol = 2
     )
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
