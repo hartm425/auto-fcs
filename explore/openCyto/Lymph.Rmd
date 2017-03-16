@@ -17,10 +17,10 @@ library(CytoML)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
-inputFCSDir = "/Volumes/Beta/data/flow/fcs2/"
+inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 outputDir = "/Volumes/Beta/data/flow/"
-template = "~/git/auto-fcs/explore/openCyto/lymph.csv"
-gateDir = "gates2/"
+template = "~/git/auto-fcs/explore/openCyto/lymph.dev.csv"
+gateDir = "gates4/"
 # getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
@@ -28,7 +28,7 @@ gt_lymph <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = TRUE)
+             full = TRUE)[1:10]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 19:49 -> 20:31
 # [30:33]

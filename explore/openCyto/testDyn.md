@@ -65,5 +65,12 @@ Ditching manual gates to be able to load any file
 ## done
 ```
 
-![](testDyn_files/figure-html/unnamed-chunk-2-11.png)<!-- -->![](testDyn_files/figure-html/unnamed-chunk-2-12.png)<!-- -->
+![](testDyn_files/figure-html/unnamed-chunk-2-11.png)<!-- -->
+
+```
+## ...
+## done
+```
+
+![](testDyn_files/figure-html/unnamed-chunk-2-12.png)<!-- -->![](testDyn_files/figure-html/unnamed-chunk-2-13.png)<!-- -->
 
