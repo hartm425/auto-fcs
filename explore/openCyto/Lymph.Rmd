@@ -28,7 +28,12 @@ gt_lymph <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = TRUE)[1:10]
+             full = TRUE)[1:5]
+
+fcsFilesAll = c(
+  "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
+  "/Volumes/Beta/data/flow/fcs3/2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs"
+  )
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 19:49 -> 20:31
 # [30:33]
