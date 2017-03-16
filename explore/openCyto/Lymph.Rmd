@@ -28,7 +28,7 @@ gt_lymph <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = TRUE)[1:5]
+             full = TRUE)
 
 fcsFilesAll = c(
   "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -42,15 +42,17 @@ fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
 i = 1
+numProcessed =0
 d = data.frame()
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
   i
-  pdf(file = paste(outputDir, "panel1_test2_", i, ".pdf", sep = ""))
+  pdf(file = paste(outputDir, "panel1_test4_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
-    
+    numProcessed = numProcessed+1
+    print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
     frame = read.FCS(file)
     print(paste("compensating ....", file))
@@ -133,13 +135,20 @@ for (files in fcsFilesAll) {
             basename(file),
             "_panel1.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
-    
+    cd4pluscd8minus ="APC-Cy7-A+BUV 395-A-"
+    cd4minuscd8plus ="APC-Cy7-A-BUV 395-A+"
+
     gateDef = data.frame(
       lymph = getIndiceMat(gs1, "lymph"),
       Singlets = getIndiceMat(gs1, "Singlets"),
       PE_A_Minus = getIndiceMat(gs1, "PE-A"),
-      CD3Plus = getIndiceMat(gs1, "CD3+")
+      CD3Plus = getIndiceMat(gs1, "CD3+"),
+      cd4Pcd8M = getIndiceMat(gs1, cd4pluscd8minus),
+      cd4Mcd8P = getIndiceMat(gs1, cd4minuscd8plus)
     )
+    
+    # APC-Cy7-A = CD4
+    # BUV 395-A =CD8
     
     write.table(
       gateDef,
@@ -164,7 +173,7 @@ write.table(
   d,
   sep = "\t",
   quote = FALSE,
-  file = paste(outputDir, "testTypesTest2.txt", sep = ""),
+  file = paste(outputDir, "testTypesTest4.txt", sep = ""),
   row.names = FALSE
 )
 # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
