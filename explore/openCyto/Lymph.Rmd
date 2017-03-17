@@ -91,12 +91,12 @@ for (files in fcsFilesAll) {
     t2 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "boundary") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
     
     t3 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "nonDebris") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
     
     
     t4 = ggcyto(gs1,
@@ -118,6 +118,11 @@ for (files in fcsFilesAll) {
                 mapping = aes(x = "CD4", y = "CD8"),
                 subset = "CD3+") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+     t8 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "HLA-DR"),
+                subset = "APC-Cy7-A+BUV 395-A-") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
      
     grid.arrange(
       as.ggplot(t1),
@@ -127,6 +132,8 @@ for (files in fcsFilesAll) {
       as.ggplot(t5),
       as.ggplot(t6),
       as.ggplot(t7),
+      as.ggplot(t8),
+
       ncol = 2
     )
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
@@ -144,7 +151,9 @@ for (files in fcsFilesAll) {
       PE_A_Minus = getIndiceMat(gs1, "PE-A"),
       CD3Plus = getIndiceMat(gs1, "CD3+"),
       cd4Pcd8M = getIndiceMat(gs1, cd4pluscd8minus),
-      cd4Mcd8P = getIndiceMat(gs1, cd4minuscd8plus)
+      cd4Mcd8P = getIndiceMat(gs1, cd4minuscd8plus),
+      HLADR = getIndiceMat(gs1, "HLADR+")
+
     )
     
     # APC-Cy7-A = CD4

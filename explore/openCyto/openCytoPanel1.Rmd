@@ -184,7 +184,8 @@ template = rbind(
 
 # ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 50) + geom_gate("PE-A") + xlim(c(0,2e5))
 ggcyto(gs,mapping = aes(x = `PE-A`,y = `FSC-H`)) + geom_hex(bins = 100) + geom_gate("PE-A")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-
+# Rm("CD3+",gs)
+# Rm("CD3-",gs)
 template = rbind(
   template,
   add_pop(
@@ -212,9 +213,9 @@ template = rbind(
     dims =  "CD4,CD8",
     gating_method = "quadGate.tmix",
     gating_args =
-      "K=3",
+      "K=4",
     preprocessing_method = "prior_flowClust",
-    preprocessing_args = "K=3"
+    preprocessing_args = "K=4"
     # preprocessing_args = "K=3"
   )
 )
@@ -245,13 +246,13 @@ template = rbind(
   template,
   add_pop(
     gs,
-    alias = "HLA-DR",
-    pop = "CD4_HLADR",
+    alias = "CD4_HLADR",
+    pop = "HLADR+",
     parent ="Comp-APC-Cy7-A+Comp-BUV 395-A-",
     dims =  "HLA-DR",
      gating_method = "tailgate",
     gating_args =
-      "tol=1e-2",
+      "tol=5e-2",
     preprocessing_method = "standardize_flowset"
   )
 )
@@ -264,24 +265,37 @@ template = rbind(
  #  ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
  # geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
-# 
+
 # template = rbind(
 #   template,
 #   add_pop(
 #     gs,
 #     alias = "*",
 #     pop = "CD45RA+/-CCR7+/-",
-#     parent = "CD4+CD8-",
+#     parent = "Comp-APC-Cy7-A+Comp-BUV 395-A-",
 #     dims =  "CD45RA,CCR7",
 #     gating_method = "mindensity2",
 #     gating_args =
 #       "gate_range=c(80,150)"
 #   )
 # )
-# 
-# ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4+CD8-") +
-#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-# 
+
+ template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "*",
+    pop = "CD45RA+/-CCR7+/-",
+    parent = "Comp-APC-Cy7-A+Comp-BUV 395-A-",
+    dims =  "CD45RA,CCR7",
+    gating_method = "mindensity2",
+    gating_args =
+      "gate_range=c(80,150)"
+  )
+)
+ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "Comp-APC-Cy7-A+Comp-BUV 395-A-") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+
 # 
 # template = rbind(
 #   template,
