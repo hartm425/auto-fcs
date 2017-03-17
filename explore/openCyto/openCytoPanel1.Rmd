@@ -24,7 +24,7 @@ library(flowCore)
 ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
 # gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset="2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",isNcdf = FALSE)
-gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:4],isNcdf = FALSE)
+gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:2],isNcdf = FALSE)
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
 # gs <- GatingSet(ncfs)
 
@@ -62,7 +62,7 @@ template = add_pop(
   parent = "root",
   dims = "FSC-A,SSC-A",
   gating_method = "boundary",
-  gating_args = "max=c(2.5e5,2.5e5)"
+  gating_args = "min=c(5e4,0),max=c(2.5e5,2.5e5)"
 )
 
 
@@ -100,7 +100,7 @@ template = rbind(
     parent = "nonDebris",
     dims = "FSC-A,SSC-A",
     gating_method = "flowClust",
-    gating_args = "K=2,quantile=0.90,target=c(1e5,5e4)",
+    gating_args = "K=2,quantile=0.95,target=c(1e5,5e4)",
     preprocessing_method = "prior_flowClust",
     preprocessing_args = "K=2"
 
@@ -130,7 +130,7 @@ template = rbind(
     dims = "FSC-W",
     gating_method = "tailgate",
     gating_args =
-      "tol=1e-2",
+      "tol=1e-3",
     preprocessing_method = "standardize_flowset"
   )
 )
@@ -207,7 +207,7 @@ template = rbind(
   add_pop(
     gs,
     alias = "*",
-    pop = "CDTest",
+    pop = "CD4",
     parent = "CD3+",
     dims =  "CD4,CD8",
     gating_method = "quadGate.tmix",
@@ -238,22 +238,31 @@ template = rbind(
  ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 # 
-#  template = rbind(
-#   template,
-#   add_pop(
-#     gs,
-#     alias = "HLA-DR",
-#     pop = "CD4_HLADR",
-#     parent = "CD4+CD8-",
-#     dims =  "HLA-DR",
-#      gating_method = "tailgate",
-#     gating_args =
-#       "tol=1e-2",
-#     preprocessing_method = "standardize_flowset"
-#   )
-# )
-#   ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
-#  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+  cd4pluscd8minus ="Comp-APC-Cy7-A+Comp-BUV 395-A-"
+  
+    cd4minuscd8plus ="Comp-APC-Cy7-A-Comp-BUV 395-A+"
+ template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "HLA-DR",
+    pop = "CD4_HLADR",
+    parent ="Comp-APC-Cy7-A+Comp-BUV 395-A-",
+    dims =  "HLA-DR",
+     gating_method = "tailgate",
+    gating_args =
+      "tol=1e-2",
+    preprocessing_method = "standardize_flowset"
+  )
+)
+ 
+ ggcyto(gs,
+                mapping = aes(x = "CD4", y = "HLA-DR"),
+                subset = cd4pluscd8minus) +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+ 
+ #  ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
+ # geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
 # 
 # template = rbind(
