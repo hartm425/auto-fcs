@@ -15,7 +15,7 @@ JL
 
 
 
-![](openCytoPanel1_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](openCytoPanel1_files/figure-html/unnamed-chunk-2-1.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
 
 ```
 ## Registered flowDensity
@@ -29,35 +29,28 @@ JL
 ## done
 ```
 
-![](openCytoPanel1_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
+![](openCytoPanel1_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
 
 ```
 ## ...
 ## done
 ```
 
-![](openCytoPanel1_files/figure-html/unnamed-chunk-2-3.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-4.png)<!-- -->
+![](openCytoPanel1_files/figure-html/unnamed-chunk-2-4.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-5.png)<!-- -->
 
 ```
 ## ...
 ## done
 ```
 
-![](openCytoPanel1_files/figure-html/unnamed-chunk-2-5.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-6.png)<!-- -->
+![](openCytoPanel1_files/figure-html/unnamed-chunk-2-6.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-7.png)<!-- -->
 
 ```
 ## ...
 ## done
 ```
 
-![](openCytoPanel1_files/figure-html/unnamed-chunk-2-7.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-8.png)<!-- -->
-
-```
-## ...
-## done
-```
-
-![](openCytoPanel1_files/figure-html/unnamed-chunk-2-9.png)<!-- -->
+![](openCytoPanel1_files/figure-html/unnamed-chunk-2-8.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-9.png)<!-- -->
 
 ```
 ## ...
@@ -85,5 +78,12 @@ JL
 ## done
 ```
 
-![](openCytoPanel1_files/figure-html/unnamed-chunk-2-13.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-14.png)<!-- -->
+![](openCytoPanel1_files/figure-html/unnamed-chunk-2-13.png)<!-- -->
+
+```
+## ...
+## done
+```
+
+![](openCytoPanel1_files/figure-html/unnamed-chunk-2-14.png)<!-- -->![](openCytoPanel1_files/figure-html/unnamed-chunk-2-15.png)<!-- -->
 

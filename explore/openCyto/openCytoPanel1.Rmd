@@ -24,7 +24,7 @@ library(flowCore)
 ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
 # gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset="2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",isNcdf = FALSE)
-gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:2],isNcdf = FALSE)
+gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subset=fcsFiles[1:1],isNcdf = FALSE)
 # ncfs  <- read.ncdfFlowSet(fcsFiles)
 # gs <- GatingSet(ncfs)
 
@@ -34,6 +34,7 @@ gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subse
 ```{r,echo=FALSE,results='hide',fig.width=10,fig.height=5,warning=FALSE}
 gh <- gs[[1]]
 plot(gh)
+plotGate(gs[[1]],scales=list(cex=c(1.2,1.2)),par.strip.text=list(cex=1.4),xlab=list(fontsize=4),ylab=list(fontsize=12),par.settings=list(gate.text=list(cex=1)),path=2)
 
 flowDensityEx <- function(fr, pp_res, channels, ...){
   if(length(channels)==2)
@@ -285,16 +286,87 @@ template = rbind(
   add_pop(
     gs,
     alias = "*",
-    pop = "CD45RA+/-CCR7+/-",
+    pop = "CD45RA+/-",
     parent = "Comp-APC-Cy7-A+Comp-BUV 395-A-",
-    dims =  "CD45RA,CCR7",
-    gating_method = "mindensity2",
+    dims =  "CD45RA",
+    gating_method = "mindensity",
     gating_args =
       "gate_range=c(80,150)"
   )
 )
+ 
 ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "Comp-APC-Cy7-A+Comp-BUV 395-A-") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "CCR7_gate",
+    pop = "CCR7",
+    parent = "Comp-APC-Cy7-A+Comp-BUV 395-A-/CD45RA+",
+    dims =  "CCR7",
+    gating_method = "flowClust",
+    gating_args = "K=2",
+    preprocessing_method = "prior_flowClust",
+    preprocessing_args = "K=2"
+  )
+)
+
+ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD45RA+") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+
+template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "CCR7_gate",
+    pop = "CCR7",
+    parent = "Comp-APC-Cy7-A+Comp-BUV 395-A-/CD45RA-",
+    dims =  "CCR7",
+    gating_method = "flowClust",
+    gating_args = "K=2",
+    preprocessing_method = "prior_flowClust",
+    preprocessing_args = "K=2"
+  )
+)
+
+ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD45RA-") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "*",
+    pop = "CCR7+/-CD45RA+",
+    parent = "Comp-APC-Cy7-A+Comp-BUV 395-A-",
+    dims =  "CCR7,CD45RA",
+    gating_method = "refGate",
+    gating_args = "Comp-APC-Cy7-A+Comp-BUV 395-A-/CD45RA+/CCR7_gate:Comp-APC-Cy7-A+Comp-BUV 395-A-/CD45RA+"
+    # preprocessing_method = "prior_flowClust",
+    # preprocessing_args = "K=2"
+  )
+)
+
+template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "*",
+    pop = "CCR7+/-CD45RA-",
+    parent = "Comp-APC-Cy7-A+Comp-BUV 395-A-",
+    dims =  "CCR7,CD45RA",
+    gating_method = "refGate",
+    gating_args = "Comp-APC-Cy7-A+Comp-BUV 395-A-/CD45RA-/CCR7_gate:Comp-APC-Cy7-A+Comp-BUV 395-A-/CD45RA-"
+    # preprocessing_method = "prior_flowClust",
+    # preprocessing_args = "K=2"
+  )
+)
+
+
+ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "Comp-APC-Cy7-A+Comp-BUV 395-A-") +
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
 
 # 
 # template = rbind(

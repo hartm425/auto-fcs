@@ -8,3 +8,5 @@ CD3,CD3+/-,PE-A,CD3,mindensity,"gate_range=c(80,120)",NA,NA,NA,NA
 *,CD4,CD3+,"CD4,CD8",quadGate.tmix,K=3,NA,NA,NA,NA
 CD4_HLADR,HLADR+,APC-Cy7-A+BUV 395-A-,HLA-DR,tailgate,tol=5e-2,NA,NA,standardize_flowset,NA
 *,CD45RA+/-,APC-Cy7-A+BUV 395-A-,CD45RA,mindensity,NA,NA,NA,NA,NA
+CCR7gate,CCR7,APC-Cy7-A+BUV 395-A-/CD45RA+,CCR7,flowClust,K=2,NA,NA,prior_flowClust,"K=2,min=0"
+CCR7gate,CCR7,APC-Cy7-A+BUV 395-A-/CD45RA+,CCR7,flowClust,K=2,NA,NA,prior_flowClust,"K=2,min=0"
