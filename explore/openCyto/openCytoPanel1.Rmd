@@ -312,7 +312,7 @@ template = rbind(
   )
 )
 
-ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD45RA+") +
+ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "Comp-APC-Cy7-A+Comp-BUV 395-A-/CD45RA+") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
 
 
