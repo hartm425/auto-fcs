@@ -204,22 +204,112 @@ template = rbind(
  ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
  
-template = rbind(
+# template = rbind(
+#   template,
+#   add_pop(
+#     gs,
+#     alias = "*",
+#     pop = "CD4",
+#     parent = "CD3+",
+#     dims =  "CD4,CD8",
+#     gating_method = "quadGate.tmix",
+#     gating_args =
+#       "K=4",
+#     preprocessing_method = "prior_flowClust",
+#     preprocessing_args = "K=4"
+#     # preprocessing_args = "K=3"
+#   )
+# )
+ template = rbind(
   template,
   add_pop(
     gs,
     alias = "*",
-    pop = "CD4",
+    pop = "CD4+/-",
     parent = "CD3+",
-    dims =  "CD4,CD8",
-    gating_method = "quadGate.tmix",
-    gating_args =
-      "K=4",
-    preprocessing_method = "prior_flowClust",
-    preprocessing_args = "K=4"
-    # preprocessing_args = "K=3"
+    dims =  "CD4",
+    gating_method = "mindensity"
+    # gating_args =
+    #   "K=4",
+    # preprocessing_method = "prior_flowClust",
+    # preprocessing_args = "K=4"
+    # # preprocessing_args = "K=3"
   )
 )
+ # CD8-	CD8-	CD3	CD8	mindensity
+ template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "CD8-",
+    pop = "CD8-",
+    parent = "CD3+",
+    dims =  "CD8",
+    gating_method = "mindensity"
+    # gating_args =
+    #   "K=4",
+    # preprocessing_method = "prior_flowClust",
+    # preprocessing_args = "K=4"
+    # # preprocessing_args = "K=3"
+  )
+)
+ 
+# CD4	CD4+CD8-	CD3	CD4,CD8	refGate	CD4+:CD8-
+# CD8	CD4-CD8+	CD3	CD4,CD8	refGate	CD4-:CD8+
+  template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "CD8+",
+    pop = "CD8+",
+    parent = "CD4-",
+    dims =  "CD8",
+    gating_method = "mindensity"
+    # gating_args =
+    #   "K=4",
+    # preprocessing_method = "prior_flowClust",
+    # preprocessing_args = "K=4"
+    # # preprocessing_args = "K=3"
+  )
+)
+
+# CD4	CD4+CD8-	CD3	CD4,CD8	refGate	CD4+:CD8-
+  template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "CD4",
+    pop = "CD4+CD8-",
+    parent = "CD3",
+    dims =  "CD4,CD8",
+    gating_method = "refGate",
+    gating_args =
+      "CD4+:CD8-"
+    # preprocessing_method = "prior_flowClust",
+    # preprocessing_args = "K=4"
+    # # preprocessing_args = "K=3"
+  )
+)
+
+# CD8	CD4-CD8+	CD3	CD4,CD8	refGate	CD4-:CD8+
+
+ template = rbind(
+  template,
+  add_pop(
+    gs,
+    alias = "CD8",
+    pop = "CD4-CD8+",
+    parent = "CD3",
+    dims =  "CD4,CD8",
+    gating_method = "refGate",
+    gating_args =
+      "CD4-:CD8+"
+    # preprocessing_method = "prior_flowClust",
+    # preprocessing_args = "K=4"
+    # # preprocessing_args = "K=3"
+  )
+) 
+
 #  ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
 #  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 #  
