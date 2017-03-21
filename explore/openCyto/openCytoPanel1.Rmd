@@ -20,6 +20,7 @@ output:
 ```{r,eval=TRUE,echo=FALSE,results='hide',include=FALSE,warning=FALSE}
 library(openCyto)
 library(ggcyto)
+# library(ggplot2)
 library(flowCore)
 ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 fcsFiles <- list.files("/Users/Kitty/temp/fcs/fcsFiles", pattern=".fcs",full = FALSE)
@@ -31,11 +32,21 @@ gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subse
 ```
 
 
+```{r,echo=FALSE,results='hide',fig.width=10,fig.height=10,warning=FALSE}
+# pdf("test.pdf")
+# plotGate(gs[[1]],scales=list(cex=c(1.2,1.2)),par.strip.text=list(cex=1.4),xlab=list(fontsize=2),ylab=list(fontsize=2),par.settings=list(gate.text=list(cex=1)),path=1,gpar=list(nrow = 8))
+# 
+# #  library(gridExtra)
+# # grid.arrange(as.ggplot(p2),main="Manual",ncol=2)
+# dev.off()
+plotGate(gs,getNodes(gs)[39],xbin = 100)
+plotGate(gs,getNodes(gs)[10],xbin = 100)
+
+```
+
 ```{r,echo=FALSE,results='hide',fig.width=10,fig.height=5,warning=FALSE}
 gh <- gs[[1]]
 plot(gh)
-plotGate(gs[[1]],scales=list(cex=c(1.2,1.2)),par.strip.text=list(cex=1.4),xlab=list(fontsize=2),ylab=list(fontsize=2),par.settings=list(gate.text=list(cex=1)),path=2)
-
 flowDensityEx <- function(fr, pp_res, channels, ...){
   if(length(channels)==2)
     flowDensity::.flowDensity(fr, pp_res, channels[1], channels[2], ...)
@@ -82,7 +93,7 @@ template = rbind(
     dims = "FSC-A",
     gating_method = "mindensity",
     gating_args = "gate_range=c(5e4,1e5),adjust=1.5"
-    
+
   )
 )
 
@@ -109,7 +120,7 @@ template = rbind(
 )
 
 
-# 
+#
 # template = rbind(
 #     template, add_pop(
 #     gs,alias = "lymph",pop = "lymph+",parent = "nonDebris",dims = "FSC-A,SSC-A",gating_method =
@@ -135,17 +146,17 @@ template = rbind(
     preprocessing_method = "standardize_flowset"
   )
 )
-# 
+#
 #  template = rbind(
 #     template, add_pop(
 #   gs, alias = "Singlets", pop = "Singlets", parent = "lymph", dims = "FSC-W,FSC-H",gating_method = "singletGate",gating_args =
 #   "wider_gate=FALSE,subsample_pct=0.1"
 #   )
 #  )
- 
+
  ggcyto(gs, mapping = aes(x = `FSC-W`, y = `FSC-H`)) + geom_hex(bins = 100) + geom_gate("Singlets") + xlim(c(0, 2e5))
   ggcyto(gs, mapping = aes(x = `FSC-W`, y = `FSC-H`)) + geom_hex(bins = 100) + geom_gate("Singlets") + xlim(c(0, 2e5))
-# 
+#
 # template = rbind(
 #   template,
 #   add_pop(
@@ -159,7 +170,7 @@ template = rbind(
 #       "wider_gate=TRUE,subsample_pct=0.1"
 #   )
 # )
-# 
+#
 # ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets") + xlim(c(0,2e5))
 # ggcyto(gs,mapping = aes(x = `FSC-H`,y = `FSC-W`)) + geom_hex(bins = 50) + geom_gate("Singlets")+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
@@ -203,7 +214,7 @@ template = rbind(
 
  ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
- 
+
 # template = rbind(
 #   template,
 #   add_pop(
@@ -253,7 +264,7 @@ template = rbind(
     # # preprocessing_args = "K=3"
   )
 )
- 
+
 # CD4	CD4+CD8-	CD3	CD4,CD8	refGate	CD4+:CD8-
 # CD8	CD4-CD8+	CD3	CD4,CD8	refGate	CD4-:CD8+
   template = rbind(
@@ -308,11 +319,11 @@ template = rbind(
     # preprocessing_args = "K=4"
     # # preprocessing_args = "K=3"
   )
-) 
+)
 
 #  ggcyto(gs,mapping = aes(x = "CD3",y = "CD19"),subset = "PE-A") +
 #  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-#  
+#
 # template = rbind(
 #   template,
 #   add_pop(
@@ -328,10 +339,10 @@ template = rbind(
 # )
 
  ggcyto(gs,mapping = aes(x = "CD4",y = "CD8"),subset = "CD3+") +
- geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-# 
+ geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+#
   cd4pluscd8minus ="Comp-APC-Cy7-A+Comp-BUV 395-A-"
-  
+
     cd4minuscd8plus ="Comp-APC-Cy7-A-Comp-BUV 395-A+"
 #  template = rbind(
 #   template,
@@ -347,12 +358,12 @@ template = rbind(
 #     preprocessing_method = "standardize_flowset"
 #   )
 # )
-#  
+#
 #  ggcyto(gs,
 #                 mapping = aes(x = "CD4", y = "HLA-DR"),
 #                 subset = "CD4") +
 #       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-#  
+#
  #  ggcyto(gs,mapping = aes(x = "CD4",y = "HLA-DR"),subset = "CD4+CD8-") +
  # geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 
@@ -384,7 +395,7 @@ template = rbind(
       "gate_range=c(80,150)"
   )
 )
- 
+
 ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
 template = rbind(
@@ -458,7 +469,7 @@ template = rbind(
 ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +
  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
 
-# 
+#
 # template = rbind(
 #   template,
 #   add_pop(
@@ -472,10 +483,10 @@ ggcyto(gs,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +
 #       "gate_range=c(80,150)"
 #   )
 # )
-# 
+#
 # ggcyto(gs,mapping = aes(x = "CD95",y = "CD28"),subset = "CD4+CD8-") +
 #  geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-# 
+#
 
 
 
