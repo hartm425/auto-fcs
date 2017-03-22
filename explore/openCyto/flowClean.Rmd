@@ -1,0 +1,209 @@
+  ---
+title: "FlowcleanTest"
+author: "JL"
+output: html_document
+---
+
+# 
+
+```{r setup, include=FALSE}
+library(openCyto)
+library(flowCore)
+library(data.table)
+library(ggcyto)
+library(gridExtra)
+library(CytoML)
+```
+
+```{r warning=FALSE,results='hide',echo=FALSE}
+inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
+outputDir = "/Volumes/Beta/data/flow/"
+template = "~/git/auto-fcs/explore/openCyto/lymph.dev.csv"
+gateDir = "gates4/"
+# getIndiceMat()
+theme_set(theme_bw(5))
+gt_lymph <-
+  gatingTemplate(template, autostart = 1L)
+fcsFilesAll <-
+  list.files(inputFCSDir,
+             pattern = ".fcs",
+             full = TRUE)
+
+# fcsFilesAll = c(
+#   "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
+#   "/Volumes/Beta/data/flow/fcs3/2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
+#   "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
+#   "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
+#   ) 
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
+# 19:49 -> 20:31
+# [30:33]
+
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
+i = 1
+numProcessed =0
+d = data.frame()
+for (files in fcsFilesAll) {
+  # fcsFiles = files
+  print(files)
+  i
+  pdf(file = paste(outputDir, "panel1_test4_", i, ".pdf", sep = ""))
+  i = i + 1
+  for (file in files) {
+    numProcessed = numProcessed+1
+    print(paste("number processed ....", numProcessed))
+    print(paste("loading ....", file))
+    frame = read.FCS(file)
+    print(paste("compensating ....", file))
+    
+    comp <- compensation(keyword(frame)$`SPILL`)
+    
+    chnls <- parameters(comp)
+    biexpTrans <-
+      flowJo_biexp_trans(
+        channelRange = 256,
+        maxValue = 262144.0000291775 ,
+        pos = 4.418539922,
+        neg = 0,
+        widthBasis = -100
+      )
+    tf <- transformerList(chnls, biexpTrans)
+    
+    print(paste("gating ....", file))
+    # gs <- GatingSet(c(new_frame))
+    frames = c(frame)
+    names(frames) = c(basename(file))
+    fs =  as(frames, "flowSet")
+    gs1 <- GatingSet(fs)
+    gs1 <- compensate(gs1, comp)
+    gs1 <- transform(gs1, tf)
+    
+    gh <- gs1[[1]]
+    gating(gt_lymph, gs1)
+    print(paste("plotting ....", file))
+    
+    t1 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "root") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    
+    t2 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "boundary") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+    
+    t3 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "nonDebris") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+    
+    
+    t4 = ggcyto(gs1,
+                mapping = aes(x = "FSC-W", y = "FSC-H"),
+                subset = "lymph") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t5 = ggcyto(gs1,
+                mapping = aes(x = "PE-A", y = "FSC-H"),
+                subset = "Singlets") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t6 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "PE-A") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+     t7 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "CD8"),
+                subset = "CD3+") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+     t8 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "HLA-DR"),
+                subset = "APC-Cy7-A+BUV 395-A-") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
+     
+    grid.arrange(
+      as.ggplot(t1),
+      as.ggplot(t2),
+      as.ggplot(t3),
+      as.ggplot(t4),
+      as.ggplot(t5),
+      as.ggplot(t6),
+      as.ggplot(t7),
+      as.ggplot(t8),
+
+      ncol = 2
+    )
+    d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
+    outFile <-
+      paste(outputDir,gateDir,
+            basename(file),
+            "_panel1.wsp", sep = "")
+    GatingSet2flowJo(gs1, outFile)
+    cd4pluscd8minus ="APC-Cy7-A+BUV 395-A-"
+    cd4minuscd8plus ="APC-Cy7-A-BUV 395-A+"
+
+    gateDef = data.frame(
+      lymph = getIndiceMat(gs1, "lymph"),
+      Singlets = getIndiceMat(gs1, "Singlets"),
+      PE_A_Minus = getIndiceMat(gs1, "PE-A"),
+      CD3Plus = getIndiceMat(gs1, "CD3+"),
+      cd4Pcd8M = getIndiceMat(gs1, cd4pluscd8minus),
+      cd4Mcd8P = getIndiceMat(gs1, cd4minuscd8plus),
+      HLADR = getIndiceMat(gs1, "HLADR+")
+
+    )
+    
+    # APC-Cy7-A = CD4
+    # BUV 395-A =CD8
+    
+    write.table(
+      gateDef,
+      sep = "\t",
+      quote = FALSE,
+      file = paste(
+        outputDir,
+        gateDir,
+        basename(file),
+        "_panel1_gate_def.txt",
+        sep = ""
+      ),
+      row.names = FALSE
+    )
+    
+  }
+  
+  dev.off()
+}
+
+write.table(
+  d,
+  sep = "\t",
+  quote = FALSE,
+  file = paste(outputDir, "testTypesTest4.txt", sep = ""),
+  row.names = FALSE
+)
+# https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
+
+```
+
+
+ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
+ gs <- parseWorkspace(ws, path = "/Volumes/Beta/data/flow/fcs/", name = 1,subset="2016-05-18_PANEL 1_ZF_panel one_F1632164_009.fcs",isNcdf = FALSE)
+t3 = ggcyto(gs,
+            mapping = aes(x = "FSC-A", y = "SSC-A"),
+            subset = "Lymphocytes (SSC-A v FSC-A)") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+write.table(
++     getPopStats(gs),
++     sep = "\t",
++     quote = FALSE,
++     file = "/Volumes/Beta/data/flow/testTypesManual.txt",
++     row.names = FALSE
++ )
+
+```
+
+
+
