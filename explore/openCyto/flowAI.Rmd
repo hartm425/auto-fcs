@@ -1,5 +1,5 @@
   ---
-title: "FlowcleanTest"
+title: "FlowAI"
 author: "JL"
 output: html_document
 ---
@@ -13,7 +13,8 @@ library(data.table)
 library(ggcyto)
 library(gridExtra)
 library(CytoML)
-library(flowClean)
+library(flowAI)
+
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
@@ -56,15 +57,7 @@ for (files in fcsFilesAll) {
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
     frame = read.FCS(file)
-    cleanFile =paste(cleanDir,basename(file),sep = "") 
-    frame.c <-
-      clean(
-      frame,
-      vectMarkers = c(7:18),
-      filePrefixWithDir = cleanFile,
-      ext = "fcs",
-      diagnostic = TRUE
-      )
+   flow_auto_qc(frame,folder_results = "TEST")
     print(paste("compensating ....", file))
     
     comp <- compensation(keyword(frame)$`SPILL`)
