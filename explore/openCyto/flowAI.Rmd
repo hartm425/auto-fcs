@@ -6,7 +6,7 @@ output: html_document
 
 # 
 
-```{r setup, include=FALSE}
+```{r setusp, include=FALSE}
 library(openCyto)
 library(flowCore)
 library(data.table)
@@ -23,7 +23,7 @@ cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
 template = "~/git/auto-fcs/explore/openCyto/lymph.dev.csv"
-gateDir = "gates4/"
+gateDir = "gates5/"
 # getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
@@ -31,14 +31,14 @@ gt_lymph <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = FALSE)
+             full = FALSE)[1:2]
 
-fcsFilesAll = c(
-  "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
-  "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
-  "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
-  "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
-  )
+# fcsFilesAll = c(
+#   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
+#   "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
+#   "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
+#   "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
+#   )
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 19:49 -> 20:31
 # [30:33]
@@ -51,7 +51,7 @@ for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
   i
-  pdf(file = paste(outputDir, "panel1_test4_", i, ".pdf", sep = ""))
+  pdf(file = paste(outputDir, "panel1_test5_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
     numProcessed = numProcessed+1
@@ -59,7 +59,8 @@ for (files in fcsFilesAll) {
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputFCSDir,file,sep = ""))
     description(frame)$FILENAME =file
-    flow_auto_qc(frame,folder_results = "QC",mini_report=paste(basename(file),"mini"))
+    flow_auto_qc(frame,folder_results = "QC",mini_report=paste(basename(file),"mini"),pen_valueFS=200)
+    # ,remove_from = "FR_FM"
     print(paste("compensating ....", file))
     frame = read.FCS(paste(cleanDir,"QC/",tools::file_path_sans_ext(file),"_QC.fcs",sep = ""))
 
@@ -97,8 +98,15 @@ for (files in fcsFilesAll) {
     t2 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "boundary") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
+    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+    
+     t2_1 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "QC") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+     
     t3 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "nonDebris") +
@@ -125,20 +133,22 @@ for (files in fcsFilesAll) {
                 subset = "CD3+") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-     t8 = ggcyto(gs1,
-                mapping = aes(x = "CD4", y = "HLA-DR"),
-                subset = "APC-Cy7-A+BUV 395-A-") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
+     # t8 = ggcyto(gs1,
+     #            mapping = aes(x = "CD4", y = "HLA-DR"),
+     #            subset = "CD4") +
+     #  geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
      
     grid.arrange(
       as.ggplot(t1),
       as.ggplot(t2),
+      as.ggplot(t2_1),
+
       as.ggplot(t3),
       as.ggplot(t4),
       as.ggplot(t5),
       as.ggplot(t6),
       as.ggplot(t7),
-      as.ggplot(t8),
+      # as.ggplot(t8),
 
       ncol = 2
     )
@@ -148,17 +158,16 @@ for (files in fcsFilesAll) {
             basename(file),
             "_panel1.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
-    cd4pluscd8minus ="APC-Cy7-A+BUV 395-A-"
-    cd4minuscd8plus ="APC-Cy7-A-BUV 395-A+"
+    
 
     gateDef = data.frame(
       lymph = getIndiceMat(gs1, "lymph"),
       Singlets = getIndiceMat(gs1, "Singlets"),
       PE_A_Minus = getIndiceMat(gs1, "PE-A"),
       CD3Plus = getIndiceMat(gs1, "CD3+"),
-      cd4Pcd8M = getIndiceMat(gs1, cd4pluscd8minus),
-      cd4Mcd8P = getIndiceMat(gs1, cd4minuscd8plus),
-      HLADR = getIndiceMat(gs1, "HLADR+")
+      cd4Pcd8M = getIndiceMat(gs1, "CD4"),
+      cd4Mcd8P = getIndiceMat(gs1, "CD8")
+      # HLADR = getIndiceMat(gs1, "HLADR+")
 
     )
     
@@ -188,7 +197,7 @@ write.table(
   d,
   sep = "\t",
   quote = FALSE,
-  file = paste(outputDir, "testTypesTest4.txt", sep = ""),
+  file = paste(outputDir, "testTypesTest5.txt", sep = ""),
   row.names = FALSE
 )
 # https://github.com/RGLab/openCyto/issues/110autoplot(gs[[1]])
