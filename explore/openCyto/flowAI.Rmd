@@ -30,13 +30,13 @@ gt_lymph <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = TRUE)
+             full = FALSE)
 
 fcsFilesAll = c(
-  "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
-  "/Volumes/Beta/data/flow/fcs3/2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
-  "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
-  "/Volumes/Beta/data/flow/fcs3/2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
+  "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
+  "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
+  "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
+  "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
   )
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 19:49 -> 20:31
@@ -56,7 +56,7 @@ for (files in fcsFilesAll) {
     numProcessed = numProcessed+1
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
-    frame = read.FCS(file)
+    frame = read.FCS(paste(inputFCSDir,file,sep = ""))
    flow_auto_qc(frame,folder_results = "TEST")
     print(paste("compensating ....", file))
     
