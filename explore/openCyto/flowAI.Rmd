@@ -20,6 +20,7 @@ library(flowAI)
 ```{r warning=FALSE,results='hide',echo=FALSE}
 inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
+setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
 template = "~/git/auto-fcs/explore/openCyto/lymph.dev.csv"
 gateDir = "gates4/"
@@ -57,9 +58,11 @@ for (files in fcsFilesAll) {
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputFCSDir,file,sep = ""))
-   flow_auto_qc(frame,folder_results = "TEST")
+    description(frame)$FILENAME =file
+    flow_auto_qc(frame,folder_results = "QC",mini_report=paste(basename(file),"mini"))
     print(paste("compensating ....", file))
-    
+    frame = read.FCS(paste(cleanDir,"QC/",tools::file_path_sans_ext(file),"_QC.fcs",sep = ""))
+
     comp <- compensation(keyword(frame)$`SPILL`)
     
     chnls <- parameters(comp)
