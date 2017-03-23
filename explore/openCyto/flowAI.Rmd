@@ -26,6 +26,8 @@ template = "~/git/auto-fcs/explore/openCyto/lymph.dev.csv"
 templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.csv"
 
 gateDir = "gates5/"
+gateQCDir = "gatesQC5/"
+
 # getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
@@ -35,7 +37,7 @@ gt_lymphQC <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = FALSE)[1:15]
+             full = FALSE)[1:10]
 
 # fcsFilesAll = c(
 #   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -48,8 +50,9 @@ fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # [30:33]
 
 
-compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir) {
-  
+compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
+      print(paste("compensating ....", file))
+
       comp <- compensation(keyword(frame)$`SPILL`)
       
       chnls <- parameters(comp)
@@ -87,11 +90,14 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir) {
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       
       # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-      
-       t2_1 = ggcyto(gs1,
-                  mapping = aes(x = "FSC-A", y = "SSC-A"),
-                  subset = "QC") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+      if (qcVersion) {
+        t2_1 = ggcyto(gs1,
+        mapping = aes(x = "FSC-A", y = "SSC-A"),
+        subset = "QC") +
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5)) + scale_x_flowJo_biexp() + scale_y_flowJo_biexp()
+      }else{
+        t2_1 =t2
+      }
        # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
        
       t3 = ggcyto(gs1,
@@ -128,6 +134,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir) {
       grid.arrange(
         as.ggplot(t1),
         as.ggplot(t2),
+        
         as.ggplot(t2_1),
   
         as.ggplot(t3),
@@ -195,26 +202,38 @@ for (files in fcsFilesAll) {
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputFCSDir,file,sep = ""))
     description(frame)$FILENAME =file
-    flow_auto_qc(frame,folder_results = "QC",mini_report=paste(basename(file),"mini"),pen_valueFS=200,remove_from = "FR_FM")
+    
+    qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
+    qcFileFull =paste(cleanDir,"QC/",qcFile,sep = "")
+    if(!file.exists(qcFileFull)){
+    flow_auto_qc(
+      frame,
+      folder_results = "QC",
+      mini_report = paste(basename(file), "mini"),
+      fcs_QC = "",
+      pen_valueFS = 200,
+      remove_from = "FR_FM"
+      )
+    }
     compFrame(
       frame = frame,
       file = file,
       gt_lymph = gt_lymph ,
       d = d,
       outputDir = outputDir,
-      gateDir = gateDir
+      gateDir = gateDir,
+      qcVersion = FALSE
       )
 
-    print(paste("compensating ....", file))
-    qcFile = paste(tools::file_path_sans_ext(file), "_QC.fcs", sep = "")
-    frame = read.FCS(paste(cleanDir,"QC/",qcFile,sep = ""))
+    frame.c = read.FCS(qcFileFull)
     compFrame(
-      frame = frame,
+      frame = frame.c,
       file = file,
       gt_lymph = gt_lymphQC ,
       d = d,
       outputDir = outputDir,
-      gateDir = gateDir
+      gateDir = gateQCDir,
+      qcVersion = TRUE
       )
   }
   
