@@ -157,15 +157,43 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         add_pop(
         gs1,
         alias = "*",
-        pop = "CD45RA+/-",
+        pop = "HLADR+/-",
         parent = "CD4",
+        dims =  "HLA-DR",
+        gating_method = "tailgate",
+        gating_args =
+        "tol=5e-2",
+        preprocessing_method = "standardize_flowset"
+        )
+        )
+      
+      gt_lymph = rbind(
+        gt_lymph,
+        add_pop(
+        gs1,
+        alias = "*",
+        pop = "CD45RA+/-",
+        parent = "NonActivatedCD4",
         dims =  "CD45RA",
         gating_method = "mindensity",
         gating_args =
         "gate_range=c(80,150)"
         )
         )
-      
+      gt_lymph = rbind(
+  gt_lymph,
+  add_pop(
+    gs1,
+    alias = "CCR7_gate",
+    pop = "CCR7",
+    parent = "CD45RA+",
+    dims =  "CCR7",
+    gating_method = "flowClust",
+    gating_args = "K=2",
+    preprocessing_method = "prior_flowClust",
+    preprocessing_args = "K=2,min=0"
+  )
+)
       
       d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
       outFile <-
