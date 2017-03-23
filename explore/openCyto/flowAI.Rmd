@@ -31,7 +31,7 @@ gt_lymph <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = FALSE)[1:2]
+             full = FALSE)[1:15]
 
 # fcsFilesAll = c(
 #   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -191,7 +191,7 @@ for (files in fcsFilesAll) {
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputFCSDir,file,sep = ""))
     description(frame)$FILENAME =file
-    flow_auto_qc(frame,folder_results = "QC",mini_report=paste(basename(file),"mini"),pen_valueFS=200)
+    flow_auto_qc(frame,folder_results = "QC",mini_report=paste(basename(file),"mini"),pen_valueFS=200,remove_from = "FR_FM")
     compFrame(
       frame = frame,
       file = file,
@@ -200,20 +200,19 @@ for (files in fcsFilesAll) {
       outputDir = outputDir,
       gateDir = gateDir
       )
-      # ,remove_from = "FR_FM"
+      # 
     print(paste("compensating ....", file))
     qcFile = paste(tools::file_path_sans_ext(file), "_QC.fcs", sep = "")
     frame = read.FCS(paste(cleanDir,"QC/",qcFile,sep = ""))
-    compFrame(
-      frame = frame,
-      file = file,
-      gt_lymph = gt_lymph ,
-      d = d,
-      outputDir = outputDir,
-      gateDir = gateDir
-      )
-    
-    
+    # compFrame(
+    #   frame = frame,
+    #   file = file,
+    #   gt_lymph = gt_lymph ,
+    #   d = d,
+    #   outputDir = outputDir,
+    #   gateDir = gateDir
+    #   )
+
   }
   
   dev.off()
