@@ -144,8 +144,8 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
       
        t8 = ggcyto(gs1,
-                  mapping = aes(x = "CD8", y = "HLA-DR"),
-                  subset = "CD8") +
+                  mapping = aes(x = "CD4", y = "HLA-DR"),
+                  subset = "CD4") +
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
        
        t9 = ggcyto(gs1,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +
@@ -264,16 +264,16 @@ for (files in fcsFilesAll) {
       qcVersion = FALSE
       )
 
-    frame.c = read.FCS(qcFileFull)
-    compFrame(
-      frame = frame.c,
-      file = file,
-      gt_lymph = gt_lymphQC ,
-      d = d,
-      outputDir = outputDir,
-      gateDir = gateQCDir,
-      qcVersion = TRUE
-      )
+    # frame.c = read.FCS(qcFileFull)
+    # compFrame(
+    #   frame = frame.c,
+    #   file = file,
+    #   gt_lymph = gt_lymphQC ,
+    #   d = d,
+    #   outputDir = outputDir,
+    #   gateDir = gateQCDir,
+    #   qcVersion = TRUE
+    #   )
   }
   
   dev.off()

@@ -1,7 +1,7 @@
 alias,pop,parent,dims,gating_method,gating_args,collapseDataForGating,groupBy,preprocessing_method,preprocessing_args
 boundary,boundary,root,"FSC-A,SSC-A",boundary,"min=c(5e4,0),max=c(2.5e5,2.5e5)",NA,NA,NA,NA
 nonDebris,nonDebris+,boundary,FSC-A,mindensity,"gate_range=c(5e4,1e5),adjust=1.5",NA,NA,NA,NA
-lymph,lymph,nonDebris,"FSC-A,SSC-A",flowClust,"K=2,quantile=0.95,target=c(1e5,5e4)",NA,NA,prior_flowClust,K=2
+lymph,lymph,nonDebris,"FSC-A,SSC-A",flowClust,"K=2,quantile=0.90,target=c(1e5,5e4)",NA,NA,prior_flowClust,K=2
 Singlets,FSC-W-,lymph,FSC-W,tailgate,tol=5e-2,NA,NA,standardize_flowset,NA
 PE-A,PE-A-,Singlets,PE-A,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA
 CD3,CD3+/-,PE-A,CD3,mindensity,"gate_range=c(80,120)",NA,NA,NA,NA
@@ -12,7 +12,7 @@ CD4,CD4+CD8-,CD3+,"CD4,CD8",refGate,CD4+:CD8-,NA,NA,NA,NA
 CD8,CD4-CD8+,CD3+,"CD4,CD8",refGate,CD4-:CD8+,NA,NA,NA,NA
 ActivatedCD4,HLA-DR+,CD4,HLA-DR,tailgate,tol=5e-2,NA,NA,standardize_flowset,NA
 *,CD45RA+/-,CD4,CD45RA,mindensity,NA,NA,NA,NA,NA
-CCR7gate,CCR7,CD4/CD45RA+,CCR7,flowClust,"neg=1,pos=1",NA,NA,NA,NA
-CCR7gate,CCR7,CD4/CD45RA-,CCR7,flowClust,"neg=1,pos=1",NA,NA,NA,NA
+CCR7gate,CCR7,CD4/CD45RA+,CCR7,flowClust.1d,"neg=1,pos=1",NA,NA,NA,NA
+CCR7gate,CCR7,CD4/CD45RA-,CCR7,flowClust.1d,"neg=1,pos=1",NA,NA,NA,NA
 *,CCR7+/-CD45RA+,CD4,"CCR7,CD45RA",refGate,CD4/CD45RA+/CCR7gate:CD4/CD45RA+,NA,NA,NA,NA
 *,CCR7+/-CD45RA-,CD4,"CCR7,CD45RA",refGate,CD4/CD45RA-/CCR7gate:CD4/CD45RA-,NA,NA,NA,NA
