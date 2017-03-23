@@ -23,11 +23,15 @@ cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
 template = "~/git/auto-fcs/explore/openCyto/lymph.dev.csv"
+templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.csv"
+
 gateDir = "gates5/"
 # getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
   gatingTemplate(template, autostart = 1L)
+gt_lymphQC <-
+  gatingTemplate(templateQC, autostart = 1L)
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
@@ -200,19 +204,18 @@ for (files in fcsFilesAll) {
       outputDir = outputDir,
       gateDir = gateDir
       )
-      # 
+
     print(paste("compensating ....", file))
     qcFile = paste(tools::file_path_sans_ext(file), "_QC.fcs", sep = "")
     frame = read.FCS(paste(cleanDir,"QC/",qcFile,sep = ""))
-    # compFrame(
-    #   frame = frame,
-    #   file = file,
-    #   gt_lymph = gt_lymph ,
-    #   d = d,
-    #   outputDir = outputDir,
-    #   gateDir = gateDir
-    #   )
-
+    compFrame(
+      frame = frame,
+      file = file,
+      gt_lymph = gt_lymphQC ,
+      d = d,
+      outputDir = outputDir,
+      gateDir = gateDir
+      )
   }
   
   dev.off()
