@@ -40,15 +40,15 @@ fcsFilesAll <-
              full = FALSE)
 fcsFilesAll =sample(fcsFilesAll,10)
 fcsFilesAllProbs = c(
-  "2016−05−29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
+  "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
   "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs", #test 1 page 7 
   "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
   "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs",
-  "2016−05−27_PANEL 1_ZF_panel one_F1631054_011.fcs", #test 5 page 4  weird additional population of cells 
-  "2016−05−27_PANEL 1_ZF_panel one_F1631061_005.fcs" ,#test 5 page 6  weird additional population of cells
-  "2016−05−27_PANEL 1_ZF_panel one_F1631137_009.fcs",#test 5 page 8 lower cluster below the lymphocytes
-  "2016−05−27_PANEL 1_ZF_panel one_F1631355_008.fcs" ,#test 5 page 8 lower cluster below the lymphocytes
+  "2016-05-27_PANEL 1_ZF_panel one_F1631054_011.fcs", #test 5 page 4  weird additional population of cells 
+  "2016-05-27_PANEL 1_ZF_panel one_F1631061_005.fcs" ,#test 5 page 6  weird additional population of cells
+  "2016-05-27_PANEL 1_ZF_panel one_F1631137_009.fcs",#test 5 page 8 lower cluster below the lymphocytes
+  "2016-05-27_PANEL 1_ZF_panel one_F1631355_008.fcs" ,#test 5 page 8 lower cluster below the lymphocytes
   "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs",# most over -called
   "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",# 2nd most over -called
   "2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs", # most under -called
@@ -56,8 +56,8 @@ fcsFilesAllProbs = c(
   "2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs" #Crazy flowrate
   )
 
-fcsFilesAll =unique(c(fcsFilesAll,fcsFilesAllProbs))
-fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
+fcsFilesAll =unique(c(fcsFilesAllProbs,fcsFilesAll))
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 # 19:49 -> 20:31
 # [30:33]
 
