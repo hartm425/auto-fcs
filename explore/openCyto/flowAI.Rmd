@@ -52,7 +52,8 @@ fcsFilesAllProbs = c(
   "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs",# most over -called
   "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",# 2nd most over -called
   "2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs", # most under -called
-  "2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs" # 2nd most under -called
+  "2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs", # 2nd most under -called
+  "2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs" #Crazy flowrate
   )
 
 fcsFilesAll =unique(c(fcsFilesAll,fcsFilesAllProbs))
@@ -249,8 +250,8 @@ for (files in fcsFilesAll) {
       folder_results = "QC",
       mini_report = paste(basename(file), "mini"),
       fcs_QC = "",
-      pen_valueFS = 50
-      # remove_from = "FR_FM"
+      pen_valueFS = 50,
+      remove_from = "FR_FM"
       )
     }
     compFrame(
