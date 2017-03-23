@@ -39,12 +39,12 @@ fcsFilesAll <-
              pattern = ".fcs",
              full = FALSE)[1:10]
 
-# fcsFilesAll = c(
-#   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
-#   "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
-#   "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
-#   "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
-#   )
+fcsFilesAll = c(
+  "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
+  "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
+  "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
+  "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
+  )
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 19:49 -> 20:31
 # [30:33]
@@ -82,19 +82,23 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
       t1 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "root") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      
+      # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       
       t2 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "boundary") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       
       # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       if (qcVersion) {
         t2_1 = ggcyto(gs1,
         mapping = aes(x = "FSC-A", y = "SSC-A"),
         subset = "QC") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5)) + scale_x_flowJo_biexp() + scale_y_flowJo_biexp()
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+        # + scale_x_flowJo_biexp() + scale_y_flowJo_biexp()
       }else{
         t2_1 =t2
       }
@@ -103,7 +107,8 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
       t3 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "nonDebris") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))+ scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       
       
       t4 = ggcyto(gs1,
@@ -114,7 +119,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
       t5 = ggcyto(gs1,
                   mapping = aes(x = "PE-A", y = "FSC-H"),
                   subset = "Singlets") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
       
       t6 = ggcyto(gs1,
                   mapping = aes(x = "CD3", y = "CD19"),
@@ -126,10 +131,10 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
                   subset = "CD3+") +
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
       
-       # t8 = ggcyto(gs1,
-       #            mapping = aes(x = "CD4", y = "HLA-DR"),
-       #            subset = "CD4") +
-       #  geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
+       t8 = ggcyto(gs1,
+                  mapping = aes(x = "CD8", y = "HLA-DR"),
+                  subset = "CD8") +
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
        
       grid.arrange(
         as.ggplot(t1),
@@ -142,10 +147,26 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         as.ggplot(t5),
         as.ggplot(t6),
         as.ggplot(t7),
-        # as.ggplot(t8),
+        as.ggplot(t8),
   
         ncol = 2
       )
+      
+      gt_lymph = rbind(
+        gt_lymph,
+        add_pop(
+        gs1,
+        alias = "*",
+        pop = "CD45RA+/-",
+        parent = "CD4",
+        dims =  "CD45RA",
+        gating_method = "mindensity",
+        gating_args =
+        "gate_range=c(80,150)"
+        )
+        )
+      
+      
       d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
       outFile <-
         paste(outputDir,gateDir,
@@ -160,8 +181,8 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         PE_A_Minus = getIndiceMat(gs1, "PE-A"),
         CD3Plus = getIndiceMat(gs1, "CD3+"),
         cd4Pcd8M = getIndiceMat(gs1, "CD4"),
-        cd4Mcd8P = getIndiceMat(gs1, "CD8")
-        # HLADR = getIndiceMat(gs1, "HLADR+")
+        cd4Mcd8P = getIndiceMat(gs1, "CD8"),
+        HLADR = getIndiceMat(gs1, "HLADR+")
   
       )
       
