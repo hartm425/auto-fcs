@@ -37,14 +37,25 @@ gt_lymphQC <-
 fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
-             full = FALSE)[1:10]
-
-fcsFilesAll = c(
+             full = FALSE)
+fcsFilesAll =sample(fcsFilesAll,10)
+fcsFilesAllProbs = c(
+  "2016−05−29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
-  "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs",
+  "2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs", #test 1 page 7 
   "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",
-  "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs"
+  "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs",
+  "2016−05−27_PANEL 1_ZF_panel one_F1631054_011.fcs", #test 5 page 4  weird additional population of cells 
+  "2016−05−27_PANEL 1_ZF_panel one_F1631061_005.fcs" ,#test 5 page 6  weird additional population of cells
+  "2016−05−27_PANEL 1_ZF_panel one_F1631137_009.fcs",#test 5 page 8 lower cluster below the lymphocytes
+  "2016−05−27_PANEL 1_ZF_panel one_F1631355_008.fcs" ,#test 5 page 8 lower cluster below the lymphocytes
+  "2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs",# most over -called
+  "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs",# 2nd most over -called
+  "2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs", # most under -called
+  "2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs" # 2nd most under -called
   )
+
+fcsFilesAll =unique(c(fcsFilesAll,fcsFilesAllProbs))
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 19:49 -> 20:31
 # [30:33]
@@ -136,6 +147,9 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
                   subset = "CD8") +
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
        
+       t9 = ggcyto(gs1,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +
+    geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+       
       grid.arrange(
         as.ggplot(t1),
         as.ggplot(t2),
@@ -148,52 +162,11 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         as.ggplot(t6),
         as.ggplot(t7),
         as.ggplot(t8),
-  
+        as.ggplot(t9),
+
         ncol = 2
       )
-      
-      gt_lymph = rbind(
-        gt_lymph,
-        add_pop(
-        gs1,
-        alias = "*",
-        pop = "HLADR+/-",
-        parent = "CD4",
-        dims =  "HLA-DR",
-        gating_method = "tailgate",
-        gating_args =
-        "tol=5e-2",
-        preprocessing_method = "standardize_flowset"
-        )
-        )
-      
-      gt_lymph = rbind(
-        gt_lymph,
-        add_pop(
-        gs1,
-        alias = "*",
-        pop = "CD45RA+/-",
-        parent = "NonActivatedCD4",
-        dims =  "CD45RA",
-        gating_method = "mindensity",
-        gating_args =
-        "gate_range=c(80,150)"
-        )
-        )
-      gt_lymph = rbind(
-  gt_lymph,
-  add_pop(
-    gs1,
-    alias = "CCR7_gate",
-    pop = "CCR7",
-    parent = "CD45RA+",
-    dims =  "CCR7",
-    gating_method = "flowClust",
-    gating_args = "K=2",
-    preprocessing_method = "prior_flowClust",
-    preprocessing_args = "K=2,min=0"
-  )
-)
+   
       
       d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
       outFile <-
@@ -210,10 +183,26 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         CD3Plus = getIndiceMat(gs1, "CD3+"),
         cd4Pcd8M = getIndiceMat(gs1, "CD4"),
         cd4Mcd8P = getIndiceMat(gs1, "CD8"),
-        HLADR = getIndiceMat(gs1, "HLADR+")
-  
-      )
-      
+        HLADR = getIndiceMat(gs1, "ActivatedCD4"),
+        CCR7PCD45RAP = getIndiceMat(gs1, "CCR7+CD45RA+"),
+        CCR7PCD45RAM = getIndiceMat(gs1, "CCR7+CD45RA-"),
+        CCR7MCD45RAM = getIndiceMat(gs1, "CCR7-CD45RA-"),
+        CCR7MCD45RAP = getIndiceMat(gs1, "CCR7-CD45RA+")
+        
+        )
+      colnames(gateDef) = c(
+        "lymph",
+        "Singlets",
+        "PE_A",
+        "CD3_PLUS",
+        "CD4",
+        "CD8",
+        "ActivatedCD4",
+        "CCR7P_CD45RAP",
+        "CCR7P_CD45RAM",
+        "CCR7M_CD45RAM",
+        "CCR7M_CD45RAP"
+        )
       # APC-Cy7-A = CD4
       # BUV 395-A =CD8
       
@@ -260,8 +249,8 @@ for (files in fcsFilesAll) {
       folder_results = "QC",
       mini_report = paste(basename(file), "mini"),
       fcs_QC = "",
-      pen_valueFS = 200,
-      remove_from = "FR_FM"
+      pen_valueFS = 50
+      # remove_from = "FR_FM"
       )
     }
     compFrame(
@@ -320,5 +309,47 @@ write.table(
 
 ```
 
-
+   
+      gt_lymph = rbind(
+        gt_lymph,
+        add_pop(
+        gs1,
+        alias = "*",
+        pop = "HLADR+/-",
+        parent = "CD4",
+        dims =  "HLA-DR",
+        gating_method = "tailgate",
+        gating_args =
+        "tol=5e-2",
+        preprocessing_method = "standardize_flowset"
+        )
+        )
+      
+      gt_lymph = rbind(
+        gt_lymph,
+        add_pop(
+        gs1,
+        alias = "*",
+        pop = "CD45RA+/-",
+        parent = "CD4",
+        dims =  "CD45RA",
+        gating_method = "mindensity",
+        gating_args =
+        "gate_range=c(80,150)"
+        )
+        )
+      gt_lymph = rbind(
+  gt_lymph,
+  add_pop(
+    gs1,
+    alias = "CCR7_gate",
+    pop = "CCR7",
+    parent = "CD45RA+",
+    dims =  "CCR7",
+    gating_method = "flowClust",
+    gating_args = "K=2",
+    preprocessing_method = "prior_flowClust",
+    preprocessing_args = "K=2,min=0"
+  )
+)
 
