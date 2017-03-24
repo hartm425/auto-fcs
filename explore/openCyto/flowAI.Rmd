@@ -1,4 +1,4 @@
-  ---
+---
 title: "FlowAI"
 author: "JL"
 output: html_document
@@ -14,6 +14,11 @@ library(ggcyto)
 library(gridExtra)
 library(CytoML)
 library(flowAI)
+
+# TP(Color.GREEN),
+# 		TN(Color.BLACK),
+# 		FP(Color.BLUE),
+# 		FN(Color.RED);
 
 ```
 
@@ -56,7 +61,7 @@ fcsFilesAllProbs = c(
   "2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs" #Crazy flowrate
   )
 
-fcsFilesAll =unique(c(fcsFilesAllProbs,fcsFilesAll))
+fcsFilesAll =unique(c(fcsFilesAllProbs,fcsFilesAll))[2:5]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 # 19:49 -> 20:31
 # [30:33]

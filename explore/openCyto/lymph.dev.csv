@@ -2,7 +2,7 @@ alias,pop,parent,dims,gating_method,gating_args,collapseDataForGating,groupBy,pr
 boundary,boundary,root,"FSC-A,SSC-A",boundary,"min=c(5e4,0),max=c(2.5e5,2.5e5)",NA,NA,NA,NA
 nonDebris,nonDebris+,boundary,FSC-A,mindensity,"gate_range=c(5e4,1e5),adjust=1.5",NA,NA,NA,NA
 lymph,lymph,nonDebris,"FSC-A,SSC-A",flowClust,"K=2,quantile=0.90,target=c(1e5,5e4)",NA,NA,prior_flowClust,K=2
-Singlets,FSC-W-,lymph,FSC-W,tailgate,tol=5e-2,NA,NA,standardize_flowset,NA
+Singlets,FSC-W-,lymph,FSC-W,tailgate,tol=5e-3,NA,NA,standardize_flowset,NA
 PE-A,PE-A-,Singlets,PE-A,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA
 CD3,CD3+/-,PE-A,CD3,mindensity,"gate_range=c(80,120)",NA,NA,NA,NA
 *,CD4+/-,CD3+,CD4,mindensity,,NA,NA,standardize_flowset,NA
