@@ -158,8 +158,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
                   subset = "CD4") +
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
        
-       t9 = ggcyto(gs1,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +
-    geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
+       t9 = ggcyto(gs1,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
        
       grid.arrange(
         as.ggplot(t1),
