@@ -148,6 +148,11 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
                   subset = "CD3+") +
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
       
+        t7_1 = ggcyto(gs1,
+                  mapping = aes(x = "CD4", y = "CD8"),
+                  subset = "CD4_1") +
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+      
        t8 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "HLA-DR"),
                   subset = "CD4") +
@@ -167,6 +172,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         as.ggplot(t5),
         as.ggplot(t6),
         as.ggplot(t7),
+        as.ggplot(t7_1),
         as.ggplot(t8),
         as.ggplot(t9),
 

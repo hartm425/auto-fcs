@@ -41,6 +41,7 @@ gs <- parseWorkspace(ws, path = "/Users/Kitty/temp/fcs/fcsFiles", name = 1,subse
 # dev.off()
 plotGate(gs,getNodes(gs)[39],xbin = 100)
 plotGate(gs,getNodes(gs)[10],xbin = 100)
+plotGate(gs,getNodes(gs)[42],xbin = 100)
 
 ```
 
