@@ -181,6 +181,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         as.ggplot(t5),
         as.ggplot(t6),
         as.ggplot(t1Bcell),
+        as.ggplot(t2Bcell),
         as.ggplot(t7),
         as.ggplot(t7_1),
         as.ggplot(t8),
@@ -277,26 +278,26 @@ for (files in fcsFilesAll) {
       remove_from = "FR_FM"
       )
     }
-    compFrame(
-      frame = frame,
-      file = file,
-      gt_lymph = gt_lymph ,
-      d = d,
-      outputDir = outputDir,
-      gateDir = gateDir,
-      qcVersion = FALSE
-      )
-
-    # frame.c = read.FCS(qcFileFull)
     # compFrame(
-    #   frame = frame.c,
+    #   frame = frame,
     #   file = file,
-    #   gt_lymph = gt_lymphQC ,
+    #   gt_lymph = gt_lymph ,
     #   d = d,
     #   outputDir = outputDir,
-    #   gateDir = gateQCDir,
-    #   qcVersion = TRUE
+    #   gateDir = gateDir,
+    #   qcVersion = FALSE
     #   )
+
+    frame.c = read.FCS(qcFileFull)
+    compFrame(
+      frame = frame.c,
+      file = file,
+      gt_lymph = gt_lymphQC ,
+      d = d,
+      outputDir = outputDir,
+      gateDir = gateQCDir,
+      qcVersion = TRUE
+      )
   }
    dev.off()
  
