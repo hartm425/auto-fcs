@@ -6,3 +6,4 @@ Singlets,FSC-W-,lymph,FSC-W,tailgate,tol=5e-3,NA,NA,standardize_flowset,NA
 PE-A,PE-A-,Singlets,PE-A,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA
 CD3,CD3+/-,PE-A,CD3,mindensity,"gate_range=c(80,120)",NA,NA,NA,NA
 CD19gate,CD19+,CD3-,CD19,mindensity,NA,NA,NA,NA,NA
+CD27gate,CD27+,CD19gate,CD27,flowClust,K=2,,,prior_flowClust,K=2

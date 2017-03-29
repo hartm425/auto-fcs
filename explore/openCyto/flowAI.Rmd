@@ -43,7 +43,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =sample(fcsFilesAll,20)
+fcsFilesAll =sample(fcsFilesAll,1)
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -62,7 +62,7 @@ fcsFilesAllProbs = c(
   )
 
 fcsFilesAll =unique(c(fcsFilesAllProbs,fcsFilesAll))
-fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 20))
 # 19:49 -> 20:31
 # [30:33]
 
@@ -148,7 +148,10 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
                   subset = "CD3-") +
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
       
-      
+       t2Bcell = ggcyto(gs1,
+                  mapping = aes(x = "IgD", y = "CD27"),
+                  subset = "CD19gate") +
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
       
        t7 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "CD8"),
@@ -207,7 +210,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         CCR7PCD45RAM = getIndiceMat(gs1, "CCR7+CD45RA-"),
         CCR7MCD45RAM = getIndiceMat(gs1, "CCR7-CD45RA-"),
         CCR7MCD45RAP = getIndiceMat(gs1, "CCR7-CD45RA+"),
-        BCELL = getIndiceMat(gs1, "CD19+")
+        BCELL = getIndiceMat(gs1, "CD19gate")
 
         )
       colnames(gateDef) = c(
