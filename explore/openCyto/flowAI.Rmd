@@ -27,7 +27,7 @@ inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
-template = "~/git/auto-fcs/explore/openCyto/lymph.dev.csv"
+template = "~/git/auto-fcs/explore/openCyto/lymph.dev.b.csv"
 templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.csv"
 
 gateDir = "gates5/"
@@ -143,6 +143,13 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
                   subset = "PE-A") +
         geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
       
+      t1Bcell = ggcyto(gs1,
+                  mapping = aes(x = "CD3", y = "CD19"),
+                  subset = "CD3-") +
+        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+      
+      
+      
        t7 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "CD8"),
                   subset = "CD3+") +
@@ -170,6 +177,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         as.ggplot(t4),
         as.ggplot(t5),
         as.ggplot(t6),
+        as.ggplot(t1Bcell),
         as.ggplot(t7),
         as.ggplot(t7_1),
         as.ggplot(t8),
@@ -198,8 +206,9 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         CCR7PCD45RAP = getIndiceMat(gs1, "CCR7+CD45RA+"),
         CCR7PCD45RAM = getIndiceMat(gs1, "CCR7+CD45RA-"),
         CCR7MCD45RAM = getIndiceMat(gs1, "CCR7-CD45RA-"),
-        CCR7MCD45RAP = getIndiceMat(gs1, "CCR7-CD45RA+")
-        
+        CCR7MCD45RAP = getIndiceMat(gs1, "CCR7-CD45RA+"),
+        BCELL = getIndiceMat(gs1, "CD19+")
+
         )
       colnames(gateDef) = c(
         "lymph",
@@ -212,7 +221,8 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         "CCR7P_CD45RAP",
         "CCR7P_CD45RAM",
         "CCR7M_CD45RAM",
-        "CCR7M_CD45RAP"
+        "CCR7M_CD45RAP",
+        "BCELL"
         )
       # APC-Cy7-A = CD4
       # BUV 395-A =CD8
