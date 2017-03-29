@@ -28,7 +28,7 @@ cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
 template = "~/git/auto-fcs/explore/openCyto/lymph.dev.b.csv"
-templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.csv"
+templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
 gateDir = "gates5/"
 gateQCDir = "gatesQC5/"
