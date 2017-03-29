@@ -43,7 +43,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =sample(fcsFilesAll,30)
+fcsFilesAll =sample(fcsFilesAll,50)
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -99,14 +99,14 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
       t1 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "root") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
       
       # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       
       t2 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "boundary") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
       # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       
       # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
@@ -114,7 +114,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         t2_1 = ggcyto(gs1,
         mapping = aes(x = "FSC-A", y = "SSC-A"),
         subset = "QC") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
         # + scale_x_flowJo_biexp() + scale_y_flowJo_biexp()
       }else{
         t2_1 =t2
@@ -124,49 +124,49 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
       t3 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "nonDebris") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
       # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
       
       
       t4 = ggcyto(gs1,
                   mapping = aes(x = "FSC-W", y = "FSC-H"),
                   subset = "lymph") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
       
       t5 = ggcyto(gs1,
                   mapping = aes(x = "PE-A", y = "FSC-H"),
                   subset = "Singlets") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
       
       t6 = ggcyto(gs1,
                   mapping = aes(x = "CD3", y = "CD19"),
                   subset = "PE-A") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
       
       t1Bcell = ggcyto(gs1,
                   mapping = aes(x = "CD3", y = "CD19"),
                   subset = "CD3-") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
       
        t2Bcell = ggcyto(gs1,
                   mapping = aes(x = "IgD", y = "CD27"),
                   subset = "CD19gate") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
       
        t7 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "CD8"),
                   subset = "CD3+") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
       
         t7_1 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "CD8"),
                   subset = "CD4_1") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
       
        t8 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "HLA-DR"),
                   subset = "CD4") +
-        geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
        
        t9 = ggcyto(gs1,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
        
@@ -323,7 +323,7 @@ ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 t3 = ggcyto(gs,
             mapping = aes(x = "FSC-A", y = "SSC-A"),
             subset = "Lymphocytes (SSC-A v FSC-A)") +
-    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
 write.table(
 +     getPopStats(gs),
 +     sep = "\t",
