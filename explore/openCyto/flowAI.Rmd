@@ -298,8 +298,8 @@ for (files in fcsFilesAll) {
     #   qcVersion = TRUE
     #   )
   }
-  
-  dev.off()
+   dev.off()
+ 
 }
 
 
