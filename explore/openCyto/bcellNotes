@@ -1,0 +1,6 @@
+"IgD-cd27+","IgD-cd27+","cd19&cd20","IgD,cd27","flowClust.1d","split=FALSE"
+"IgD+cd27+","IgD+cd27+","cd19&cd20","IgD,cd27","flowClust.1d","split=FALSE"
+"IgD+cd27-","IgD+cd27-","cd19&cd20","IgD,cd27","flowClust.1d","split=FALSE"
+"IgD-cd27-","IgD-cd27-","cd19&cd20","IgD,cd27","flowClust.1d","split=FALSE"
+
+https://github.com/RGLab/openCyto/issues/11
