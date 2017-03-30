@@ -138,6 +138,7 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         subset = "QC") +
         geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
         # + scale_x_flowJo_biexp() + scale_y_flowJo_biexp()
+        #  Need qc boolean gate 
       }else{
         t2_1 =t2
       }
