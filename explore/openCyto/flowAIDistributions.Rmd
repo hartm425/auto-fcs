@@ -41,12 +41,12 @@ m <- ggplot( df , aes(x=n..of.events))
 m + geom_histogram()
 
 frCheck = df[which(df$X..anomalies.flow.Rate>20),]
-kable(frCheck)
+kable(frCheck,format = "markdown")
 copy = paste(qcDir,"/",frCheck$Name.file,"_QC.html",sep = "")
 file.copy(copy,reviewDir)
 
 frCheck = df[which(df$X..anomalies.Margins>6),]
-kable(frCheck)
+kable(frCheck,format = "markdown")
 copy = paste(qcDir,"/",frCheck$Name.file,"_QC.html",sep = "")
 file.copy(copy,reviewDir)
 
