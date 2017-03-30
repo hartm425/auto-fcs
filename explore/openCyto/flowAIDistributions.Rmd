@@ -36,7 +36,16 @@ m + geom_histogram()
 
 m <- ggplot( df , aes(x=X..anomalies.Margins))
 m + geom_histogram()
+
+m <- ggplot( df , aes(x=n..of.events))
+m + geom_histogram()
+
 frCheck = df[which(df$X..anomalies.flow.Rate>20),]
+kable(frCheck)
+copy = paste(qcDir,"/",frCheck$Name.file,"_QC.html",sep = "")
+file.copy(copy,reviewDir)
+
+frCheck = df[which(df$X..anomalies.Margins>6),]
 kable(frCheck)
 copy = paste(qcDir,"/",frCheck$Name.file,"_QC.html",sep = "")
 file.copy(copy,reviewDir)
