@@ -82,7 +82,7 @@ check = df[which((df$X..anomalies.flow.Rate > 20 |
                     df$X..anomalies.Margins > 6) & df$n..of.events > 10000), ]
 copy = paste(check$Name.file, ".fcs", sep = "")
 fcsFilesAll = unique(c(fcsFilesAll, copy))
-
+fcsFilesAll =copy
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
 
@@ -127,36 +127,36 @@ compFrame <-
     print(paste("plotting ....", file))
     result <-
       filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
-    overlay.fr2 <- Subset(frame.c, result)
+    overlay.fr2 <- Subset(frame, result)
     t1 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "root") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
     # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
     
     t2 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "boundary") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
     
     t3 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "nonDebris") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
     
     
     t4 = ggcyto(gs1,
                 mapping = aes(x = "FSC-W", y = "FSC-H"),
                 subset = "lymph") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
     
     t5 = ggcyto(gs1,
                 mapping = aes(x = "PE-A", y = "FSC-H"),
                 subset = "Singlets") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
     
     t6 = ggcyto(gs1,
                 mapping = aes(x = "CD3", y = "CD19"),
@@ -209,6 +209,41 @@ compFrame <-
         
         ncol = 2
       )
+    }else{
+      grid.arrange(
+        as.ggplot(t1),
+        as.ggplot(t2),
+        as.ggplot(t3),
+        as.ggplot(t4),
+        as.ggplot(t5),
+        as.ggplot(t6),
+        as.ggplot(t1Bcell),
+        as.ggplot(t2Bcell),
+        as.ggplot(t7),
+        as.ggplot(t7_1),
+        as.ggplot(t8),
+        as.ggplot(t9),
+        
+        ncol = 2
+      )
+      # grid.arrange(
+      #   as.ggplot(t1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t2)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t3)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t4)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t5)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t6)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19)
+      # )
+      #  grid.arrange(
+      #   as.ggplot(t1Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t2Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t7)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t7_1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t8)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   as.ggplot(t9)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+      #   
+      #   ncol = 2
+      # )
     }
     
     # grid.arrange(
@@ -235,8 +270,10 @@ compFrame <-
             "_panel1.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
     
-    
+    QCDEF = ifelse(qcVersion,getIndiceMat(gs1, "QC"),FALSE)
+    print(table(QCDEF))
     gateDef = data.frame(
+      QC = QCDEF,
       lymph = getIndiceMat(gs1, "lymph"),
       Singlets = getIndiceMat(gs1, "Singlets"),
       PE_A_Minus = getIndiceMat(gs1, "PE-A"),
@@ -252,6 +289,7 @@ compFrame <-
       
     )
     colnames(gateDef) = c(
+      "QC_FILTER",
       "lymph",
       "Singlets",
       "PE_A",
