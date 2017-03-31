@@ -43,7 +43,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =sample(fcsFilesAll,10)
+fcsFilesAll = sample(fcsFilesAll, 10)
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -62,25 +62,26 @@ fcsFilesAllProbs = c(
   )
 
 
-fcsFilesAll =unique(c(fcsFilesAllProbs,fcsFilesAll))
+fcsFilesAll = unique(c(fcsFilesAllProbs, fcsFilesAll))
 
 qcDir = "/Volumes/Beta/data/flow/fcs3Clean/QC"
-reviewDir ="/Users/Kitty/git/auto-fcs/explore/openCyto/QC/qcReview"
+reviewDir = "/Users/Kitty/git/auto-fcs/explore/openCyto/QC/qcReview"
 collectResults <-
   list.files(qcDir,
              pattern = "mini.txt$",
              full = TRUE)
 df = data.frame()
-for (file in collectResults){
+for (file in collectResults) {
   tmp = read.delim(file,
-stringsAsFactors = FALSE)
+                   stringsAsFactors = FALSE)
   
-  df = rbind(df,tmp)
+  df = rbind(df, tmp)
 }
 
-check = df[which((df$X..anomalies.flow.Rate>20|df$X..anomalies.Margins>6)&df$n..of.events>10000),]
-copy = paste(check$Name.file,".fcs",sep = "")
-fcsFilesAll=unique(c(fcsFilesAll,copy))
+check = df[which((df$X..anomalies.flow.Rate > 20 |
+                    df$X..anomalies.Margins > 6) & df$n..of.events > 10000), ]
+copy = paste(check$Name.file, ".fcs", sep = "")
+fcsFilesAll = unique(c(fcsFilesAll, copy))
 
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
@@ -89,116 +90,112 @@ fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 # [30:33]
 
 
-compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
-      print(paste("compensating ....", file))
-
-      comp <- compensation(keyword(frame)$`SPILL`)
-      
-      chnls <- parameters(comp)
-      biexpTrans <-
-        flowJo_biexp_trans(
-          channelRange = 256,
-          maxValue = 262144.0000291775 ,
-          pos = 4.418539922,
-          neg = 0,
-          widthBasis = -100
-        )
-      tf <- transformerList(chnls, biexpTrans)
-      
-      print(paste("gating ....", file))
-      # gs <- GatingSet(c(new_frame))
-      frames = c(frame)
-      names(frames) = c(basename(file))
-      fs =  as(frames, "flowSet")
-      gs1 <- GatingSet(fs)
-      gs1 <- compensate(gs1, comp)
-      gs1 <- transform(gs1, tf)
-      
-      gh <- gs1[[1]]
-      gating(gt_lymph, gs1)
-      print(paste("plotting ....", file))
-      
-      t1 = ggcyto(gs1,
-                  mapping = aes(x = "FSC-A", y = "SSC-A"),
-                  subset = "root") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-      
-      # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-      
-      t2 = ggcyto(gs1,
-                  mapping = aes(x = "FSC-A", y = "SSC-A"),
-                  subset = "boundary") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-      # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-      
-      # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-      if (qcVersion) {
-        t2_1 = ggcyto(gs1,
-        mapping = aes(x = "FSC-A", y = "SSC-A"),
-        subset = "QC") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-        # + scale_x_flowJo_biexp() + scale_y_flowJo_biexp()
-        #  Need qc boolean gate 
-      }else{
-        t2_1 =t2
-      }
-       # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-       
-      t3 = ggcyto(gs1,
-                  mapping = aes(x = "FSC-A", y = "SSC-A"),
-                  subset = "nonDebris") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-      # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-      
-      
-      t4 = ggcyto(gs1,
-                  mapping = aes(x = "FSC-W", y = "FSC-H"),
-                  subset = "lymph") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-      
-      t5 = ggcyto(gs1,
-                  mapping = aes(x = "PE-A", y = "FSC-H"),
-                  subset = "Singlets") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
-      
-      t6 = ggcyto(gs1,
-                  mapping = aes(x = "CD3", y = "CD19"),
-                  subset = "PE-A") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-      
-      t1Bcell = ggcyto(gs1,
-                  mapping = aes(x = "CD3", y = "CD19"),
-                  subset = "CD3-") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-      
-       t2Bcell = ggcyto(gs1,
-                  mapping = aes(x = "IgD", y = "CD27"),
-                  subset = "CD19gate") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-      
-       t7 = ggcyto(gs1,
-                  mapping = aes(x = "CD4", y = "CD8"),
-                  subset = "CD3+") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-      
-        t7_1 = ggcyto(gs1,
+compFrame <-
+  function(frame,
+           file,
+           gt_lymph,
+           d,
+           outputDir,
+           gateDir,
+           qcVersion) {
+    print(paste("compensating ....", file))
+    
+    comp <- compensation(keyword(frame)$`SPILL`)
+    
+    chnls <- parameters(comp)
+    biexpTrans <-
+      flowJo_biexp_trans(
+        channelRange = 256,
+        maxValue = 262144.0000291775 ,
+        pos = 4.418539922,
+        neg = 0,
+        widthBasis = -100
+      )
+    tf <- transformerList(chnls, biexpTrans)
+    
+    print(paste("gating ....", file))
+    # gs <- GatingSet(c(new_frame))
+    frames = c(frame)
+    names(frames) = c(basename(file))
+    fs =  as(frames, "flowSet")
+    gs1 <- GatingSet(fs)
+    gs1 <- compensate(gs1, comp)
+    gs1 <- transform(gs1, tf)
+    
+    gh <- gs1[[1]]
+    gating(gt_lymph, gs1)
+    print(paste("plotting ....", file))
+    result <-
+      filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
+    overlay.fr2 <- Subset(frame.c, result)
+    t1 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "root") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    
+    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+    
+    t2 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "boundary") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    
+    
+    t3 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "nonDebris") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+    
+    
+    t4 = ggcyto(gs1,
+                mapping = aes(x = "FSC-W", y = "FSC-H"),
+                subset = "lymph") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t5 = ggcyto(gs1,
+                mapping = aes(x = "PE-A", y = "FSC-H"),
+                subset = "Singlets") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t6 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "PE-A") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t1Bcell = ggcyto(gs1,
+                     mapping = aes(x = "CD3", y = "CD19"),
+                     subset = "CD3-") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t2Bcell = ggcyto(gs1,
+                     mapping = aes(x = "IgD", y = "CD27"),
+                     subset = "CD19gate") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t7 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "CD8"),
+                subset = "CD3+") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t7_1 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "CD8"),
                   subset = "CD4_1") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-      
-       t8 = ggcyto(gs1,
-                  mapping = aes(x = "CD4", y = "HLA-DR"),
-                  subset = "CD4") +
-        geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-       
-       t9 = ggcyto(gs1,mapping = aes(x = "CD45RA",y = "CCR7"),subset = "CD4") +geom_hex(bins=100) + ggcyto_par_set(limits = "data") + geom_gate()
-       
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t8 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "HLA-DR"),
+                subset = "CD4") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    t9 = ggcyto(gs1,
+                mapping = aes(x = "CD45RA", y = "CCR7"),
+                subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3)
+    
+    if (qcVersion) {
       grid.arrange(
         as.ggplot(t1),
         as.ggplot(t2),
-        
-        as.ggplot(t2_1),
-  
         as.ggplot(t3),
         as.ggplot(t4),
         as.ggplot(t5),
@@ -209,72 +206,89 @@ compFrame <- function(frame, file, gt_lymph, d, outputDir, gateDir,qcVersion) {
         as.ggplot(t7_1),
         as.ggplot(t8),
         as.ggplot(t9),
-
+        
         ncol = 2
       )
-   
-      
-      d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
-      outFile <-
-        paste(outputDir,gateDir,
-              basename(file),
-              "_panel1.wsp", sep = "")
-      GatingSet2flowJo(gs1, outFile)
-      
-  
-      gateDef = data.frame(
-        lymph = getIndiceMat(gs1, "lymph"),
-        Singlets = getIndiceMat(gs1, "Singlets"),
-        PE_A_Minus = getIndiceMat(gs1, "PE-A"),
-        CD3Plus = getIndiceMat(gs1, "CD3+"),
-        cd4Pcd8M = getIndiceMat(gs1, "CD4"),
-        cd4Mcd8P = getIndiceMat(gs1, "CD8"),
-        HLADR = getIndiceMat(gs1, "ActivatedCD4"),
-        CCR7PCD45RAP = getIndiceMat(gs1, "CCR7+CD45RA+"),
-        CCR7PCD45RAM = getIndiceMat(gs1, "CCR7+CD45RA-"),
-        CCR7MCD45RAM = getIndiceMat(gs1, "CCR7-CD45RA-"),
-        CCR7MCD45RAP = getIndiceMat(gs1, "CCR7-CD45RA+"),
-        BCELL = getIndiceMat(gs1, "CD19gate")
-
-        )
-      colnames(gateDef) = c(
-        "lymph",
-        "Singlets",
-        "PE_A",
-        "CD3_PLUS",
-        "CD4",
-        "CD8",
-        "ActivatedCD4",
-        "CCR7P_CD45RAP",
-        "CCR7P_CD45RAM",
-        "CCR7M_CD45RAM",
-        "CCR7M_CD45RAP",
-        "BCELL"
-        )
-      # APC-Cy7-A = CD4
-      # BUV 395-A =CD8
-      
-      write.table(
-        gateDef,
-        sep = "\t",
-        quote = FALSE,
-        file = paste(
-          outputDir,
-          gateDir,
-          basename(file),
-          "_panel1_gate_def.txt",
-          sep = ""
-        ),
-        row.names = FALSE
-      )
-
     }
+    
+    # grid.arrange(
+    #   as.ggplot(t1),
+    #   as.ggplot(t2),
+    #   as.ggplot(t3),
+    #   as.ggplot(t4),
+    #   as.ggplot(t5),
+    #   as.ggplot(t6),
+    #   as.ggplot(t1Bcell),
+    #   as.ggplot(t2Bcell),
+    #   as.ggplot(t7),
+    #   as.ggplot(t7_1),
+    #   as.ggplot(t8),
+    #   as.ggplot(t9),
+    #
+    #   ncol = 2
+    # )
+    
+    d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
+    outFile <-
+      paste(outputDir, gateDir,
+            basename(file),
+            "_panel1.wsp", sep = "")
+    GatingSet2flowJo(gs1, outFile)
+    
+    
+    gateDef = data.frame(
+      lymph = getIndiceMat(gs1, "lymph"),
+      Singlets = getIndiceMat(gs1, "Singlets"),
+      PE_A_Minus = getIndiceMat(gs1, "PE-A"),
+      CD3Plus = getIndiceMat(gs1, "CD3+"),
+      cd4Pcd8M = getIndiceMat(gs1, "CD4"),
+      cd4Mcd8P = getIndiceMat(gs1, "CD8"),
+      HLADR = getIndiceMat(gs1, "ActivatedCD4"),
+      CCR7PCD45RAP = getIndiceMat(gs1, "CCR7+CD45RA+"),
+      CCR7PCD45RAM = getIndiceMat(gs1, "CCR7+CD45RA-"),
+      CCR7MCD45RAM = getIndiceMat(gs1, "CCR7-CD45RA-"),
+      CCR7MCD45RAP = getIndiceMat(gs1, "CCR7-CD45RA+"),
+      BCELL = getIndiceMat(gs1, "CD19gate")
+      
+    )
+    colnames(gateDef) = c(
+      "lymph",
+      "Singlets",
+      "PE_A",
+      "CD3_PLUS",
+      "CD4",
+      "CD8",
+      "ActivatedCD4",
+      "CCR7P_CD45RAP",
+      "CCR7P_CD45RAM",
+      "CCR7M_CD45RAM",
+      "CCR7M_CD45RAP",
+      "BCELL"
+    )
+    # APC-Cy7-A = CD4
+    # BUV 395-A =CD8
+    
+    write.table(
+      gateDef,
+      sep = "\t",
+      quote = FALSE,
+      file = paste(
+        outputDir,
+        gateDir,
+        basename(file),
+        "_panel1_gate_def.txt",
+        sep = ""
+      ),
+      row.names = FALSE
+    )
+    
+  }
 
 
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
 i = 1
-numProcessed =0
+numProcessed = 0
 d = data.frame()
 for (files in fcsFilesAll) {
   # fcsFiles = files
@@ -283,35 +297,37 @@ for (files in fcsFilesAll) {
   pdf(file = paste(outputDir, "panel1_test5_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
-    numProcessed = numProcessed+1
+    numProcessed = numProcessed + 1
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
-    frame = read.FCS(paste(inputFCSDir,file,sep = ""))
-    description(frame)$FILENAME =file
+    frame = read.FCS(paste(inputFCSDir, file, sep = ""))
+    description(frame)$FILENAME = file
     
     qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
-    qcFileFull =paste(cleanDir,"QC/",qcFile,sep = "")
-    if(!file.exists(qcFileFull)){
-    flow_auto_qc(
-      frame,
-      folder_results = "QC",
-      mini_report = paste(basename(file), "mini"),
-      fcs_QC = "",
-      pen_valueFS = 50,
-      remove_from = "FR_FM"
+    qcFileFull = paste(cleanDir, "QC/", qcFile, sep = "")
+    if (!file.exists(qcFileFull)) {
+      flow_auto_qc(
+        frame,
+        folder_results = "QC",
+        mini_report = paste(basename(file), "mini"),
+        fcs_QC = "",
+        pen_valueFS = 50,
+        remove_from = "FR_FM"
       )
     }
+    
+    frame.c = read.FCS(qcFileFull)
+    
     compFrame(
-      frame = frame,
+      frame = frame.c,
       file = file,
       gt_lymph = gt_lymph ,
       d = d,
       outputDir = outputDir,
       gateDir = gateDir,
       qcVersion = FALSE
-      )
-
-    frame.c = read.FCS(qcFileFull)
+    )
+    
     compFrame(
       frame = frame.c,
       file = file,
@@ -320,10 +336,10 @@ for (files in fcsFilesAll) {
       outputDir = outputDir,
       gateDir = gateQCDir,
       qcVersion = TRUE
-      )
+    )
   }
-   dev.off()
- 
+  dev.off()
+  
 }
 
 
@@ -346,7 +362,7 @@ ws <- openWorkspace("/Users/Kitty/temp/fcs/513-520 HRS p1&p2.wsp")
 t3 = ggcyto(gs,
             mapping = aes(x = "FSC-A", y = "SSC-A"),
             subset = "Lymphocytes (SSC-A v FSC-A)") +
-    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() + geom_stats(size = 3) + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
 write.table(
 +     getPopStats(gs),
 +     sep = "\t",
