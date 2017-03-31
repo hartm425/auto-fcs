@@ -123,9 +123,9 @@ compFrame <-
     gh <- gs1[[1]]
     gating(gt_lymph, gs1)
     print(paste("plotting ....", file))
-    # result <-
-    #   filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
-    # overlay.fr2 <- Subset(frame, result)
+    result <-
+      filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
+    overlay.fr2 <- Subset(frame, result)
     t1 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "root") +
@@ -189,26 +189,7 @@ compFrame <-
     t9 = ggcyto(gs1,
                 mapping = aes(x = "CD45RA", y = "CCR7"),
                 subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
-    
-    if (qcVersion) {
-      grid.arrange(
-        as.ggplot(t1),
-        as.ggplot(t2),
-        as.ggplot(t3),
-        as.ggplot(t4),
-        as.ggplot(t5),
-        as.ggplot(t6),
-        as.ggplot(t1Bcell),
-        as.ggplot(t2Bcell),
-        as.ggplot(t7),
-        as.ggplot(t7_1),
-        as.ggplot(t8),
-        as.ggplot(t9),
-        
-        ncol = 2
-      )
-    }else{
-      grid.arrange(
+   grid.arrange(
         as.ggplot(t1),
         as.ggplot(t2),
         as.ggplot(t3),
@@ -270,7 +251,7 @@ compFrame <-
     
     QCDEF = FALSE
     if (qcVersion) {
-      QCDEF = !getIndiceMat(gs1, "QC")
+      QCDEF = getIndiceMat(gs1, "QC")
     }
 #     [1] "plotting .... 2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs"
 # QCDEF
