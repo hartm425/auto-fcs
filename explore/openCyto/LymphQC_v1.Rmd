@@ -64,25 +64,23 @@ fcsFilesAllProbs = c(
 
 fcsFilesAll = unique(c(fcsFilesAllProbs, fcsFilesAll))
 
-qcDir = "/Volumes/Beta/data/flow/fcs3Clean/QC"
-reviewDir = "/Users/Kitty/git/auto-fcs/explore/openCyto/QC/qcReview"
-collectResults <-
-  list.files(qcDir,
-             pattern = "mini.txt$",
-             full = TRUE)
-df = data.frame()
-for (file in collectResults) {
-  tmp = read.delim(file,
-                   stringsAsFactors = FALSE)
-  
-  df = rbind(df, tmp)
-}
-
-check = df[which((df$X..anomalies.flow.Rate > 20 |
-                    df$X..anomalies.Margins > 6) & df$n..of.events > 10000), ]
-copy = paste(check$Name.file, ".fcs", sep = "")
-fcsFilesAll = unique(c(fcsFilesAll, copy))
-fcsFilesAll =copy
+qcOutliers = c(
+  "2016-05-13_PANEL 1_ZF_panel one_F1632233_004.fcs",
+  "2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs",
+  "2016-05-20_PANEL 1_ZF_panel one_F1632217_007.fcs",
+  "2016-05-26_PANEL 1_ZF_panel one_F1636727_020.fcs",
+  "2016-07-08_PANEL 1_ZF_Group one_F1631269_003.fcs",
+  "2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs",
+  "2016-07-08_PANEL 1_ZF_Group one_F1632342_002.fcs",
+  "2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs",
+  "2016-07-27_PANEL 1_ZF_Group one_F1632384_007.fcs",
+  "2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs",
+  "2016-07-29_PANEL 1_ZF_Group one_F1636783_009.fcs",
+  "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
+  "2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs"
+)
+fcsFilesAll = unique(c(fcsFilesAllProbs, qcOutliers))
+# fcsFilesAll =qcOutliers
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
 
@@ -125,9 +123,9 @@ compFrame <-
     gh <- gs1[[1]]
     gating(gt_lymph, gs1)
     print(paste("plotting ....", file))
-    result <-
-      filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
-    overlay.fr2 <- Subset(frame, result)
+    # result <-
+    #   filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
+    # overlay.fr2 <- Subset(frame, result)
     t1 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "root") +
@@ -270,7 +268,10 @@ compFrame <-
             "_panel1.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
     
-    QCDEF = ifelse(qcVersion,getIndiceMat(gs1, "QC"),FALSE)
+    QCDEF = FALSE
+    if (qcVersion) {
+      QCDEF = getIndiceMat(gs1, "QC")
+    }
     print(table(QCDEF))
     gateDef = data.frame(
       QC = QCDEF,
@@ -454,4 +455,23 @@ write.table(
     preprocessing_args = "K=2,min=0"
   )
 )
+
+
+qcDir = "/Volumes/Beta/data/flow/fcs3Clean/QC"
+reviewDir = "/Users/Kitty/git/auto-fcs/explore/openCyto/QC/qcReview"
+collectResults <-
+  list.files(qcDir,
+             pattern = "mini.txt$",
+             full = TRUE)
+df = data.frame()
+for (file in collectResults) {
+  tmp = read.delim(file,
+                   stringsAsFactors = FALSE)
+  
+  df = rbind(df, tmp)
+}
+
+check = df[which((df$X..anomalies.flow.Rate > 20 |
+                    df$X..anomalies.Margins > 6) & df$n..of.events > 10000), ]
+copy = paste(check$Name.file, ".fcs", sep = "")
 
