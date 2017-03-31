@@ -43,7 +43,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =sample(fcsFilesAll,100)
+fcsFilesAll =sample(fcsFilesAll,10)
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -80,7 +80,7 @@ stringsAsFactors = FALSE)
 
 check = df[which((df$X..anomalies.flow.Rate>20|df$X..anomalies.Margins>6)&df$n..of.events>10000),]
 copy = paste(check$Name.file,".fcs",sep = "")
-fcsFilesAll=unique(copy)
+fcsFilesAll=unique(c(fcsFilesAll,copy))
 
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
