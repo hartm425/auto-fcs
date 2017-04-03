@@ -5,7 +5,7 @@ lymph,lymph,nonDebris,"FSC-A,SSC-A",flowClust,"K=2,quantile=0.90,target=c(1e5,5e
 Singlets,FSC-W-,lymph,FSC-W,tailgate,tol=5e-3,NA,NA,standardize_flowset,NA
 PE-A,PE-A-,Singlets,PE-A,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA
 CD3,CD3+/-,PE-A,CD3,mindensity,"gate_range=c(80,120)",NA,NA,NA,NA
-CD19gate,CD19+,CD3-,CD19,mindensity,"gate_range=c(90,150)",NA,NA,NA,NA
+CD19gate,CD19+,CD3-,CD19,mindensity,"gate_range=c(100,150)",NA,NA,NA,NA
 CD27gate,CD27+,CD19gate,CD27,flowClust,K=2,NA,NA,NA,NA
 IgDgate,IgD-,CD19gate,IgD,tailgate,"tol=1e-4, positive = FALSE,side='left'",NA,NA,NA,NA
 *,IgD+/-CD27+/-,CD19gate,"IgD,CD27",refGate,CD27gate:IgDgate,NA,NA,NA,NA
