@@ -32,7 +32,6 @@ templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
 gateDir = "gates5/"
 gateQCDir = "gatesQC5/"
-
 mapper =read.delim("/Volumes/Beta/data/flow/fcsMap.txt",stringsAsFactors = FALSE,sep = "\t") 
 
 # getIndiceMat()
@@ -94,13 +93,13 @@ fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 # 19:49 -> 20:31
 # [30:33]
 
-getStats <- function(gs1, qcVersion,metric,gate) {
-      autoStats = getPopStats(gs1,statistic=metric)
-      autoStats$METRIC =metric
-      autoStats$GATE =gate
-      autoStats$QC =qcVersion
-      return(autoStats)
-    }
+getStats <- function(gs1, qcVersion, metric, gate) {
+  autoStats = getPopStats(gs1, statistic = metric)
+  autoStats$METRIC = metric
+  autoStats$GATE = gate
+  autoStats$QC = qcVersion
+  return(autoStats)
+}
 
 compFrame <-
   function(frame,
@@ -109,9 +108,11 @@ compFrame <-
            d,
            outputDir,
            gateDir,
-           qcVersion,mapper,inputFCSDir) {
+           qcVersion,
+           mapper,
+           inputFCSDir) {
     print(paste("compensating ....", file))
-    metrics =data.frame()
+    metrics = data.frame()
     comp <- compensation(keyword(frame)$`SPILL`)
     
     chnls <- parameters(comp)
@@ -136,27 +137,45 @@ compFrame <-
     
     gh <- gs1[[1]]
     gating(gt_lymph, gs1)
-   
     
     
-    wsFile = mapper[which(mapper$FCS==file),]$WSP
-    if(length(wsFile)>0){
-    ws <- openWorkspace(wsFile)
-    autoCounts =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "count","AUTOMATIC")
-    autoProps =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "freq","AUTOMATIC")
-    metrics = rbind(autoCounts,autoProps)
-    if(!qcVersion){
-    g =file  
-    gs <- parseWorkspace(ws, path = inputFCSDir, name = 2,subset= g,isNcdf = FALSE,sampNloc="sampleNode")
-    manCounts =getStats(gs1 = gs,qcVersion = qcVersion,metric = "count","MANUAL")
-    metrics = rbind(metrics,manCounts)
-
-    manProps =getStats(gs1 = gs,qcVersion = qcVersion,metric = "freq","MANUAL")
-    metrics = rbind(metrics,manProps)
-  
+    
+    
+    autoCounts = getStats(gs1 = gs1,
+                          qcVersion = qcVersion,
+                          metric = "count",
+                          "AUTOMATIC")
+    autoProps = getStats(gs1 = gs1,
+                         qcVersion = qcVersion,
+                         metric = "freq",
+                         "AUTOMATIC")
+    metrics = rbind(autoCounts, autoProps)
+    if (!qcVersion) {
+      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      ws <- openWorkspace(wsFile)
+      gs <-
+        parseWorkspace(
+          ws,
+          path = inputFCSDir,
+          name =1,
+          subset = eval(fileToLoad),
+          isNcdf = FALSE
+        )
+      manCounts = getStats(gs1 = gs,
+                           qcVersion = qcVersion,
+                           metric = "count",
+                           "MANUAL")
+      metrics = rbind(metrics, manCounts)
+      
+      manProps = getStats(gs1 = gs,
+                          qcVersion = qcVersion,
+                          metric = "freq",
+                          "MANUAL")
+      metrics = rbind(metrics, manProps)
+      
     }
     print(metrics)
-    }
+    
     
     print(paste("plotting ....", file))
     result <-
@@ -185,80 +204,80 @@ compFrame <-
     t4 = ggcyto(gs1,
                 mapping = aes(x = "FSC-W", y = "FSC-H"),
                 subset = "lymph") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t5 = ggcyto(gs1,
                 mapping = aes(x = "PE-A", y = "FSC-H"),
                 subset = "Singlets") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t6 = ggcyto(gs1,
                 mapping = aes(x = "CD3", y = "CD19"),
                 subset = "PE-A") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t1Bcell = ggcyto(gs1,
                      mapping = aes(x = "CD3", y = "CD19"),
                      subset = "CD3-") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t2Bcell = ggcyto(gs1,
                      mapping = aes(x = "IgD", y = "CD27"),
                      subset = "CD19gate") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t7 = ggcyto(gs1,
                 mapping = aes(x = "CD4", y = "CD8"),
                 subset = "CD3+") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t7_1 = ggcyto(gs1,
                   mapping = aes(x = "CD4", y = "CD8"),
                   subset = "CD4_1") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t8 = ggcyto(gs1,
                 mapping = aes(x = "CD4", y = "HLA-DR"),
                 subset = "CD4") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate() 
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t9 = ggcyto(gs1,
                 mapping = aes(x = "CD45RA", y = "CCR7"),
-                subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
-   grid.arrange(
-        as.ggplot(t1),
-        as.ggplot(t2),
-        as.ggplot(t3),
-        as.ggplot(t4),
-        as.ggplot(t5),
-        as.ggplot(t6),
-        as.ggplot(t1Bcell),
-        as.ggplot(t2Bcell),
-        as.ggplot(t7),
-        as.ggplot(t7_1),
-        as.ggplot(t8),
-        as.ggplot(t9),
-        
-        ncol = 2
-      )
-      # grid.arrange(
-      #   as.ggplot(t1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t2)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t3)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t4)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t5)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t6)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19)
-      # )
-      #  grid.arrange(
-      #   as.ggplot(t1Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t2Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t7)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t7_1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t8)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   as.ggplot(t9)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-      #   
-      #   ncol = 2
-      # )
+                subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    grid.arrange(
+      as.ggplot(t1),
+      as.ggplot(t2),
+      as.ggplot(t3),
+      as.ggplot(t4),
+      as.ggplot(t5),
+      as.ggplot(t6),
+      as.ggplot(t1Bcell),
+      as.ggplot(t2Bcell),
+      as.ggplot(t7),
+      as.ggplot(t7_1),
+      as.ggplot(t8),
+      as.ggplot(t9),
+      
+      ncol = 2
+    )
+    # grid.arrange(
+    #   as.ggplot(t1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t2)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t3)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t4)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t5)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t6)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19)
+    # )
+    #  grid.arrange(
+    #   as.ggplot(t1Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t2Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t7)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t7_1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t8)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #   as.ggplot(t9)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
+    #
+    #   ncol = 2
+    # )
     # }
     
     # grid.arrange(
@@ -289,10 +308,10 @@ compFrame <-
     if (qcVersion) {
       QCDEF = getIndiceMat(gs1, "QC")
     }
-#     [1] "plotting .... 2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs"
-# QCDEF
-#  FALSE   TRUE 
-# 136918 982260
+    #     [1] "plotting .... 2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs"
+    # QCDEF
+    #  FALSE   TRUE
+    # 136918 982260
     print(table(QCDEF))
     gateDef = data.frame(
       QC = QCDEF,
@@ -359,6 +378,8 @@ for (files in fcsFilesAll) {
   pdf(file = paste(outputDir, "panel1_test5_", i, ".pdf", sep = ""))
   i = i + 1
   for (file in files) {
+    fileToLoad <- file
+    
     numProcessed = numProcessed + 1
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
@@ -380,27 +401,31 @@ for (files in fcsFilesAll) {
     
     frame.c = read.FCS(qcFileFull)
     
-   metricBase = compFrame(
+    metricBase = compFrame(
       frame = frame.c,
       file = file,
       gt_lymph = gt_lymph ,
       d = d,
       outputDir = outputDir,
       gateDir = gateDir,
-      qcVersion = FALSE,mapper,inputFCSDir
+      qcVersion = FALSE,
+      mapper,
+      inputFCSDir
     )
-   metrics = rbind(metrics,metricBase)
-   metricQC= compFrame(
+    metrics = rbind(metrics, metricBase)
+    metricQC = compFrame(
       frame = frame.c,
       file = file,
       gt_lymph = gt_lymphQC ,
       d = d,
       outputDir = outputDir,
       gateDir = gateQCDir,
-      qcVersion = TRUE,mapper,inputFCSDir
+      qcVersion = TRUE,
+      mapper,
+      inputFCSDir
     )
-    metrics = rbind(metrics,metricQC)
-
+    metrics = rbind(metrics, metricQC)
+    
   }
   dev.off()
   
