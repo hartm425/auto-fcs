@@ -1,0 +1,51 @@
+---
+title: "workspaceMapper"
+author: "JL"
+date: "3/31/2017"
+output: html_document
+---
+
+# Mapping workspace to individual fcs files for correlation metrics
+
+
+```{r collect,eval=TRUE,fig.width=10,fig.height=8}
+library(openCyto)
+library(ggcyto)
+library(flowCore)
+outDir = "/Volumes/Beta/data/flow/"
+wsDir = "/Volumes/Beta/data/flow/wsp"
+wsps <-
+  list.files(wsDir,
+             pattern = "wsp$",
+             full = TRUE)
+df = data.frame(
+  WSP = character(0),
+  FCS = character(0)
+)
+
+for(file in wsps){
+   ws <- openWorkspace(file)
+  s= getSamples(ws)
+  # print(paste(file,"\t",s[2]$name))
+  tmp = data.frame(
+  WSP = file,
+  FCS = s[2]$name
+)
+  
+  df = rbind(df,tmp)
+}
+
+write.table( df,file = paste(outDir,"fcsMap.txt",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE)
+```
+
+
+
+for samples in ws:
+
+print ws file, sample
+
+
+load and gate for sample, 
+
+plot proportions for auto and manual
+
