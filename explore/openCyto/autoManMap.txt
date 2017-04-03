@@ -1,2 +1,12 @@
 Auto	Manual
 lymph	Lymphocytes (SSC-A v FSC-A)
+Singlets	Single Cells (FSC-H v FSC-W)
+PE-A	Live cells (PE-)
+CD3+	Tcells (CD3+ CD19-)
+CD4	Helper Tcells-CD4+
+CD8	cytotoxic Tcells-CD8+
+ActivatedCD4	activated helper Tcells (CD4+ HLA-DR+)
+CD19gate	B cells (CD3- CD19+)
+IgD+CD27-	naive Bcells (CD27- IgD+)
+IgD-CD27+	IgD- memory Bcells (CD27+)
+IgD+CD27+	IgD+ memory Bcells (CD27+)

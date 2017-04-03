@@ -1,13 +1,9 @@
----
-title: "plotPropCount"
-author: "JL"
-date: "4/3/2017"
-output: 
-  html_document: 
-    keep_md: yes
----
+# plotPropCount
+JL  
+4/3/2017  
 
-```{r setup,fig.width=10,fig.height=8}
+
+```r
 library(knitr)
 library(ggplot2)
 theme_set(theme_bw(15))
@@ -30,18 +26,46 @@ metricCombo = merge(metricsAuto,metricsMan,by.x = "Merge",by.y = "Merge")
 
 p = ggplot(metricCombo,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating population count")+ylab("Manual gating population count")+geom_abline(intercept = 0, slope = 1) 
 p 
+```
 
+![](plotPropCount_files/figure-html/setup-1.png)<!-- -->
+
+```r
 p+facet_wrap(~Population.x)
+```
 
+![](plotPropCount_files/figure-html/setup-2.png)<!-- -->
+
+```r
 for(pop in unique(map$Auto)) {
   p = ggplot(metricCombo[which(metricCombo$Population.x == pop), ], aes(x =
   Count.x, y = Count.y, color = Population.x)) + geom_point() + xlab("Autogating population count") +
   ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)
   print(p)
 }
+```
+
+![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->![](plotPropCount_files/figure-html/setup-10.png)<!-- -->![](plotPropCount_files/figure-html/setup-11.png)<!-- -->![](plotPropCount_files/figure-html/setup-12.png)<!-- -->![](plotPropCount_files/figure-html/setup-13.png)<!-- -->
+
+```r
 cor.test(metricCombo$Count.x,metricCombo$Count.y)
+```
 
+```
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  metricCombo$Count.x and metricCombo$Count.y
+## t = 248.64, df = 284, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9971112 0.9981863
+## sample estimates:
+##       cor 
+## 0.9977109
+```
+
+```r
 # kable(metricCombo[,c("Merge","Count.x","Count.y")])
-
 ```
 
