@@ -145,11 +145,11 @@ compFrame <-
                           qcVersion = qcVersion,
                           metric = "count",
                           "AUTOMATIC")
-    autoProps = getStats(gs1 = gs1,
-                         qcVersion = qcVersion,
-                         metric = "freq",
-                         "AUTOMATIC")
-    metrics = rbind(autoCounts, autoProps)
+    # autoProps = getStats(gs1 = gs1,
+    #                      qcVersion = qcVersion,
+    #                      metric = "freq",
+    #                      "AUTOMATIC")
+    # metrics = rbind(autoCounts, autoProps)
     if (!qcVersion) {
       wsFile = mapper[which(mapper$FCS == file), ]$WSP
       ws <- openWorkspace(wsFile)
@@ -167,11 +167,11 @@ compFrame <-
                            "MANUAL")
       metrics = rbind(metrics, manCounts)
       
-      manProps = getStats(gs1 = gs,
-                          qcVersion = qcVersion,
-                          metric = "freq",
-                          "MANUAL")
-      metrics = rbind(metrics, manProps)
+      # manProps = getStats(gs1 = gs,
+      #                     qcVersion = qcVersion,
+      #                     metric = "freq",
+      #                     "MANUAL")
+      # metrics = rbind(metrics, manProps)
       
     }
     print(metrics)
