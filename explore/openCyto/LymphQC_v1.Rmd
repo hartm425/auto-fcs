@@ -33,7 +33,7 @@ templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 gateDir = "gates5/"
 gateQCDir = "gatesQC5/"
 
-mapper =read.delim("/Volumes/Beta/data/flow/fcsMap.txt",stringsAsFactors = FALSE,sep = ",") 
+mapper =read.delim("/Volumes/Beta/data/flow/fcsMap.txt",stringsAsFactors = FALSE,sep = "\t") 
 
 # getIndiceMat()
 theme_set(theme_bw(5))
@@ -81,18 +81,23 @@ qcOutliers = c(
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
   "2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs"
 )
-fcsFilesAll = unique(c(fcsFilesAllProbs, qcOutliers))[1]
+fcsFilesAll = unique(c(fcsFilesAllProbs, qcOutliers))
 # fcsFilesAll =qcOutliers
+
+# only use files with gates available
+fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
+fcsFilesAll = fcsFilesAll[1:5]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
+# mapper[which(mapper$FCS %in% fcsFilesAll),]
 
 # 19:49 -> 20:31
 # [30:33]
 
-getStats <- function(gs1, qcVersion,metric) {
+getStats <- function(gs1, qcVersion,metric,gate) {
       autoStats = getPopStats(gs1,statistic=metric)
       autoStats$METRIC =metric
-      autoStats$GATE ="AUTOMATIC"
+      autoStats$GATE =gate
       autoStats$QC =qcVersion
       return(autoStats)
     }
@@ -104,9 +109,9 @@ compFrame <-
            d,
            outputDir,
            gateDir,
-           qcVersion,mapper) {
+           qcVersion,mapper,inputFCSDir) {
     print(paste("compensating ....", file))
-    
+    metrics =data.frame()
     comp <- compensation(keyword(frame)$`SPILL`)
     
     chnls <- parameters(comp)
@@ -133,10 +138,26 @@ compFrame <-
     gating(gt_lymph, gs1)
    
     
-    autoCounts =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "count")
-    autoProps =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "freq")
-    autos = rbind(autoCounts,autoProps)
-    print(autos)
+    
+    wsFile = mapper[which(mapper$FCS==file),]$WSP
+    if(length(wsFile)>0){
+    ws <- openWorkspace(wsFile)
+    autoCounts =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "count","AUTOMATIC")
+    autoProps =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "freq","AUTOMATIC")
+    metrics = rbind(autoCounts,autoProps)
+    if(!qcVersion){
+    g =file  
+    gs <- parseWorkspace(ws, path = inputFCSDir, name = 2,subset= g,isNcdf = FALSE,sampNloc="sampleNode")
+    manCounts =getStats(gs1 = gs,qcVersion = qcVersion,metric = "count","MANUAL")
+    metrics = rbind(metrics,manCounts)
+
+    manProps =getStats(gs1 = gs,qcVersion = qcVersion,metric = "freq","MANUAL")
+    metrics = rbind(metrics,manProps)
+  
+    }
+    print(metrics)
+    }
+    
     print(paste("plotting ....", file))
     result <-
       filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
@@ -320,6 +341,7 @@ compFrame <-
       ),
       row.names = FALSE
     )
+    return(metrics)
     
   }
 
@@ -329,6 +351,7 @@ compFrame <-
 i = 1
 numProcessed = 0
 d = data.frame()
+metrics = data.frame()
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
@@ -357,31 +380,39 @@ for (files in fcsFilesAll) {
     
     frame.c = read.FCS(qcFileFull)
     
-    compFrame(
+   metricBase = compFrame(
       frame = frame.c,
       file = file,
       gt_lymph = gt_lymph ,
       d = d,
       outputDir = outputDir,
       gateDir = gateDir,
-      qcVersion = FALSE,mapper
+      qcVersion = FALSE,mapper,inputFCSDir
     )
-    
-    compFrame(
+   metrics = rbind(metrics,metricBase)
+   metricQC= compFrame(
       frame = frame.c,
       file = file,
       gt_lymph = gt_lymphQC ,
       d = d,
       outputDir = outputDir,
       gateDir = gateQCDir,
-      qcVersion = TRUE,mapper
+      qcVersion = TRUE,mapper,inputFCSDir
     )
+    metrics = rbind(metrics,metricQC)
+
   }
   dev.off()
   
 }
 
-
+write.table(
+  metrics,
+  sep = "\t",
+  quote = FALSE,
+  file = paste(outputDir, "testTypesTestMetrics5.txt", sep = ""),
+  row.names = FALSE
+)
 
 
 write.table(
