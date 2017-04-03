@@ -63,7 +63,7 @@ fcsFilesAllProbs = c(
   )
 
 
-fcsFilesAll = unique(c(fcsFilesAllProbs, fcsFilesAll))
+# fcsFilesAll = unique(c(fcsFilesAllProbs, fcsFilesAll))
 
 qcOutliers = c(
   "2016-05-13_PANEL 1_ZF_panel one_F1632233_004.fcs",
@@ -80,12 +80,12 @@ qcOutliers = c(
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
   "2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs"
 )
-fcsFilesAll = unique(c(fcsFilesAllProbs, qcOutliers))
+fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
 # fcsFilesAll =qcOutliers
 
 # only use files with gates available
 fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
-fcsFilesAll = fcsFilesAll[1:5]
+# fcsFilesAll = fcsFilesAll[1:5]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
 # mapper[which(mapper$FCS %in% fcsFilesAll),]
@@ -150,6 +150,8 @@ compFrame <-
     #                      metric = "freq",
     #                      "AUTOMATIC")
     # metrics = rbind(autoCounts, autoProps)
+     metrics = autoCounts
+
     if (!qcVersion) {
       wsFile = mapper[which(mapper$FCS == file), ]$WSP
       ws <- openWorkspace(wsFile)
@@ -174,9 +176,6 @@ compFrame <-
       # metrics = rbind(metrics, manProps)
       
     }
-    print(metrics)
-    
-    
     print(paste("plotting ....", file))
     result <-
       filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
