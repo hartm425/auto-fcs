@@ -33,6 +33,8 @@ templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 gateDir = "gates5/"
 gateQCDir = "gatesQC5/"
 
+mapper =read.delim("/Volumes/Beta/data/flow/fcsMap.txt",stringsAsFactors = FALSE,sep = ",") 
+
 # getIndiceMat()
 theme_set(theme_bw(5))
 gt_lymph <-
@@ -79,7 +81,7 @@ qcOutliers = c(
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
   "2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs"
 )
-fcsFilesAll = unique(c(fcsFilesAllProbs, qcOutliers))
+fcsFilesAll = unique(c(fcsFilesAllProbs, qcOutliers))[1]
 # fcsFilesAll =qcOutliers
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
@@ -87,6 +89,13 @@ fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 # 19:49 -> 20:31
 # [30:33]
 
+getStats <- function(gs1, qcVersion,metric) {
+      autoStats = getPopStats(gs1,statistic=metric)
+      autoStats$METRIC =metric
+      autoStats$GATE ="AUTOMATIC"
+      autoStats$QC =qcVersion
+      return(autoStats)
+    }
 
 compFrame <-
   function(frame,
@@ -95,7 +104,7 @@ compFrame <-
            d,
            outputDir,
            gateDir,
-           qcVersion) {
+           qcVersion,mapper) {
     print(paste("compensating ....", file))
     
     comp <- compensation(keyword(frame)$`SPILL`)
@@ -122,6 +131,12 @@ compFrame <-
     
     gh <- gs1[[1]]
     gating(gt_lymph, gs1)
+   
+    
+    autoCounts =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "count")
+    autoProps =getStats(gs1 = gs1,qcVersion = qcVersion,metric = "freq")
+    autos = rbind(autoCounts,autoProps)
+    print(autos)
     print(paste("plotting ....", file))
     result <-
       filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
@@ -223,7 +238,7 @@ compFrame <-
       #   
       #   ncol = 2
       # )
-    }
+    # }
     
     # grid.arrange(
     #   as.ggplot(t1),
@@ -349,7 +364,7 @@ for (files in fcsFilesAll) {
       d = d,
       outputDir = outputDir,
       gateDir = gateDir,
-      qcVersion = FALSE
+      qcVersion = FALSE,mapper
     )
     
     compFrame(
@@ -359,7 +374,7 @@ for (files in fcsFilesAll) {
       d = d,
       outputDir = outputDir,
       gateDir = gateQCDir,
-      qcVersion = TRUE
+      qcVersion = TRUE,mapper
     )
   }
   dev.off()
