@@ -16,7 +16,7 @@ CD8+,CD8+,CD4-,CD8,mindensity,,NA,NA,NA,NA
 CD4_1,CD4+CD8-,CD3+,"CD4,CD8",refGate,CD4+:CD8-,NA,NA,NA,NA
 CD8,CD4-CD8+,CD3+,"CD4,CD8",refGate,CD4-:CD8+,NA,NA,NA,NA
 CD4,CD8-,CD4_1,CD8,tailgate,"tol=1e-2,positive = FALSE",NA,NA,standardize_flowset,NA
-ActivatedCD4,HLA-DR+,CD4,HLA-DR,tailgate,tol=5e-3,NA,NA,standardize_flowset,NA
+ActivatedCD4,HLA-DR+,CD4,HLA-DR,tailgate,tol=0.05,NA,NA,standardize_flowset,NA
 *,CD45RA+/-,CD4,CD45RA,mindensity,NA,NA,NA,NA,NA
 CCR7gate,CCR7,CD4/CD45RA+,CCR7,tailgate,"tol=1e-4, positive = FALSE,side='left'",NA,NA,NA,NA
 CCR7gate,CCR7,CD4/CD45RA-,CCR7,tailgate,"tol=1e-4, positive = FALSE,side='left'",NA,NA,NA,NA

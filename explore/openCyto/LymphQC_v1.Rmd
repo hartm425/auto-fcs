@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll = sample(fcsFilesAll, 30)
+fcsFilesAll = sample(fcsFilesAll, 50)
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -383,6 +383,7 @@ for (files in fcsFilesAll) {
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputFCSDir, file, sep = ""))
+    if(length(exprs(frame)[,"FSC-H"])>10000){
     description(frame)$FILENAME = file
     
     qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
@@ -424,6 +425,7 @@ for (files in fcsFilesAll) {
       inputFCSDir
     )
     metrics = rbind(metrics, metricQC)
+    }
     
   }
   dev.off()
