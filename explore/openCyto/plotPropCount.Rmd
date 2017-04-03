@@ -34,12 +34,14 @@ p
 p+facet_wrap(~Population.x)
 
 for(pop in unique(map$Auto)) {
-  p = ggplot(metricCombo[which(metricCombo$Population.x == pop), ], aes(x =
+  sub = metricCombo[which(metricCombo$Population.x == pop), ]
+  t =cor.test(sub$Count.x,sub$Count.y)
+  p = ggplot(sub, aes(x =
   Count.x, y = Count.y, color = Population.x)) + geom_point() + xlab("Autogating population count") +
-  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)
+  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"- pearson r =",t$estimate))
   print(p)
 }
-cor.test(metricCombo$Count.x,metricCombo$Count.y)
+ cor.test(metricCombo$Count.x,metricCombo$Count.y,method = "spearman")
 
 # kable(metricCombo[,c("Merge","Count.x","Count.y")])
 

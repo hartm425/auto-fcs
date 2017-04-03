@@ -38,9 +38,11 @@ p+facet_wrap(~Population.x)
 
 ```r
 for(pop in unique(map$Auto)) {
-  p = ggplot(metricCombo[which(metricCombo$Population.x == pop), ], aes(x =
+  sub = metricCombo[which(metricCombo$Population.x == pop), ]
+  t =cor.test(sub$Count.x,sub$Count.y)
+  p = ggplot(sub, aes(x =
   Count.x, y = Count.y, color = Population.x)) + geom_point() + xlab("Autogating population count") +
-  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)
+  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"- pearson r =",t$estimate))
   print(p)
 }
 ```
@@ -48,21 +50,24 @@ for(pop in unique(map$Auto)) {
 ![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->![](plotPropCount_files/figure-html/setup-10.png)<!-- -->![](plotPropCount_files/figure-html/setup-11.png)<!-- -->![](plotPropCount_files/figure-html/setup-12.png)<!-- -->![](plotPropCount_files/figure-html/setup-13.png)<!-- -->
 
 ```r
-cor.test(metricCombo$Count.x,metricCombo$Count.y)
+ cor.test(metricCombo$Count.x,metricCombo$Count.y,method = "spearman")
+```
+
+```
+## Warning in cor.test.default(metricCombo$Count.x, metricCombo$Count.y,
+## method = "spearman"): Cannot compute exact p-value with ties
 ```
 
 ```
 ## 
-## 	Pearson's product-moment correlation
+## 	Spearman's rank correlation rho
 ## 
 ## data:  metricCombo$Count.x and metricCombo$Count.y
-## t = 248.64, df = 284, p-value < 2.2e-16
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  0.9971112 0.9981863
+## S = 63058, p-value < 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
-##       cor 
-## 0.9977109
+##       rho 
+## 0.9838267
 ```
 
 ```r
