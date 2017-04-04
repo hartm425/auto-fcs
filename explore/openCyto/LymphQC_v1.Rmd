@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[10:15]
+# fcsFilesAll =fcsFilesAll[10:15]
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -85,8 +85,9 @@ fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
 
 # only use files with gates available
 fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
+print(length(fcsFilesAll))
 # fcsFilesAll = fcsFilesAll[1:5]
-fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
 
 # mapper[which(mapper$FCS %in% fcsFilesAll),]
 
