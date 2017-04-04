@@ -38,8 +38,8 @@ for(pop in unique(map$Auto)) {
   ts =cor.test(sub$Count.x,sub$Count.y,method = "spearman")
 
   p = ggplot(sub, aes(x =
-  Count.x, y = Count.y, color = Population.x)) + geom_point() + xlab("Autogating population count") +
-  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4)))
+  Count.x, y = Count.y, color = FlaggedSample.x)) + geom_point() + xlab("Autogating population count") +
+  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"n=",length(sub$Count.x),"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4)))
   print(p)
 }
  cor.test(metricCombo$Count.x,metricCombo$Count.y,method = "spearman")

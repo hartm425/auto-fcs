@@ -42,13 +42,27 @@ for(pop in unique(map$Auto)) {
   ts =cor.test(sub$Count.x,sub$Count.y,method = "spearman")
 
   p = ggplot(sub, aes(x =
-  Count.x, y = Count.y, color = Population.x)) + geom_point() + xlab("Autogating population count") +
-  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4)))
+  Count.x, y = Count.y, color = FlaggedSample.x)) + geom_point() + xlab("Autogating population count") +
+  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"n=",length(sub$Count.x),"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4)))
   print(p)
 }
 ```
 
-![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->![](plotPropCount_files/figure-html/setup-10.png)<!-- -->![](plotPropCount_files/figure-html/setup-11.png)<!-- -->
+![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->
+
+```
+## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
+## Cannot compute exact p-value with ties
+```
+
+![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->![](plotPropCount_files/figure-html/setup-10.png)<!-- -->
+
+```
+## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
+## Cannot compute exact p-value with ties
+```
+
+![](plotPropCount_files/figure-html/setup-11.png)<!-- -->
 
 ```
 ## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
@@ -71,11 +85,11 @@ for(pop in unique(map$Auto)) {
 ## 	Spearman's rank correlation rho
 ## 
 ## data:  metricCombo$Count.x and metricCombo$Count.y
-## S = 15544, p-value < 2.2e-16
+## S = 46706, p-value < 2.2e-16
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
 ##       rho 
-## 0.9934192
+## 0.9802265
 ```
 
 ```r
