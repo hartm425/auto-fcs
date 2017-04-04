@@ -374,7 +374,8 @@ for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
   i
-  pdf(file = paste(outputDir, "panel1_test5_", i, ".pdf", sep = ""))
+  pdfFile = paste(outputDir, "panel1_test5_", i, ".pdf", sep = "")
+  pdf(file =pdfFile )
   i = i + 1
   for (file in files) {
     fileToLoad <- file
@@ -400,7 +401,6 @@ for (files in fcsFilesAll) {
     }
     
     frame.c = read.FCS(qcFileFull)
-    
     metricBase = compFrame(
       frame = frame.c,
       file = file,
@@ -412,6 +412,7 @@ for (files in fcsFilesAll) {
       mapper,
       inputFCSDir
     )
+    metricBase$PDF = pdfFile
     metrics = rbind(metrics, metricBase)
     # metricQC = compFrame(
     #   frame = frame.c,
