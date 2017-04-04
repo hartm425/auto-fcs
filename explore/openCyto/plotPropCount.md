@@ -7,7 +7,6 @@ JL
 library(knitr)
 library(ggplot2)
 theme_set(theme_bw(15))
-
 map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap.txt",stringsAsFactors = FALSE,sep = "\t") 
 metrics =read.delim("/Volumes/Beta/data/flow/testTypesTestMetrics5.txt",stringsAsFactors = FALSE,sep = "\t") 
 metrics$nameOrig = metrics$name
@@ -40,14 +39,23 @@ p+facet_wrap(~Population.x)
 for(pop in unique(map$Auto)) {
   sub = metricCombo[which(metricCombo$Population.x == pop), ]
   t =cor.test(sub$Count.x,sub$Count.y)
+  ts =cor.test(sub$Count.x,sub$Count.y,method = "spearman")
+
   p = ggplot(sub, aes(x =
   Count.x, y = Count.y, color = Population.x)) + geom_point() + xlab("Autogating population count") +
-  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"- pearson r =",t$estimate))
+  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4)))
   print(p)
 }
 ```
 
-![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->![](plotPropCount_files/figure-html/setup-10.png)<!-- -->![](plotPropCount_files/figure-html/setup-11.png)<!-- -->![](plotPropCount_files/figure-html/setup-12.png)<!-- -->![](plotPropCount_files/figure-html/setup-13.png)<!-- -->
+![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->![](plotPropCount_files/figure-html/setup-10.png)<!-- -->![](plotPropCount_files/figure-html/setup-11.png)<!-- -->
+
+```
+## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
+## Cannot compute exact p-value with ties
+```
+
+![](plotPropCount_files/figure-html/setup-12.png)<!-- -->![](plotPropCount_files/figure-html/setup-13.png)<!-- -->
 
 ```r
  cor.test(metricCombo$Count.x,metricCombo$Count.y,method = "spearman")
@@ -63,11 +71,11 @@ for(pop in unique(map$Auto)) {
 ## 	Spearman's rank correlation rho
 ## 
 ## data:  metricCombo$Count.x and metricCombo$Count.y
-## S = 73686, p-value < 2.2e-16
+## S = 30106, p-value < 2.2e-16
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
 ##       rho 
-## 0.9876974
+## 0.9872544
 ```
 
 ```r
