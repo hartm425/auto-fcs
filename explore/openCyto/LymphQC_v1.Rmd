@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll = sample(fcsFilesAll, 50)
+fcsFilesAll = sample(fcsFilesAll, 10)
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -413,18 +413,18 @@ for (files in fcsFilesAll) {
       inputFCSDir
     )
     metrics = rbind(metrics, metricBase)
-    metricQC = compFrame(
-      frame = frame.c,
-      file = file,
-      gt_lymph = gt_lymphQC ,
-      d = d,
-      outputDir = outputDir,
-      gateDir = gateQCDir,
-      qcVersion = TRUE,
-      mapper,
-      inputFCSDir
-    )
-    metrics = rbind(metrics, metricQC)
+    # metricQC = compFrame(
+    #   frame = frame.c,
+    #   file = file,
+    #   gt_lymph = gt_lymphQC ,
+    #   d = d,
+    #   outputDir = outputDir,
+    #   gateDir = gateQCDir,
+    #   qcVersion = TRUE,
+    #   mapper,
+    #   inputFCSDir
+    # )
+    # metrics = rbind(metrics, metricQC)
     }
     
   }
