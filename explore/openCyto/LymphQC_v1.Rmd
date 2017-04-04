@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[40:60]
+fcsFilesAll =fcsFilesAll[40:80]
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -413,6 +413,7 @@ for (files in fcsFilesAll) {
       inputFCSDir
     )
     metricBase$PDF = pdfFile
+    metricBase$FlaggedSample = file %in% fcsFilesAllProbs
     metrics = rbind(metrics, metricBase)
     # metricQC = compFrame(
     #   frame = frame.c,
