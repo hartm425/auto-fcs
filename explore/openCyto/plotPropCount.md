@@ -48,7 +48,14 @@ for(pop in unique(map$Auto)) {
 }
 ```
 
-![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->![](plotPropCount_files/figure-html/setup-10.png)<!-- -->![](plotPropCount_files/figure-html/setup-11.png)<!-- -->
+![](plotPropCount_files/figure-html/setup-3.png)<!-- -->![](plotPropCount_files/figure-html/setup-4.png)<!-- -->![](plotPropCount_files/figure-html/setup-5.png)<!-- -->![](plotPropCount_files/figure-html/setup-6.png)<!-- -->![](plotPropCount_files/figure-html/setup-7.png)<!-- -->![](plotPropCount_files/figure-html/setup-8.png)<!-- -->![](plotPropCount_files/figure-html/setup-9.png)<!-- -->
+
+```
+## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
+## Cannot compute exact p-value with ties
+```
+
+![](plotPropCount_files/figure-html/setup-10.png)<!-- -->![](plotPropCount_files/figure-html/setup-11.png)<!-- -->
 
 ```
 ## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
@@ -71,11 +78,11 @@ for(pop in unique(map$Auto)) {
 ## 	Spearman's rank correlation rho
 ## 
 ## data:  metricCombo$Count.x and metricCombo$Count.y
-## S = 30106, p-value < 2.2e-16
+## S = 24021, p-value < 2.2e-16
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
 ##       rho 
-## 0.9872544
+## 0.9898306
 ```
 
 ```r
