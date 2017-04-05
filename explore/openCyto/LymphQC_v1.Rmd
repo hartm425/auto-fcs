@@ -89,7 +89,7 @@ qcOutliers = c(
 # fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
 fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs))
 
-# fcsFilesAll =qcOutliers
+fcsFilesAll =fcsFilesAllProbs
 
 # only use files with gates available
 fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
@@ -250,7 +250,7 @@ compFrame <-
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t9 = ggcyto(gs1,
-                mapping = aes(x = "CD45RA", y = "CCR7"),
+                mapping = aes(x = "CCR7", y = "CD45RA"),
                 subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     grid.arrange(
       as.ggplot(t1),
