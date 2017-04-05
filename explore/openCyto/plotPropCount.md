@@ -71,6 +71,20 @@ for(pop in unique(map$Auto)) {
 
 ![](plotPropCount_files/figure-html/setup-12.png)<!-- -->![](plotPropCount_files/figure-html/setup-13.png)<!-- -->
 
+```
+## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
+## Cannot compute exact p-value with ties
+```
+
+![](plotPropCount_files/figure-html/setup-14.png)<!-- -->
+
+```
+## Warning in cor.test.default(sub$Count.x, sub$Count.y, method = "spearman"):
+## Cannot compute exact p-value with ties
+```
+
+![](plotPropCount_files/figure-html/setup-15.png)<!-- -->![](plotPropCount_files/figure-html/setup-16.png)<!-- -->![](plotPropCount_files/figure-html/setup-17.png)<!-- -->
+
 ```r
  cor.test(metricCombo$Count.x,metricCombo$Count.y,method = "spearman")
 ```
@@ -85,14 +99,22 @@ for(pop in unique(map$Auto)) {
 ## 	Spearman's rank correlation rho
 ## 
 ## data:  metricCombo$Count.x and metricCombo$Count.y
-## S = 1498900, p-value < 2.2e-16
+## S = 13232000, p-value < 2.2e-16
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
 ##       rho 
-## 0.9938164
+## 0.9784734
 ```
 
 ```r
-# kable(metricCombo[,c("Merge","Count.x","Count.y")])
+look = metricCombo[which(metricCombo$Population.x=="CCR7-CD45RA+"&metricCombo$Count.y>20000),]
+kable(look[,c("PDF.x","Count.x","Count.y","name.x")])
 ```
+
+      PDF.x                                         Count.x   Count.y  name.x                                     
+----  -------------------------------------------  --------  --------  -------------------------------------------
+218   /Volumes/Beta/data/flow/panel1_test5_1.pdf      23519     26068  2016-05-11_PANEL1_ZF_panelone_F1631920_007 
+231   /Volumes/Beta/data/flow/panel1_test5_2.pdf      19858     24664  2016-05-13_PANEL1_ZF_panelone_F1632235_005 
+260   /Volumes/Beta/data/flow/panel1_test5_4.pdf       4951     22396  2016-07-06_PANEL1_ZF_Groupone_F1632098_005 
+295   /Volumes/Beta/data/flow/panel1_test5_6.pdf      15171     23524  2016-07-08_PANEL1_ZF_Grouptwo_F1632131_025 
 
