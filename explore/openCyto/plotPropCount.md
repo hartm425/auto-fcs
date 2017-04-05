@@ -163,11 +163,11 @@ for(pop in unique(map$Auto)) {
 ## 	Spearman's rank correlation rho
 ## 
 ## data:  metricCombo$Count.x and metricCombo$Count.y
-## S = 98250, p-value < 2.2e-16
+## S = 93005, p-value < 2.2e-16
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
 ##       rho 
-## 0.9700499
+## 0.9716487
 ```
 
 ```r
@@ -177,8 +177,8 @@ kable(look[,c("PDF.x","Count.x","Count.y","name.x")])
 
      PDF.x                                         Count.x   Count.y  name.x                                     
 ---  -------------------------------------------  --------  --------  -------------------------------------------
-38   /Volumes/Beta/data/flow/panel1_test5_1.pdf      25259     26068  2016-05-11_PANEL1_ZF_panelone_F1631920_007 
-39   /Volumes/Beta/data/flow/panel1_test5_1.pdf      20814     24664  2016-05-13_PANEL1_ZF_panelone_F1632235_005 
-40   /Volumes/Beta/data/flow/panel1_test5_1.pdf      37507     22396  2016-07-06_PANEL1_ZF_Groupone_F1632098_005 
-42   /Volumes/Beta/data/flow/panel1_test5_1.pdf      14970     23524  2016-07-08_PANEL1_ZF_Grouptwo_F1632131_025 
+38   /Volumes/Beta/data/flow/panel1_test5_1.pdf      23519     26068  2016-05-11_PANEL1_ZF_panelone_F1631920_007 
+39   /Volumes/Beta/data/flow/panel1_test5_1.pdf      19858     24664  2016-05-13_PANEL1_ZF_panelone_F1632235_005 
+40   /Volumes/Beta/data/flow/panel1_test5_1.pdf      35810     22396  2016-07-06_PANEL1_ZF_Groupone_F1632098_005 
+42   /Volumes/Beta/data/flow/panel1_test5_1.pdf      15153     23524  2016-07-08_PANEL1_ZF_Grouptwo_F1632131_025 
 
