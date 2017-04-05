@@ -86,7 +86,9 @@ qcOutliers = c(
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
   "2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs"
 )
-fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
+# fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
+fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs))
+
 # fcsFilesAll =qcOutliers
 
 # only use files with gates available
