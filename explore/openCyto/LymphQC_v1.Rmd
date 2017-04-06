@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-# fcsFilesAll =fcsFilesAll[10:15]
+fcsFilesAll =fcsFilesAll[10:15]
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -89,7 +89,7 @@ qcOutliers = c(
 # fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
 fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs))
 
-fcsFilesAll =fcsFilesAllProbs
+# fcsFilesAll =fcsFilesAllProbs
 
 # only use files with gates available
 fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
@@ -268,42 +268,6 @@ compFrame <-
       
       ncol = 2
     )
-    # grid.arrange(
-    #   as.ggplot(t1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t2)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t3)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t4)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t5)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t6)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19)
-    # )
-    #  grid.arrange(
-    #   as.ggplot(t1Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t2Bcell)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t7)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t7_1)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t8)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #   as.ggplot(t9)+ geom_point(data = overlay.fr2, color = "red", cex = 0.5, pch = 19),
-    #
-    #   ncol = 2
-    # )
-    # }
-    
-    # grid.arrange(
-    #   as.ggplot(t1),
-    #   as.ggplot(t2),
-    #   as.ggplot(t3),
-    #   as.ggplot(t4),
-    #   as.ggplot(t5),
-    #   as.ggplot(t6),
-    #   as.ggplot(t1Bcell),
-    #   as.ggplot(t2Bcell),
-    #   as.ggplot(t7),
-    #   as.ggplot(t7_1),
-    #   as.ggplot(t8),
-    #   as.ggplot(t9),
-    #
-    #   ncol = 2
-    # )
     
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
     outFile <-
@@ -316,10 +280,6 @@ compFrame <-
     if (qcVersion) {
       QCDEF = getIndiceMat(gs1, "QC")
     }
-    #     [1] "plotting .... 2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs"
-    # QCDEF
-    #  FALSE   TRUE
-    # 136918 982260
     print(table(QCDEF))
     gateDef = data.frame(
       QC = QCDEF,

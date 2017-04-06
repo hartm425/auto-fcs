@@ -44,7 +44,7 @@ for(pop in unique(map$Auto)) {
 }
  cor.test(metricCombo$Count.x,metricCombo$Count.y,method = "spearman")
 
-look = metricCombo[which(metricCombo$Population.x=="CCR7-CD45RA+"&metricCombo$Count.y>20000),]
+look = metricCombo[which(metricCombo$Population.x=="CCR7+CD45RA+"),]
 kable(look[,c("PDF.x","Count.x","Count.y","name.x")])
 
 ```
