@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[10:80]
+# fcsFilesAll =fcsFilesAll[10:80]
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
