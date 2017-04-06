@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[10:15]
+fcsFilesAll =fcsFilesAll[10:80]
 fcsFilesAllProbs = c(
   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -88,13 +88,13 @@ qcOutliers = c(
 )
 # fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
 fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs))
-fcsFilesAll =c( "2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs", #CCR7-CD45RA+ under called
-  "2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs", #CCR7-CD45RA+ under called
-  "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs", #CCR7-CD45RA+ under called
-  "2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs",  #CCR7-CD45RA+ under called
-  "2016-05-11_PANEL 1_ZF_panel one_F1632171_002.fcs",
-  "2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs"
-  )
+# fcsFilesAll =c( "2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs", #CCR7-CD45RA+ under called
+#   "2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs", #CCR7-CD45RA+ under called
+#   "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs", #CCR7-CD45RA+ under called
+#   "2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs",  #CCR7-CD45RA+ under called
+#   "2016-05-11_PANEL 1_ZF_panel one_F1632171_002.fcs",
+#   "2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs"
+#   )
 # fcsFilesAll =fcsFilesAllProbs
 
 # only use files with gates available
@@ -192,9 +192,9 @@ compFrame <-
       
     }
     print(paste("plotting ....", file))
-    result <-
-      filter(frame, rectangleGate("remove_from_FR_FM" = c(10000, Inf)))
-    overlay.fr2 <- Subset(frame, result)
+    # result <-
+    #   filter(frame, rectangleGate("remove_from_FM" = c(10000, Inf)))
+    # overlay.fr2 <- Subset(frame, result)
     t1 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "root") +
@@ -258,6 +258,10 @@ compFrame <-
     t9 = ggcyto(gs1,
                 mapping = aes(x = "CCR7", y = "CD45RA"),
                 subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+     t10 = ggcyto(gs1,
+                mapping = aes(x = "CCR7", y = "CD45RA"),
+                subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     grid.arrange(
       as.ggplot(t1),
       as.ggplot(t2),
@@ -271,6 +275,7 @@ compFrame <-
       as.ggplot(t7_1),
       as.ggplot(t8),
       as.ggplot(t9),
+      as.ggplot(t10),
       
       ncol = 2
     )
@@ -296,10 +301,10 @@ compFrame <-
       cd4Pcd8M = getIndiceMat(gs1, "CD4"),
       cd4Mcd8P = getIndiceMat(gs1, "CD8"),
       HLADR = getIndiceMat(gs1, "ActivatedCD4"),
-      CCR7PCD45RAP = getIndiceMat(gs1, "CCR7+CD45RA+"),
-      CCR7PCD45RAM = getIndiceMat(gs1, "CCR7+CD45RA-"),
-      CCR7MCD45RAM = getIndiceMat(gs1, "CCR7-CD45RA-"),
-      CCR7MCD45RAP = getIndiceMat(gs1, "CCR7-CD45RA+"),
+      CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
+      CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
+      CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
+      CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
       BCELL = getIndiceMat(gs1, "CD19gate")
       
     )
@@ -371,7 +376,7 @@ for (files in fcsFilesAll) {
         mini_report = paste(basename(file), "mini"),
         fcs_QC = "",
         pen_valueFS = 50,
-        remove_from = "FR_FM"
+        remove_from = "FM"
       )
     }
     
@@ -390,18 +395,20 @@ for (files in fcsFilesAll) {
     metricBase$PDF = pdfFile
     metricBase$FlaggedSample = file %in% fcsFilesAllProbs
     metrics = rbind(metrics, metricBase)
-    # metricQC = compFrame(
-    #   frame = frame.c,
-    #   file = file,
-    #   gt_lymph = gt_lymphQC ,
-    #   d = d,
-    #   outputDir = outputDir,
-    #   gateDir = gateQCDir,
-    #   qcVersion = TRUE,
-    #   mapper,
-    #   inputFCSDir
-    # )
-    # metrics = rbind(metrics, metricQC)
+    metricQC = compFrame(
+      frame = frame.c,
+      file = file,
+      gt_lymph = gt_lymphQC ,
+      d = d,
+      outputDir = outputDir,
+      gateDir = gateQCDir,
+      qcVersion = TRUE,
+      mapper,
+      inputFCSDir
+    )
+    metricQC$PDF = pdfFile
+    metricQC$FlaggedSample = file %in% fcsFilesAllProbs
+    metrics = rbind(metrics, metricQC)
     }
     
   }
