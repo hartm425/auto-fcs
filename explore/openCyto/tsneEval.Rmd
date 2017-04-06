@@ -33,6 +33,8 @@ When you click the **Knit** button a document will be generated that includes bo
           name = 1,
           isNcdf = FALSE
         )
+      getSingleCellExpression(gs,"lymph")
+      
 ```
 
 ## Including Plots
