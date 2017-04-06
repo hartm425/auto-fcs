@@ -19,7 +19,7 @@ metrics$name =gsub(".fcs.*","",metrics$name ,fixed = FALSE)
 metrics$name =gsub(" ","",metrics$name ,fixed = TRUE)
 
 metricsMan = metrics[which(metrics$GATE=="MANUAL"&metrics$Population %in% map$Manual&metrics$METRIC=="count"),]
-metricsAuto = metrics[which(metrics$GATE=="AUTOMATIC"&metrics$QC=="TRUE"&metrics$Population %in% map$Auto&metrics$METRIC=="count"),]
+metricsAuto = metrics[which(metrics$GATE=="AUTOMATIC"&metrics$QC=="FALSE"&metrics$Population %in% map$Auto&metrics$METRIC=="count"),]
 
 metricsMan = merge(metricsMan,map,by.x = "Population",by.y = "Manual")
 metricsMan$Population =metricsMan$Auto
@@ -37,13 +37,14 @@ for(pop in unique(map$Auto)) {
   sub = metricCombo[which(metricCombo$Population.x == pop), ]
   t =cor.test(sub$Count.x,sub$Count.y)
   ts =cor.test(sub$Count.x,sub$Count.y,method = "spearman")
-  fit = lm.fit(sub$Count.x,sub$Count.y)
-  
+  fit = lm(Count.x~Count.y,data=sub)
+  sum = summary(fit)
   p = ggplot(sub, aes(x =
   Count.x, y = Count.y, color = FlaggedSample.x)) + geom_point() + xlab("Autogating population count") +
-  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"n=",length(sub$Count.x),"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4)))
+  ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"n=",length(sub$Count.x),"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4),"\n beta =",signif(sum$coefficients[2],4),"r^2 = ",signif(sum$r.squared)))
   print(p)
-  
+
+    # print(summary(fit))
   #  p = ggplot(sub, aes(x =
   # freqParent.x, y = freqParent.y, color = FlaggedSample.x)) + geom_point() + xlab("Autogating population count") +
   # ylab("Manual gating population count") + geom_abline(intercept = 0, slope = 1)+ labs(title = paste(pop,"n=",length(sub$Count.x),"- pearson r =",signif(t$estimate,4),"- spearman r =",signif(ts$estimate,4)))
