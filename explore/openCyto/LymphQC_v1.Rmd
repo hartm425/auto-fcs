@@ -88,7 +88,13 @@ qcOutliers = c(
 )
 # fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
 fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs))
-
+fcsFilesAll =c( "2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs", #CCR7-CD45RA+ under called
+  "2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs", #CCR7-CD45RA+ under called
+  "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs", #CCR7-CD45RA+ under called
+  "2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs",  #CCR7-CD45RA+ under called
+  "2016-05-11_PANEL 1_ZF_panel one_F1632171_002.fcs",
+  "2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs"
+  )
 # fcsFilesAll =fcsFilesAllProbs
 
 # only use files with gates available
