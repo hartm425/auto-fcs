@@ -163,11 +163,11 @@ for(pop in unique(map$Auto)) {
 ## 	Spearman's rank correlation rho
 ## 
 ## data:  metricCombo$Count.x and metricCombo$Count.y
-## S = 89236, p-value < 2.2e-16
+## S = 207220, p-value < 2.2e-16
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
 ##       rho 
-## 0.9727978
+## 0.9368318
 ```
 
 ```r
