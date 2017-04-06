@@ -8,20 +8,10 @@ output: html_document
 ```{r setup, include=FALSE}
 library(openCyto)
 library(flowCore)
-library(data.table)
 library(ggcyto)
-library(gridExtra)
-library(CytoML)
-library(flowAI)
-require(cytofkit)
-library(igraph)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r cars}
   ws <- openWorkspace("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1.wsp")
@@ -33,8 +23,10 @@ When you click the **Knit** button a document will be generated that includes bo
           name = 1,
           isNcdf = FALSE
         )
-      getSingleCellExpression(gs,"lymph")
+    lymphSingleLive = getIndiceMat(gs, "PE-A")
       
+
+    p <- ggcyto(gs, subset = "PE-A") 
 ```
 
 ## Including Plots
