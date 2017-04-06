@@ -87,7 +87,7 @@ qcOutliers = c(
   "2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs"
 )
 # fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs, qcOutliers))
-fcsFilesAll = unique(c(fcsFilesAll,fcsFilesAllProbs))
+fcsFilesAll = unique(c(fcsFilesAll, fcsFilesAllProbs))
 # fcsFilesAll =c( "2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs", #CCR7-CD45RA+ under called
 #   "2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs", #CCR7-CD45RA+ under called
 #   "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs", #CCR7-CD45RA+ under called
@@ -165,8 +165,8 @@ compFrame <-
     #                      metric = "freq",
     #                      "AUTOMATIC")
     # metrics = rbind(autoCounts, autoProps)
-     metrics = autoCounts
-
+    metrics = autoCounts
+    
     if (!qcVersion) {
       wsFile = mapper[which(mapper$FCS == file), ]$WSP
       ws <- openWorkspace(wsFile)
@@ -174,7 +174,7 @@ compFrame <-
         parseWorkspace(
           ws,
           path = inputFCSDir,
-          name =1,
+          name = 1,
           subset = eval(fileToLoad),
           isNcdf = FALSE
         )
@@ -259,9 +259,9 @@ compFrame <-
                 mapping = aes(x = "CCR7", y = "CD45RA"),
                 subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-     t10 = ggcyto(gs1,
-                mapping = aes(x = "CCR7", y = "CD45RA"),
-                subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t10 = ggcyto(gs1,
+                 mapping = aes(x = "CCR7", y = "CD45RA"),
+                 subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     grid.arrange(
       as.ggplot(t1),
       as.ggplot(t2),
@@ -355,7 +355,7 @@ for (files in fcsFilesAll) {
   print(files)
   i
   pdfFile = paste(outputDir, "panel1_test5_", i, ".pdf", sep = "")
-  pdf(file =pdfFile )
+  pdf(file = pdfFile)
   i = i + 1
   for (file in files) {
     fileToLoad <- file
@@ -364,52 +364,52 @@ for (files in fcsFilesAll) {
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputFCSDir, file, sep = ""))
-    if(length(exprs(frame)[,"FSC-H"])>10000){
-    description(frame)$FILENAME = file
-    
-    qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
-    qcFileFull = paste(cleanDir, "QC/", qcFile, sep = "")
-    if (!file.exists(qcFileFull)) {
-      flow_auto_qc(
-        frame,
-        folder_results = "QC",
-        mini_report = paste(basename(file), "mini"),
-        fcs_QC = "",
-        pen_valueFS = 50,
-        remove_from = "FM"
+    try(if (length(exprs(frame)[, "FSC-H"]) > 10000) {
+      description(frame)$FILENAME = file
+      
+      qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
+      qcFileFull = paste(cleanDir, "QC/", qcFile, sep = "")
+      if (!file.exists(qcFileFull)) {
+        flow_auto_qc(
+          frame,
+          folder_results = "QC",
+          mini_report = paste(basename(file), "mini"),
+          fcs_QC = "",
+          pen_valueFS = 50,
+          remove_from = "FM"
+        )
+      }
+      
+      frame.c = read.FCS(qcFileFull)
+      metricBase = compFrame(
+        frame = frame.c,
+        file = file,
+        gt_lymph = gt_lymph ,
+        d = d,
+        outputDir = outputDir,
+        gateDir = gateDir,
+        qcVersion = FALSE,
+        mapper,
+        inputFCSDir
       )
-    }
-    
-    frame.c = read.FCS(qcFileFull)
-    metricBase = compFrame(
-      frame = frame.c,
-      file = file,
-      gt_lymph = gt_lymph ,
-      d = d,
-      outputDir = outputDir,
-      gateDir = gateDir,
-      qcVersion = FALSE,
-      mapper,
-      inputFCSDir
-    )
-    metricBase$PDF = pdfFile
-    metricBase$FlaggedSample = file %in% fcsFilesAllProbs
-    metrics = rbind(metrics, metricBase)
-    metricQC = compFrame(
-      frame = frame.c,
-      file = file,
-      gt_lymph = gt_lymphQC ,
-      d = d,
-      outputDir = outputDir,
-      gateDir = gateQCDir,
-      qcVersion = TRUE,
-      mapper,
-      inputFCSDir
-    )
-    metricQC$PDF = pdfFile
-    metricQC$FlaggedSample = file %in% fcsFilesAllProbs
-    metrics = rbind(metrics, metricQC)
-    }
+      metricBase$PDF = pdfFile
+      metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+      metrics = rbind(metrics, metricBase)
+      metricQC = compFrame(
+        frame = frame.c,
+        file = file,
+        gt_lymph = gt_lymphQC ,
+        d = d,
+        outputDir = outputDir,
+        gateDir = gateQCDir,
+        qcVersion = TRUE,
+        mapper,
+        inputFCSDir
+      )
+      metricQC$PDF = pdfFile
+      metricQC$FlaggedSample = file %in% fcsFilesAllProbs
+      metrics = rbind(metrics, metricQC)
+    })
     
   }
   dev.off()
