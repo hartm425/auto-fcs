@@ -4,8 +4,8 @@ Singlets	lymph	Single Cells (FSC-H v FSC-W)
 PE-A	Singlets	Live cells (PE-)
 CD3+	PE-A	Tcells (CD3+ CD19-)
 CD4	CD3+	Helper Tcells-CD4+
-CD8	CD4	cytotoxic Tcells-CD8+
-ActivatedCD4	CD4	activated helper Tcells (CD4+ HLA-DR+)
+CD8	CD3+	cytotoxic Tcells-CD8+
+ActivatedCD4	CD3+	activated helper Tcells (CD4+ HLA-DR+)
 CD19gate	PE-A	B cells (CD3- CD19+)
 IgD+CD27-	CD19gate	naive Bcells (CD27- IgD+)
 IgD-CD27+	CD19gate	IgD- memory Bcells (CD27+)
