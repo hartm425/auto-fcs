@@ -400,20 +400,20 @@ for (files in fcsFilesAll) {
       metricBase$PDF = pdfFile
       metricBase$FlaggedSample = file %in% fcsFilesAllProbs
       metrics = rbind(metrics, metricBase)
-      metricQC = compFrame(
-        frame = frame.c,
-        file = file,
-        gt_lymph = gt_lymphQC ,
-        d = d,
-        outputDir = outputDir,
-        gateDir = gateQCDir,
-        qcVersion = TRUE,
-        mapper,
-        inputFCSDir
-      )
-      metricQC$PDF = pdfFile
-      metricQC$FlaggedSample = file %in% fcsFilesAllProbs
-      metrics = rbind(metrics, metricQC)
+      # metricQC = compFrame(
+      #   frame = frame.c,
+      #   file = file,
+      #   gt_lymph = gt_lymphQC ,
+      #   d = d,
+      #   outputDir = outputDir,
+      #   gateDir = gateQCDir,
+      #   qcVersion = TRUE,
+      #   mapper,
+      #   inputFCSDir
+      # )
+      # metricQC$PDF = pdfFile
+      # metricQC$FlaggedSample = file %in% fcsFilesAllProbs
+      # metrics = rbind(metrics, metricQC)
     })
     
   }
