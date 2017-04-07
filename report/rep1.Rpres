@@ -442,6 +442,82 @@ p
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
 
+naive Bcells (CD27- IgD+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "IgD+CD27-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+IgD- memory Bcells (CD27+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "IgD-CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+IgD+ memory Bcells (CD27+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "IgD+CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
 Summary
 ========================================================
 

@@ -293,6 +293,61 @@ class: esmall-table
 |-------:|------:|------:|-----:|-------:|------:|------:|
 |     151|    151| 0.8811| 1.002|  0.0429| 0.7858| 0.8715|
 
+naive Bcells (CD27- IgD+)
+========================================================
+class: esmall-table
+
+![plot of chunk unnamed-chunk-49](rep1-figure/unnamed-chunk-49-1.png)
+
+
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.9091| 0.8172|  0.0403| 0.7341| 0.8424|
+***
+![plot of chunk unnamed-chunk-51](rep1-figure/unnamed-chunk-51-1.png)
+
+
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.9138| 0.8508|  0.0366| 0.7837| 0.8686|
+
+IgD- memory Bcells (CD27+)
+========================================================
+class: esmall-table
+
+![plot of chunk unnamed-chunk-53](rep1-figure/unnamed-chunk-53-1.png)
+
+
+| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|-----:|-------:|------:|------:|
+|     151|    151| 0.8225| 1.159|  0.0443| 0.8212| 0.8766|
+***
+![plot of chunk unnamed-chunk-55](rep1-figure/unnamed-chunk-55-1.png)
+
+
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.8065| 0.4613|  0.0448| 0.4153| 0.5768|
+
+IgD+ memory Bcells (CD27+)
+========================================================
+class: esmall-table
+
+![plot of chunk unnamed-chunk-57](rep1-figure/unnamed-chunk-57-1.png)
+
+
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|-----:|------:|
+|     151|    151| 0.9208| 0.7128|  0.0113| 0.964| 0.9251|
+***
+![plot of chunk unnamed-chunk-59](rep1-figure/unnamed-chunk-59-1.png)
+
+
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.8842| 0.7353|  0.0349| 0.7488| 0.8423|
+
+
 Summary
 ========================================================
 

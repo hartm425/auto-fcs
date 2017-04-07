@@ -100,7 +100,7 @@ fcsFilesAll = unique(c(fcsFilesAll, fcsFilesAllProbs))
 # only use files with gates available
 fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
 print(length(fcsFilesAll))
-# fcsFilesAll = fcsFilesAll[1:5]
+fcsFilesAll = fcsFilesAll[1:5]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
 
 # mapper[which(mapper$FCS %in% fcsFilesAll),]
@@ -229,6 +229,10 @@ compFrame <-
                 mapping = aes(x = "CD3", y = "CD19"),
                 subset = "PE-A") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+     t6_1 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "CD3+") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t1Bcell = ggcyto(gs1,
                      mapping = aes(x = "CD3", y = "CD19"),
@@ -242,7 +246,7 @@ compFrame <-
     
     t7 = ggcyto(gs1,
                 mapping = aes(x = "CD4", y = "CD8"),
-                subset = "CD3+") +
+                subset = "Tcell") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t7_1 = ggcyto(gs1,
@@ -269,6 +273,7 @@ compFrame <-
       as.ggplot(t4),
       as.ggplot(t5),
       as.ggplot(t6),
+      as.ggplot(t6_1),
       as.ggplot(t1Bcell),
       as.ggplot(t2Bcell),
       as.ggplot(t7),
@@ -297,7 +302,7 @@ compFrame <-
       lymph = getIndiceMat(gs1, "lymph"),
       Singlets = getIndiceMat(gs1, "Singlets"),
       PE_A_Minus = getIndiceMat(gs1, "PE-A"),
-      CD3Plus = getIndiceMat(gs1, "CD3+"),
+      CD3Plus = getIndiceMat(gs1, "Tcell"),
       cd4Pcd8M = getIndiceMat(gs1, "CD4"),
       cd4Mcd8P = getIndiceMat(gs1, "CD8"),
       HLADR = getIndiceMat(gs1, "ActivatedCD4"),
