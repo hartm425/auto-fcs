@@ -27,6 +27,7 @@ library(ggcyto)
       
 
     p <- ggcyto(gs, subset = "PE-A") 
+    p <- p + stat_tsne(nodes = nodes, nEvents = 2e3, groupBy = "Peptide")
 ```
 
 ## Including Plots
