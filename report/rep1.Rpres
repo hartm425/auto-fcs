@@ -32,8 +32,18 @@ metricsMan$Population =metricsMan$Auto
 metricsMan$Merge=paste(metricsMan$Population,metricsMan$name,sep = "_")
 metricsAuto = merge(metricsAuto,map,by.x = "Population",by.y = "Auto")
 metricsAuto$Merge=paste(metricsAuto$Population,metricsAuto$name,sep = "_")
-metricCombo = merge(metricsAuto,metricsMan,by.x = "Merge",by.y = "Merge")
 
+row.names(metricsAuto) =metricsAuto$Merge
+
+ for(pop in unique(map$Auto)) {
+    for(sample in unique(metricsAuto$name)){
+      row = paste(pop,sample,sep = "_")
+      
+      print(metricsAuto[row,"freqParent"])
+    } 
+ }
+
+metricCombo = merge(metricsAuto,metricsMan,by.x = "Merge",by.y = "Merge")
 
 ```
 Open Cyto
@@ -53,6 +63,9 @@ Open Cyto
 
 > The two top performing gating algorithms - OpenCyto (v. 1.7.4), flowDensity (v. 1.4.0) - in a study run by the FlowCAP consortium aimed at selecting the best performing algorithms for this larger study were chosen for the analysis presented in this paper. ***Standardizing Flow Cytometry Immunophenotyping Analysis from the Human ImmunoPhenotyping Consortium*** `r citet("10.1038/srep20686") `
 
+- Stole template from above as a start
+  - our panel 1 template currently lives [here](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)
+  
 Inaccurate overview 
 ========================================================
 
@@ -60,6 +73,7 @@ Inaccurate overview
 p = ggplot(metricCombo,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating population count")+ylab("Manual gating population count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
+
 
 Slide With Plot
 ========================================================

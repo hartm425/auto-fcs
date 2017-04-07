@@ -26,10 +26,14 @@ Open Cyto
 
 > The two top performing gating algorithms - OpenCyto (v. 1.7.4), flowDensity (v. 1.4.0) - in a study run by the FlowCAP consortium aimed at selecting the best performing algorithms for this larger study were chosen for the analysis presented in this paper. ***Standardizing Flow Cytometry Immunophenotyping Analysis from the Human ImmunoPhenotyping Consortium*** <a name=cite-Finak_2016></a>[Finak, Langweiler, Jaimes, et al. (2016)](https://doi.org/10.1038%2Fsrep20686)
 
+- Stole template from above as a start
+  - our panel 1 template currently lives [here](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)
+  
 Inaccurate overview 
 ========================================================
 
 ![plot of chunk unnamed-chunk-1](rep1-figure/unnamed-chunk-1-1.png)
+
 
 Slide With Plot
 ========================================================
