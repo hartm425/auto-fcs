@@ -407,7 +407,7 @@ p
 kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
-```{r,echo=FALSE}
+```{r,echo=FALSE} 
 p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
