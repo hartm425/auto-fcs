@@ -1,16 +1,16 @@
-Auto	Manual
-lymph	Lymphocytes (SSC-A v FSC-A)
-Singlets	Single Cells (FSC-H v FSC-W)
-PE-A	Live cells (PE-)
-CD3+	Tcells (CD3+ CD19-)
-CD4	Helper Tcells-CD4+
-CD8	cytotoxic Tcells-CD8+
-ActivatedCD4	activated helper Tcells (CD4+ HLA-DR+)
-CD19gate	B cells (CD3- CD19+)
-IgD+CD27-	naive Bcells (CD27- IgD+)
-IgD-CD27+	IgD- memory Bcells (CD27+)
-IgD+CD27+	IgD+ memory Bcells (CD27+)
-CCR7+CD45RA-	central memory helper Tcells (CCR7+ CD45RA-)
-CCR7-CD45RA+	effector helper Tcells (CCR7- CD45RA+)
-CCR7-CD45RA-	effector memory helper Tcells (CCR7- CD45RA-)
-CCR7+CD45RA+	naive helper Tcells (CCR7+ CD45RA+)
+Auto	RealAutoParent	Manual
+lymph	root	Lymphocytes (SSC-A v FSC-A)
+Singlets	lymph	Single Cells (FSC-H v FSC-W)
+PE-A	Singlets	Live cells (PE-)
+CD3+	PE-A	Tcells (CD3+ CD19-)
+CD4	CD3+	Helper Tcells-CD4+
+CD8	CD4	cytotoxic Tcells-CD8+
+ActivatedCD4	CD4	activated helper Tcells (CD4+ HLA-DR+)
+CD19gate	PE-A	B cells (CD3- CD19+)
+IgD+CD27-	CD19gate	naive Bcells (CD27- IgD+)
+IgD-CD27+	CD19gate	IgD- memory Bcells (CD27+)
+IgD+CD27+	CD19gate	IgD+ memory Bcells (CD27+)
+CCR7+CD45RA-	CD4	central memory helper Tcells (CCR7+ CD45RA-)
+CCR7-CD45RA+	CD4	effector helper Tcells (CCR7- CD45RA+)
+CCR7-CD45RA-	CD4	effector memory helper Tcells (CCR7- CD45RA-)
+CCR7+CD45RA+	CD4	naive helper Tcells (CCR7+ CD45RA+)
