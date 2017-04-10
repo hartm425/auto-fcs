@@ -110,11 +110,36 @@ summaryTP <-function(file){
   summary =as.data.frame(t(summaryT))
   summary =summary[-1,]
   colnames(summary) = summaryT$Var1
+ 
+  if (is.null(summary$FN)) { 
+     summary$FN =as.factor(0)
+  }
+  if (is.null(summary$TN)) { 
+     summary$TN=as.factor(0)
+  }
+  if (is.null(summary$TP)) { 
+     summary$TP=as.factor(0)
+  }
+  if (is.null(summary$FP)) { 
+     summary$FP =as.factor(0)
+  }
+  
+#   Sensitivity = TP / TP + FN
+# Specificity = TN / TN + FP
+# Precision = TP / TP + FP
+  
+#   Specificity = TN / TN + FP
+# Precision = TP / TP + FP
+  # Sensitivity = TP / TP + FN
   summary$FN =as.numeric.factor(summary$FN)
   summary$FP =as.numeric.factor(summary$FP)
   summary$TN =as.numeric.factor(summary$TN)
   summary$TP =as.numeric.factor(summary$TP)
   summary$ACC = (summary$TP+summary$TN)/(summary$TP+summary$TN+summary$FP+summary$FN)
+  summary$SENS = (summary$TP)/(summary$TP+summary$FN)
+  summary$SPEC = (summary$TN)/(summary$TN+summary$FP)
+  summary$PREC = (summary$TP)/(summary$TP+summary$FP)
+
   return(summary)
   
 }
@@ -194,6 +219,11 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-08_PANEL 1_
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1636819_Lymphocytes__SSC-A_v_FSC-A_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs_panel1_gate_defLymphocytes (SSC-A v FSC-A).classification.txt"))
+```
+
+- may decrease the quantile of lymph cluster from 95% to 90%
 
 
 Lymphocytes (SSC-A v FSC-A)
@@ -228,10 +258,20 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1631960_Single_Cells__FSC-H_v_FSC-W_.png)
 
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_HB_panel one_F1631960_004.fcs_panel1_gate_defSingle Cells (FSC-H v FSC-W).classification.txt"))
+```
+
 ***
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1632091_Single_Cells__FSC-H_v_FSC-W_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs_panel1_gate_defSingle Cells (FSC-H v FSC-W).classification.txt"))
+```
+
+- Should there be a minimum value
 
 Single Cells (FSC-H v FSC-W)
 ========================================================
