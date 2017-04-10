@@ -223,7 +223,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-08_PANEL 1_
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs_panel1_gate_defLymphocytes (SSC-A v FSC-A).classification.txt"))
 ```
 
-- may decrease the quantile of lymph cluster from 95% to 90%
+- may decrease the quantile of lymph cluster from 95% back to 90%
 
 
 Lymphocytes (SSC-A v FSC-A)
@@ -271,7 +271,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs_panel1_gate_defSingle Cells (FSC-H v FSC-W).classification.txt"))
 ```
 
-- Should there be a minimum value
+- Force FSC-W+ to have a minimum cutoff, or make more inclusive
 
 Single Cells (FSC-H v FSC-W)
 ========================================================
