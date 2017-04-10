@@ -311,6 +311,18 @@ p
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
 
+
+Helper Tcells-CD4+
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/outConcord/Helper_Tcells-CD4+/F1632278_Helper_Tcells-CD4+.png )
+
+***
+
+![](/Volumes/Beta/data/flow/outConcord/Helper_Tcells-CD4+/F1632353_Helper_Tcells-CD4+.png)
+
+
 Helper Tcells-CD4+
 ========================================================
 class: esmall-table
@@ -340,6 +352,20 @@ central memory helper Tcells (CCR7+ CD45RA-)
 ========================================================
 class: esmall-table
 
+![](/Volumes/Beta/data/flow/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632098_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
+
+***
+
+![](/Volumes/Beta/data/flow/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632235_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
+
+
+
+
+
+central memory helper Tcells (CCR7+ CD45RA-)
+========================================================
+class: esmall-table
+
 ```{r,echo=FALSE}
 gate = "CD4/CCR7+CD45RA-"
 data = metricCombo[which(metricCombo$Population.x==gate),]
@@ -360,6 +386,18 @@ p
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
+
+
+effector helper Tcells (CCR7- CD45RA+)
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1631920_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+
+***
+
+![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+
 
 effector helper Tcells (CCR7- CD45RA+)
 ========================================================
@@ -410,6 +448,17 @@ p
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
+
+
+naive helper Tcells (CCR7+ CD45RA+)
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1631920_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+
+***
+
+![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
 
 naive helper Tcells (CCR7+ CD45RA+)
 ========================================================
