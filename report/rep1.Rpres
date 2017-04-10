@@ -53,12 +53,12 @@ April 11th, 2017
 
 
 ```{r setup,include=FALSE}
-require(ggplot2)
-require(irr) 
+library(ggplot2)
+library(irr) 
 # http://www.cookbook-r.com/Statistical_analysis/Inter-rater_reliability/
 theme_set(theme_bw(20))
 
-require(knitcitations)
+library(knitcitations)
 cite_options(citation_format = "text", max.names = 3, 
              cite.style = "authoryear", style = "markdown", 
              hyperlink = "to.doc")
@@ -162,6 +162,17 @@ p
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = metricCombo,data1 = metricCombo$freqParent.x,data2 = metricCombo$freqParent.y))
 ```
+
+ 
+Lymphocytes (SSC-A v FSC-A)
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
+***
+![](/Volumes/Beta/data/flow/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1636819_Lymphocytes__SSC-A_v_FSC-A_.png)
+
+
 
 Lymphocytes (SSC-A v FSC-A)
 ========================================================
