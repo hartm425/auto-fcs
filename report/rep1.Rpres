@@ -280,7 +280,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs_panel1_gate_defSingle Cells (FSC-H v FSC-W).classification.txt"))
 ```
 
-- Force FSC-W+ to have a minimum cutoff or make more inclusive ? Manual strategy?
+- Force FSC-W+ to have a minimum cutoff or make more inclusive ? What is the manual strategy?
 
 Single Cells (FSC-H v FSC-W)
 ========================================================
@@ -327,6 +327,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs_panel1_gate_defLive cells (PE-).classification.txt"))
 ```
 
+
 Live cells (PE-)
 ========================================================
 class: esmall-table
@@ -359,10 +360,19 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Tcells__CD3+_CD19-_/F1636774_Tcells__CD3+_CD19-_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs_panel1_gate_defTcells (CD3+ CD19-).classification.txt"))
+```
+
 ***
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Tcells__CD3+_CD19-_/F1632006_Tcells__CD3+_CD19-_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-20_PANEL 1_ZF_panel one_F1632006_005.fcs_panel1_gate_defTcells (CD3+ CD19-).classification.txt"))
+```
+
+- can trim sides a bit (and a bit less on left side)
 
 Tcells (CD3+ CD19-)
 ========================================================
@@ -394,12 +404,21 @@ Helper Tcells-CD4+
 ========================================================
 class: esmall-table
 
+
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Helper_Tcells-CD4+/F1632278_Helper_Tcells-CD4+.png )
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs_panel1_gate_defHelper Tcells-CD4+.classification.txt"))
+```
+
 
 ***
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Helper_Tcells-CD4+/F1632353_Helper_Tcells-CD4+.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs_panel1_gate_defHelper Tcells-CD4+.classification.txt"))
+```
 
 Helper Tcells-CD4+
 ========================================================
