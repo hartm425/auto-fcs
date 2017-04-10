@@ -102,6 +102,23 @@ metricCombo = merge(metricsAuto,metricsMan,by.x = "Merge",by.y = "Merge")
 metricCombo$Population.x= gsub("CCR7","CD4/CCR7",metricCombo$Population.x)
 
 
+summaryTP <-function(file){
+ as.numeric.factor <- function(x) {as.numeric(levels(x))[x]}
+   data = read.delim(file,stringsAsFactors = FALSE,sep = "\t")
+  summaryT =as.data.frame(table(data[,1]))
+  summaryT$Freq =as.numeric(summaryT$Freq)
+  summary =as.data.frame(t(summaryT))
+  summary =summary[-1,]
+  colnames(summary) = summaryT$Var1
+  summary$FN =as.numeric.factor(summary$FN)
+  summary$FP =as.numeric.factor(summary$FP)
+  summary$TN =as.numeric.factor(summary$TN)
+  summary$TP =as.numeric.factor(summary$TP)
+  summary$ACC = (summary$TP+summary$TN)/(summary$TP+summary$TN+summary$FP+summary$FN)
+  return(summary)
+  
+}
+
 getSummary <- function(metricCombo, data1, data2) {
   ts = cor.test(data1, data2, method = "spearman")
   fit = lm(data2 ~ data1, data = metricCombo)
@@ -168,11 +185,14 @@ Lymphocytes (SSC-A v FSC-A)
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs_panel1_gate_defLymphocytes (SSC-A v FSC-A).classification.txt"))
+```
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1636819_Lymphocytes__SSC-A_v_FSC-A_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1636819_Lymphocytes__SSC-A_v_FSC-A_.png)
 
 
 
@@ -206,11 +226,11 @@ Single Cells (FSC-H v FSC-W)
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1631960_Single_Cells__FSC-H_v_FSC-W_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1631960_Single_Cells__FSC-H_v_FSC-W_.png)
 
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1632091_Single_Cells__FSC-H_v_FSC-W_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1632091_Single_Cells__FSC-H_v_FSC-W_.png)
 
 
 Single Cells (FSC-H v FSC-W)
@@ -243,11 +263,11 @@ Live cells (PE-)
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/Live_cells__PE-_/F1631960_Live_cells__PE-_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Live_cells__PE-_/F1631960_Live_cells__PE-_.png)
 
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/Live_cells__PE-_/F1636856_Live_cells__PE-_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Live_cells__PE-_/F1636856_Live_cells__PE-_.png)
 
 Live cells (PE-)
 ========================================================
@@ -279,11 +299,11 @@ Tcells (CD3+ CD19-)
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/Tcells__CD3+_CD19-_/F1636774_Tcells__CD3+_CD19-_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Tcells__CD3+_CD19-_/F1636774_Tcells__CD3+_CD19-_.png)
 
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/Tcells__CD3+_CD19-_/F1632006_Tcells__CD3+_CD19-_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Tcells__CD3+_CD19-_/F1632006_Tcells__CD3+_CD19-_.png)
 
 
 Tcells (CD3+ CD19-)
@@ -316,11 +336,11 @@ Helper Tcells-CD4+
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/Helper_Tcells-CD4+/F1632278_Helper_Tcells-CD4+.png )
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Helper_Tcells-CD4+/F1632278_Helper_Tcells-CD4+.png )
 
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/Helper_Tcells-CD4+/F1632353_Helper_Tcells-CD4+.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/Helper_Tcells-CD4+/F1632353_Helper_Tcells-CD4+.png)
 
 
 Helper Tcells-CD4+
@@ -352,11 +372,11 @@ central memory helper Tcells (CCR7+ CD45RA-)
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632098_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632098_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
 
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632235_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632235_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
 
 
 
@@ -392,11 +412,11 @@ effector helper Tcells (CCR7- CD45RA+)
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1631920_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1631920_effector_helper_Tcells__CCR7-_CD45RA+_.png)
 
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
 
 
 effector helper Tcells (CCR7- CD45RA+)
@@ -454,11 +474,11 @@ naive helper Tcells (CCR7+ CD45RA+)
 ========================================================
 class: esmall-table
 
-![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1631920_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/naive_helper_Tcells__CCR7+_CD45RA+_/F1632002_naive_helper_Tcells__CCR7+_CD45RA+_.png)
 
 ***
 
-![](/Volumes/Beta/data/flow/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+![](/Volumes/Beta/data/flow/goodBads/outConcord/naive_helper_Tcells__CCR7+_CD45RA+_/F1632098_naive_helper_Tcells__CCR7+_CD45RA+_.png)
 
 naive helper Tcells (CCR7+ CD45RA+)
 ========================================================
@@ -485,6 +505,15 @@ p
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
 
+cytotoxic Tcells-CD8+
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/goodBads/outConcord/cytotoxic_Tcells-CD8+/F1631273_cytotoxic_Tcells-CD8+.png)
+
+***
+
+![]( /Volumes/Beta/data/flow/goodBads/outConcord/cytotoxic_Tcells-CD8+/F1632134_cytotoxic_Tcells-CD8+.png)
 
 cytotoxic Tcells-CD8+
 ========================================================
@@ -510,6 +539,16 @@ p
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
+
+B cells (CD3- CD19+)
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/goodBads/outConcord/B_cells__CD3-_CD19+_/F1632002_B_cells__CD3-_CD19+_.png)
+
+***
+
+![]( /Volumes/Beta/data/flow/goodBads/outConcord/B_cells__CD3-_CD19+_/F1636835_B_cells__CD3-_CD19+_.png)
 
 
 B cells (CD3- CD19+) 
