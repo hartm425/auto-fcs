@@ -205,6 +205,15 @@ p
 kable(getSummary(metricCombo = metricCombo,data1 = metricCombo$freqParent.x,data2 = metricCombo$freqParent.y))
 ```
 
+
+Next few slides
+========================================================
+class: esmall-table
+
+- For each gate
+  - a good-ish example of an auto gate
+  - a bad example/common problems
+  - overview of gate success
  
 Lymphocytes (SSC-A v FSC-A)
 ========================================================
@@ -271,7 +280,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs_panel1_gate_defSingle Cells (FSC-H v FSC-W).classification.txt"))
 ```
 
-- Force FSC-W+ to have a minimum cutoff, or make more inclusive
+- Force FSC-W+ to have a minimum cutoff or make more inclusive ? Manual strategy?
 
 Single Cells (FSC-H v FSC-W)
 ========================================================
@@ -305,9 +314,18 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Live_cells__PE-_/F1631960_Live_cells__PE-_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_HB_panel one_F1631960_004.fcs_panel1_gate_defLive cells (PE-).classification.txt"))
+```
+
+
 ***
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/Live_cells__PE-_/F1636856_Live_cells__PE-_.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs_panel1_gate_defLive cells (PE-).classification.txt"))
+```
 
 Live cells (PE-)
 ========================================================
