@@ -169,7 +169,9 @@ Lymphocytes (SSC-A v FSC-A)
 class: esmall-table
 
 ![](/Volumes/Beta/data/flow/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
+
 ***
+
 ![](/Volumes/Beta/data/flow/outConcord/Lymphocytes__SSC-A_v_FSC-A_/F1636819_Lymphocytes__SSC-A_v_FSC-A_.png)
 
 
@@ -198,6 +200,18 @@ p
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
+
+
+Single Cells (FSC-H v FSC-W)
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1631960_Single_Cells__FSC-H_v_FSC-W_.png)
+
+***
+
+![](/Volumes/Beta/data/flow/outConcord/Single_Cells__FSC-H_v_FSC-W_/F1632091_Single_Cells__FSC-H_v_FSC-W_.png)
+
 
 Single Cells (FSC-H v FSC-W)
 ========================================================
@@ -229,6 +243,16 @@ Live cells (PE-)
 ========================================================
 class: esmall-table
 
+![](/Volumes/Beta/data/flow/outConcord/Live_cells__PE-_/F1631960_Live_cells__PE-_.png)
+
+***
+
+![](/Volumes/Beta/data/flow/outConcord/Live_cells__PE-_/F1636856_Live_cells__PE-_.png)
+
+Live cells (PE-)
+========================================================
+class: esmall-table
+
 ```{r,echo=FALSE}
 gate = "PE-A"
 data = metricCombo[which(metricCombo$Population.x==gate),]
@@ -249,6 +273,17 @@ p
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
+
+
+Tcells (CD3+ CD19-)
+========================================================
+class: esmall-table
+
+![](/Volumes/Beta/data/flow/outConcord/Tcells__CD3+_CD19-_/F1636774_Tcells__CD3+_CD19-_.png)
+
+***
+
+![](/Volumes/Beta/data/flow/outConcord/Tcells__CD3+_CD19-_/F1632006_Tcells__CD3+_CD19-_.png)
 
 
 Tcells (CD3+ CD19-)
