@@ -69,7 +69,7 @@ metrics$freqParent = metrics$Count/metrics$ParentCount
 metrics$nameOrig = metrics$name
 metrics$name =gsub(".fcs.*","",metrics$name ,fixed = FALSE)
 metrics$name =gsub(" ","",metrics$name ,fixed = TRUE)
-
+ 
 metricsMan = metrics[which(metrics$GATE=="MANUAL"&metrics$Population %in% map$Manual&metrics$METRIC=="count"),]
 metricsAuto = metrics[which(metrics$GATE=="AUTOMATIC"&metrics$QC=="FALSE"&(metrics$Population %in% map$Auto|metrics$Parent=="root")&metrics$METRIC=="count"),]
 
@@ -181,6 +181,18 @@ OpenCyto
 
 - Stole template from above as a start
   - our panel 1 template currently lives [here](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)
+ 
+ICC
+========================================================
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Intraclass_correlation)
+
+`r citet("10.1037/1040-3590.6.4.284")` gives the following often quoted guidelines for interpretation for kappa or ICC inter-rater agreement measures:
+
+- Less than 0.40—poor.
+- Between 0.40 and 0.59—Fair.
+- Between 0.60 and 0.74—Good.
+- Between 0.75 and 1.00—Excellent.
   
 Current progress overview 
 ========================================================
@@ -249,9 +261,16 @@ class: esmall-table
 
 ```{r,echo=FALSE}
 gate = "lymph"
-data = metricCombo[which(metricCombo$Population.x==gate),]
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs"
+bad = "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -260,7 +279,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -282,10 +301,10 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_
 
 ***
 
-![](./ex/Single_Cells__FSC-H_v_FSC-W_/F1632091_Single_Cells__FSC-H_v_FSC-W_.png)
+![](./ex/Single_Cells__FSC-H_v_FSC-W_/F1632353_Single_Cells__FSC-H_v_FSC-W_.png)
 
 ```{r,echo=FALSE}
-kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs_panel1_gate_defSingle Cells (FSC-H v FSC-W).classification.txt"))
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs_panel1_gate_defSingle Cells (FSC-H v FSC-W).classification.txt"))
 ```
 
 - Force FSC-W+ to have a minimum cutoff or make more inclusive ? What is the manual strategy?
@@ -297,8 +316,13 @@ class: esmall-table
 ```{r,echo=FALSE}
 gate = "Singlets"
 data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-05_PANEL 1_HB_panel one_F1631960_004.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -307,7 +331,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -344,8 +368,13 @@ class: esmall-table
 ```{r,echo=FALSE}
 gate = "PE-A"
 data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-05_PANEL 1_HB_panel one_F1631960_004.fcs"
+bad = "2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -354,7 +383,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -390,8 +419,13 @@ class: esmall-table
 ```{r,echo=FALSE}
 gate = "CD3+"
 data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs"
+bad = "2016-05-20_PANEL 1_ZF_panel one_F1632006_005.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -400,7 +434,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -436,8 +470,12 @@ class: esmall-table
 ```{r,echo=FALSE}
 gate = "CD4"
 data = metricCombo[which(metricCombo$Population.x==gate),]
-
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+good = "2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -446,7 +484,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -460,10 +498,18 @@ class: esmall-table
 
 ![](./ex/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632098_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
  
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs_panel1_gate_defcentral memory helper Tcells (CCR7+ CD45RA-).classification.txt"))
+```
+
 
 ***
 
 ![](./ex/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632235_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs_panel1_gate_defcentral memory helper Tcells (CCR7+ CD45RA-).classification.txt"))
+```
 
  
 
@@ -476,8 +522,12 @@ class: esmall-table
 ```{r,echo=FALSE}
 gate = "CD4/CCR7+CD45RA-"
 data = metricCombo[which(metricCombo$Population.x==gate),]
-
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+good = "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs"
+bad = "2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -486,7 +536,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -522,7 +572,14 @@ class: esmall-table
 gate = "CD4/CCR7-CD45RA+"
 data = metricCombo[which(metricCombo$Population.x==gate),]
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs"
+bad = "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -531,7 +588,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -566,7 +623,13 @@ class: esmall-table
 gate = "CD4/CCR7-CD45RA-"
 data = metricCombo[which(metricCombo$Population.x==gate),]
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+good = "2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -575,7 +638,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -609,8 +672,13 @@ class: esmall-table
 ```{r,echo=FALSE}
 gate = "CD4/CCR7+CD45RA+"
 data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-18_PANEL 1_ZF_panel one_F1632002_006.fcs"
+bad = "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -619,7 +687,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -654,7 +722,13 @@ class: esmall-table
 gate = "CD8"
 data = metricCombo[which(metricCombo$Population.x==gate),]
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+good = "2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -663,13 +737,21 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE} 
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
+
+cytotoxic Tcells-CD8+
+========================================================
+class: esmall-table
+
+- under-called
+
+![](./ex/7b1bd1f4-192d-11e7-82be-472ea9c4c588.png)
 
 B cells (CD3- CD19+)
 ========================================================
@@ -684,7 +766,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-18_PANEL 1_
 
 ***
 
-![]( /Volumes/Beta/data/flow/goodBads/outConcord/B_cells__CD3-_CD19+_/F1636835_B_cells__CD3-_CD19+_.png)
+![](./ex/B_cells__CD3-_CD19+_/F1636835_B_cells__CD3-_CD19+_.png)
 
 ```{r,echo=FALSE}
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs_panel1_gate_defB cells (CD3- CD19+).classification.txt"))
@@ -700,7 +782,13 @@ class: esmall-table
 gate = "CD19gate"
 data = metricCombo[which(metricCombo$Population.x==gate),]
 
-p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+good = "2016-05-18_PANEL 1_ZF_panel one_F1632002_006.fcs"
+bad = "2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -709,7 +797,7 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 ```
 ***
 ```{r,echo=FALSE}
-p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
 
@@ -810,16 +898,4 @@ Tested FlowAI
 
 [Normal Flowrate Example](http://htmlpreview.github.io/?https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/QC/qcReview/2016-05-13_PANEL%201_ZF_panel%20one_F1632233_004_QC.html)
 
-
-ICC
-========================================================
-
-From [Wikipedia](https://en.wikipedia.org/wiki/Intraclass_correlation)
-
-`r citet("10.1037/1040-3590.6.4.284")` gives the following often quoted guidelines for interpretation for kappa or ICC inter-rater agreement measures:
-
-- Less than 0.40—poor.
-- Between 0.40 and 0.59—Fair.
-- Between 0.60 and 0.74—Good.
-- Between 0.75 and 1.00—Excellent.
 
