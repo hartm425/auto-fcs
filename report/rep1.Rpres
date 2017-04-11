@@ -668,9 +668,18 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/B_cells__CD3-_CD19+_/F1632002_B_cells__CD3-_CD19+_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-18_PANEL 1_ZF_panel one_F1632002_006.fcs_panel1_gate_defB cells (CD3- CD19+).classification.txt"))
+```
+
+
 ***
 
 ![]( /Volumes/Beta/data/flow/goodBads/outConcord/B_cells__CD3-_CD19+_/F1636835_B_cells__CD3-_CD19+_.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs_panel1_gate_defB cells (CD3- CD19+).classification.txt"))
+```
 
 
 B cells (CD3- CD19+) 
