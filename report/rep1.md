@@ -384,13 +384,13 @@ class: esmall-table
 
 ***
 
-![](./ex/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+![](./ex/effector_helper_Tcells__CCR7-_CD45RA+_/F1631974_effector_helper_Tcells__CCR7-_CD45RA+_.png)
 
 
-|     |  FN|    FP|     TN|    TP|    ACC|   SENS|   SPEC|   PREC|
-|:----|---:|-----:|------:|-----:|------:|------:|------:|------:|
-|Freq | 953| 19155| 786225| 21460| 0.9757| 0.9575| 0.9762| 0.5284|
-
+|     |    FN|  FP|      TN| TP|    ACC|   SENS|   SPEC|   PREC|
+|:----|-----:|---:|-------:|--:|------:|------:|------:|------:|
+|Freq | 14718| 427| 1414249| 68| 0.9894| 0.0046| 0.9997| 0.1374|
+ 
 
 effector helper Tcells (CCR7- CD45RA+)
 ========================================================
@@ -649,3 +649,16 @@ Tested FlowAI
 [Normal Flowrate Example](http://htmlpreview.github.io/?https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/QC/qcReview/2016-05-13_PANEL%201_ZF_panel%20one_F1632233_004_QC.html)
 
 
+TSNE
+========================================================
+Neat, TODO is to generate for manual and OpenCyto gates
+
+![](./ex/plot7-1.png)
+
+- manual (Panel2)
+  
+***
+
+![](./ex/plot6-1.png)
+
+- phenograph populations (Panel2) <a name=cite-Levine_2015></a>[Levine, Simonds, Bendall, et al. (2015)](https://doi.org/10.1016%2Fj.cell.2015.05.047)

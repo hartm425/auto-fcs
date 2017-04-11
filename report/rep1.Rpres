@@ -557,12 +557,12 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-11_PANEL 1_
 
 ***
 
-![](./ex/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+![](./ex/effector_helper_Tcells__CCR7-_CD45RA+_/F1631974_effector_helper_Tcells__CCR7-_CD45RA+_.png)
 
 ```{r,echo=FALSE}
-kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs_panel1_gate_defeffector helper Tcells (CCR7- CD45RA+).classification.txt"))
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-18_PANEL 1_ZF_panel one_F1631974_008.fcs_panel1_gate_defeffector helper Tcells (CCR7- CD45RA+).classification.txt"))
 ```
-
+ 
 
 effector helper Tcells (CCR7- CD45RA+)
 ========================================================
@@ -574,7 +574,7 @@ data = metricCombo[which(metricCombo$Population.x==gate),]
 
 data = metricCombo[which(metricCombo$Population.x==gate),]
 good = "2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs"
-bad = "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs"
+bad = "2016-05-18_PANEL 1_ZF_panel one_F1631974_008.fcs"
 data$Example = "ANY"
 data$Example[which(data$nameOrig.x==good)]="GOOD"
 data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
@@ -899,3 +899,16 @@ Tested FlowAI
 [Normal Flowrate Example](http://htmlpreview.github.io/?https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/QC/qcReview/2016-05-13_PANEL%201_ZF_panel%20one_F1632233_004_QC.html)
 
 
+TSNE
+========================================================
+Neat, TODO is to generate for manual and OpenCyto gates
+
+![](./ex/plot7-1.png)
+
+- manual (Panel2)
+  
+***
+
+![](./ex/plot6-1.png)
+
+- phenograph populations (Panel2) `r citet("10.1016/j.cell.2015.05.047") `
