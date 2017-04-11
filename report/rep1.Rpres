@@ -182,7 +182,7 @@ OpenCyto
 - Stole template from above as a start
   - our panel 1 template currently lives [here](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)
   
-Current progres overview 
+Current progress overview 
 ========================================================
 class: esmall-table
 
@@ -371,8 +371,8 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-08-01_PANEL 1_
 ```{r,echo=FALSE}
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-20_PANEL 1_ZF_panel one_F1632006_005.fcs_panel1_gate_defTcells (CD3+ CD19-).classification.txt"))
 ```
-
-- can trim sides a bit (and a bit less on left side)
+  
+- can trim sides (and a bit less on left side)
 
 Tcells (CD3+ CD19-)
 ========================================================
@@ -678,9 +678,10 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-18_PANEL 1_
 ![]( /Volumes/Beta/data/flow/goodBads/outConcord/B_cells__CD3-_CD19+_/F1636835_B_cells__CD3-_CD19+_.png)
 
 ```{r,echo=FALSE}
-kable(summaryTP("2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs_panel1_gate_defB cells (CD3- CD19+).classification.txt"))
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs_panel1_gate_defB cells (CD3- CD19+).classification.txt"))
 ```
 
+- typically over- or under-calling the sneaky Bcells on CD19 dimension
 
 B cells (CD3- CD19+) 
 ========================================================
