@@ -113,7 +113,7 @@ Lymphocytes (SSC-A v FSC-A)
 ========================================================
 class: esmall-table
 
-![](Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
+![](./ex/Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
 
 
 |     |   FN|     TN|    TP| FP|    ACC|   SENS| SPEC| PREC|
@@ -392,7 +392,7 @@ effector memory helper Tcells (CCR7- CD45RA-)
 ========================================================
 class: esmall-table
 
-![]( /Volumes/Beta/data/flow/goodBads/outConcord/effector_memory_helper_Tcells__CCR7-_CD45RA-_/F1632091_effector_memory_helper_Tcells__CCR7-_CD45RA-_.png)
+![]( ./ex/effector_memory_helper_Tcells__CCR7-_CD45RA-_/F1632091_effector_memory_helper_Tcells__CCR7-_CD45RA-_.png)
 
 
 |     |   FN|  FP|      TN|   TP|    ACC|   SENS|   SPEC|  PREC|
@@ -480,7 +480,7 @@ class: esmall-table
 
 ***
 
-![]( /Volumes/Beta/data/flow/goodBads/outConcord/cytotoxic_Tcells-CD8+/F1632134_cytotoxic_Tcells-CD8+.png)
+![]( ./ex/cytotoxic_Tcells-CD8+/F1632134_cytotoxic_Tcells-CD8+.png)
 
 
 |     |   FN|   FP|     TN|    TP|    ACC|   SENS|   SPEC|   PREC|

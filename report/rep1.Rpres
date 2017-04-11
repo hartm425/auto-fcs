@@ -227,7 +227,7 @@ Lymphocytes (SSC-A v FSC-A)
 ========================================================
 class: esmall-table
 
-![](Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
+![](./ex/Lymphocytes__SSC-A_v_FSC-A_/F1632338_Lymphocytes__SSC-A_v_FSC-A_.png)
 
 ```{r,echo=FALSE}
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs_panel1_gate_defLymphocytes (SSC-A v FSC-A).classification.txt"))
@@ -543,7 +543,7 @@ effector memory helper Tcells (CCR7- CD45RA-)
 ========================================================
 class: esmall-table
 
-![]( /Volumes/Beta/data/flow/goodBads/outConcord/effector_memory_helper_Tcells__CCR7-_CD45RA-_/F1632091_effector_memory_helper_Tcells__CCR7-_CD45RA-_.png)
+![]( ./ex/effector_memory_helper_Tcells__CCR7-_CD45RA-_/F1632091_effector_memory_helper_Tcells__CCR7-_CD45RA-_.png)
 
 ```{r,echo=FALSE}
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs_panel1_gate_defeffector memory helper Tcells (CCR7- CD45RA-).classification.txt"))
@@ -640,7 +640,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-07_PANEL 1_
 
 ***
 
-![]( /Volumes/Beta/data/flow/goodBads/outConcord/cytotoxic_Tcells-CD8+/F1632134_cytotoxic_Tcells-CD8+.png)
+![]( ./ex/cytotoxic_Tcells-CD8+/F1632134_cytotoxic_Tcells-CD8+.png)
 
 ```{r,echo=FALSE}
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs_panel1_gate_defcytotoxic Tcells-CD8+.classification.txt"))
