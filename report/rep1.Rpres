@@ -451,6 +451,7 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632098_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
 
+
 ***
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/central_memory_helper_Tcells__CCR7+_CD45RA-_/F1632235_central_memory_helper_Tcells__CCR7+_CD45RA-_.png)
@@ -491,9 +492,17 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1631920_effector_helper_Tcells__CCR7-_CD45RA+_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs_panel1_gate_defeffector helper Tcells (CCR7- CD45RA+).classification.txt"))
+```
+
 ***
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/effector_helper_Tcells__CCR7-_CD45RA+_/F1632098_effector_helper_Tcells__CCR7-_CD45RA+_.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs_panel1_gate_defeffector helper Tcells (CCR7- CD45RA+).classification.txt"))
+```
 
 
 effector helper Tcells (CCR7- CD45RA+)
@@ -520,6 +529,25 @@ p
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
 ```
+
+effector memory helper Tcells (CCR7- CD45RA-)
+========================================================
+class: esmall-table
+
+![]( /Volumes/Beta/data/flow/goodBads/outConcord/effector_memory_helper_Tcells__CCR7-_CD45RA-_/F1632091_effector_memory_helper_Tcells__CCR7-_CD45RA-_.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs_panel1_gate_defeffector memory helper Tcells (CCR7- CD45RA-).classification.txt"))
+```
+
+***
+
+![](/Volumes/Beta/data/flow/goodBads/outConcord/effector_memory_helper_Tcells__CCR7-_CD45RA-_/F1632134_effector_memory_helper_Tcells__CCR7-_CD45RA-_.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs_panel1_gate_defeffector memory helper Tcells (CCR7- CD45RA-).classification.txt"))
+```
+
 
 effector memory helper Tcells (CCR7- CD45RA-)
 ========================================================
@@ -553,9 +581,17 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/naive_helper_Tcells__CCR7+_CD45RA+_/F1632002_naive_helper_Tcells__CCR7+_CD45RA+_.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-18_PANEL 1_ZF_panel one_F1632002_006.fcs_panel1_gate_defnaive helper Tcells (CCR7+ CD45RA+).classification.txt"))
+```
+
 ***
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/naive_helper_Tcells__CCR7+_CD45RA+_/F1632098_naive_helper_Tcells__CCR7+_CD45RA+_.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs_panel1_gate_defnaive helper Tcells (CCR7+ CD45RA+).classification.txt"))
+```
 
 naive helper Tcells (CCR7+ CD45RA+)
 ========================================================
@@ -588,9 +624,18 @@ class: esmall-table
 
 ![](/Volumes/Beta/data/flow/goodBads/outConcord/cytotoxic_Tcells-CD8+/F1631273_cytotoxic_Tcells-CD8+.png)
 
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs_panel1_gate_defcytotoxic Tcells-CD8+.classification.txt"))
+```
+
+
 ***
 
 ![]( /Volumes/Beta/data/flow/goodBads/outConcord/cytotoxic_Tcells-CD8+/F1632134_cytotoxic_Tcells-CD8+.png)
+
+```{r,echo=FALSE}
+kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs_panel1_gate_defcytotoxic Tcells-CD8+.classification.txt"))
+```
 
 cytotoxic Tcells-CD8+
 ========================================================
