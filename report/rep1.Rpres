@@ -371,7 +371,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-08-01_PANEL 1_
 ```{r,echo=FALSE}
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-20_PANEL 1_ZF_panel one_F1632006_005.fcs_panel1_gate_defTcells (CD3+ CD19-).classification.txt"))
 ```
-  
+    
 - can trim sides (and a bit less on left side)
 
 Tcells (CD3+ CD19-)
