@@ -793,12 +793,20 @@ kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqP
 ```
 
 
-Summary
+OpenCyto Summary
 ========================================================
 
-- OpenCyto seems to work
+- Seems to work
 - Lots of room for improvement
 - Iterative process
+
+
+Data QC ?
+========================================================
+Tested FlowAI
+> ... consists of three key steps to check and remove suspected anomalies that derive from (i) abrupt changes in the flow rate, (ii) instability of signal acquisition and (iii) outliers in the lower limit and margin events in the upper limit of the dynamic range. ***flowAI: automatic and interactive anomaly discerning tools for flow cytometry data.*** `r citet("10.1093/bioinformatics/btw191") `
+
+Example [here](http://htmlpreview.github.io/?https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/QC/qcReview/2016-07-27_PANEL%201_ZF_Group%20one_F1632384_007_QC.html)
 
 ICC
 ========================================================

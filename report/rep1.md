@@ -601,12 +601,20 @@ class: esmall-table
 |     151|    151| 0.8844| 0.7361|  0.0349| 0.7487| 0.8423|
 
 
-Summary
+OpenCyto Summary
 ========================================================
 
-- OpenCyto seems to work
+- Seems to work
 - Lots of room for improvement
 - Iterative process
+
+
+Data QC ?
+========================================================
+Tested FlowAI
+> ... consists of three key steps to check and remove suspected anomalies that derive from (i) abrupt changes in the flow rate, (ii) instability of signal acquisition and (iii) outliers in the lower limit and margin events in the upper limit of the dynamic range. ***flowAI: automatic and interactive anomaly discerning tools for flow cytometry data.*** <a name=cite-Monaco_2016></a>[Monaco, Chen, Poidinger, et al. (2016)](https://doi.org/10.1093%2Fbioinformatics%2Fbtw191)
+
+Example [here](http://htmlpreview.github.io/?https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/QC/qcReview/2016-07-27_PANEL%201_ZF_Group%20one_F1632384_007_QC.html)
 
 ICC
 ========================================================
