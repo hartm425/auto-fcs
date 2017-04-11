@@ -91,6 +91,14 @@ class: esmall-table
 |-------:|------:|-----:|------:|-------:|------:|-----:|
 |     151|   2265| 0.979| 0.9861|  0.0031| 0.9782| 0.989|
 
+Example OpenCyto gates
+========================================================
+class: esmall-table
+
+![](./ex/1.png)
+
+***
+![](./ex/2.png)
 
 Next few slides
 ========================================================
@@ -99,7 +107,7 @@ class: esmall-table
 - For each gate
   - a good-ish example of an auto gate
   - a bad example/common problems
-  - overview of gate success
+  - overview of gate performance
  
 Lymphocytes (SSC-A v FSC-A)
 ========================================================
@@ -205,6 +213,7 @@ class: esmall-table
 |:----|-----:|----:|------:|------:|-----:|------:|------:|------:|
 |Freq | 17050| 7378| 476522| 178534| 0.964| 0.9128| 0.9848| 0.9603|
 
+- victim of singlet gate
 
 Live cells (PE-)
 ========================================================

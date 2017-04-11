@@ -64,7 +64,7 @@ cite_options(citation_format = "text", max.names = 3,
              hyperlink = "to.doc")
 options(digits=4)
 map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap.txt",stringsAsFactors = FALSE,sep = "\t") 
-metrics =read.delim("/Volumes/Beta/data/flow/testTypesTestMetrics5.txt",stringsAsFactors = FALSE,sep = "\t") 
+metrics =read.delim("/Volumes/Beta/data/flow/testTypesTestMetrics5.bak.txt",stringsAsFactors = FALSE,sep = "\t") 
 metrics$freqParent = metrics$Count/metrics$ParentCount
 metrics$nameOrig = metrics$name
 metrics$name =gsub(".fcs.*","",metrics$name ,fixed = FALSE)
@@ -205,6 +205,14 @@ p
 kable(getSummary(metricCombo = metricCombo,data1 = metricCombo$freqParent.x,data2 = metricCombo$freqParent.y))
 ```
 
+Example OpenCyto gates
+========================================================
+class: esmall-table
+
+![](./ex/1.png)
+
+***
+![](./ex/2.png)
 
 Next few slides
 ========================================================
@@ -213,7 +221,7 @@ class: esmall-table
 - For each gate
   - a good-ish example of an auto gate
   - a bad example/common problems
-  - overview of gate success
+  - overview of gate performance
  
 Lymphocytes (SSC-A v FSC-A)
 ========================================================
@@ -327,6 +335,7 @@ kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-05-05_PANEL 1_
 kable(summaryTP("/Volumes/Beta/data/flow/goodBads/outConcord/2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs_panel1_gate_defLive cells (PE-).classification.txt"))
 ```
 
+- victim of singlet gate
 
 Live cells (PE-)
 ========================================================
