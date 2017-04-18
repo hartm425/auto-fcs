@@ -7,6 +7,7 @@
   border-collapse: collapse;
   font-size: 0.4em;
 }
+ 
 
 .esmall-table table tr { line-height: 18px; }
 
