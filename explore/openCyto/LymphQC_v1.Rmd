@@ -98,7 +98,9 @@ fcsFilesAll <-
 # # fcsFilesAll =fcsFilesAllProbs
 
 # only use files with gates available
-fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
+# fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
+
+
 print(length(fcsFilesAll))
 # fcsFilesAll = fcsFilesAll[1:5]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
