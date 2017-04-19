@@ -98,7 +98,7 @@ fcsFilesAll <-
 # # fcsFilesAll =fcsFilesAllProbs
 
 # only use files with gates available
-# fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
+fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
 
 
 print(length(fcsFilesAll))
@@ -178,7 +178,8 @@ compFrame <-
           path = inputFCSDir,
           name = 1,
           subset = eval(fileToLoad),
-          isNcdf = FALSE
+          isNcdf = FALSE,
+          compensation = comp
         )
       manCounts = getStats(gs1 = gs,
                            qcVersion = qcVersion,
