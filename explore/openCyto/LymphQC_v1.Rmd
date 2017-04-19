@@ -45,6 +45,7 @@ fcsFilesAll <-
              pattern = ".fcs",
              full = FALSE)
 # fcsFilesAll =fcsFilesAll[10:80]
+fcsFilesAllProbs = c("NONE")
 # fcsFilesAllProbs = c(
 #   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
 #   "2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs",
@@ -103,7 +104,7 @@ fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
 
 print(length(fcsFilesAll))
 # fcsFilesAll = fcsFilesAll[1:5]
-fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
 # mapper[which(mapper$FCS %in% fcsFilesAll),]
 
@@ -174,13 +175,15 @@ compFrame <-
       ws <- openWorkspace(wsFile)
       gs <-
         parseWorkspace(
-          ws,
-          path = inputFCSDir,
-          name = 1,
-          subset = eval(fileToLoad),
-          isNcdf = FALSE,
+          ws, #WSP file 
+          path = inputFCSDir, #FCS file
+          name = 1, #sample group
+          subset = eval(fileToLoad), #load single fcs file
+          isNcdf = FALSE, #not memory mapped
           compensation = comp
         )
+                # 
+
       manCounts = getStats(gs1 = gs,
                            qcVersion = qcVersion,
                            metric = "count",
@@ -249,7 +252,7 @@ compFrame <-
     
     t7 = ggcyto(gs1,
                 mapping = aes(x = "CD4", y = "CD8"),
-                subset = "Tcell") +
+                subset = "CD3+") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t7_1 = ggcyto(gs1,
@@ -305,7 +308,7 @@ compFrame <-
       lymph = getIndiceMat(gs1, "lymph"),
       Singlets = getIndiceMat(gs1, "Singlets"),
       PE_A_Minus = getIndiceMat(gs1, "PE-A"),
-      CD3Plus = getIndiceMat(gs1, "Tcell"),
+      CD3Plus = getIndiceMat(gs1, "CD3+"),
       cd4Pcd8M = getIndiceMat(gs1, "CD4"),
       cd4Mcd8P = getIndiceMat(gs1, "CD8"),
       HLADR = getIndiceMat(gs1, "ActivatedCD4"),
