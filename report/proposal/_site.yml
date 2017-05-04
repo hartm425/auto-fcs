@@ -1,0 +1,11 @@
+name: "LLFS Proposal"
+navbar:
+  title: "LLFS Proposal"
+  left:
+    - text: "LLFS Proposal"
+      href: index.html
+output:
+  html_document:
+    keep_md: yes
+    highlight: textmate
+    theme: cosmo

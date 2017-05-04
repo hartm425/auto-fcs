@@ -1,0 +1,52 @@
+---
+title: "Collecting notes for LLFS proposal"
+
+output:
+  html_document:
+    keep_md: yes
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup,include=FALSE}
+library(DiagrammeR)
+library(knitcitations)
+cite_options(citation_format = "text", max.names = 3, 
+             cite.style = "authoryear", style = "markdown", 
+             hyperlink = "to.doc")
+```
+
+## Automatic Gating of flow cytometry data
+
+>  Automated gating was able to match the performance of central manual analysis for all tested panels, exhibiting little to no bias and comparable variability. Standardized staining, data collection, and automated gating can increase power, reduce variability, and streamline analysis for immunophenotyping.
+
+> The two top performing gating algorithms - OpenCyto (v. 1.7.4), flowDensity (v. 1.4.0) - in a study run by the FlowCAP consortium aimed at selecting the best performing algorithms for this larger study were chosen for the analysis presented in this paper. 
+
+***Standardizing Flow Cytometry Immunophenotyping Analysis from the Human ImmunoPhenotyping Consortium***
+`r citet("10.1038/srep20686") `
+
+### OpenCyto `r citet("10.1371/journal.pcbi.1003806") `
+
+We propose to use OpenCyto to perform systematic and reproducable gating of the 28 different immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)**
+
+
+
+- Mimics manual gating by focusing on 2 channels at a time
+    - can follow traditional gate hierarchy
+    - e.g. gate lymph, then single, then live, etc
+- Pipeline templates defined in .csv file
+  - defines algorithmic approach for each gate to be applied across many samples
+  - not "just push go", takes some setup for a decent template
+- Results are interpretable and labelled populations 
+  - not geared toward detecting novel cell types
+
+
+
+## Novel subsets
+
+Just a few scribbles summarizing some thoughts 
+
+
+### Phenograph
+
