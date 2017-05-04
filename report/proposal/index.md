@@ -13,7 +13,13 @@
 
 ### OpenCyto <a name=cite-Finak_2014></a>[Finak, Frelinger, Jiang, et al. (2014)](https://doi.org/10.1371%2Fjournal.pcbi.1003806)
 
-We propose to use OpenCyto to perform systematic and reproducable gating of the 28 different immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)**
+
+
+We propose to use OpenCyto to perform systematic and reproducable gating of the 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy.
+
+We evaluated the performance of OpenCyto using internal data for 151 manually gated (Jflow software) samples across 15 gates. The correlation between manual and OpenCyto gating was high (rho=0.9846 ,p-value <2e-16)
+
+![](index_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
 
 
