@@ -15,7 +15,7 @@
 
 
 
-We propose to use OpenCyto to perform systematic and reproducable gating of the 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy.
+We propose to use OpenCyto to perform systematic and reproducable gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy.
 
 We evaluated the performance of OpenCyto using internal data for 151 manually gated (Jflow software) samples across 15 gates. The correlation between manual and OpenCyto gating was high (rho=0.9846 ,p-value <2e-16)
 
@@ -36,8 +36,17 @@ We evaluated the performance of OpenCyto using internal data for 151 manually ga
 
 ## Novel subsets
 
-Just a few scribbles summarizing some thoughts 
+
+t-SNE is a visualization method, and not sure if it can be directly used for novel subset detection
+
+<!--html_preserve--><div id="htmlwidget-3d4094acf361469486b1" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3d4094acf361469486b1">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\"]\n\nnode [fontname = \"Helvetica\",\n     fontsize = \"10\",\n     shape = \"circle\",\n     fixedsize = \"true\",\n     width = \"0.5\",\n     style = \"filled\",\n     fillcolor = \"aliceblue\",\n     color = \"gray70\",\n     fontcolor = \"gray50\"]\n\nedge [len = \"1.5\",\n     color = \"gray40\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"QC\", shape = \"ellipse\"] \n  \"2\" [label = \"OpenCyto\", shape = \"ellipse\"] \n  \"3\" [label = \"Primary subset (T- or B-Cells?)\", shape = \"ellipse\"] \n  \"4\" [label = \"Phenograph\", shape = \"ellipse\"] \n  \"5\" [label = \"Visualize with t-SNE\", shape = \"ellipse\"] \n\"1\"->\"2\" [id = \"1\"] \n\"2\"->\"3\" [id = \"2\"] \n\"3\"->\"4\" [id = \"3\"] \n\"4\"->\"5\" [id = \"4\"] \n}","config":{"engine":null,"options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 ### Phenograph
+
+
+
+
+
 
