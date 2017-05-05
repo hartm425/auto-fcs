@@ -174,9 +174,26 @@ t-SNE is a visualization method, and not sure if it can be directly used for nov
 
 library(DiagrammeR)
 
-df <- data.frame(col1 = c("QC", "OpenCyto", "Primary subset (T- or B-Cells?)","Phenograph"),
-                 col2 = c("OpenCyto", "Primary subset (T- or B-Cells?)", "Phenograph","Visualize with t-SNE"),
-                 stringsAsFactors = FALSE)
+df <-
+  data.frame(
+  col1 = c(
+  "QC",
+  "OpenCyto",
+  "Primary subset (T- or B-Cells?)",
+  "Primary subset (T- or B-Cells?)",
+  "Phenograph",
+  "Citrus"
+  ),
+  col2 = c(
+  "OpenCyto",
+  "Primary subset (T- or B-Cells?)",
+  "Phenograph",
+  "Citrus",
+  "Visualize with t-SNE",
+  "Visualize with t-SNE"
+  ),
+  stringsAsFactors = FALSE
+  )
 uniquenodes <- unique(c(df$col1, df$col2))
 
 nodes <- create_node_df(n=length(uniquenodes), 
@@ -193,6 +210,13 @@ render_graph(g)
 
 
 ### Phenograph
+`r citet("10.1016/j.cell.2015.05.047") `
+
+
+
+### Citrus
+`r citet("10.1073/pnas.1408792111") `
+
 
 
 
