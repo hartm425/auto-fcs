@@ -209,12 +209,13 @@ library(DiagrammeR)
 df <-
   data.frame(
   col1 = c(
-  "QC",
+  "QC (?)",
   "OpenCyto:trim to primary subset",
   "Primary subset (T- or B-Cells?)",
   "Primary subset (T- or B-Cells?)",
   "Phenograph",
-  "Citrus"
+  "Citrus",
+  "Find discriminating populations for Case/Control"
   ),
   col2 = c(
   "OpenCyto:trim to primary subset",
@@ -222,6 +223,7 @@ df <-
   "Phenograph",
   "Citrus",
   "Visualize with t-SNE",
+  "Find discriminating populations for Case/Control",
   "Visualize with t-SNE"
   ),
   stringsAsFactors = FALSE
@@ -238,6 +240,10 @@ edges <- create_edge_df(from=match(df$col1, uniquenodes),
 g <- create_graph(nodes_df=nodes, 
                   edges_df=edges)
 render_graph(g)
+
+svg("NovelPopDetectionOutline.svg",width=14,height=7)
+render_graph(g, output = "SVG")
+dev.off()
 ```
 
 

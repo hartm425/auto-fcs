@@ -39,8 +39,13 @@ We evaluated the performance of OpenCyto using internal data for 151 manually ga
 
 t-SNE is a visualization method, and not sure if it can be directly used for novel subset detection
 
-<!--html_preserve--><div id="htmlwidget-735b40f7d71addecbba6" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-735b40f7d71addecbba6">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\"]\n\nnode [fontname = \"Helvetica\",\n     fontsize = \"10\",\n     shape = \"circle\",\n     fixedsize = \"true\",\n     width = \"0.5\",\n     style = \"filled\",\n     fillcolor = \"aliceblue\",\n     color = \"gray70\",\n     fontcolor = \"gray50\"]\n\nedge [len = \"1.5\",\n     color = \"gray40\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"QC\", shape = \"ellipse\"] \n  \"2\" [label = \"OpenCyto:trim to primary subset\", shape = \"ellipse\"] \n  \"3\" [label = \"Primary subset (T- or B-Cells?)\", shape = \"ellipse\"] \n  \"4\" [label = \"Phenograph\", shape = \"ellipse\"] \n  \"5\" [label = \"Citrus\", shape = \"ellipse\"] \n  \"6\" [label = \"Visualize with t-SNE\", shape = \"ellipse\"] \n\"1\"->\"2\" [id = \"1\"] \n\"2\"->\"3\" [id = \"2\"] \n\"3\"->\"4\" [id = \"3\"] \n\"3\"->\"5\" [id = \"4\"] \n\"4\"->\"6\" [id = \"5\"] \n\"5\"->\"6\" [id = \"6\"] \n}","config":{"engine":null,"options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-eec8fb2449ada3acf144" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eec8fb2449ada3acf144">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\"]\n\nnode [fontname = \"Helvetica\",\n     fontsize = \"10\",\n     shape = \"circle\",\n     fixedsize = \"true\",\n     width = \"0.5\",\n     style = \"filled\",\n     fillcolor = \"aliceblue\",\n     color = \"gray70\",\n     fontcolor = \"gray50\"]\n\nedge [len = \"1.5\",\n     color = \"gray40\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"QC (?)\", shape = \"ellipse\"] \n  \"2\" [label = \"OpenCyto:trim to primary subset\", shape = \"ellipse\"] \n  \"3\" [label = \"Primary subset (T- or B-Cells?)\", shape = \"ellipse\"] \n  \"4\" [label = \"Phenograph\", shape = \"ellipse\"] \n  \"5\" [label = \"Citrus\", shape = \"ellipse\"] \n  \"6\" [label = \"Find discriminating populations for Case/Control\", shape = \"ellipse\"] \n  \"7\" [label = \"Visualize with t-SNE\", shape = \"ellipse\"] \n\"1\"->\"2\" [id = \"1\"] \n\"2\"->\"3\" [id = \"2\"] \n\"3\"->\"4\" [id = \"3\"] \n\"3\"->\"5\" [id = \"4\"] \n\"4\"->\"7\" [id = \"5\"] \n\"5\"->\"6\" [id = \"6\"] \n\"6\"->\"7\" [id = \"7\"] \n}","config":{"engine":null,"options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+```
+## quartz_off_screen 
+##                 2
+```
 
 
 ### Phenograph
@@ -54,6 +59,9 @@ t-SNE is a visualization method, and not sure if it can be directly used for nov
 May be good choice for Aim 1:
 
 >  Citrus (cluster identification, characterization, and regression), a data-driven approach for the identification of stratifying subpopulations in multidimensional cytometry datasets.
+
+
+
 
 
 
