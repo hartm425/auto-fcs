@@ -249,7 +249,9 @@ render_graph(g)
 ### Citrus
 `r citet("10.1073/pnas.1408792111") `
 
+May be good choice for Aim 1:
 
+>  Citrus (cluster identification, characterization, and regression), a data-driven approach for the identification of stratifying subpopulations in multidimensional cytometry datasets.
 
 
 
