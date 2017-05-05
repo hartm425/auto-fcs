@@ -8,6 +8,13 @@ output: html_document
 ### Using OpenCyto to detect primary populations, and then phenograph to hunt for novel populations
 
 
+1. Load OpenCyto wsp
+2. get bool indicator for T cells
+3. subset FCS
+4. phenograph 
+5. t-SNE
+6. plot OpenCyto and phenograph
+
 ```{r func, eval=TRUE ,echo=FALSE,results='hide'}
 library(ggplot2)
 run <- function(file, manual,manualRemove,markers) {
@@ -57,7 +64,7 @@ markers = unique(c("SSC-A","FSC-A","FSC-H","FSC-W","PE-A","CD45","HLA-DR","CD3",
 ```
 
 
-![](./images/Screen Shot 2017-02-15 at 9.09.05 PM.png)
+<!-- ![](./images/Screen Shot 2017-02-15 at 9.09.05 PM.png) -->
 
 ### Used these markers
 
