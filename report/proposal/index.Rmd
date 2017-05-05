@@ -239,10 +239,10 @@ edges <- create_edge_df(from=match(df$col1, uniquenodes),
                         rel="related")
 g <- create_graph(nodes_df=nodes, 
                   edges_df=edges)
+render_graph(g, output = "visNetwork")
 render_graph(g)
-
 svg("NovelPopDetectionOutline.svg",width=14,height=7)
-render_graph(g, output = "SVG")
+print(render_graph(g, output = "vivagraph"))
 dev.off()
 ```
 
