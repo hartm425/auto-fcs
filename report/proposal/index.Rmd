@@ -11,92 +11,125 @@ output:
 
 ```{r setup,include=FALSE}
 library(ggplot2)
-library(irr) 
+library(irr)
 # http://www.cookbook-r.com/Statistical_analysis/Inter-rater_reliability/
 theme_set(theme_bw(20))
 
 library(knitcitations)
-cite_options(citation_format = "text", max.names = 3, 
-             cite.style = "authoryear", style = "markdown", 
-             hyperlink = "to.doc")
-options(digits=4)
-map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap.txt",stringsAsFactors = FALSE,sep = "\t") 
-metrics =read.delim("/Volumes/Beta/data/flow/testTypesTestMetrics5.bak.txt",stringsAsFactors = FALSE,sep = "\t") 
-metrics$freqParent = metrics$Count/metrics$ParentCount
+cite_options(
+  citation_format = "text",
+  max.names = 3,
+  cite.style = "authoryear",
+  style = "markdown",
+  hyperlink = "to.doc"
+)
+
+library(captioner)
+
+table_nums <- captioner(prefix = "Table")
+fig_nums <- captioner()
+
+options(digits = 4)
+map = read.delim(
+  "/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+)
+metrics = read.delim(
+  "/Volumes/Beta/data/flow/testTypesTestMetrics5.bak.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+)
+metrics$freqParent = metrics$Count / metrics$ParentCount
 metrics$nameOrig = metrics$name
-metrics$name =gsub(".fcs.*","",metrics$name ,fixed = FALSE)
-metrics$name =gsub(" ","",metrics$name ,fixed = TRUE)
- 
-metricsMan = metrics[which(metrics$GATE=="MANUAL"&metrics$Population %in% map$Manual&metrics$METRIC=="count"),]
-metricsAuto = metrics[which(metrics$GATE=="AUTOMATIC"&metrics$QC=="FALSE"&(metrics$Population %in% map$Auto|metrics$Parent=="root")&metrics$METRIC=="count"),]
+metrics$name = gsub(".fcs.*", "", metrics$name , fixed = FALSE)
+metrics$name = gsub(" ", "", metrics$name , fixed = TRUE)
 
-metricsMan = merge(metricsMan,map,by.x = "Population",by.y = "Manual")
-metricsMan$Population =metricsMan$Auto
-metricsMan$Merge=paste(metricsMan$Population,metricsMan$name,sep = "_")
-metricsAuto = merge(metricsAuto,map,by.x = "Population",by.y = "Auto",all.x = TRUE)
-metricsAuto$Merge=paste(metricsAuto$Population,metricsAuto$name,sep = "_")
- 
-row.names(metricsAuto) =metricsAuto$Merge
+metricsMan = metrics[which(
+  metrics$GATE == "MANUAL" &
+    metrics$Population %in% map$Manual & metrics$METRIC == "count"
+), ]
+metricsAuto = metrics[which(
+  metrics$GATE == "AUTOMATIC" &
+    metrics$QC == "FALSE" &
+    (metrics$Population %in% map$Auto |
+       metrics$Parent == "root") & metrics$METRIC == "count"
+), ]
 
-for(pop in unique(map$Auto)) {
+metricsMan = merge(metricsMan, map, by.x = "Population", by.y = "Manual")
+metricsMan$Population = metricsMan$Auto
+metricsMan$Merge = paste(metricsMan$Population, metricsMan$name, sep = "_")
+metricsAuto = merge(metricsAuto,
+                    map,
+                    by.x = "Population",
+                    by.y = "Auto",
+                    all.x = TRUE)
+metricsAuto$Merge = paste(metricsAuto$Population, metricsAuto$name, sep = "_")
+
+row.names(metricsAuto) = metricsAuto$Merge
+
+for (pop in unique(map$Auto)) {
   for (sample in unique(metricsAuto$name)) {
     row = paste(pop, sample, sep = "_")
     sub = metricsAuto[which(metricsAuto$Population == pop &
-                              metricsAuto$name == sample),]
+                              metricsAuto$name == sample), ]
     realParentCount = metricsAuto[which(metricsAuto$Population == sub$RealAutoParent &
-                                          metricsAuto$name == sample),]$Count
+                                          metricsAuto$name == sample), ]$Count
     if (sub$RealAutoParent != "root") {
       metricsAuto[row, "freqParent"] = sub$Count / realParentCount
-    }else{
+    } else{
       realParentCount = metricsAuto[which(metricsAuto$Parent == sub$RealAutoParent &
-                                          metricsAuto$name == sample),]$ParentCount
+                                            metricsAuto$name == sample), ]$ParentCount
       metricsAuto[row, "freqParent"] = sub$Count / realParentCount
-
+      
     }
   }
 }
-metricCombo = merge(metricsAuto,metricsMan,by.x = "Merge",by.y = "Merge")
-metricCombo$Population.x= gsub("CCR7","CD4/CCR7",metricCombo$Population.x)
+metricCombo = merge(metricsAuto, metricsMan, by.x = "Merge", by.y = "Merge")
+metricCombo$Population.x = gsub("CCR7", "CD4/CCR7", metricCombo$Population.x)
 
 
-summaryTP <-function(file){
- as.numeric.factor <- function(x) {as.numeric(levels(x))[x]}
-   data = read.delim(file,stringsAsFactors = FALSE,sep = "\t")
-  summaryT =as.data.frame(table(data[,1]))
-  summaryT$Freq =as.numeric(summaryT$Freq)
-  summary =as.data.frame(t(summaryT))
-  summary =summary[-1,]
+summaryTP <- function(file) {
+  as.numeric.factor <- function(x) {
+    as.numeric(levels(x))[x]
+  }
+  data = read.delim(file, stringsAsFactors = FALSE, sep = "\t")
+  summaryT = as.data.frame(table(data[, 1]))
+  summaryT$Freq = as.numeric(summaryT$Freq)
+  summary = as.data.frame(t(summaryT))
+  summary = summary[-1, ]
   colnames(summary) = summaryT$Var1
- 
-  if (is.null(summary$FN)) { 
-     summary$FN =as.factor(0)
+  
+  if (is.null(summary$FN)) {
+    summary$FN = as.factor(0)
   }
-  if (is.null(summary$TN)) { 
-     summary$TN=as.factor(0)
+  if (is.null(summary$TN)) {
+    summary$TN = as.factor(0)
   }
-  if (is.null(summary$TP)) { 
-     summary$TP=as.factor(0)
+  if (is.null(summary$TP)) {
+    summary$TP = as.factor(0)
   }
-  if (is.null(summary$FP)) { 
-     summary$FP =as.factor(0)
+  if (is.null(summary$FP)) {
+    summary$FP = as.factor(0)
   }
   
-#   Sensitivity = TP / TP + FN
-# Specificity = TN / TN + FP
-# Precision = TP / TP + FP
+  #   Sensitivity = TP / TP + FN
+  # Specificity = TN / TN + FP
+  # Precision = TP / TP + FP
   
-#   Specificity = TN / TN + FP
-# Precision = TP / TP + FP
+  #   Specificity = TN / TN + FP
+  # Precision = TP / TP + FP
   # Sensitivity = TP / TP + FN
-  summary$FN =as.numeric.factor(summary$FN)
-  summary$FP =as.numeric.factor(summary$FP)
-  summary$TN =as.numeric.factor(summary$TN)
-  summary$TP =as.numeric.factor(summary$TP)
-  summary$ACC = (summary$TP+summary$TN)/(summary$TP+summary$TN+summary$FP+summary$FN)
-  summary$SENS = (summary$TP)/(summary$TP+summary$FN)
-  summary$SPEC = (summary$TN)/(summary$TN+summary$FP)
-  summary$PREC = (summary$TP)/(summary$TP+summary$FP)
-
+  summary$FN = as.numeric.factor(summary$FN)
+  summary$FP = as.numeric.factor(summary$FP)
+  summary$TN = as.numeric.factor(summary$TN)
+  summary$TP = as.numeric.factor(summary$TP)
+  summary$ACC = (summary$TP + summary$TN) / (summary$TP + summary$TN + summary$FP +
+                                               summary$FN)
+  summary$SENS = (summary$TP) / (summary$TP + summary$FN)
+  summary$SPEC = (summary$TN) / (summary$TN + summary$FP)
+  summary$PREC = (summary$TP) / (summary$TP + summary$FP)
+  
   return(summary)
   
 }
@@ -105,20 +138,19 @@ getSummary <- function(metricCombo, data1, data2) {
   ts = cor.test(data1, data2, method = "spearman")
   fit = lm(data2 ~ data1, data = metricCombo)
   sum = summary(fit)
-  w = wilcox.test(data1,data2,paired=TRUE)
-  d = data.frame(X1=data1,X2 =data2)
-  icc =icc(d, model="oneway", type="agreement")
+  w = wilcox.test(data1, data2, paired = TRUE)
+  d = data.frame(X1 = data1, X2 = data2)
+  icc = icc(d, model = "oneway", type = "agreement")
   summary = data.frame(
-  N_SAMPS = length(unique(metricCombo$name.x)),
-  N_DATA = length(metricCombo$Count.x),
-  RHO = ts$estimate[[1]],
-  BETA = sum$coefficients[2],
-  BETA_SE= sum$coefficients[4],
-  R2 = sum$r.squared,
-  ICC_1 = icc$value
+    N_SAMPS = length(unique(metricCombo$name.x)),
+    N_DATA = length(metricCombo$Count.x),
+    RHO = ts$estimate[[1]],
+    BETA = sum$coefficients[2],
+    BETA_SE = sum$coefficients[4],
+    R2 = sum$r.squared,
+    ICC_1 = icc$value
   )
 }
-
 
 
 ```
@@ -147,7 +179,7 @@ We propose to use OpenCyto to perform systematic and reproducable gating of 28 i
 We evaluated the performance of OpenCyto using internal data for `r sumBase$N_SAMPS` manually gated (Jflow software) samples across `r length(unique(metricCombo$Population.x))` gates. The correlation between manual and OpenCyto gating was high (rho=`r sumAll$RHO` ,p-value <2e-16)
 
 ```{r,echo=FALSE}
-
+# fig_nums("Correlation_ALL", "Correlation of population counts between manual and OpenCyto gates")
 p = ggplot(metricCombo,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
@@ -178,14 +210,14 @@ df <-
   data.frame(
   col1 = c(
   "QC",
-  "OpenCyto",
+  "OpenCyto:trim to primary subset",
   "Primary subset (T- or B-Cells?)",
   "Primary subset (T- or B-Cells?)",
   "Phenograph",
   "Citrus"
   ),
   col2 = c(
-  "OpenCyto",
+  "OpenCyto:trim to primary subset",
   "Primary subset (T- or B-Cells?)",
   "Phenograph",
   "Citrus",
