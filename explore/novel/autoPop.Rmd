@@ -8,27 +8,97 @@ output: html_document
 ### Using OpenCyto to detect primary populations, and then phenograph to hunt for novel
 
 
+```{r func, eval=TRUE ,echo=FALSE,results='hide'}
+library(ggplot2)
+run <- function(file, manual,manualRemove,markers) {
+require(cytofkit)
+require(flowCore)
+library(igraph)
+  #load example fcs, compensation and logicle scaling on load
+  data_transformed <- cytof_exprsExtract(fcsFile = file, markers = markers, 
+                                         comp = TRUE,
+                                         transformMethod = "autoLgcl")
+  
+  #sub-setting to points that were manually gate already, for comparison
+  data_transformed_xk <- data_transformed[ which(!manual$V1 %in% manualRemove), ]
+  
+  manualUsed = manual[ which(!manual$V1 %in% manualRemove), ]
+  ## run PhenoGraph
+  cluster_PhenoGraph <- cytof_cluster(xdata = data_transformed_xk, method = "Rphenograph")
+  # run tsne
+  data_transformed_xk_tsne <- cytof_dimReduction(data=data_transformed_xk, method = "tsne",out_dim = 4)
+  
+  #combine with original
+  data_xk_all <- cbind(data_transformed_xk, data_transformed_xk_tsne, manualUsed,
+                       PhenoGraph = cluster_PhenoGraph)
+  data_xk_all <- as.data.frame(data_xk_all)
+return(data_xk_all)
+}
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Analysis
+```{r analyze, eval=FALSE ,echo=FALSE,results='hide'}
+library(cytofkit)
+library(flowCore)
+file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
+manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
+markersDNM = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
+manualRemove =c(0,1,2,3)# removing these
+# subset(dat, hospital %in% goodHosp)
+data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove,markers=markersDNM)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+
+save(data_xk_all,file = "~/temp/fcs/testRunDendritic.rdata")
+markers = unique(c("SSC-A","FSC-A","FSC-H","FSC-W","PE-A","CD45","HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
+
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+![](./images/Screen Shot 2017-02-15 at 9.09.05 PM.png)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### Used these markers
+
+```{r echo=FALSE}
+library(knitr)
+markersDNM = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
+kable(as.data.frame(markersDNM), format = "markdown")
+```
+## TSNE results
+```{r plot5,fig.width=10,fig.height=10,echo=FALSE}
+theme_set(theme_bw(20))
+load("~/temp/fcs/testRunDendritic.rdata")
+
+mapping = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding_map.txt",header = FALSE)
+mapping$code=gsub(".*=", "", mapping$V1, fixed = FALSE)
+data_xk_allM  = merge( mapping,data_xk_all, by.x=c("code"),by.y=c("manualUsed"))
+
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## TSNE results, colored by Phenograph clusters detected
+```{r plot6,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+```
+
+## TSNE results, colored by manual gates 
+```{r plot7,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+```
+
+## TSNE results, colored by manual gates 
+```{r plot8,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4))) +facet_wrap(~V1)
+
+```
+
+## TSNE results, colored by Phenograph clusters detected
+```{r plot9,fig.width=15,fig.height=10,echo=FALSE}
+ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4))) +facet_wrap(~PhenoGraph)
+
+```
