@@ -180,11 +180,11 @@ sumActCD =getSummary(metricCombo = dataActCd,data1 = dataActCd$Count.x,data2 = d
 
 ```
 
-We propose to use OpenCyto to perform systematic and reproducible gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy. Importantly, this methodology allows for unbiased gating of thousands of samples.
+We propose to use OpenCyto to perform systematic and reproducible gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy. Importantly, this methodology allows for unbiased gating of thousands of samples producing results that are interpretable and labelled populations
 
 OpenCyto gives the user many options to refine algorithmic parameters to improve the performance of each step in the gating hierarchy. We evaluated the performance of our OpenCyto template using internal data for `r sumBase$N_SAMPS` manually gated (Jflow software) samples across `r length(unique(metricCombo$Population.x))` gates. The global correlation between the population counts of manual and OpenCyto gating was high (rho=`r sumAll$RHO` ,p-value <2e-16). Despite a high global concordance, certain subsets were less well correlated (e.g Activated CD4 counts, rho=`r sumActCD$RHO` ,p-value <2e-16).
 
-While OpenCyto can automate the classification of known subsets by following a traditional gating hierarchy that incoporates domain knowledge, it does not easily facilitate the discovery of novel populations. 
+While OpenCyto can automate the classification of known subsets by following a traditional gating hierarchy, it does not easily facilitate the discovery of novel populations. 
 
 
 
@@ -193,18 +193,6 @@ While OpenCyto can automate the classification of known subsets by following a t
 p = ggplot(metricCombo,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
-
-
-
-- Mimics manual gating by focusing on 2 channels at a time
-    - can follow traditional gate hierarchy
-    - e.g. gate lymph, then single, then live, etc
-- Pipeline templates defined in .csv file
-  - defines algorithmic approach for each gate to be applied across many samples
-  - not "just push go", takes some setup for a decent template
-- Results are interpretable and labelled populations 
-  - not geared toward detecting novel cell types
-
 
 
 ## Novel subsets
@@ -219,19 +207,21 @@ library(DiagrammeR)
 df <-
   data.frame(
   col1 = c(
-  "QC (?)",
   "OpenCyto:trim to primary subset",
   "Primary subset (T- or B-Cells?)",
   "Primary subset (T- or B-Cells?)",
   "Phenograph",
+  "Compute MEM score",
+   "Find discriminating populations for Case/Control",
   "Citrus",
   "Find discriminating populations for Case/Control"
   ),
   col2 = c(
-  "OpenCyto:trim to primary subset",
   "Primary subset (T- or B-Cells?)",
   "Phenograph",
   "Citrus",
+  "Compute MEM score",
+  "Find discriminating populations for Case/Control",
   "Visualize with t-SNE",
   "Find discriminating populations for Case/Control",
   "Visualize with t-SNE"
@@ -257,10 +247,12 @@ dev.off()
 ```
 
 
-### Phenograph
-`r citet("10.1016/j.cell.2015.05.047") `
+### PhenoGraph
+`r citep("10.1016/j.cell.2015.05.047") `
 
-Phenograph performs unsupervised clustering of high dimensional single cell data allowing for the discovery of novel subtypes. We propose to use OpenCyto to first limit our search space (e.g starting from live,single T-Cells) and then search for novel populations within the clean subset. 
+PhenoGraph performs unsupervised clustering of high dimensional single cell data allowing for the discovery of novel subtypes. We propose to use OpenCyto to first limit our search space (e.g starting from live, single T-Cells) and then search for novel populations within the clean subset.
+
+PhenoGraph produces results that are numerically labelled populations, but do not have an immediate interpretation. In order interpret the PhenoGraph results, we will compute the MEM `r citet("10.1038/nMeth.4149") ` score of each PhenoGraph cluster allowing for (magical) comparisons between cases and controls.
 
 ```{r pgraph,echo=FALSE}
 theme_set(theme_bw(20))
@@ -274,22 +266,38 @@ data_xk_all$PhenoGraph =as.factor(data_xk_all$PhenoGraph)
 ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=PhenoGraph)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
 
 ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=code)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+```
 
-kable(as.data.frame(table(data_xk_all$code,data_xk_all$V1)))
+```{r pgraphs2,echo=FALSE,results='asis'}
+kable(as.data.frame(unique(data_xk_all$V1)),format = "markdown")
+```
 
-ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=V1)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+```{r pgraphs3,echo=FALSE}
 
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=CD4)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=CCR7M_CD45RAM)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=CCR7P_CD45RAM)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=CCR7P_CD45RAP)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=CCR7M_CD45RAP)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
 
 ```
 
 
 
 ### Citrus
-`r citet("10.1073/pnas.1408792111") `
+`r citet("10.1073/pnas.1408792111")`
+
+
 
 May be good choice for Aim 1:
 
 >  Citrus (cluster identification, characterization, and regression), a data-driven approach for the identification of stratifying subpopulations in multidimensional cytometry datasets.
+
+Citrus was designed to detect stratifying cell populations between cases and controls.
 
 
 
