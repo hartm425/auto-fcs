@@ -27,20 +27,21 @@ library(igraph)
                                          transformMethod = "autoLgcl")
   
   #sub-setting to points that were manually gate already, for comparison
-  data_transformed_xk <- data_transformed[ which(!manual$V1 %in% manualRemove), ]
+  data_transformed_xk <- data_transformed[ openCytoDef$CD3_PLUS, ]
   
-  manualUsed = manual[ which(!manual$V1 %in% manualRemove), ]
+  openCytoDefSub = openCytoDef[ openCytoDef$CD3_PLUS, ]
   ## run PhenoGraph
   cluster_PhenoGraph <- cytof_cluster(xdata = data_transformed_xk, method = "Rphenograph")
   # run tsne
-  data_transformed_xk_tsne <- cytof_dimReduction(data=data_transformed_xk, method = "tsne",out_dim = 4)
+  data_transformed_xk_tsne <- cytof_dimReduction(data=data_transformed_xk, method = "tsne",out_dim = 2)
   
   #combine with original
-  data_xk_all <- cbind(data_transformed_xk, data_transformed_xk_tsne, manualUsed,
+  data_xk_all <- cbind(data_transformed_xk, data_transformed_xk_tsne, openCytoDefSub,
                        PhenoGraph = cluster_PhenoGraph)
   data_xk_all <- as.data.frame(data_xk_all)
 return(data_xk_all)
 }
+
 
 ```
 
@@ -49,14 +50,14 @@ return(data_xk_all)
 ```{r analyze, eval=FALSE ,echo=FALSE,results='hide'}
 library(cytofkit)
 library(flowCore)
-file = "/Volumes/Beta/data/flow/fcs3/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs"
-openC = read.delim("/Volumes/Beta/data/flow/gates5/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs_panel1_gate_def.txt",header = TRUE)
+file = "/Volumes/Beta/data/flow/fcs3/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs"
+openC = read.delim("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_gate_def.txt",header = TRUE)
 markersDNM = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 data_xk_all =run(file=file,openCytoDef=openC,markers=markersDNM)
 
 
 
-save(data_xk_all,file = "/Volumes/Beta/data/flow/testOPh/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs_panel1_pg.Rdata")
+save(data_xk_all,file = "/Volumes/Beta/data/flow/testOPh/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_pg.Rdata")
 markers = unique(c("SSC-A","FSC-A","FSC-H","FSC-W","PE-A","CD45","HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 
 ```
@@ -74,25 +75,22 @@ kable(as.data.frame(markersDNM), format = "markdown")
 ## TSNE results
 ```{r plot5,fig.width=10,fig.height=10,echo=FALSE}
 theme_set(theme_bw(20))
-load("~/temp/fcs/testRunDendritic.rdata")
+load("/Volumes/Beta/data/flow/testOPh/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs_panel1_pg.Rdata")
 
-mapping = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding_map.txt",header = FALSE)
-mapping$code=gsub(".*=", "", mapping$V1, fixed = FALSE)
-data_xk_allM  = merge( mapping,data_xk_all, by.x=c("code"),by.y=c("manualUsed"))
 
-ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
 
 ```
 
 ## TSNE results, colored by Phenograph clusters detected
 ```{r plot6,fig.width=15,fig.height=10,echo=FALSE}
-ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
 
 ```
 
-## TSNE results, colored by manual gates 
+## TSNE results, colored by openCyto gates 
 ```{r plot7,fig.width=15,fig.height=10,echo=FALSE}
-ggplot(data_xk_allM , aes(x = tsne_1,y=tsne_2,color=as.factor(V1))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=as.factor(CCR7M_CD45RAM))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
 
 ```
 
