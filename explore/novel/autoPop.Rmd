@@ -52,9 +52,12 @@ library(cytofkit)
 library(flowCore)
 file = "/Volumes/Beta/data/flow/fcs3/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs"
 openC = read.delim("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_gate_def.txt",header = TRUE)
+manual = read.delim("/Volumes/Beta/data/flow/manCoding/2016-05-05_PANEL 1_HB_panel one_F1631958_002_coding.xln",header = FALSE)
+manualUsed = manual[ openC$CD3_PLUS, ]
+
 markersDNM = unique(c("HLA-DR","CD3","CD19","CD8","IgD","CCR7","CD28","CD95","CD45RA","CD4","CD27"))
 data_xk_all =run(file=file,openCytoDef=openC,markers=markersDNM)
-
+data_xk_all =cbind(data_xk_all,manualUsed)
 
 
 save(data_xk_all,file = "/Volumes/Beta/data/flow/testOPh/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_pg.Rdata")

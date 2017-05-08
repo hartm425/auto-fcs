@@ -14,7 +14,7 @@ library(ggplot2)
 library(irr)
 # http://www.cookbook-r.com/Statistical_analysis/Inter-rater_reliability/
 theme_set(theme_bw(20))
-
+library(knitr)
 library(knitcitations)
 cite_options(
   citation_format = "text",
@@ -265,8 +265,21 @@ Phenograph performs unsupervised clustering of high dimensional single cell data
 ```{r pgraph,echo=FALSE}
 theme_set(theme_bw(20))
 load("/Volumes/Beta/data/flow/testOPh/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_pg.Rdata")
+
+mapping = read.delim("/Volumes/Beta/data/flow/manCoding/2016-05-05_PANEL 1_HB_panel one_F1631958_002_coding_map.txt",header = FALSE)
+mapping$code=gsub(".*=", "", mapping$V1, fixed = FALSE)
+data_xk_all  = merge( mapping,data_xk_all, by.x=c("code"),by.y=c("manualUsed"))
+
 data_xk_all$PhenoGraph =as.factor(data_xk_all$PhenoGraph)
 ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=PhenoGraph)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=code)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+kable(as.data.frame(table(data_xk_all$code,data_xk_all$V1)))
+
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=V1)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+
+
 ```
 
 
