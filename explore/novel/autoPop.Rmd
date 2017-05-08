@@ -52,7 +52,7 @@ library(cytofkit)
 library(flowCore)
 file = "/Volumes/Beta/data/flow/fcs3/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs"
 openC = read.delim("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_gate_def.txt",header = TRUE)
-markersDNM = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
+markersDNM = unique(c("HLA-DR","CD3","CD19","CD8","IgD","CCR7","CD28","CD95","CD45RA","CD4","CD27"))
 data_xk_all =run(file=file,openCytoDef=openC,markers=markersDNM)
 
 
@@ -75,7 +75,7 @@ kable(as.data.frame(markersDNM), format = "markdown")
 ## TSNE results
 ```{r plot5,fig.width=10,fig.height=10,echo=FALSE}
 theme_set(theme_bw(20))
-load("/Volumes/Beta/data/flow/testOPh/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs_panel1_pg.Rdata")
+load("/Volumes/Beta/data/flow/testOPh/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_pg.Rdata")
 
 
 ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
@@ -84,7 +84,8 @@ ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2)) +geom_point(size = .15)+ guides(c
 
 ## TSNE results, colored by Phenograph clusters detected
 ```{r plot6,fig.width=15,fig.height=10,echo=FALSE}
-ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=as.factor(PhenoGraph))) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+data_xk_all$PhenoGraph =as.factor(PhenoGraph)
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=PhenoGraph)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
 
 ```
 

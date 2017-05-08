@@ -172,11 +172,21 @@ data = metricCombo[which(metricCombo$Population.x==gate),]
 
 sumBase =getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y)
 sumAll = getSummary(metricCombo = metricCombo,data1 = metricCombo$Count.x,data2 = metricCombo$Count.y)
+
+actCD4  = "ActivatedCD4"
+dataActCd = metricCombo[which(metricCombo$Population.x==actCD4),]
+sumActCD =getSummary(metricCombo = dataActCd,data1 = dataActCd$Count.x,data2 = dataActCd$Count.y)
+
+
 ```
 
-We propose to use OpenCyto to perform systematic and reproducable gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy.
+We propose to use OpenCyto to perform systematic and reproducible gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy. Importantly, this methodology allows for unbiased gating of thousands of samples.
 
-We evaluated the performance of OpenCyto using internal data for `r sumBase$N_SAMPS` manually gated (Jflow software) samples across `r length(unique(metricCombo$Population.x))` gates. The correlation between manual and OpenCyto gating was high (rho=`r sumAll$RHO` ,p-value <2e-16)
+OpenCyto gives the user many options to refine algorithmic parameters to improve the performance of each step in the gating hierarchy. We evaluated the performance of our OpenCyto template using internal data for `r sumBase$N_SAMPS` manually gated (Jflow software) samples across `r length(unique(metricCombo$Population.x))` gates. The global correlation between the population counts of manual and OpenCyto gating was high (rho=`r sumAll$RHO` ,p-value <2e-16). Despite a high global concordance, certain subsets were less well correlated (e.g Activated CD4 counts, rho=`r sumActCD$RHO` ,p-value <2e-16).
+
+While OpenCyto can automate the classification of known subsets by following a traditional gating hierarchy that incoporates domain knowledge, it does not easily facilitate the discovery of novel populations. 
+
+
 
 ```{r,echo=FALSE}
 # fig_nums("Correlation_ALL", "Correlation of population counts between manual and OpenCyto gates")
@@ -249,6 +259,15 @@ dev.off()
 
 ### Phenograph
 `r citet("10.1016/j.cell.2015.05.047") `
+
+Phenograph performs unsupervised clustering of high dimensional single cell data allowing for the discovery of novel subtypes. We propose to use OpenCyto to first limit our search space (e.g starting from live,single T-Cells) and then search for novel populations within the clean subset. 
+
+```{r pgraph,echo=FALSE}
+theme_set(theme_bw(20))
+load("/Volumes/Beta/data/flow/testOPh/2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs_panel1_pg.Rdata")
+data_xk_all$PhenoGraph =as.factor(data_xk_all$PhenoGraph)
+ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=PhenoGraph)) +geom_point(size = .15)+ guides(colour = guide_legend(override.aes = list(size=4)))
+```
 
 
 

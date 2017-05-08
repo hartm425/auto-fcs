@@ -15,9 +15,13 @@
 
 
 
-We propose to use OpenCyto to perform systematic and reproducable gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy.
+We propose to use OpenCyto to perform systematic and reproducible gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy. Importantly, this methodology allows for unbiased gating of thousands of samples.
 
-We evaluated the performance of OpenCyto using internal data for 151 manually gated (Jflow software) samples across 15 gates. The correlation between manual and OpenCyto gating was high (rho=0.9846 ,p-value <2e-16)
+OpenCyto gives the user many options to refine algorithmic parameters to improve the performance of each step in the gating hierarchy. We evaluated the performance of our OpenCyto template using internal data for 151 manually gated (Jflow software) samples across 15 gates. The global correlation between the population counts of manual and OpenCyto gating was high (rho=0.9846 ,p-value <2e-16). Despite a high global concordance, certain subsets were less well correlated (e.g Activated CD4 counts, rho=0.6222 ,p-value <2e-16).
+
+While OpenCyto can automate the classification of known subsets by following a traditional gating hierarchy incorporating domain knowledge, it does not easily facilitate the discovery of novel populations. 
+
+
 
 ![](index_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
@@ -39,9 +43,9 @@ We evaluated the performance of OpenCyto using internal data for 151 manually ga
 
 t-SNE is a visualization method, and not sure if it can be directly used for novel subset detection
 
-<!--html_preserve--><div id="htmlwidget-1be4b20006e02e568f5c" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1be4b20006e02e568f5c">{"x":{"nodes":{"id":[1,2,3,4,5,6,7],"group":["chr","chr","chr","chr","chr","chr","chr"],"label":["QC (?)","OpenCyto:trim to primary subset","Primary subset (T- or B-Cells?)","Phenograph","Citrus","Find discriminating populations for Case/Control","Visualize with t-SNE"],"shape":["ellipse","ellipse","ellipse","ellipse","ellipse","ellipse","ellipse"]},"edges":{"id":[1,2,3,4,5,6,7],"from":[1,2,3,3,4,5,6],"to":[2,3,4,5,7,6,7],"label":["related","related","related","related","related","related","related"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":"chr","width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><!--html_preserve--><div id="htmlwidget-32150f5d5e245cc22e6b" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-32150f5d5e245cc22e6b">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\"]\n\nnode [fontname = \"Helvetica\",\n     fontsize = \"10\",\n     shape = \"circle\",\n     fixedsize = \"true\",\n     width = \"0.5\",\n     style = \"filled\",\n     fillcolor = \"aliceblue\",\n     color = \"gray70\",\n     fontcolor = \"gray50\"]\n\nedge [len = \"1.5\",\n     color = \"gray40\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"QC (?)\", shape = \"ellipse\"] \n  \"2\" [label = \"OpenCyto:trim to primary subset\", shape = \"ellipse\"] \n  \"3\" [label = \"Primary subset (T- or B-Cells?)\", shape = \"ellipse\"] \n  \"4\" [label = \"Phenograph\", shape = \"ellipse\"] \n  \"5\" [label = \"Citrus\", shape = \"ellipse\"] \n  \"6\" [label = \"Find discriminating populations for Case/Control\", shape = \"ellipse\"] \n  \"7\" [label = \"Visualize with t-SNE\", shape = \"ellipse\"] \n\"1\"->\"2\" [id = \"1\"] \n\"2\"->\"3\" [id = \"2\"] \n\"3\"->\"4\" [id = \"3\"] \n\"3\"->\"5\" [id = \"4\"] \n\"4\"->\"7\" [id = \"5\"] \n\"5\"->\"6\" [id = \"6\"] \n\"6\"->\"7\" [id = \"7\"] \n}","config":{"engine":null,"options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-c8fd86f0843dc1ac61af" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c8fd86f0843dc1ac61af">{"x":{"nodes":{"id":[1,2,3,4,5,6,7],"group":["chr","chr","chr","chr","chr","chr","chr"],"label":["QC (?)","OpenCyto:trim to primary subset","Primary subset (T- or B-Cells?)","Phenograph","Citrus","Find discriminating populations for Case/Control","Visualize with t-SNE"],"shape":["ellipse","ellipse","ellipse","ellipse","ellipse","ellipse","ellipse"]},"edges":{"id":[1,2,3,4,5,6,7],"from":[1,2,3,3,4,5,6],"to":[2,3,4,5,7,6,7],"label":["related","related","related","related","related","related","related"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":"chr","width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><!--html_preserve--><div id="htmlwidget-ca53718224d5bc0d0839" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ca53718224d5bc0d0839">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\"]\n\nnode [fontname = \"Helvetica\",\n     fontsize = \"10\",\n     shape = \"circle\",\n     fixedsize = \"true\",\n     width = \"0.5\",\n     style = \"filled\",\n     fillcolor = \"aliceblue\",\n     color = \"gray70\",\n     fontcolor = \"gray50\"]\n\nedge [len = \"1.5\",\n     color = \"gray40\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"QC (?)\", shape = \"ellipse\"] \n  \"2\" [label = \"OpenCyto:trim to primary subset\", shape = \"ellipse\"] \n  \"3\" [label = \"Primary subset (T- or B-Cells?)\", shape = \"ellipse\"] \n  \"4\" [label = \"Phenograph\", shape = \"ellipse\"] \n  \"5\" [label = \"Citrus\", shape = \"ellipse\"] \n  \"6\" [label = \"Find discriminating populations for Case/Control\", shape = \"ellipse\"] \n  \"7\" [label = \"Visualize with t-SNE\", shape = \"ellipse\"] \n\"1\"->\"2\" [id = \"1\"] \n\"2\"->\"3\" [id = \"2\"] \n\"3\"->\"4\" [id = \"3\"] \n\"3\"->\"5\" [id = \"4\"] \n\"4\"->\"7\" [id = \"5\"] \n\"5\"->\"6\" [id = \"6\"] \n\"6\"->\"7\" [id = \"7\"] \n}","config":{"engine":null,"options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ```
 ## quartz_off_screen 
@@ -51,6 +55,10 @@ t-SNE is a visualization method, and not sure if it can be directly used for nov
 
 ### Phenograph
 <a name=cite-Levine_2015></a>[Levine, Simonds, Bendall, et al. (2015)](https://doi.org/10.1016%2Fj.cell.2015.05.047)
+
+Phenograph performs unsupervised clustering of high dimensional single cell data allowing for the discovery of novel subtypes. We propose to use OpenCyto to first limit our search space (e.g starting from live,single T-Cells) and then search for novel populations within the clean subset. 
+
+![](index_files/figure-html/pgraph-1.png)<!-- -->
 
 
 
