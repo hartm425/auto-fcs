@@ -17,7 +17,7 @@ output: html_document
 
 ```{r func, eval=TRUE ,echo=FALSE,results='hide'}
 library(ggplot2)
-run <- function(file, manual,manualRemove,markers) {
+run <- function(file,openCytoDef,markers) {
 require(cytofkit)
 require(flowCore)
 library(igraph)
@@ -49,8 +49,8 @@ return(data_xk_all)
 ```{r analyze, eval=FALSE ,echo=FALSE,results='hide'}
 library(cytofkit)
 library(flowCore)
-file = "~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs"
-manual = read.delim("~/temp/fcs/2016-05-20_PANEL 2_ZF_panel 2_F1632217_009_coding.xln",header = FALSE)
+file = "/Volumes/Beta/data/flow/gates5/"
+manual = read.delim("/Volumes/Beta/data/flow/gates5/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs_panel1_gate_def.txt",header = FALSE)
 markersDNM = unique(c("HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 manualRemove =c(0,1,2,3)# removing these
 # subset(dat, hospital %in% goodHosp)
@@ -58,7 +58,7 @@ data_xk_all =run(file=file,manual=manual,manualRemove=manualRemove,markers=marke
 
 
 
-save(data_xk_all,file = "~/temp/fcs/testRunDendritic.rdata")
+save(data_xk_all,file = "/Volumes/Beta/data/flow/testOPh/2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs_panel1_pg.Rdata")
 markers = unique(c("SSC-A","FSC-A","FSC-H","FSC-W","PE-A","CD45","HLA-DR","CD3","CD19","CD14","CD16","CD20","CD11c","CD123","CD56"))
 
 ```
