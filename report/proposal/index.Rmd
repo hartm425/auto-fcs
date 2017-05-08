@@ -198,7 +198,7 @@ p
 ## Novel subsets
 
 
-t-SNE is a visualization method, and not sure if it can be directly used for novel subset detection
+### My made up diagram for novel subsets
 
 ```{r graph,echo=FALSE}
 
@@ -286,6 +286,8 @@ ggplot(data_xk_all , aes(x = tsne_1,y=tsne_2,color=CCR7M_CD45RAP)) +geom_point(s
 
 ```
 
+
+***t-SNE is a visualization method, and not sure if it can be directly used for automated novel subset detection***
 
 
 ### Citrus
