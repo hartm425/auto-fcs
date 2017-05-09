@@ -15,9 +15,9 @@
 
 
 
-We propose to use OpenCyto to perform systematic and reproducible gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy. Importantly, this methodology allows for unbiased gating of thousands of samples producing results that are interpretable and labelled populations
+OpenCyto is an analysis framework designed to automate the accurate gating of flow cytometry data with limited bias ([Finak, Frelinger, Jiang, et al. (2014)](https://doi.org/10.1371%2Fjournal.pcbi.1003806), [Finak, Langweiler, Jaimes, et al. (2016)](https://doi.org/10.1038%2Fsrep20686)).  We propose to use OpenCyto to perform systematic and reproducible gating of 28 immune cell subsets. Gating is standardized via a **[.csv](https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/lymph.dev.b.csv)** file describing the algorithmic approach for each step of the gating hierarchy. Importantly, this methodology allows for the gating of thousands of samples producing interpretable and labelled populations
 
-OpenCyto gives the user many options to refine algorithmic parameters to improve the performance of each step in the gating hierarchy. We evaluated the performance of our OpenCyto template using internal data for 151 manually gated (Jflow software) samples across 15 gates. The global correlation between the population counts of manual and OpenCyto gating was high (rho=0.9846 ,p-value <2e-16). Despite a high global concordance, certain subsets were less well correlated (e.g Activated CD4 counts, rho=0.6222 ,p-value <2e-16).
+OpenCyto gives the user many options to refine algorithmic parameters to improve the performance of each step in the gating hierarchy. We evaluated the performance of our OpenCyto template using internal data for 151 manually gated (Jflow software) samples across 15 gates. The global correlation between the population counts of manual and OpenCyto gating was high (rho=0.9846, p-value <2e-16).  Despite a high global concordance, certain subsets were less well correlated (Activated CD4 counts, rho=0.6222, p-value <2e-16).
 
 While OpenCyto can automate the classification of known subsets by following a traditional gating hierarchy, it does not easily facilitate the discovery of novel populations. 
 
@@ -29,24 +29,58 @@ While OpenCyto can automate the classification of known subsets by following a t
 ## Novel subsets
 
 
+We propose two methods for unsupervised clustering of high dimensional flow cytometry data to search for novel cell subsets that may discriminate case/control status. For both methods, we will use OpenCyto to first limit our search space (e.g starting from live, single T-Cells) and then search for novel populations within the clean subset.
+
+Citrus (cluster identification, characterization, and regression) <a name=cite-Bruggner_2014></a>[Bruggner, Bodenmiller, Dill, et al. (2014)](https://doi.org/10.1073%2Fpnas.1408792111) is specifically designed to find cell subsets that can predict case/control status and provides the user with diagnostic plots detailing the predictive accuracy of any subsets discovered. A particular limitation of Citrus is the assumption that predictive subsets will be present in a large percentage (default 5%) of all study events. This may limit the use of Citrus for detectection of rare but differential subsets.
+
+PhenoGraph <a name=cite-Levine_2015></a>([Levine, Simonds, Bendall, et al., 2015](https://doi.org/10.1016%2Fj.cell.2015.05.047)) also performs unsupervised clustering of high dimensional single cell data and is able to identify subsets present in as few as 1/2,000 cells. Since PhenoGraph clusters are not immediately interpretable (labelled as 1, 2, 3,etc), **we will need a method to interpret and compare cases to controls / find distinguishing populations / determine what is novel**. 
+
+**t-SNE may not be totally necessary/feasible on the 1K+ sample scale, but looks nice**
+
+Lastly, any novel and discriminating populations detected will visualized by collapsing the data to 2D space using [t-SNE](https://lvdmaaten.github.io/publications/papers/JMLR_2008.pdf). t-SNE provides a comprehensive view of the dataset and can aid in visually assessing the distinctness of a novel cluster across many dimensions. 
+
+# Possible option for PhenoGraph analysis
+
+- Create meta sample (combine all samples, normalize)
+- Run PhenoGraph
+- For each PhenoGraph cluster detected, see if case/control membership significantly differs
+
+Or:
+
+- Run PhenoGraph on each sample individually
+- Collapse each PhenoGraph cluster to a normalized centroid
+- Run PhenoGraph on all Centroids
+- Ror each "meta" PhenoGraph cluster detected, see if case/control membership significantly differs
+
+
+
+
+
+~~we will compute the marker enrichment modeling (MEM) <a name=cite-Diggins_2017></a>[Diggins, Greenplate, Leelatian, et al. (2017)](https://doi.org/10.1038%2Fnmeth.4149) score of each PhenoGraph cluster detected. MEM scores provide a quantitative description of features relative to a reference population.~~
+
+
+
+
+
+
+  <!-- and Phenograph ([Levine, Simonds, Bendall, et al., 2015](https://doi.org/10.1016%2Fj.cell.2015.05.047)) -->
+
 ### My made up diagram for novel subsets
 
-<!--html_preserve--><div id="htmlwidget-eefd66ee12770ea3132d" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eefd66ee12770ea3132d">{"x":{"nodes":{"id":[1,2,3,4,5,6,7],"group":["chr","chr","chr","chr","chr","chr","chr"],"label":["OpenCyto:trim to primary subset","Primary subset (T- or B-Cells?)","Phenograph","Compute MEM score","Find discriminating populations for Case/Control","Citrus","Visualize with t-SNE"],"shape":["ellipse","ellipse","ellipse","ellipse","ellipse","ellipse","ellipse"]},"edges":{"id":[1,2,3,4,5,6,7,8],"from":[1,2,2,3,4,5,6,5],"to":[2,3,6,4,5,7,5,7],"label":["related","related","related","related","related","related","related","related"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":"chr","width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><!--html_preserve--><div id="htmlwidget-8977ff6bc5442a8d4894" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8977ff6bc5442a8d4894">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\"]\n\nnode [fontname = \"Helvetica\",\n     fontsize = \"10\",\n     shape = \"circle\",\n     fixedsize = \"true\",\n     width = \"0.5\",\n     style = \"filled\",\n     fillcolor = \"aliceblue\",\n     color = \"gray70\",\n     fontcolor = \"gray50\"]\n\nedge [len = \"1.5\",\n     color = \"gray40\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"OpenCyto:trim to primary subset\", shape = \"ellipse\"] \n  \"2\" [label = \"Primary subset (T- or B-Cells?)\", shape = \"ellipse\"] \n  \"3\" [label = \"Phenograph\", shape = \"ellipse\"] \n  \"4\" [label = \"Compute MEM score\", shape = \"ellipse\"] \n  \"5\" [label = \"Find discriminating populations for Case/Control\", shape = \"ellipse\"] \n  \"6\" [label = \"Citrus\", shape = \"ellipse\"] \n  \"7\" [label = \"Visualize with t-SNE\", shape = \"ellipse\"] \n\"1\"->\"2\" [id = \"1\"] \n\"2\"->\"3\" [id = \"2\"] \n\"2\"->\"6\" [id = \"3\"] \n\"3\"->\"4\" [id = \"4\"] \n\"4\"->\"5\" [id = \"5\"] \n\"5\"->\"7\" [id = \"6\"] \n\"6\"->\"5\" [id = \"7\"] \n\"5\"->\"7\" [id = \"8\"] \n}","config":{"engine":null,"options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
-
-```
-## quartz_off_screen 
-##                 2
-```
+<!--html_preserve--><div id="htmlwidget-4c4411ff452a7e05bf33" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4c4411ff452a7e05bf33">{"x":{"nodes":{"id":[1,2,3,4,5,6,7],"group":["chr","chr","chr","chr","chr","chr","chr"],"label":["OpenCyto:trim to primary subset","Primary subset (T- or B-Cells?)","Phenograph","Compute MEM score","Find discriminating populations for Case/Control","Citrus","Visualize with t-SNE"],"shape":["ellipse","ellipse","ellipse","ellipse","ellipse","ellipse","ellipse"]},"edges":{"id":[1,2,3,4,5,6,7,8],"from":[1,2,2,3,4,5,6,5],"to":[2,3,6,4,5,7,5,7],"label":["related","related","related","related","related","related","related","related"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":{"to":{"enabled":true,"scaleFactor":1}}},"physics":{"stabilization":{"enabled":true,"onlyDynamicEdges":false,"fit":true}},"layout":{"improvedLayout":true}},"groups":"chr","width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><!--html_preserve--><div id="htmlwidget-d045c810d175e5effee0" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d045c810d175e5effee0">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\"]\n\nnode [fontname = \"Helvetica\",\n     fontsize = \"10\",\n     shape = \"circle\",\n     fixedsize = \"true\",\n     width = \"0.5\",\n     style = \"filled\",\n     fillcolor = \"aliceblue\",\n     color = \"gray70\",\n     fontcolor = \"gray50\"]\n\nedge [len = \"1.5\",\n     color = \"gray40\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"OpenCyto:trim to primary subset\", shape = \"ellipse\"] \n  \"2\" [label = \"Primary subset (T- or B-Cells?)\", shape = \"ellipse\"] \n  \"3\" [label = \"Phenograph\", shape = \"ellipse\"] \n  \"4\" [label = \"Compute MEM score\", shape = \"ellipse\"] \n  \"5\" [label = \"Find discriminating populations for Case/Control\", shape = \"ellipse\"] \n  \"6\" [label = \"Citrus\", shape = \"ellipse\"] \n  \"7\" [label = \"Visualize with t-SNE\", shape = \"ellipse\"] \n\"1\"->\"2\" [id = \"1\"] \n\"2\"->\"3\" [id = \"2\"] \n\"2\"->\"6\" [id = \"3\"] \n\"3\"->\"4\" [id = \"4\"] \n\"4\"->\"5\" [id = \"5\"] \n\"5\"->\"7\" [id = \"6\"] \n\"6\"->\"5\" [id = \"7\"] \n\"5\"->\"7\" [id = \"8\"] \n}","config":{"engine":null,"options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
-### PhenoGraph
-<a name=cite-Levine_2015></a>([Levine, Simonds, Bendall, et al., 2015](https://doi.org/10.1016%2Fj.cell.2015.05.047))
+<!-- ### PhenoGraph -->
+<!-- ([Levine, Simonds, Bendall, et al., 2015](https://doi.org/10.1016%2Fj.cell.2015.05.047)) -->
 
-PhenoGraph performs unsupervised clustering of high dimensional single cell data allowing for the discovery of novel subtypes. We propose to use OpenCyto to first limit our search space (e.g starting from live, single T-Cells) and then search for novel populations within the clean subset.
+<!-- PhenoGraph performs unsupervised clustering of high dimensional single cell data allowing for the discovery of novel subtypes. We propose to use OpenCyto to first limit our search space (e.g starting from live, single T-Cells) and then search for novel populations within the clean subset. -->
 
-PhenoGraph produces results that are numerically labelled populations, but do not have an immediate interpretation. In order interpret the PhenoGraph results, we will compute the MEM <a name=cite-Diggins_2017></a>[Diggins, Greenplate, Leelatian, et al. (2017)](https://doi.org/10.1038%2Fnmeth.4149) score of each PhenoGraph cluster allowing for (magical) comparisons between cases and controls.
+<!-- PhenoGraph produces results that are numerically labelled populations, but do not have an immediate interpretation. In order interpret the PhenoGraph results, we will compute the MEM [Diggins, Greenplate, Leelatian, et al. (2017)](https://doi.org/10.1038%2Fnmeth.4149) score of each PhenoGraph cluster allowing for (magical) comparisons between cases and controls. -->
+
+
+<!-- # Phenograph examples -->
 
 ![](index_files/figure-html/pgraph-1.png)<!-- -->![](index_files/figure-html/pgraph-2.png)<!-- -->
 
@@ -84,19 +118,19 @@ PhenoGraph produces results that are numerically labelled populations, but do no
 ![](index_files/figure-html/pgraphs3-1.png)<!-- -->![](index_files/figure-html/pgraphs3-2.png)<!-- -->![](index_files/figure-html/pgraphs3-3.png)<!-- -->![](index_files/figure-html/pgraphs3-4.png)<!-- -->![](index_files/figure-html/pgraphs3-5.png)<!-- -->
 
 
-***t-SNE is a visualization method, and not sure if it can be directly used for automated novel subset detection***
+<!-- ***t-SNE is a visualization method, and not sure if it can be directly used for automated novel subset detection*** -->
 
 
-### Citrus
-<a name=cite-Bruggner_2014></a>[Bruggner, Bodenmiller, Dill, et al. (2014)](https://doi.org/10.1073%2Fpnas.1408792111)
+<!-- ### Citrus -->
+<!-- [Bruggner, Bodenmiller, Dill, et al. (2014)](https://doi.org/10.1073%2Fpnas.1408792111) -->
 
 
 
-May be good choice for Aim 1:
+<!-- May be good choice for Aim 1: -->
 
->  Citrus (cluster identification, characterization, and regression), a data-driven approach for the identification of stratifying subpopulations in multidimensional cytometry datasets.
+<!-- >  Citrus (cluster identification, characterization, and regression), a data-driven approach for the identification of stratifying subpopulations in multidimensional cytometry datasets. -->
 
-Citrus was designed to detect stratifying cell populations between cases and controls.
+<!-- Citrus was designed to detect stratifying cell populations between cases and controls. -->
 
 
 
