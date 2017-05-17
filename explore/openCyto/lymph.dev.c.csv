@@ -21,4 +21,8 @@ CCR7gate,CCR7,CD4/CD45RA+,CCR7,tailgate,"tol=1e-5, positive = FALSE,side='left',
 CCR7gate,CCR7,CD4/CD45RA-,CCR7,flowClust,"K=2,cutpoint_method='min_density',quantile=0.97",NA,NA,NA,NA
 *,CCR7+/-CD45RA+,CD4,"CCR7,CD45RA",refGate,CD4/CD45RA+/CCR7gate:CD4/CD45RA+,NA,NA,NA,NA
 *,CCR7+/-CD45RA-,CD4,"CCR7,CD45RA",refGate,CD4/CD45RA-/CCR7gate:CD4/CD45RA-,NA,NA,NA,NA
-*,CD45RA+/-,CD8,CD45RA,mindensity,NA,NA,NA,NA,NA
+*,CD45RA+/-,CD8,CD45RA,mindensity,,NA,NA,NA,NA
+CCR7gate,CCR7,CD8/CD45RA+,CCR7,mindensity,adjust=1,NA,NA,NA,NA
+CCR7gate,CCR7,CD8/CD45RA-,CCR7,mindensity,"adjust=0.3,gate_range=c(1500,2000)",NA,NA,NA,NA
+*,CCR7+/-CD45RA+,CD8,"CCR7,CD45RA",refGate,CD8/CD45RA+/CCR7gate:CD8/CD45RA+,NA,NA,NA,NA
+*,CCR7+/-CD45RA-,CD8,"CCR7,CD45RA",refGate,CD8/CD45RA-/CCR7gate:CD8/CD45RA-,NA,NA,NA,NA

@@ -23,7 +23,7 @@ library(flowAI)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
-inputFCSDir = "/Volumes/Beta/data/flow/fcsNewMachine/"
+inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
