@@ -44,7 +44,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[10:80]
+# fcsFilesAll =fcsFilesAll[10:80]
 fcsFilesAllProbs = c("NONE")
 # fcsFilesAllProbs = c(
 #   "2016-05-29_PANEL 1_HB_panel one_H_D3_003.fcs", #Panel 1 test 6, strange clustering
@@ -312,10 +312,14 @@ compFrame <-
       cd4Pcd8M = getIndiceMat(gs1, "CD4"),
       cd4Mcd8P = getIndiceMat(gs1, "CD8"),
       HLADR = getIndiceMat(gs1, "ActivatedCD4"),
-      CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
-      CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
-      CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
-      CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
+      CD4_CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
+      CD4_CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
+      CD4_CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
+      CD4_CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
+      CD8_CCR7PCD45RAP = getIndiceMat(gs1, "CD8/CCR7+CD45RA+"),
+      CD8_CCR7PCD45RAM = getIndiceMat(gs1, "CD8/CCR7+CD45RA-"),
+      CD8_CCR7MCD45RAM = getIndiceMat(gs1, "CD8/CCR7-CD45RA-"),
+      CD8_CCR7MCD45RAP = getIndiceMat(gs1, "CD8/CCR7-CD45RA+"),
       BCELL = getIndiceMat(gs1, "CD19gate")
       
     )
@@ -328,10 +332,14 @@ compFrame <-
       "CD4",
       "CD8",
       "ActivatedCD4",
-      "CCR7P_CD45RAP",
-      "CCR7P_CD45RAM",
-      "CCR7M_CD45RAM",
-      "CCR7M_CD45RAP",
+      "CD4_CCR7P_CD45RAP",
+      "CD4_CCR7P_CD45RAM",
+      "CD4_CCR7M_CD45RAM",
+      "CD4_CCR7M_CD45RAP",
+      "CD8_CCR7P_CD45RAP",
+      "CD8_CCR7P_CD45RAM",
+      "CD8_CCR7M_CD45RAM",
+      "CD8_CCR7M_CD45RAP",
       "BCELL"
     )
     # APC-Cy7-A = CD4

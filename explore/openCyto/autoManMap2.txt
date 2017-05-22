@@ -1,0 +1,20 @@
+Auto	RealAutoParent	Manual
+lymph	root	Lymphocytes (SSC-A v FSC-A)
+Singlets	lymph	Single Cells (FSC-H v FSC-W)
+PE-A	Singlets	Live cells (PE-)
+CD3+	PE-A	Tcells (CD3+ CD19-)
+CD4	CD3+	Helper Tcells-CD4+
+CD8	CD3+	cytotoxic Tcells-CD8+
+ActivatedCD4	CD3+	activated helper Tcells (CD4+ HLA-DR+)
+CD19gate	PE-A	B cells (CD3- CD19+)
+IgD+CD27-	CD19gate	naive Bcells (CD27- IgD+)
+IgD-CD27+	CD19gate	IgD- memory Bcells (CD27+)
+IgD+CD27+	CD19gate	IgD+ memory Bcells (CD27+)
+CD4/CCR7+CD45RA-	CD4	central memory helper Tcells (CCR7+ CD45RA-)
+CD4/CCR7-CD45RA+	CD4	effector helper Tcells (CCR7- CD45RA+)
+CD4/CCR7-CD45RA-	CD4	effector memory helper Tcells (CCR7- CD45RA-)
+CD4/CCR7+CD45RA+	CD4	naive helper Tcells (CCR7+ CD45RA+)
+CD8/CCR7+CD45RA-	CD8	central memory cytotoxic Tcells (CCR7+ , CD45RA-)
+CD8/CCR7-CD45RA+	CD8	effector cytotoxic Tcells  (CCR7-  CD45RA+)
+CD8/CCR7-CD45RA-	CD8	effector memory cytotoxic Tcells (CCR7- , CD45RA-)
+CD8/CCR7+CD45RA+	CD8	naive cytotoxic Tcells (CCR7+ , CD45RA+)
