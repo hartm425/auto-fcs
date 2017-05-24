@@ -1,0 +1,52 @@
+---
+title: "stability"
+author: "JL"
+date: "5/24/2017"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup,include=FALSE}
+library(ggplot2)
+theme_set(theme_bw(20))
+
+options(digits=4)
+
+stab = read.delim("/Users/Kitty/Downloads/P1-P2 HRS pilot2 data-2.csv",stringsAsFactors = FALSE,sep = ",") 
+stab$CELLSID =gsub("TCELLS-CD8-NA.*","TCELLS-CD8-NAIVE",stab$CELLSID,fixed = FALSE)
+stab$KEY = paste(stab$sample.ID,stab$time.point,stab$CELLSID)
+stab$time.point =gsub("D","",stab$time.point)
+stabPBMC = stab[which(stab$SAMPLE.TYPE=="PBMC"),]
+stabWB = stab[which(stab$SAMPLE.TYPE=="WB"),]
+
+stabGS = stab[which(stab$SAMPLE.TYPE=="WB"&stab$time.point==0),]
+
+merge =merge(stabPBMC,stabWB,by.x = "KEY",by.y = "KEY")
+```
+
+
+```{r,echo=FALSE}
+for(type in unique(merge$CELLSID.x)){
+stabGST = stabGS[which(stabGS$CELLSID==type),]
+stabGST=stabGST[,c("sample.ID","CELLS")]
+stabGST$NORM_CELLS = stabGST$CELLS
+  # , color=SAMPLE.TYPE.x?
+data= merge[which(merge$CELLSID.x==type),]
+data=merge(data,stabGST,by.x = "sample.ID.x",by.y = "sample.ID")
+data$L2PBMC = log2(data$CELLS.x/data$NORM_CELLS)
+data$L2PBWB = log2(data$CELLS.y/data$NORM_CELLS)
+
+p = ggplot(data,aes(x=time.point.x,y=CELLS.x))  + geom_boxplot() +xlab("TIME") +ylab("CELLS") + labs(title = paste(type,"PBMC"))
+print(p)
+
+p = ggplot(data,aes(x=time.point.x,y=L2PBMC))  + geom_boxplot() +xlab("TIME") +ylab("FC WB_0") + labs(title = paste(type,"PBMC_LOG2"))
+print(p)
+
+p = ggplot(data,aes(x=time.point.x,y=CELLS.y))  + geom_boxplot() +xlab("TIME") +ylab("CELLS") + labs(title = paste(type,"WB"))
+print(p)
+
+p = ggplot(data,aes(x=time.point.x,y=L2PBWB))  + geom_boxplot() +xlab("TIME") +ylab("FC WB_0")  + labs(title = paste(type,"WB_LOG2"))
+print(p)
+}
+```
