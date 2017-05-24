@@ -29,3 +29,6 @@ CCR7gate,CCR7,CD8/CD45RA-,CCR7,mindensity,"adjust=0.3,gate_range=c(100,200)",NA,
 *,CD28+/-,CD8/CCR7-CD45RA-,CD28,mindensity,"gate_range=c(80,150)",NA,NA,NA,NA
 *,CD27+/-,CD8/CCR7-CD45RA-,CD27,mindensity,"gate_range=c(80,150)",NA,NA,NA,NA
 *,CD28+/-CD17+/-,CD8/CCR7-CD45RA-,,"CD28,CD27",refGate,NA,NA,NA,NA
+*,CD28+/-,CD8/CCR7-CD45RA+,CD28,mindensity,"gate_range=c(80,150)",NA,NA,NA,NA
+*,CD27+/-,CD8/CCR7-CD45RA+,CD27,mindensity,"gate_range=c(80,150)",NA,NA,NA,NA
+*,CD28+/-CD17+/-,CD8/CCR7-CD45RA+,,"CD28,CD27",refGate,NA,NA,NA,NA
