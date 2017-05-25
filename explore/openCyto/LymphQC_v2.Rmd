@@ -219,10 +219,10 @@ compFrame <-
                 subset = "CD3+") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
-    t7_1 = ggcyto(gs1,
-                  mapping = aes(x = "CD4", y = "CD8"),
-                  subset = "CD4_1") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    # t7_1 = ggcyto(gs1,
+    #               mapping = aes(x = "CD4", y = "CD8"),
+    #               subset = "CD4_1") +
+    #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t8 = ggcyto(gs1,
                 mapping = aes(x = "CD4", y = "HLA-DR"),
@@ -258,7 +258,7 @@ compFrame <-
       as.ggplot(t1Bcell),
       as.ggplot(t2Bcell),
       as.ggplot(t7),
-      as.ggplot(t7_1),
+      # as.ggplot(t7_1),
       as.ggplot(t8),
       as.ggplot(t9),
       as.ggplot(tCD8Active),
