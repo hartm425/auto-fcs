@@ -67,7 +67,7 @@ fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
 
 
 print(length(fcsFilesAll))
-fcsFilesAll = fcsFilesAll[1:3]
+# fcsFilesAll = fcsFilesAll[1:3]
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
 
 # mapper[which(mapper$FCS %in% fcsFilesAll),]
