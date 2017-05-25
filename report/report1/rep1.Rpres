@@ -755,6 +755,33 @@ class: esmall-table
 ![](./ex/7b1bd1f4-192d-11e7-82be-472ea9c4c588.png)
 
 
+activated cytotoxic Tcells (CD8+ HLA-DR+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "ActivatedCD8"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+ 
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
 central memory cytotoxic Tcells (CCR7+ , CD45RA-)
 ========================================================
 class: esmall-table
@@ -829,6 +856,32 @@ kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
 p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
 p 
 ```
+
+EM3 cytotoxic Tcells (CD27- CD28-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA-/CD28-CD27-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+
+
+
 
 ```{r,echo=FALSE}
 kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))

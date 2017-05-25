@@ -93,16 +93,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-1](rep1-figure/unnamed-chunk-1-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|   2413| 0.9687| 0.9919|  0.0033| 0.9735| 0.9866|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|-----:|------:|
+|     151|   3171| 0.9609| 0.9815|  0.0029| 0.973| 0.9863|
 ***
 ![plot of chunk unnamed-chunk-3](rep1-figure/unnamed-chunk-3-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|   2413| 0.9507| 0.9679|  0.0055| 0.9267| 0.9626|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2| ICC_1|
+|-------:|------:|------:|------:|-------:|------:|-----:|
+|     151|   3171| 0.9468| 0.9751|  0.0044| 0.9392| 0.969|
 
 Example OpenCyto gates
 ========================================================
@@ -151,16 +151,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-7](rep1-figure/unnamed-chunk-7-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|------:|-----:|-------:|-----:|------:|
-|     127|    127| 0.9152| 0.988|  0.0306| 0.893| 0.9434|
+| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|-----:|-------:|------:|------:|
+|     151|    151| 0.9078| 0.969|  0.0269| 0.8971| 0.9457|
 ***
 ![plot of chunk unnamed-chunk-9](rep1-figure/unnamed-chunk-9-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|-----:|-------:|------:|------:|
-|     127|    127| 0.9533| 1.042|    0.02| 0.9559| 0.9756|
+| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2| ICC_1|
+|-------:|------:|------:|-----:|-------:|------:|-----:|
+|     151|    151| 0.9447| 1.035|   0.019| 0.9524| 0.974|
 
 
 Single Cells (FSC-H v FSC-W)
@@ -195,14 +195,14 @@ class: esmall-table
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|-----:|------:|
-|     127|    127| 0.9125| 0.9998|  0.0311| 0.892| 0.9432|
+|     151|    151| 0.9061| 0.9759|  0.0274| 0.895| 0.9454|
 ***
 ![plot of chunk unnamed-chunk-15](rep1-figure/unnamed-chunk-15-1.png)
 
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|   ICC_1|
 |-------:|------:|------:|------:|-------:|------:|-------:|
-|     127|    127| 0.1358| 0.1071|  0.0608| 0.0243| -0.1657|
+|     151|    151| 0.1402| 0.0683|  0.0331| 0.0278| -0.0332|
 
 
 Live cells (PE-)
@@ -237,14 +237,14 @@ class: esmall-table
 
 | N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|-----:|-------:|------:|------:|
-|     127|    127| 0.9173| 1.007|  0.0286| 0.9081| 0.9519|
+|     151|    151| 0.9105| 0.988|  0.0251| 0.9124| 0.9548|
 ***
 ![plot of chunk unnamed-chunk-21](rep1-figure/unnamed-chunk-21-1.png)
 
 
-| N_SAMPS| N_DATA|   RHO|   BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|-----:|------:|-------:|-----:|------:|
-|     127|    127| 0.612| 0.0431|  0.0101| 0.128| 0.0678|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.6048| 0.0486|  0.0094| 0.1511| 0.0774|
 
 
 Tcells (CD3+ CD19-)
@@ -276,16 +276,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-25](rep1-figure/unnamed-chunk-25-1.png)
 
 
-| N_SAMPS| N_DATA|  RHO|  BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|----:|-----:|-------:|------:|------:|
-|     127|    127| 0.99| 1.019|  0.0098| 0.9886| 0.9939|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.9811| 0.9967|  0.0121| 0.9784| 0.9887|
 ***
 ![plot of chunk unnamed-chunk-27](rep1-figure/unnamed-chunk-27-1.png)
 
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.9716| 0.7951|  0.0226| 0.9085| 0.9358|
+|     151|    151| 0.9698| 0.8094|  0.0203| 0.9144| 0.9414|
 
 
 Helper Tcells-CD4+
@@ -317,16 +317,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-31](rep1-figure/unnamed-chunk-31-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|------:|-----:|-------:|-----:|------:|
-|     127|    127| 0.9958| 1.018|  0.0077| 0.993| 0.9962|
+| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|-----:|-------:|------:|------:|
+|     151|    151| 0.9945| 0.996|   0.008| 0.9904| 0.9942|
 ***
 ![plot of chunk unnamed-chunk-33](rep1-figure/unnamed-chunk-33-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO| BETA| BETA_SE|     R2| ICC_1|
-|-------:|------:|------:|----:|-------:|------:|-----:|
-|     127|    127| 0.9954| 0.99|  0.0089| 0.9899| 0.995|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.9912| 0.9926|  0.0105| 0.9836| 0.9895|
 
 central memory helper Tcells (CCR7+ CD45RA-)
 ========================================================
@@ -360,16 +360,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-37](rep1-figure/unnamed-chunk-37-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.9757| 0.9187|  0.0227| 0.9288| 0.9629|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2| ICC_1|
+|-------:|------:|------:|------:|-------:|------:|-----:|
+|     151|    151| 0.9708| 0.9251|  0.0216| 0.9249| 0.961|
 ***
 ![plot of chunk unnamed-chunk-39](rep1-figure/unnamed-chunk-39-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|------:|-----:|-------:|-----:|------:|
-|     127|    127| 0.9124| 0.826|   0.035| 0.817| 0.9009|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.8531| 0.7354|  0.0416| 0.6768| 0.8183|
 
 
 effector helper Tcells (CCR7- CD45RA+)
@@ -400,16 +400,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-43](rep1-figure/unnamed-chunk-43-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|-----:|------:|
-|     127|    127| 0.8189| 0.7817|  0.0345| 0.804| 0.8859|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.7584| 0.5688|  0.0314| 0.6879| 0.7751|
 ***
 ![plot of chunk unnamed-chunk-45](rep1-figure/unnamed-chunk-45-1.png)
 
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.7972| 0.8281|  0.0453| 0.7273| 0.8395|
+|     151|    151| 0.7004| 0.6306|  0.0581| 0.4412| 0.6607|
 
 effector memory helper Tcells (CCR7- CD45RA-)
 ========================================================
@@ -441,14 +441,14 @@ class: esmall-table
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.8547| 0.7655|   0.035| 0.7932| 0.8594|
+|     151|    151| 0.8772| 0.7078|  0.0289| 0.8013| 0.8459|
 ***
 ![plot of chunk unnamed-chunk-51](rep1-figure/unnamed-chunk-51-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|   R2| ICC_1|
-|-------:|------:|------:|------:|-------:|----:|-----:|
-|     127|    127| 0.7676| 0.7263|  0.0542| 0.59| 0.753|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|   R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|----:|------:|
+|     151|    151| 0.7775| 0.7035|  0.0442| 0.63| 0.7765|
 
 
 naive helper Tcells (CCR7+ CD45RA+)
@@ -478,16 +478,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-55](rep1-figure/unnamed-chunk-55-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2| ICC_1|
-|-------:|------:|------:|------:|-------:|------:|-----:|
-|     127|    127| 0.9651| 0.9806|  0.0175| 0.9617|  0.98|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|-----:|------:|
+|     151|    151| 0.9683| 0.9663|  0.0134| 0.972| 0.9856|
 ***
 ![plot of chunk unnamed-chunk-57](rep1-figure/unnamed-chunk-57-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|-----:|------:|
-|     127|    127| 0.9432| 0.7872|  0.0388| 0.767| 0.8699|
+| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2| ICC_1|
+|-------:|------:|------:|-----:|-------:|------:|-----:|
+|     151|    151| 0.9178| 0.738|  0.0381| 0.7162| 0.838|
 
 cytotoxic Tcells-CD8+
 ========================================================
@@ -517,16 +517,16 @@ class: esmall-table
 ![plot of chunk unnamed-chunk-61](rep1-figure/unnamed-chunk-61-1.png)
 
 
-| N_SAMPS| N_DATA|   RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|-----:|------:|-------:|------:|------:|
-|     127|    127| 0.978| 0.9849|  0.0255| 0.9227| 0.9596|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.9786| 0.9468|   0.022| 0.9256| 0.9611|
 ***
 ![plot of chunk unnamed-chunk-63](rep1-figure/unnamed-chunk-63-1.png)
 
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.9663| 0.9786|  0.0271| 0.9122| 0.9534|
+|     151|    151| 0.9505| 0.9599|  0.0327| 0.8524| 0.9221|
 
 cytotoxic Tcells-CD8+
 ========================================================
@@ -537,7 +537,7 @@ class: esmall-table
 ![](./ex/7b1bd1f4-192d-11e7-82be-472ea9c4c588.png)
 
 
-central memory cytotoxic Tcells (CCR7+ , CD45RA-)
+activated cytotoxic Tcells (CD8+ HLA-DR+)
 ========================================================
 class: esmall-table
 
@@ -546,54 +546,54 @@ class: esmall-table
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.3913| 0.5399|  0.0655| 0.3525| 0.5883|
+|     151|    151| 0.6857| 0.4096|   0.047| 0.3376| 0.2755|
 ***
 ![plot of chunk unnamed-chunk-67](rep1-figure/unnamed-chunk-67-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.4831| 0.3845|  0.0596| 0.2497| 0.4688|
+| N_SAMPS| N_DATA|    RHO| BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|----:|-------:|------:|------:|
+|     151|    151| 0.0558| 42.4|   20.96| 0.0267| -0.548|
 
 
-effector cytotoxic Tcells  (CCR7-  CD45RA+)
+central memory cytotoxic Tcells (CCR7+ , CD45RA-)
 ========================================================
 class: esmall-table
 
 ![plot of chunk unnamed-chunk-69](rep1-figure/unnamed-chunk-69-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2| ICC_1|
-|-------:|------:|------:|------:|-------:|------:|-----:|
-|     127|    127| 0.8426| 0.9377|  0.0731| 0.5685| 0.712|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.4222| 0.5092|  0.0724| 0.2491| 0.4988|
 ***
 ![plot of chunk unnamed-chunk-71](rep1-figure/unnamed-chunk-71-1.png)
 
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.6353| 0.5174|  0.0536| 0.4268| 0.5305|
+|     151|    151| 0.5344| 0.3619|  0.0789| 0.1236| 0.3473|
 
-effector memory cytotoxic Tcells (CCR7- , CD45RA-)
+
+effector cytotoxic Tcells  (CCR7-  CD45RA+)
 ========================================================
 class: esmall-table
 
 ![plot of chunk unnamed-chunk-73](rep1-figure/unnamed-chunk-73-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|-----:|------:|
-|     127|    127| 0.8469| 0.1947|  0.0295| 0.258| 0.2916|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
+|-------:|------:|------:|------:|-------:|------:|------:|
+|     151|    151| 0.9009| 0.9028|  0.0462| 0.7196| 0.8391|
 ***
 ![plot of chunk unnamed-chunk-75](rep1-figure/unnamed-chunk-75-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|    R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|-----:|------:|
-|     127|    127| 0.6971| 0.3061|  0.0395| 0.324| 0.3865|
+| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2| ICC_1|
+|-------:|------:|------:|------:|-------:|------:|-----:|
+|     151|    151| 0.7775| 0.6369|  0.0433| 0.5923| 0.692|
 
-
-naive cytotoxic Tcells (CCR7+ , CD45RA+)
+effector memory cytotoxic Tcells (CCR7- , CD45RA-)
 ========================================================
 class: esmall-table
 
@@ -602,144 +602,68 @@ class: esmall-table
 
 | N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
 |-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.6942| 0.2695|  0.0375| 0.2922| 0.4165|
+|     151|    151| 0.8575| 0.2053|  0.0307| 0.2307| 0.3077|
 ***
 ![plot of chunk unnamed-chunk-79](rep1-figure/unnamed-chunk-79-1.png)
 
-
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.6381| 0.5458|  0.0596| 0.4019| 0.6202|
-
-
-
-
-
-
-B cells (CD3- CD19+)
+EM3 cytotoxic Tcells (CD27- CD28-)
 ========================================================
 class: esmall-table
 
-![](./ex/B_cells__CD3-_CD19+_/F1632002_B_cells__CD3-_CD19+_.png)
 
 
-|     |  FN|  FP|     TN|    TP|    ACC|   SENS|  SPEC|   PREC|
-|:----|---:|---:|------:|-----:|------:|------:|-----:|------:|
-|Freq | 531| 895| 937430| 15167| 0.9985| 0.9662| 0.999| 0.9443|
 
 
-***
-
-![](./ex/B_cells__CD3-_CD19+_/F1636835_B_cells__CD3-_CD19+_.png)
 
 
-|     |  FN|   FP|      TN|    TP|    ACC|   SENS|   SPEC|   PREC|
-|:----|---:|----:|-------:|-----:|------:|------:|------:|------:|
-|Freq | 521| 8506| 2738594| 23528| 0.9967| 0.9783| 0.9969| 0.7345|
-
-- typically over- or under-calling the sneaky Bcells on CD19 dimension
-
-B cells (CD3- CD19+) 
-========================================================
-class: esmall-table
-
-![plot of chunk unnamed-chunk-83](rep1-figure/unnamed-chunk-83-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.9252| 0.8768|  0.0355| 0.8297| 0.8984|
-***
-![plot of chunk unnamed-chunk-85](rep1-figure/unnamed-chunk-85-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|-----:|-------:|------:|------:|
-|     127|    127| 0.8603| 1.021|  0.0497| 0.7715| 0.8614|
-
-naive Bcells (CD27- IgD+)
-========================================================
-class: esmall-table
-
-![plot of chunk unnamed-chunk-87](rep1-figure/unnamed-chunk-87-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.9056| 0.7306|  0.0458| 0.6706| 0.7855|
-***
-![plot of chunk unnamed-chunk-89](rep1-figure/unnamed-chunk-89-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|  BETA| BETA_SE|     R2| ICC_1|
-|-------:|------:|------:|-----:|-------:|------:|-----:|
-|     127|    127| 0.9221| 0.911|  0.0369| 0.8298| 0.887|
-
-IgD- memory Bcells (CD27+)
-========================================================
-class: esmall-table
-
-![plot of chunk unnamed-chunk-91](rep1-figure/unnamed-chunk-91-1.png)
 
 
-| N_SAMPS| N_DATA|   RHO| BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|-----:|----:|-------:|------:|------:|
-|     127|    127| 0.801| 1.17|  0.0487| 0.8217| 0.8746|
-***
-![plot of chunk unnamed-chunk-93](rep1-figure/unnamed-chunk-93-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.8227| 0.5115|  0.0535| 0.4228| 0.6083|
-
-IgD+ memory Bcells (CD27+)
-========================================================
-class: esmall-table
-
-![plot of chunk unnamed-chunk-95](rep1-figure/unnamed-chunk-95-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|   R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|----:|------:|
-|     127|    127| 0.8973| 0.7109|   0.013| 0.96| 0.9207|
-***
-![plot of chunk unnamed-chunk-97](rep1-figure/unnamed-chunk-97-1.png)
 
 
-| N_SAMPS| N_DATA|    RHO|   BETA| BETA_SE|     R2|  ICC_1|
-|-------:|------:|------:|------:|-------:|------:|------:|
-|     127|    127| 0.8815| 0.7369|  0.0372| 0.7584| 0.8468|
 
 
-OpenCyto Summary
-========================================================
-
-- Seems to work
-- Lots of room for improvement
-- Iterative process
-
- 
-Data QC ?
-========================================================
-Tested FlowAI
-> ... consists of three key steps to check and remove suspected anomalies that derive from (i) abrupt changes in the flow rate, (ii) instability of signal acquisition and (iii) outliers in the lower limit and margin events in the upper limit of the dynamic range. ***flowAI: automatic and interactive anomaly discerning tools for flow cytometry data.*** <a name=cite-Monaco_2016></a>[Monaco, Chen, Poidinger, et al. (2016)](https://doi.org/10.1093%2Fbioinformatics%2Fbtw191)
-
-[Strange Flowrate Example](http://htmlpreview.github.io/?https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/QC/qcReview/2016-07-27_PANEL%201_ZF_Group%20one_F1632384_007_QC.html)
-
-[Normal Flowrate Example](http://htmlpreview.github.io/?https://github.com/PankratzLab/auto-fcs/blob/master/explore/openCyto/QC/qcReview/2016-05-13_PANEL%201_ZF_panel%20one_F1632233_004_QC.html)
 
 
-TSNE
-========================================================
-Neat, TODO is to generate for manual and OpenCyto gates
 
-![](./ex/plot7-1.png)
 
-- manual (Panel2)
-  
-***
 
-![](./ex/plot6-1.png)
 
-- phenograph populations (Panel2) <a name=cite-Levine_2015></a>[Levine, Simonds, Bendall, et al. (2015)](https://doi.org/10.1016%2Fj.cell.2015.05.047)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+Error in `$<-.data.frame`(`*tmp*`, Example, value = "ANY") : 
+  replacement has 1 row, data has 0
+```

@@ -1,0 +1,933 @@
+<style>
+.esmall-table table {
+  border-width: 1px;
+  border-spacing: 2px;
+  border-style: dotted;
+  border-color: gray;
+  border-collapse: collapse;
+  font-size: 0.4em;
+}
+ 
+
+.esmall-table table tr { line-height: 18px; }
+
+
+.esmall-table table th {
+  border-width: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-weight: bold;
+  border-style: dotted;
+  border-color: gray;
+}
+
+.esmall-table table td {
+  border-width: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-style: dotted;
+  border-color: gray;
+}
+.small-code pre code {
+  font-size: .5em;
+}
+
+.small-p p{
+  font-size: 8;
+}
+
+.small {  
+    font-size: 8;
+}
+
+
+</style>
+
+Auto gating update
+========================================================
+author: 
+date: 
+autosize: true
+
+April 11th, 2017
+
+
+
+```{r setup,include=FALSE}
+library(ggplot2)
+library(irr) 
+# http://www.cookbook-r.com/Statistical_analysis/Inter-rater_reliability/
+theme_set(theme_bw(20))
+
+library(knitcitations)
+cite_options(citation_format = "text", max.names = 3, 
+             cite.style = "authoryear", style = "markdown", 
+             hyperlink = "to.doc")
+options(digits=4)
+map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap2.txt",stringsAsFactors = FALSE,sep = "\t") 
+metrics =read.delim("/Volumes/Beta/data/flow/testTypesTestMetrics5.txt",stringsAsFactors = FALSE,sep = "\t") 
+metrics$freqParent = metrics$Count/metrics$ParentCount
+metrics$nameOrig = metrics$name
+metrics$name =gsub(".fcs.*","",metrics$name ,fixed = FALSE)
+metrics$name =gsub(" ","",metrics$name ,fixed = TRUE)
+ 
+metricsMan = metrics[which(metrics$GATE=="MANUAL"&metrics$Population %in% map$Manual&metrics$METRIC=="count"),]
+metricsAuto = metrics[which(metrics$GATE=="AUTOMATIC"&metrics$QC=="FALSE"&(metrics$Population %in% map$Auto|metrics$Parent=="root")&metrics$METRIC=="count"),]
+
+metricsMan = merge(metricsMan,map,by.x = "Population",by.y = "Manual")
+metricsMan$Population =metricsMan$Auto
+metricsMan$Merge=paste(metricsMan$Population,metricsMan$name,sep = "_")
+metricsAuto = merge(metricsAuto,map,by.x = "Population",by.y = "Auto",all.x = TRUE)
+metricsAuto$Merge=paste(metricsAuto$Population,metricsAuto$name,sep = "_")
+ 
+row.names(metricsAuto) =metricsAuto$Merge
+
+for(pop in unique(map$Auto)) {
+  for (sample in unique(metricsAuto$name)) {
+    row = paste(pop, sample, sep = "_")
+    sub = metricsAuto[which(metricsAuto$Population == pop &
+                              metricsAuto$name == sample),]
+    realParentCount = metricsAuto[which(metricsAuto$Population == sub$RealAutoParent &
+                                          metricsAuto$name == sample),]$Count
+    if (sub$RealAutoParent != "root") {
+      metricsAuto[row, "freqParent"] = sub$Count / realParentCount
+    }else{
+      realParentCount = metricsAuto[which(metricsAuto$Parent == sub$RealAutoParent &
+                                          metricsAuto$name == sample),]$ParentCount
+      metricsAuto[row, "freqParent"] = sub$Count / realParentCount
+
+    }
+  }
+}
+metricCombo = merge(metricsAuto,metricsMan,by.x = "Merge",by.y = "Merge")
+# metricCombo$Population.x= gsub("CCR7","CD4/CCR7",metricCombo$Population.x)
+
+
+summaryTP <-function(file){
+ as.numeric.factor <- function(x) {as.numeric(levels(x))[x]}
+   data = read.delim(file,stringsAsFactors = FALSE,sep = "\t")
+  summaryT =as.data.frame(table(data[,1]))
+  summaryT$Freq =as.numeric(summaryT$Freq)
+  summary =as.data.frame(t(summaryT))
+  summary =summary[-1,]
+  colnames(summary) = summaryT$Var1
+ 
+  if (is.null(summary$FN)) { 
+     summary$FN =as.factor(0)
+  }
+  if (is.null(summary$TN)) { 
+     summary$TN=as.factor(0)
+  }
+  if (is.null(summary$TP)) { 
+     summary$TP=as.factor(0)
+  }
+  if (is.null(summary$FP)) { 
+     summary$FP =as.factor(0)
+  }
+  
+#   Sensitivity = TP / TP + FN
+# Specificity = TN / TN + FP
+# Precision = TP / TP + FP
+  
+#   Specificity = TN / TN + FP
+# Precision = TP / TP + FP
+  # Sensitivity = TP / TP + FN
+  summary$FN =as.numeric.factor(summary$FN)
+  summary$FP =as.numeric.factor(summary$FP)
+  summary$TN =as.numeric.factor(summary$TN)
+  summary$TP =as.numeric.factor(summary$TP)
+  summary$ACC = (summary$TP+summary$TN)/(summary$TP+summary$TN+summary$FP+summary$FN)
+  summary$SENS = (summary$TP)/(summary$TP+summary$FN)
+  summary$SPEC = (summary$TN)/(summary$TN+summary$FP)
+  summary$PREC = (summary$TP)/(summary$TP+summary$FP)
+
+  return(summary)
+  
+}
+
+getSummary <- function(metricCombo, data1, data2) {
+  ts = cor.test(data1, data2, method = "spearman")
+  fit = lm(data2 ~ data1, data = metricCombo)
+  sum = summary(fit)
+  w = wilcox.test(data1,data2,paired=TRUE)
+  d = data.frame(X1=data1,X2 =data2)
+  icc =icc(d, model="oneway", type="agreement")
+  summary = data.frame(
+  N_SAMPS = length(unique(metricCombo$name.x)),
+  N_DATA = length(metricCombo$Count.x),
+  RHO = ts$estimate[[1]],
+  BETA = sum$coefficients[2],
+  BETA_SE= sum$coefficients[4],
+  R2 = sum$r.squared,
+  ICC_1 = icc$value
+  )
+}
+```
+
+Current progress overview 
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+
+p = ggplot(metricCombo,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = metricCombo,data1 = metricCombo$Count.x,data2 = metricCombo$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(metricCombo,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = metricCombo,data1 = metricCombo$freqParent.x,data2 = metricCombo$freqParent.y))
+```
+
+Next few slides
+========================================================
+class: esmall-table
+
+- For each gate
+  - a good-ish example of an auto gate
+  - a bad example/common problems
+  - overview of gate performance
+ 
+
+Lymphocytes (SSC-A v FSC-A)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "lymph"
+
+
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs"
+bad = "2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+Single Cells (FSC-H v FSC-W)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "Singlets"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-05_PANEL 1_HB_panel one_F1631960_004.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+Live cells (PE-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "PE-A"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-05_PANEL 1_HB_panel one_F1631960_004.fcs"
+bad = "2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+Tcells (CD3+ CD19-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD3+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs"
+bad = "2016-05-20_PANEL 1_ZF_panel one_F1632006_005.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+Helper Tcells-CD4+
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD4"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+
+
+central memory helper Tcells (CCR7+ CD45RA-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD4/CCR7+CD45RA-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs"
+bad = "2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+effector helper Tcells (CCR7- CD45RA+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD4/CCR7-CD45RA+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs"
+bad = "2016-05-18_PANEL 1_ZF_panel one_F1631974_008.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+effector memory helper Tcells (CCR7- CD45RA-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD4/CCR7-CD45RA-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+good = "2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+naive helper Tcells (CCR7+ CD45RA+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD4/CCR7+CD45RA+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+good = "2016-05-18_PANEL 1_ZF_panel one_F1632002_006.fcs"
+bad = "2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+cytotoxic Tcells-CD8+
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD8"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+good = "2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs"
+bad = "2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE} 
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+activated cytotoxic Tcells (CD8+ HLA-DR+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "ActivatedCD8"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+ 
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+central memory cytotoxic Tcells (CCR7+ , CD45RA-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD8/CCR7+CD45RA-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+effector cytotoxic Tcells  (CCR7-  CD45RA+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD8/CCR7-CD45RA+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+pE cytotoxic Tcells (CD27-  CD28-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA+/CD28-CD27-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p  
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+pE1 cytotoxic Tcells (CD27+  CD28+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA+/CD28+CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p  
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+pE2 cytotoxic Tcells (CD27+ , CD28-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA+/CD28-CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p  
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+effector memory cytotoxic Tcells (CCR7- , CD45RA-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD8/CCR7-CD45RA-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+EM1 cytotoxic Tcells (CD27+  CD28+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA-/CD28+CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p  
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+EM2 cytotoxic Tcells (CD27+  CD28-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA-/CD28-CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p  
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+EM3 cytotoxic Tcells (CD27- CD28-)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA-/CD28-CD27-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p  
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+EM4 cytotoxic Tcells (CD27-  CD28+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CCR7-CD45RA-/CD28+CD27-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p  
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+
+naive cytotoxic Tcells (CCR7+ , CD45RA+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD8/CCR7+CD45RA+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+data$Example = "ANY"
+p = ggplot(data,aes(x=Count.x,y=Count.y)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+B cells (CD3- CD19+) 
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "CD19gate"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+good = "2016-05-18_PANEL 1_ZF_panel one_F1632002_006.fcs"
+bad = "2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs"
+data$Example = "ANY"
+data$Example[which(data$nameOrig.x==good)]="GOOD"
+data$Example[which(data$nameOrig.x==bad)]="PossibleProblem"
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Example)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Example)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+naive Bcells (CD27- IgD+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "IgD+CD27-"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+IgD- memory Bcells (CD27+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "IgD-CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
+IgD+ memory Bcells (CD27+)
+========================================================
+class: esmall-table
+
+```{r,echo=FALSE}
+gate = "IgD+CD27+"
+data = metricCombo[which(metricCombo$Population.x==gate),]
+
+p = ggplot(data,aes(x=Count.x,y=Count.y, color=Population.x)) +geom_point()+xlab("Autogating count")+ylab("Manual gating count")+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$Count.x,data2 = data$Count.y))
+```
+***
+```{r,echo=FALSE}
+p = ggplot(data,aes(x=freqParent.x,y=freqParent.y, color=Population.x)) +geom_point()+xlab("Autogating proportion of parent")+ylab("Manual gating proportion of parent") +xlim(0,1)+ylim(0,1)+geom_abline(intercept = 0, slope = 1) 
+p 
+```
+
+```{r,echo=FALSE}
+kable(getSummary(metricCombo = data,data1 = data$freqParent.x,data2 = data$freqParent.y))
+```
+
