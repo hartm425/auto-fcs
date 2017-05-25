@@ -1,0 +1,8 @@
+activated cytotoxic Tcells (CD8+ HLA-DR+)
+EM3 cytotoxic Tcells (CD27-  CD28-)
+EM4 cytotoxic Tcells (CD27-  CD28+)
+EM2 cytotoxic Tcells (CD27+  CD28-)
+EM1 cytotoxic Tcells (CD27+  CD28+)
+pE cytotoxic Tcells (CD27-  CD28-)
+pE2 cytotoxic Tcells (CD27+ , CD28-)
+pE1 cytotoxic Tcells (CD27+  CD28+)
