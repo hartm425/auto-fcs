@@ -23,6 +23,20 @@ library(flowAI)
 ```
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
+
+.flowDensity <- function(fr, pp_res, channels = NA, ...){
+
+  if(length(channels)==2)
+    flowDensity:::.flowDensity.2d(fr, channels = channels, ...)
+  else
+    flowDensity:::.flowDensity.1d(fr, channel = channels, ...)
+
+}
+
+registerPlugins(fun = .flowDensity, methodName = "flowDensity", dep = "flowDensity", "gating")
+
+
+
 inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
