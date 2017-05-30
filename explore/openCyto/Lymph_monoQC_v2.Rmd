@@ -68,8 +68,266 @@ getStats <- function(gs1, qcVersion, metric, gate) {
   autoStats$QC = qcVersion
   return(autoStats)
 }
+# Panel 1 frame
+compP1Frame <-
+  function(frame,
+           file,
+           gt_lymph,
+           d,
+           outputDir,
+           gateDir,
+           qcVersion,
+           mapper,
+           inputFCSDir) {
+    print(paste("compensating ....", file))
+    metrics = data.frame()
+    comp <- compensation(keyword(frame)$`SPILL`)
+    
+    chnls <- parameters(comp)
+    biexpTrans <-
+      flowJo_biexp_trans(
+        channelRange = 256,
+        maxValue = 262144.0000291775 ,
+        pos = 4.418539922,
+        neg = 0,
+        widthBasis = -100
+      )
+    tf <- transformerList(chnls, biexpTrans)
+    
+    print(paste("gating ....", file))
+    # gs <- GatingSet(c(new_frame))
+    frames = c(frame)
+    names(frames) = c(basename(file))
+    fs =  as(frames, "flowSet")
+    gs1 <- GatingSet(fs)
+    gs1 <- compensate(gs1, comp)
+    gs1 <- transform(gs1, tf)
+    
+    gh <- gs1[[1]]
+    gating(gt_lymph, gs1)
+    
+    
+    
+    
+    autoCounts = getStats(gs1 = gs1,
+                          qcVersion = qcVersion,
+                          metric = "count",
+                          "AUTOMATIC")
+    # autoProps = getStats(gs1 = gs1,
+    #                      qcVersion = qcVersion,
+    #                      metric = "freq",
+    #                      "AUTOMATIC")
+    # metrics = rbind(autoCounts, autoProps)
+    metrics = autoCounts
+    
+    if (!qcVersion) {
+      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      ws <- openWorkspace(wsFile)
+      gs <-
+        parseWorkspace(
+          ws, #WSP file 
+          path = inputFCSDir, #FCS file
+          name = 1, #sample group
+          subset = eval(fileToLoad), #load single fcs file
+          isNcdf = FALSE, #not memory mapped
+          compensation = comp
+        )
+                # 
 
-compFrame <-
+      manCounts = getStats(gs1 = gs,
+                           qcVersion = qcVersion,
+                           metric = "count",
+                           "MANUAL")
+      metrics = rbind(metrics, manCounts)
+      
+      # manProps = getStats(gs1 = gs,
+      #                     qcVersion = qcVersion,
+      #                     metric = "freq",
+      #                     "MANUAL")
+      # metrics = rbind(metrics, manProps)
+      
+    }
+    print(paste("plotting ....", file))
+    # result <-
+    #   filter(frame, rectangleGate("remove_from_FM" = c(10000, Inf)))
+    # overlay.fr2 <- Subset(frame, result)
+    t1 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "root") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    
+    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+    
+    t2 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "boundary") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    
+    
+    t3 = ggcyto(gs1,
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "nonDebris") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+    
+    
+    t4 = ggcyto(gs1,
+                mapping = aes(x = "FSC-W", y = "FSC-H"),
+                subset = "lymph") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t5 = ggcyto(gs1,
+                mapping = aes(x = "PE-A", y = "FSC-H"),
+                subset = "Singlets") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t6 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "PE-A") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+     t6_1 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "CD3+") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t1Bcell = ggcyto(gs1,
+                     mapping = aes(x = "CD3", y = "CD19"),
+                     subset = "CD3-") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t2Bcell = ggcyto(gs1,
+                     mapping = aes(x = "IgD", y = "CD27"),
+                     subset = "CD19gate") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t7 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "CD8"),
+                subset = "CD3+") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    # t7_1 = ggcyto(gs1,
+    #               mapping = aes(x = "CD4", y = "CD8"),
+    #               subset = "CD4_1") +
+    #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t8 = ggcyto(gs1,
+                mapping = aes(x = "CD4", y = "HLA-DR"),
+                subset = "CD4") +
+      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t9 = ggcyto(gs1,
+                mapping = aes(x = "CCR7", y = "CD45RA"),
+                subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+   tCD8Active = ggcyto(gs1,
+                 mapping = aes(x = "CD8", y = "HLA-DR"),
+                 subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t10 = ggcyto(gs1,
+                 mapping = aes(x = "CCR7", y = "CD45RA"),
+                 subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t11 = ggcyto(gs1,
+                 mapping = aes(x = "CD28", y = "CD27"),
+                 subset = "CD8/CCR7-CD45RA-") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+     t12 = ggcyto(gs1,
+                 mapping = aes(x = "CD28", y = "CD27"),
+                 subset = "CD8/CCR7-CD45RA+") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    grid.arrange(
+      as.ggplot(t1),
+      as.ggplot(t2),
+      as.ggplot(t3),
+      as.ggplot(t4),
+      as.ggplot(t5),
+      as.ggplot(t6),
+      as.ggplot(t6_1),
+      as.ggplot(t1Bcell),
+      as.ggplot(t2Bcell),
+      as.ggplot(t7),
+      # as.ggplot(t7_1),
+      as.ggplot(t8),
+      as.ggplot(t9),
+      as.ggplot(tCD8Active),
+      as.ggplot(t10),
+      as.ggplot(t11),
+      as.ggplot(t12),
+
+      ncol = 2
+    )
+    
+    d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
+    outFile <-
+      paste(outputDir, gateDir,
+            basename(file),
+            "_panel1.wsp", sep = "")
+    GatingSet2flowJo(gs1, outFile)
+    
+    QCDEF = FALSE
+    if (qcVersion) {
+      QCDEF = getIndiceMat(gs1, "QC")
+    }
+    print(table(QCDEF))
+    gateDef = data.frame(
+      QC = QCDEF,
+      lymph = getIndiceMat(gs1, "lymph"),
+      Singlets = getIndiceMat(gs1, "Singlets"),
+      PE_A_Minus = getIndiceMat(gs1, "PE-A"),
+      CD3Plus = getIndiceMat(gs1, "CD3+"),
+      cd4Pcd8M = getIndiceMat(gs1, "CD4"),
+      cd4Mcd8P = getIndiceMat(gs1, "CD8"),
+      HLADR = getIndiceMat(gs1, "ActivatedCD4"),
+      CD4_CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
+      CD4_CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
+      CD4_CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
+      CD4_CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
+      CD8_CCR7PCD45RAP = getIndiceMat(gs1, "CD8/CCR7+CD45RA+"),
+      CD8_CCR7PCD45RAM = getIndiceMat(gs1, "CD8/CCR7+CD45RA-"),
+      CD8_CCR7MCD45RAM = getIndiceMat(gs1, "CD8/CCR7-CD45RA-"),
+      CD8_CCR7MCD45RAP = getIndiceMat(gs1, "CD8/CCR7-CD45RA+"),
+      BCELL = getIndiceMat(gs1, "CD19gate")
+      
+    )
+    colnames(gateDef) = c(
+      "QC_FILTER",
+      "lymph",
+      "Singlets",
+      "PE_A",
+      "CD3_PLUS",
+      "CD4",
+      "CD8",
+      "ActivatedCD4",
+      "CD4_CCR7P_CD45RAP",
+      "CD4_CCR7P_CD45RAM",
+      "CD4_CCR7M_CD45RAM",
+      "CD4_CCR7M_CD45RAP",
+      "CD8_CCR7P_CD45RAP",
+      "CD8_CCR7P_CD45RAM",
+      "CD8_CCR7M_CD45RAM",
+      "CD8_CCR7M_CD45RAP",
+      "BCELL"
+    )
+    # APC-Cy7-A = CD4
+    # BUV 395-A =CD8
+    
+    write.table(
+      gateDef,
+      sep = "\t",
+      quote = FALSE,
+      file = paste(
+        outputDir,
+        gateDir,
+        basename(file),
+        "_panel1_gate_def.txt",
+        sep = ""
+      ),
+      row.names = FALSE
+    )
+    return(metrics)
+    
+  }
+
+# Panel 2 frame
+compP2Frame <-
   function(frame,
            file,
            gt_lymph,
