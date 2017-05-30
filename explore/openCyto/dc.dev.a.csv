@@ -1,15 +1,10 @@
 alias,pop,parent,dims,gating_method,gating_args,collapseDataForGating,groupBy,preprocessing_method,preprocessing_args
-boundary,boundary,root,"FSC-A,SSC-A",boundary,"max=c(2.5e5,2.5e5)",,,,
-Monocytes,Monocytes+,boundary,FSC-A,mindensity,"gate_range=c(0,1e5),num_peaks=3,ref_peak=1,adjust=1",,,,
-lymph,lymph-,Monocytes,SSC-A,flowClust,"min=0,K=2",,,prior_flowClust,"min=0,K=2"
-live_gate,Live-,lymph,Live,cytokine,"tol=5e-10,num_peaks=2,ref_peak=1,adjust=2",,,,
-Live,Live-,Monocytes,Live,refGate,live_gate,,,,
-*,CD14+/-,Live,CD14,mindensity,,,,,
-Lineage1,Lineage-,CD14-,Lineage,mindensity,,,,,
-Lineage2,Lineage-,CD14+,Lineage,cytokine,tol=4e-2,,Sample,standardize_flowset,
-CD14-Lineage-,CD14-Lineage-,Live,"CD14,Lineage",refGate,CD14-:Lineage1,,,,
-CD14+Lineage-,CD14+Lineage-,Live,"CD14,Lineage",refGate,CD14+:Lineage2,,,,
-CD14+CD16+,CD16+,CD14+Lineage-,CD16,cytokine,tol=1e-2,,Center:Sample,standardize_flowset,
-*,CD16+/-CD56+/-,CD14-Lineage-,"CD16,CD56",flowClust,K=2,,,prior_flowClust,K=2
-HLADR+,HLADR+,CD16-CD56-,HLADR,flowDensity,,,Center:Sample,,
-*,*,HLADR+,"CD11c,CD123",quadGate.tmix,"prior=list(Mu0=matrix(c(1000,3000,1000,1000,3000,1500),3,2,byrow=T),w0=c(10,10,10),nu0 = c(4,4,4),Lambda0=array(c(rep(1e5,3),rep(0,3),rep(0,3),rep(1e5,3)),dim=c(3,2,2)),Omega0=array(c(rep(5e4,3),rep(0,3),rep(0,3),rep(5e4,3)),dim=c(3,2,2))),K=3,quantile3=0.75,quantile1=0.85",TRUE,Center:Sample,,
+boundary,boundary,root,"FSC-A,SSC-A",boundary,"max=c(2.5e5,2.5e5)",NA,NA,NA,NA
+Monocytes,Monocytes+,boundary,FSC-A,mindensity,"gate_range=c(0,1e5),num_peaks=3,ref_peak=1,adjust=1",,,NA,NA
+lymph,lymph-,Monocytes,SSC-A,flowClust,"min=0,K=2",NA,NA,prior_flowClust,"min=0,K=2"
+Singlets,FSC-W-,lymph,FSC-W,tailgate,tol=5e-3,NA,NA,standardize_flowset,NA
+live_gate,PE-A-,Singlets,PE-A,cytokine,"tol=5e-10,num_peaks=2,ref_peak=1,adjust=2",NA,NA,NA,NA
+Live,PE-A-,Monocytes,PE-A,refGate,live_gate,NA,NA,NA,NA
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
