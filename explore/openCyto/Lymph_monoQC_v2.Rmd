@@ -382,11 +382,6 @@ compP2Frame <-
                           qcVersion = qcVersion,
                           metric = "count",
                           "AUTOMATIC")
-    # autoProps = getStats(gs1 = gs1,
-    #                      qcVersion = qcVersion,
-    #                      metric = "freq",
-    #                      "AUTOMATIC")
-    # metrics = rbind(autoCounts, autoProps)
     metrics = autoCounts
     
     if (!qcVersion) {
@@ -414,24 +409,15 @@ compP2Frame <-
                            "MANUAL")
       metrics = rbind(metrics, manCounts)
       
-      # manProps = getStats(gs1 = gs,
-      #                     qcVersion = qcVersion,
-      #                     metric = "freq",
-      #                     "MANUAL")
-      # metrics = rbind(metrics, manProps)
-      
     }
     print(paste("plotting ....", file))
-    # result <-
-    #   filter(frame, rectangleGate("remove_from_FM" = c(10000, Inf)))
-    # overlay.fr2 <- Subset(frame, result)
+  
     t1 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "root") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
-    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-    
+
     t2 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "boundary") +
@@ -473,11 +459,6 @@ compP2Frame <-
                 mapping = aes(x = "CD4", y = "CD8"),
                 subset = "CD3+") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    # t7_1 = ggcyto(gs1,
-    #               mapping = aes(x = "CD4", y = "CD8"),
-    #               subset = "CD4_1") +
-    #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t8 = ggcyto(gs1,
                 mapping = aes(x = "CD4", y = "HLA-DR"),
