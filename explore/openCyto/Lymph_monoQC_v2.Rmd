@@ -19,16 +19,19 @@ library(flowAI)
 
 ```{r warning=FALSE,results='hide',echo=FALSE}
 
-.flowDensity <- function(fr, pp_res, channels = NA, ...){
 
-  if(length(channels)==2)
+.flowDensity <- function(fr, pp_res, channels = NA, ...) {
+  if (length(channels) == 2)
     flowDensity:::.flowDensity.2d(fr, channels = channels, ...)
   else
     flowDensity:::.flowDensity.1d(fr, channel = channels, ...)
-
+  
 }
 
-registerPlugins(fun = .flowDensity, methodName = "flowDensity", dep = "flowDensity", "gating")
+registerPlugins(fun = .flowDensity,
+                methodName = "flowDensity",
+                dep = "flowDensity",
+                "gating")
 
 
 
@@ -39,13 +42,22 @@ outputDir = "/Volumes/Beta/data/flow/"
 template = "~/git/auto-fcs/explore/openCyto/lymph.dev.d.csv"
 templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
+templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.a.csv"
+
 gateDir = "gates5/"
 gateQCDir = "gatesQC5/"
-mapper =read.delim("/Volumes/Beta/data/flow/fcsMap.txt",stringsAsFactors = FALSE,sep = "\t") 
+mapper = read.delim(
+  "/Volumes/Beta/data/flow/fcsMap.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+)
 
 theme_set(theme_bw(5))
 gt_lymph <-
   gatingTemplate(template, autostart = 1L)
+gt_mono <-
+  gatingTemplate(templateMono, autostart = 1L)
+
 gt_lymphQC <-
   gatingTemplate(templateQC, autostart = 1L)
 fcsFilesAll <-
@@ -121,19 +133,24 @@ compP1Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       ws <- openWorkspace(wsFile)
       gs <-
         parseWorkspace(
-          ws, #WSP file 
-          path = inputFCSDir, #FCS file
-          name = 1, #sample group
-          subset = eval(fileToLoad), #load single fcs file
-          isNcdf = FALSE, #not memory mapped
+          ws,
+          #WSP file
+          path = inputFCSDir,
+          #FCS file
+          name = 1,
+          #sample group
+          subset = eval(fileToLoad),
+          #load single fcs file
+          isNcdf = FALSE,
+          #not memory mapped
           compensation = comp
         )
-                # 
-
+      #
+      
       manCounts = getStats(gs1 = gs,
                            qcVersion = qcVersion,
                            metric = "count",
@@ -185,9 +202,9 @@ compP1Frame <-
                 mapping = aes(x = "CD3", y = "CD19"),
                 subset = "PE-A") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-     t6_1 = ggcyto(gs1,
-                mapping = aes(x = "CD3", y = "CD19"),
-                subset = "CD3+") +
+    t6_1 = ggcyto(gs1,
+                  mapping = aes(x = "CD3", y = "CD19"),
+                  subset = "CD3+") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t1Bcell = ggcyto(gs1,
@@ -219,9 +236,9 @@ compP1Frame <-
                 mapping = aes(x = "CCR7", y = "CD45RA"),
                 subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-   tCD8Active = ggcyto(gs1,
-                 mapping = aes(x = "CD8", y = "HLA-DR"),
-                 subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    tCD8Active = ggcyto(gs1,
+                        mapping = aes(x = "CD8", y = "HLA-DR"),
+                        subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     t10 = ggcyto(gs1,
                  mapping = aes(x = "CCR7", y = "CD45RA"),
                  subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
@@ -229,7 +246,7 @@ compP1Frame <-
     t11 = ggcyto(gs1,
                  mapping = aes(x = "CD28", y = "CD27"),
                  subset = "CD8/CCR7-CD45RA-") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-     t12 = ggcyto(gs1,
+    t12 = ggcyto(gs1,
                  mapping = aes(x = "CD28", y = "CD27"),
                  subset = "CD8/CCR7-CD45RA+") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
@@ -251,7 +268,7 @@ compP1Frame <-
       as.ggplot(t10),
       as.ggplot(t11),
       as.ggplot(t12),
-
+      
       ncol = 2
     )
     
@@ -379,19 +396,24 @@ compP2Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       ws <- openWorkspace(wsFile)
       gs <-
         parseWorkspace(
-          ws, #WSP file 
-          path = inputFCSDir, #FCS file
-          name = 1, #sample group
-          subset = eval(fileToLoad), #load single fcs file
-          isNcdf = FALSE, #not memory mapped
+          ws,
+          #WSP file
+          path = inputFCSDir,
+          #FCS file
+          name = 1,
+          #sample group
+          subset = eval(fileToLoad),
+          #load single fcs file
+          isNcdf = FALSE,
+          #not memory mapped
           compensation = comp
         )
-                # 
-
+      #
+      
       manCounts = getStats(gs1 = gs,
                            qcVersion = qcVersion,
                            metric = "count",
@@ -443,9 +465,9 @@ compP2Frame <-
                 mapping = aes(x = "CD3", y = "CD19"),
                 subset = "PE-A") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-     t6_1 = ggcyto(gs1,
-                mapping = aes(x = "CD3", y = "CD19"),
-                subset = "CD3+") +
+    t6_1 = ggcyto(gs1,
+                  mapping = aes(x = "CD3", y = "CD19"),
+                  subset = "CD3+") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t1Bcell = ggcyto(gs1,
@@ -477,9 +499,9 @@ compP2Frame <-
                 mapping = aes(x = "CCR7", y = "CD45RA"),
                 subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-   tCD8Active = ggcyto(gs1,
-                 mapping = aes(x = "CD8", y = "HLA-DR"),
-                 subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    tCD8Active = ggcyto(gs1,
+                        mapping = aes(x = "CD8", y = "HLA-DR"),
+                        subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     t10 = ggcyto(gs1,
                  mapping = aes(x = "CCR7", y = "CD45RA"),
                  subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
@@ -487,7 +509,7 @@ compP2Frame <-
     t11 = ggcyto(gs1,
                  mapping = aes(x = "CD28", y = "CD27"),
                  subset = "CD8/CCR7-CD45RA-") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-     t12 = ggcyto(gs1,
+    t12 = ggcyto(gs1,
                  mapping = aes(x = "CD28", y = "CD27"),
                  subset = "CD8/CCR7-CD45RA+") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
@@ -509,7 +531,7 @@ compP2Frame <-
       as.ggplot(t10),
       as.ggplot(t11),
       as.ggplot(t12),
-
+      
       ncol = 2
     )
     
@@ -517,7 +539,7 @@ compP2Frame <-
     outFile <-
       paste(outputDir, gateDir,
             basename(file),
-            "_panel1.wsp", sep = "")
+            "_panel2.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
     
     QCDEF = FALSE
@@ -575,7 +597,7 @@ compP2Frame <-
         outputDir,
         gateDir,
         basename(file),
-        "_panel1_gate_def.txt",
+        "_panel2_gate_def.txt",
         sep = ""
       ),
       row.names = FALSE
