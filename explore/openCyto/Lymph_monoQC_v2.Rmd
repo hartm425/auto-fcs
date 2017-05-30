@@ -438,16 +438,11 @@ compP2Frame <-
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
     
     
+ 
+    
     t3 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
-                subset = "nonDebris") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-    # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-    
-    
-    t4 = ggcyto(gs1,
-                mapping = aes(x = "FSC-W", y = "FSC-H"),
-                subset = "lymph") +
+                subset = "Monocytes") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t5 = ggcyto(gs1,
