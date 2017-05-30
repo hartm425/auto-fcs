@@ -80,6 +80,15 @@ getStats <- function(gs1, qcVersion, metric, gate) {
   autoStats$QC = qcVersion
   return(autoStats)
 }
+
+ biexpTrans <-
+      flowJo_biexp_trans(
+        channelRange = 256,
+        maxValue = 262144.0000291775 ,
+        pos = 4.418539922,
+        neg = 0,
+        widthBasis = -100
+      )
 # Panel 1 frame
 compP1Frame <-
   function(frame,
@@ -96,14 +105,6 @@ compP1Frame <-
     comp <- compensation(keyword(frame)$`SPILL`)
     
     chnls <- parameters(comp)
-    biexpTrans <-
-      flowJo_biexp_trans(
-        channelRange = 256,
-        maxValue = 262144.0000291775 ,
-        pos = 4.418539922,
-        neg = 0,
-        widthBasis = -100
-      )
     tf <- transformerList(chnls, biexpTrans)
     
     print(paste("gating ....", file))
@@ -359,14 +360,7 @@ compP2Frame <-
     comp <- compensation(keyword(frame)$`SPILL`)
     
     chnls <- parameters(comp)
-    biexpTrans <-
-      flowJo_biexp_trans(
-        channelRange = 256,
-        maxValue = 262144.0000291775 ,
-        pos = 4.418539922,
-        neg = 0,
-        widthBasis = -100
-      )
+   
     tf <- transformerList(chnls, biexpTrans)
     
     print(paste("gating ....", file))
@@ -606,7 +600,16 @@ compP2Frame <-
     
   }
 
-
+getPanel <- 
+  function(frame){
+  t=pData(parameters(frame))
+  p1Key = "CCR7"
+  if(p1Key %in% t$desc){
+    return("panel1")
+  }else{
+    return("panel2")
+  }
+}
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
 i = 1
@@ -643,9 +646,13 @@ for (files in fcsFilesAll) {
         )
       }
       
-      frame.c = read.FCS(qcFileFull)
-      metricBase = compFrame(
-        frame = frame.c,
+      
+      # frame.c = read.FCS(qcFileFull)
+      
+      panel = getPanel(frame)
+      if(panel=="panel1"){
+      metricBase = compP1Frame(
+        frame = frame,
         file = file,
         gt_lymph = gt_lymph ,
         d = d,
@@ -655,6 +662,20 @@ for (files in fcsFilesAll) {
         mapper,
         inputFCSDir
       )
+      }else{
+        #panel 2
+        metricBase = compP2Frame(
+        frame = frame,
+        file = file,
+        gt_lymph = gt_mono ,
+        d = d,
+        outputDir = outputDir,
+        gateDir = gateDir,
+        qcVersion = FALSE,
+        mapper,
+        inputFCSDir)
+      }
+      metricBase$Panel = panel
       metricBase$PDF = pdfFile
       metricBase$FlaggedSample = file %in% fcsFilesAllProbs
       metrics = rbind(metrics, metricBase)
