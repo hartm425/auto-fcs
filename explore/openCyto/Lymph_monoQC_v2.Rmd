@@ -428,31 +428,31 @@ compP2Frame <-
     
     t3 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
-                subset = "Monocytes") +
+                subset = "nonDebris") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
      t4 = ggcyto(gs1,
                 mapping = aes(x = "FSC-W", y = "FSC-H"),
-                subset = "lymph") +
+                subset = "PBMC") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     t5 = ggcyto(gs1,
                 mapping = aes(x = "PE-A", y = "FSC-H"),
                 subset = "Singlets") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
 
-    t6= ggcyto(gs1,
-                mapping = aes(x = "PE-A", y = "FSC-H"),
-                subset = "live_gate") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    # t6= ggcyto(gs1,
+    #             mapping = aes(x = "PE-A", y = "FSC-H"),
+    #             subset = "live_gate") +
+    #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-    t7= ggcyto(gs1,
-                mapping = aes(x = "PE-A", y = "FSC-H"),
-                subset = "Live") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    
+    # t7= ggcyto(gs1,
+    #             mapping = aes(x = "PE-A", y = "FSC-H"),
+    #             subset = "Live") +
+    #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    # 
     t8 = ggcyto(gs1,
                 mapping = aes(x = "CD3", y = "CD19"),
-                subset = "Live") +
+                subset = "PE-A") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
     
