@@ -390,7 +390,7 @@ compP2Frame <-
       gs <-
         parseWorkspace(
           ws,
-          #WSP file
+          #WSP file 
           path = inputFCSDir,
           #FCS file
           name = 1,
