@@ -431,57 +431,20 @@ compP2Frame <-
                 subset = "Monocytes") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
+     t4 = ggcyto(gs1,
+                mapping = aes(x = "FSC-W", y = "FSC-H"),
+                subset = "lymph") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     t5 = ggcyto(gs1,
                 mapping = aes(x = "PE-A", y = "FSC-H"),
                 subset = "Singlets") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-    t6 = ggcyto(gs1,
-                mapping = aes(x = "CD3", y = "CD19"),
-                subset = "PE-A") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    t6_1 = ggcyto(gs1,
-                  mapping = aes(x = "CD3", y = "CD19"),
-                  subset = "CD3+") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    t1Bcell = ggcyto(gs1,
-                     mapping = aes(x = "CD3", y = "CD19"),
-                     subset = "CD3-") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    t2Bcell = ggcyto(gs1,
-                     mapping = aes(x = "IgD", y = "CD27"),
-                     subset = "CD19gate") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    t7 = ggcyto(gs1,
-                mapping = aes(x = "CD4", y = "CD8"),
-                subset = "CD3+") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    t8 = ggcyto(gs1,
-                mapping = aes(x = "CD4", y = "HLA-DR"),
-                subset = "CD4") +
-      geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    t9 = ggcyto(gs1,
-                mapping = aes(x = "CCR7", y = "CD45RA"),
-                subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    tCD8Active = ggcyto(gs1,
-                        mapping = aes(x = "CD8", y = "HLA-DR"),
-                        subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    t10 = ggcyto(gs1,
-                 mapping = aes(x = "CCR7", y = "CD45RA"),
-                 subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    t11 = ggcyto(gs1,
-                 mapping = aes(x = "CD28", y = "CD27"),
-                 subset = "CD8/CCR7-CD45RA-") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    t12 = ggcyto(gs1,
-                 mapping = aes(x = "CD28", y = "CD27"),
-                 subset = "CD8/CCR7-CD45RA+") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t6= ggcyto(gs1,
+                mapping = aes(x = "PE-A", y = "FSC-H"),
+                subset = "Live") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  
     
     grid.arrange(
       as.ggplot(t1),
@@ -490,18 +453,6 @@ compP2Frame <-
       as.ggplot(t4),
       as.ggplot(t5),
       as.ggplot(t6),
-      as.ggplot(t6_1),
-      as.ggplot(t1Bcell),
-      as.ggplot(t2Bcell),
-      as.ggplot(t7),
-      # as.ggplot(t7_1),
-      as.ggplot(t8),
-      as.ggplot(t9),
-      as.ggplot(tCD8Active),
-      as.ggplot(t10),
-      as.ggplot(t11),
-      as.ggplot(t12),
-      
       ncol = 2
     )
     
@@ -517,61 +468,61 @@ compP2Frame <-
       QCDEF = getIndiceMat(gs1, "QC")
     }
     print(table(QCDEF))
-    gateDef = data.frame(
-      QC = QCDEF,
-      lymph = getIndiceMat(gs1, "lymph"),
-      Singlets = getIndiceMat(gs1, "Singlets"),
-      PE_A_Minus = getIndiceMat(gs1, "PE-A"),
-      CD3Plus = getIndiceMat(gs1, "CD3+"),
-      cd4Pcd8M = getIndiceMat(gs1, "CD4"),
-      cd4Mcd8P = getIndiceMat(gs1, "CD8"),
-      HLADR = getIndiceMat(gs1, "ActivatedCD4"),
-      CD4_CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
-      CD4_CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
-      CD4_CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
-      CD4_CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
-      CD8_CCR7PCD45RAP = getIndiceMat(gs1, "CD8/CCR7+CD45RA+"),
-      CD8_CCR7PCD45RAM = getIndiceMat(gs1, "CD8/CCR7+CD45RA-"),
-      CD8_CCR7MCD45RAM = getIndiceMat(gs1, "CD8/CCR7-CD45RA-"),
-      CD8_CCR7MCD45RAP = getIndiceMat(gs1, "CD8/CCR7-CD45RA+"),
-      BCELL = getIndiceMat(gs1, "CD19gate")
-      
-    )
-    colnames(gateDef) = c(
-      "QC_FILTER",
-      "lymph",
-      "Singlets",
-      "PE_A",
-      "CD3_PLUS",
-      "CD4",
-      "CD8",
-      "ActivatedCD4",
-      "CD4_CCR7P_CD45RAP",
-      "CD4_CCR7P_CD45RAM",
-      "CD4_CCR7M_CD45RAM",
-      "CD4_CCR7M_CD45RAP",
-      "CD8_CCR7P_CD45RAP",
-      "CD8_CCR7P_CD45RAM",
-      "CD8_CCR7M_CD45RAM",
-      "CD8_CCR7M_CD45RAP",
-      "BCELL"
-    )
-    # APC-Cy7-A = CD4
-    # BUV 395-A =CD8
-    
-    write.table(
-      gateDef,
-      sep = "\t",
-      quote = FALSE,
-      file = paste(
-        outputDir,
-        gateDir,
-        basename(file),
-        "_panel2_gate_def.txt",
-        sep = ""
-      ),
-      row.names = FALSE
-    )
+    # gateDef = data.frame(
+    #   QC = QCDEF,
+    #   lymph = getIndiceMat(gs1, "lymph"),
+    #   Singlets = getIndiceMat(gs1, "Singlets"),
+    #   PE_A_Minus = getIndiceMat(gs1, "PE-A"),
+    #   CD3Plus = getIndiceMat(gs1, "CD3+"),
+    #   cd4Pcd8M = getIndiceMat(gs1, "CD4"),
+    #   cd4Mcd8P = getIndiceMat(gs1, "CD8"),
+    #   HLADR = getIndiceMat(gs1, "ActivatedCD4"),
+    #   CD4_CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
+    #   CD4_CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
+    #   CD4_CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
+    #   CD4_CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
+    #   CD8_CCR7PCD45RAP = getIndiceMat(gs1, "CD8/CCR7+CD45RA+"),
+    #   CD8_CCR7PCD45RAM = getIndiceMat(gs1, "CD8/CCR7+CD45RA-"),
+    #   CD8_CCR7MCD45RAM = getIndiceMat(gs1, "CD8/CCR7-CD45RA-"),
+    #   CD8_CCR7MCD45RAP = getIndiceMat(gs1, "CD8/CCR7-CD45RA+"),
+    #   BCELL = getIndiceMat(gs1, "CD19gate")
+    #   
+    # )
+    # colnames(gateDef) = c(
+    #   "QC_FILTER",
+    #   "lymph",
+    #   "Singlets",
+    #   "PE_A",
+    #   "CD3_PLUS",
+    #   "CD4",
+    #   "CD8",
+    #   "ActivatedCD4",
+    #   "CD4_CCR7P_CD45RAP",
+    #   "CD4_CCR7P_CD45RAM",
+    #   "CD4_CCR7M_CD45RAM",
+    #   "CD4_CCR7M_CD45RAP",
+    #   "CD8_CCR7P_CD45RAP",
+    #   "CD8_CCR7P_CD45RAM",
+    #   "CD8_CCR7M_CD45RAM",
+    #   "CD8_CCR7M_CD45RAP",
+    #   "BCELL"
+    # )
+    # # APC-Cy7-A = CD4
+    # # BUV 395-A =CD8
+    # 
+    # write.table(
+    #   gateDef,
+    #   sep = "\t",
+    #   quote = FALSE,
+    #   file = paste(
+    #     outputDir,
+    #     gateDir,
+    #     basename(file),
+    #     "_panel2_gate_def.txt",
+    #     sep = ""
+    #   ),
+    #   row.names = FALSE
+    # )
     return(metrics)
     
   }
