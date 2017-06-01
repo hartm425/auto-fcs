@@ -435,14 +435,19 @@ compP2Frame <-
                 mapping = aes(x = "FSC-W", y = "FSC-H"),
                 subset = "lymph") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    t5 = ggcyto(gs1,
+    # t5 = ggcyto(gs1,
+    #             mapping = aes(x = "PE-A", y = "FSC-H"),
+    #             subset = "Singlets") +
+    #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    # 
+    t5= ggcyto(gs1,
                 mapping = aes(x = "PE-A", y = "FSC-H"),
-                subset = "Singlets") +
+                subset = "live_gate") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t6= ggcyto(gs1,
                 mapping = aes(x = "PE-A", y = "FSC-H"),
-                subset = "live_gate") +
+                subset = "Live") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
     

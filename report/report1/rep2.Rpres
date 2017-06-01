@@ -65,7 +65,7 @@ cite_options(citation_format = "text", max.names = 3,
              hyperlink = "to.doc")
 options(digits=4)
 map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap2.txt",stringsAsFactors = FALSE,sep = "\t") 
-metrics =read.delim("/Volumes/Beta/data/flow/testTypesTestMetrics5.txt",stringsAsFactors = FALSE,sep = "\t") 
+metrics =read.delim("/Volumes/Beta/data/flow/testTypesTestMetrics5.panel1.complete.bak.txt",stringsAsFactors = FALSE,sep = "\t") 
 metrics$freqParent = metrics$Count/metrics$ParentCount
 metrics$nameOrig = metrics$name
 metrics$name =gsub(".fcs.*","",metrics$name ,fixed = FALSE)
