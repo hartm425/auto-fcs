@@ -442,7 +442,7 @@ compP2Frame <-
     
     t6= ggcyto(gs1,
                 mapping = aes(x = "PE-A", y = "FSC-H"),
-                subset = "Live") +
+                subset = "live_gate") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
     
@@ -468,6 +468,7 @@ compP2Frame <-
       QCDEF = getIndiceMat(gs1, "QC")
     }
     print(table(QCDEF))
+    # getIndiceMat(gs1, "Monocytes")
     # gateDef = data.frame(
     #   QC = QCDEF,
     #   lymph = getIndiceMat(gs1, "lymph"),
