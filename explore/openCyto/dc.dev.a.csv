@@ -1,7 +1,7 @@
 alias,pop,parent,dims,gating_method,gating_args,collapseDataForGating,groupBy,preprocessing_method,preprocessing_args
 boundary,boundary,root,"FSC-A,SSC-A",boundary,"max=c(2.5e5,2.5e5)",NA,NA,NA,NA
-Monocytes,Monocytes+,boundary,FSC-A,mindensity,"gate_range=c(0,1e5),num_peaks=3,ref_peak=1,adjust=1",NA,NA,NA,NA
-lymph,lymph-,Monocytes,SSC-A,flowClust,"min=0,K=1",NA,NA,prior_flowClust,"min=0,K=1"
-Singlets,FSC-W-,lymph,FSC-W,tailgate,tol=5e-3,NA,NA,standardize_flowset,NA
+nonDebris,nonDebris+,boundary,FSC-A,mindensity,"gate_range=c(0,1e5),num_peaks=3,ref_peak=1,adjust=1",NA,NA,NA,NA
+Monocytes,Monocytes+,nonDebris,SSC-A,flowClust,"min=0,K=1",NA,NA,prior_flowClust,"min=0,K=1"
+Singlets,FSC-W-,Monocytes,FSC-W,tailgate,tol=5e-3,NA,NA,standardize_flowset,NA
 live_gate,PE-A-,Singlets,PE-A,tailgate,tol=1e-2,NA,NA,NA,NA
 Live,PE-A-,Monocytes,PE-A,refGate,live_gate,NA,NA,NA,NA
