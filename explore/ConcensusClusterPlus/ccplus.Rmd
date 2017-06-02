@@ -9,7 +9,7 @@ output:
 
 ```{r,echo=FALSE}
 k = 10
-iter = 15000
+iter = 10000
 
 ```
 maxk = `r k`
@@ -31,7 +31,7 @@ stab$KEY2 = paste(stab$time.point,stab$CELLSID)
 
 stab$sample.ID = as.character(stab$sample.ID)
 stab$time.point =gsub("D","",stab$time.point)
-stab$KEY3 = paste(stab$time.point,stab$sample.ID)
+stab$KEY3 = paste(stab$time.point,stab$sample.ID,stab$SAMPLE.TYPE)
 
 stabPBMC = stab[which(stab$SAMPLE.TYPE=="PBMC"),]
 stabWB = stab[which(stab$SAMPLE.TYPE=="WB"),]
@@ -61,11 +61,11 @@ for (type in unique(merge$CELLSID.x)) {
     row.names(sampleTmp) = data$KEY3.x
       if (length(unique(data$KEY3.x)) == length(as.character(unique(merge$KEY3.x)))) {
 
-      if(type=="BCELLS"|type=="MONOCYTES"|type=="TCELLS"){
+      # if(type=="BCELLS"|type=="MONOCYTES"|type=="TCELLS"){
         # type=="TCELLS-CD8"|
         # type=="TCELLS-CD4"|
       sampleBased2 = cbind(sampleBased2, sampleTmp)
-      }
+      # }
     }
     
   
@@ -168,26 +168,26 @@ superheat(td,
           # rotate bottom label text
           bottom.label.text.angle = 90)
 
-t =resultst2[[i]]
-print(class(t))
-# https://rlbarter.github.io/superheat-examples/Word2Vec/
-td = as.data.frame(t$consensusMatrix)
-colnames(td) = names(t$consensusClass)
-row.names(td) = names(t$consensusClass)
-superheat(td,
-
-          # place dendrograms on columns and rows
-          row.dendrogram = T,
-          col.dendrogram = T,
-
-          # make gridlines white for enhanced prettiness
-          grid.hline.col = "white",
-          grid.vline.col = "white",
-          title = paste("K = ",i),
-                    bottom.label = "none",
-
-          # rotate bottom label text
-          bottom.label.text.angle = 90)
+# t =resultst2[[i]]
+# print(class(t))
+# # https://rlbarter.github.io/superheat-examples/Word2Vec/
+# td = as.data.frame(t$consensusMatrix)
+# colnames(td) = names(t$consensusClass)
+# row.names(td) = names(t$consensusClass)
+# superheat(td,
+# 
+#           # place dendrograms on columns and rows
+#           row.dendrogram = T,
+#           col.dendrogram = T,
+# 
+#           # make gridlines white for enhanced prettiness
+#           grid.hline.col = "white",
+#           grid.vline.col = "white",
+#           title = paste("K = ",i),
+#                     bottom.label = "none",
+# 
+#           # rotate bottom label text
+#           bottom.label.text.angle = 90)
 #
 }
 
