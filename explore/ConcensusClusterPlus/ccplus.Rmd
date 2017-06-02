@@ -25,11 +25,6 @@ stabWB = stab[which(stab$SAMPLE.TYPE=="WB"),]
 stabGS = stab[which(stab$SAMPLE.TYPE=="WB"&stab$time.point==0),]
 
 merge =merge(stabPBMC,stabWB,by.x = "KEY",by.y = "KEY")
-```
-
-
-```{r,echo=FALSE}
-
 
 metrics = data.frame()
 sampleBased = data.frame(row.names = as.character(unique(merge$sample.ID.x)))
@@ -69,9 +64,11 @@ for (type in unique(merge$CELLSID.x)) {
   }
 }
 
-k = 10
-iter = 4000
-
+k = 15
+iter = 100
+evalSource("ConcensusClusterPlus.R", package = "ConsensusClusterPlus", lock = TRUE, cache = FALSE)
+insertSource("ConcensusClusterPlus.R", package = "ConsensusClusterPlus" )
+# source("./ConcensusClusterPlus.R")
 title = paste("test_sampleClust_transposeK", k, "iter", iter, sep = "")
 resultst = ConsensusClusterPlus(
   t(as.matrix(sampleBased)),
@@ -87,7 +84,7 @@ resultst = ConsensusClusterPlus(
   corUse = "pairwise.complete.obs"
 )
 title = paste("test_CellClustK", k, "iter", iter, sep = "")
-resultsb = ConsensusClusterPlus(
+resultsb = ConsensusClusterPlusJL(
   as.matrix(sampleBased),
   maxK = k,
   reps = iter,
