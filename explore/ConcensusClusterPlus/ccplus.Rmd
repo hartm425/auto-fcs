@@ -66,7 +66,7 @@ for (type in unique(merge$CELLSID.x)) {
 
 k = 15
 iter = 100
-evalSource("ConcensusClusterPlus.R", package = "ConsensusClusterPlus", lock = TRUE, cache = FALSE)
+evalSource("ConcensusClusterPlus", package = "ConsensusClusterPlus", lock = TRUE, cache = FALSE)
 insertSource("ConcensusClusterPlus.R", package = "ConsensusClusterPlus" )
 # source("./ConcensusClusterPlus.R")
 title = paste("test_sampleClust_transposeK", k, "iter", iter, sep = "")
