@@ -3,8 +3,8 @@ JL
 6/2/2017  
 
 
-maxk = 6
-iter = 100
+maxk = 10
+iter = 1.5\times 10^{4}
 
 
 ```
@@ -17,6 +17,10 @@ iter = 100
 ## clustered
 ## clustered
 ## clustered
+## clustered
+## clustered
+## clustered
+## clustered
 ```
 
 ```
@@ -29,39 +33,13 @@ iter = 100
 ## clustered
 ## clustered
 ## clustered
+## clustered
+## clustered
+## clustered
+## clustered
 ```
 
-![](ccplus_files/figure-html/setup-1.png)<!-- -->
-
-```
-## [1] "list"
-```
-
-![](ccplus_files/figure-html/setup-2.png)<!-- -->![](ccplus_files/figure-html/setup-3.png)<!-- -->
-
-```
-## [1] "list"
-```
-
-![](ccplus_files/figure-html/setup-4.png)<!-- -->![](ccplus_files/figure-html/setup-5.png)<!-- -->
-
-```
-## [1] "list"
-```
-
-![](ccplus_files/figure-html/setup-6.png)<!-- -->![](ccplus_files/figure-html/setup-7.png)<!-- -->
-
-```
-## [1] "list"
-```
-
-![](ccplus_files/figure-html/setup-8.png)<!-- -->![](ccplus_files/figure-html/setup-9.png)<!-- -->
-
-```
-## [1] "list"
-```
-
-![](ccplus_files/figure-html/setup-10.png)<!-- -->
+![](ccplus_files/figure-html/setup-1.png)<!-- -->![](ccplus_files/figure-html/setup-2.png)<!-- -->![](ccplus_files/figure-html/setup-3.png)<!-- -->![](ccplus_files/figure-html/setup-4.png)<!-- -->![](ccplus_files/figure-html/setup-5.png)<!-- -->![](ccplus_files/figure-html/setup-6.png)<!-- -->![](ccplus_files/figure-html/setup-7.png)<!-- -->![](ccplus_files/figure-html/setup-8.png)<!-- -->![](ccplus_files/figure-html/setup-9.png)<!-- -->
 
 
 >  The purpose of CM plots is to find the ‘cleanest’ cluster partition where items nearly always either cluster together giving a high consensus (dark blue colour) or do not cluster together giving a low consensus (white)
