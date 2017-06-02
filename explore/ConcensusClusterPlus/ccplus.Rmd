@@ -9,6 +9,7 @@ output: html_document
 ```{r setup,include=FALSE}
 library(ggplot2)
 theme_set(theme_bw(20))
+library(ConsensusClusterPlus)
 
 options(digits=4)
 
@@ -54,6 +55,7 @@ for(tp in unique(data$time.point.x)){
   )
   metrics  = rbind(metrics, tmp)
 }
+
 # 
 # p = ggplot(data,aes(x=time.point.x,y=CELLS.x))  + geom_boxplot() +xlab("TIME") +ylab("CELLS") + labs(title = paste(type,"PBMC"))
 # print(p)
@@ -67,6 +69,8 @@ for(tp in unique(data$time.point.x)){
 # p = ggplot(data,aes(x=time.point.x,y=L2PBWB))  + geom_boxplot() +xlab("TIME") +ylab("FC WB_0")  + labs(title = paste(type,"WB_LOG2"))
 # print(p)
 }
+
+results = ConsensusClusterPlus(as.matrix(metrics),maxK=6,reps=50,pItem=0.8,pFeature=1,title=title,clusterAlg="hc",distance="pearson",seed=1262118388.71279,plot="png")
 
 ```
 
