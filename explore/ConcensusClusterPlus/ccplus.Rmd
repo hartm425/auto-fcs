@@ -47,8 +47,8 @@ for (type in unique(merge$CELLSID.x)) {
   
   for (tp in unique(data$time.point.x)) {
     current = data[which(data$time.point.x == tp), ]
-    sampleTmp = data.frame( DATA = current$CELLS.x)
-    colnames(sampleTmp) = c( current$KEY2.x[1])
+    sampleTmp = data.frame( DATA1 = current$CELLS.x, DATA2 = current$CELLS.y)
+    colnames(sampleTmp) = c( paste("PBMC",current$KEY2.x[1]),paste("WB",current$KEY2.x[1]))
     row.names(sampleTmp) =current$sample.ID.x
     if(length(current$sample.ID.x) == length(as.character(unique(merge$sample.ID.x)))){
     sampleBased = cbind(sampleBased, sampleTmp)
@@ -68,7 +68,7 @@ for (type in unique(merge$CELLSID.x)) {
 }
 
 title = "testK10Rep500"
-results = ConsensusClusterPlus(as.matrix(sampleBased),maxK=10,reps=500,pItem=0.8,pFeature=1,title=title,clusterAlg="hc",distance="spearman",seed=1262118388.71279,plot="png")
+results = ConsensusClusterPlus(as.matrix(sampleBased),maxK=10,reps=500,pItem=0.8,pFeature=1,title=title,clusterAlg="hc",distance="spearman",seed=1262118388.71279,plot="png",corUse = "pairwise.complete.obs")
 
 ```
 
