@@ -31,8 +31,8 @@ merge =merge(stabPBMC,stabWB,by.x = "KEY",by.y = "KEY")
 ```{r,echo=FALSE}
 
 metrics = data.frame()
-sampleBased = data.frame(SAMPLE = as.character(unique(merge$sample.ID.x)))
-row.names(sampleBased) = unique(merge$sample.ID.x)
+sampleBased = data.frame(row.names = as.character(unique(merge$sample.ID.x)))
+
 
 for (type in unique(merge$CELLSID.x)) {
   stabGST = stabGS[which(stabGS$CELLSID == type), ]
@@ -50,8 +50,10 @@ for (type in unique(merge$CELLSID.x)) {
     sampleTmp = data.frame( DATA = current$CELLS.x)
     colnames(sampleTmp) = c( current$KEY2.x[1])
     row.names(sampleTmp) =current$sample.ID.x
+    if(length(current$sample.ID.x) == length(as.character(unique(merge$sample.ID.x)))){
+    sampleBased = cbind(sampleBased, sampleTmp)
+    }
     
-    sampleBased = merge(sampleBased, sampleTmp)
     tmp = data.frame(
       TIME = as.numeric(tp),
       TYPE = type,
@@ -65,7 +67,8 @@ for (type in unique(merge$CELLSID.x)) {
   }
 }
 
-results = ConsensusClusterPlus(as.matrix(metrics),maxK=6,reps=50,pItem=0.8,pFeature=1,title=title,clusterAlg="hc",distance="pearson",seed=1262118388.71279,plot="png")
+title = "testK10Rep500"
+results = ConsensusClusterPlus(as.matrix(sampleBased),maxK=10,reps=500,pItem=0.8,pFeature=1,title=title,clusterAlg="hc",distance="spearman",seed=1262118388.71279,plot="png")
 
 ```
 
