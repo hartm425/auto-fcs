@@ -9,7 +9,7 @@ output:
 
 ```{r,echo=FALSE}
 k = 10
-iter = 10000
+iter = 100000
 
 ```
 maxk = `r k`
@@ -100,35 +100,35 @@ for (type in unique(merge$CELLSID.x)) {
 # evalSource("ConcensusClusterPlus", package = "ConsensusClusterPlus", lock = TRUE, cache = FALSE)
 # insertSource("ConcensusClusterPlus.R", package = "ConsensusClusterPlus" )
 # source("./ConcensusClusterPlus.R")
-titlest = paste("test_sampleClust_transposeK", k, "iter", iter, sep = "")
-resultst = ConsensusClusterPlus(
-  t(as.matrix(sampleBased)),
-  maxK = k,
-  reps = iter,
-  pItem = 0.8,
-  pFeature = 1,
-  title = titlest,
-  clusterAlg = "hc",
-  distance = "spearman",
-  seed = 1262118388.71279,
-  plot = "png",
-  corUse = "pairwise.complete.obs"
-)
-
-titlest2 = paste("test_sampleClust2_transposeK", k, "iter", iter, sep = "")
-resultst2 = ConsensusClusterPlus(
-  t(as.matrix(sampleBased2)),
-  maxK = k,
-  reps = iter,
-  pItem = 0.8,
-  pFeature = 1,
-  title = titlest,
-  clusterAlg = "hc",
-  distance = "spearman",
-  seed = 1262118388.71279,
-  plot = "png",
-  corUse = "pairwise.complete.obs"
-)
+# titlest = paste("test_sampleClust_transposeK", k, "iter", iter, sep = "")
+# resultst = ConsensusClusterPlus(
+#   t(as.matrix(sampleBased)),
+#   maxK = k,
+#   reps = iter,
+#   pItem = 0.8,
+#   pFeature = 1,
+#   title = titlest,
+#   clusterAlg = "hc",
+#   distance = "spearman",
+#   seed = 1262118388.71279,
+#   plot = "png",
+#   corUse = "pairwise.complete.obs"
+# )
+# 
+# titlest2 = paste("test_sampleClust2_transposeK", k, "iter", iter, sep = "")
+# resultst2 = ConsensusClusterPlus(
+#   t(as.matrix(sampleBased2)),
+#   maxK = k,
+#   reps = iter,
+#   pItem = 0.8,
+#   pFeature = 1,
+#   title = titlest,
+#   clusterAlg = "hc",
+#   distance = "spearman",
+#   seed = 1262118388.71279,
+#   plot = "png",
+#   corUse = "pairwise.complete.obs"
+# )
 
 titlesb = paste("test_CellClustK", k, "iter", iter, sep = "")
 resultsb = ConsensusClusterPlus(

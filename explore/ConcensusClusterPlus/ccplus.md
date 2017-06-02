@@ -4,40 +4,8 @@ JL
 
 
 maxk = 10
-iter = 10^{4}
+iter = 10^{5}
 
-
-```
-## end fraction
-```
-
-```
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-```
-
-```
-## end fraction
-```
-
-```
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-## clustered
-```
 
 ```
 ## end fraction
