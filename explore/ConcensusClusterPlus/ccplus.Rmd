@@ -2,11 +2,22 @@
 title: "ccplus"
 author: "JL"
 date: "6/2/2017"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
+```{r,echo=FALSE}
+k = 10
+iter = 10000
 
-```{r setup,include=FALSE}
+```
+maxk = `r k`
+iter = `r iter`
+
+```{r setup,echo=FALSE,warning=FALSE,fig.width=10,fig.height=8}
+
+library(superheat)
 library(ggplot2)
 theme_set(theme_bw(20))
 library(ConsensusClusterPlus)
@@ -48,7 +59,9 @@ for (type in unique(merge$CELLSID.x)) {
                             paste("WB", current$KEY2.x[1]))
     row.names(sampleTmp) = current$sample.ID.x
     if (length(current$sample.ID.x) == length(as.character(unique(merge$sample.ID.x)))) {
+      if(type=="BCELLS"|type=="TCELLS-CD4"|type=="MONOCYTES"|type=="TCELLS-CD8"|type=="TCELLS"){
       sampleBased = cbind(sampleBased, sampleTmp)
+      }
     }
     
     tmp = data.frame(
@@ -64,41 +77,81 @@ for (type in unique(merge$CELLSID.x)) {
   }
 }
 
-k = 15
-iter = 100
-evalSource("ConcensusClusterPlus", package = "ConsensusClusterPlus", lock = TRUE, cache = FALSE)
-insertSource("ConcensusClusterPlus.R", package = "ConsensusClusterPlus" )
+
+# evalSource("ConcensusClusterPlus", package = "ConsensusClusterPlus", lock = TRUE, cache = FALSE)
+# insertSource("ConcensusClusterPlus.R", package = "ConsensusClusterPlus" )
 # source("./ConcensusClusterPlus.R")
-title = paste("test_sampleClust_transposeK", k, "iter", iter, sep = "")
+titlest = paste("test_sampleClust_transposeK", k, "iter", iter, sep = "")
 resultst = ConsensusClusterPlus(
   t(as.matrix(sampleBased)),
   maxK = k,
   reps = iter,
   pItem = 0.8,
   pFeature = 1,
-  title = title,
+  title = titlest,
   clusterAlg = "hc",
   distance = "spearman",
   seed = 1262118388.71279,
-  plot = "pdf",
+  plot = "png",
   corUse = "pairwise.complete.obs"
 )
-title = paste("test_CellClustK", k, "iter", iter, sep = "")
-resultsb = ConsensusClusterPlusJL(
+titlesb = paste("test_CellClustK", k, "iter", iter, sep = "")
+resultsb = ConsensusClusterPlus(
   as.matrix(sampleBased),
   maxK = k,
   reps = iter,
   pItem = 0.8,
   pFeature = 1,
-  title = title,
+  title = titlesb,
   clusterAlg = "hc",
   distance = "spearman",
   seed = 1262118388.71279,
-  plot = "pdf",
+  plot = "png",
   corUse = "pairwise.complete.obs"
 )
 
 write.table(sampleBased , file = "data.txt", sep = "\t")
+for(i in 2:k) {
+t =resultsb[[i]]
+# https://rlbarter.github.io/superheat-examples/Word2Vec/
+td = as.data.frame(t$consensusMatrix)
+colnames(td) = names(t$consensusClass)
+row.names(td) = names(t$consensusClass)
+superheat(td, 
+
+          # place dendrograms on columns and rows 
+          row.dendrogram = T, 
+          col.dendrogram = T,
+          
+          # make gridlines white for enhanced prettiness
+          grid.hline.col = "white",
+          grid.vline.col = "white",
+          title = paste("K = ",i),
+
+          # rotate bottom label text
+          bottom.label.text.angle = 90)
+
+# t =resultst[[i]]
+# print(class(t))
+# # https://rlbarter.github.io/superheat-examples/Word2Vec/
+# td = as.data.frame(t$consensusMatrix)
+# colnames(td) = names(t$consensusClass)
+# row.names(td) = names(t$consensusClass)
+# superheat(td, 
+# 
+#           # place dendrograms on columns and rows 
+#           row.dendrogram = T, 
+#           col.dendrogram = T,
+#           
+#           # make gridlines white for enhanced prettiness
+#           grid.hline.col = "white",
+#           grid.vline.col = "white",
+#           title = paste("K = ",i),
+#           # rotate bottom label text
+#           bottom.label.text.angle = 90)
+# 
+}
+
 
 ```
 
