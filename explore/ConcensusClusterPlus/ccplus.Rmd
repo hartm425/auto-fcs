@@ -68,7 +68,7 @@ for (type in unique(merge$CELLSID.x)) {
 }
 
 title = "testK10Rep500"
-results = ConsensusClusterPlus(as.matrix(sampleBased),maxK=10,reps=500,pItem=0.8,pFeature=1,title=title,clusterAlg="hc",distance="spearman",seed=1262118388.71279,plot="png",corUse = "pairwise.complete.obs")
+results = ConsensusClusterPlus(as.matrix(sampleBased),maxK=12,reps=1000,pItem=0.8,pFeature=1,title=title,clusterAlg="hc",distance="spearman",seed=1262118388.71279,plot="png",corUse = "pairwise.complete.obs")
 
 ```
 
