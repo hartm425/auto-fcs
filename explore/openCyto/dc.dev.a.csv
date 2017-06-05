@@ -7,3 +7,4 @@ PE-A,PE-A-,Singlets,PE-A,tailgate,tol=1e-2,NA,NA,NA,NA
 *,CD3+/-,PE-A,CD3,mindensity,"gate_range=c(80,150)",NA,NA,NA,NA
 *,CD19+/-,PE-A,CD19,mindensity,"gate_range=c(145,200),adjust=1.5",NA,NA,NA,NA
 D_NK_M,CD3-CD19-,PE-A,"CD3,CD19",refGate,CD3-:CD19-,NA,NA,NA,NA
+*,CD14+/-,D_NK_M,CD14,mindensity,"gate_range=c(145,200),adjust=1.5",NA,NA,NA,NA

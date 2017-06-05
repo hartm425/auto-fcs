@@ -64,7 +64,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[7:10]
+fcsFilesAll =fcsFilesAll[8:10]
 fcsFilesAllProbs = c("NONE")
 
 
