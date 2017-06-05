@@ -118,8 +118,7 @@ compP1Frame <-
     
     gh <- gs1[[1]]
     gating(gt_lymph, gs1)
-    
-    
+
     
     
     autoCounts = getStats(gs1 = gs1,
@@ -354,7 +353,8 @@ compP2Frame <-
            gateDir,
            qcVersion,
            mapper,
-           inputFCSDir) {
+           inputFCSDir
+           ) {
     print(paste("compensating ....", file))
     metrics = data.frame()
     comp <- compensation(keyword(frame)$`SPILL`)
@@ -374,8 +374,7 @@ compP2Frame <-
     
     gh <- gs1[[1]]
     gating(gt_lymph, gs1)
-    
-    
+
     
     
     autoCounts = getStats(gs1 = gs1,
@@ -621,7 +620,8 @@ for (files in fcsFilesAll) {
         gateDir = gateDir,
         qcVersion = FALSE,
         mapper,
-        inputFCSDir)
+        inputFCSDir
+        )
       }
       metricBase$Panel = panel
       metricBase$PDF = pdfFile
@@ -656,6 +656,11 @@ write.table(
   row.names = FALSE
 )
 
+outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
+GatingSet2flowJo(GatingSetList(p1GSList),outWsp1 )
+
+outWsp2 = paste(outputDir, "panel2_full.wsp", sep = "")
+GatingSet2flowJo(GatingSetList(p2GSList),outWsp2 )
 
 write.table(
   d,
