@@ -440,20 +440,23 @@ compP2Frame <-
                 subset = "Singlets") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
 
-    # t6= ggcyto(gs1,
-    #             mapping = aes(x = "PE-A", y = "FSC-H"),
-    #             subset = "live_gate") +
-    #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t6 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "PE-A") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    t7= ggcyto(gs1,
+                mapping = aes(x = "CD14", y = "CD20"),
+                subset = "D_NK_M") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
     
     # t7= ggcyto(gs1,
     #             mapping = aes(x = "PE-A", y = "FSC-H"),
     #             subset = "Live") +
     #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     # 
-    t8 = ggcyto(gs1,
-                mapping = aes(x = "CD3", y = "CD19"),
-                subset = "PE-A") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    # 
   
     
     grid.arrange(
@@ -464,7 +467,7 @@ compP2Frame <-
       as.ggplot(t5),
       as.ggplot(t6),
       as.ggplot(t7),
-      as.ggplot(t8),
+
       ncol = 2
     )
     
