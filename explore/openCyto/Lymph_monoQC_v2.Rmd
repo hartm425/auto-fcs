@@ -64,7 +64,9 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[8:10]
+# fcsFilesAll =fcsFilesAll[8:10]
+ fcsFilesAll =fcsFilesAll[307:309]
+
 fcsFilesAllProbs = c("NONE")
 
 
@@ -284,6 +286,13 @@ compP1Frame <-
       QCDEF = getIndiceMat(gs1, "QC")
     }
     print(table(QCDEF))
+    
+    
+    # gateDef = data.frame(
+    #   QC = QCDEF)
+    # for(pop in autoCounts$Population){
+    #   gateDef = cbind(gateDef,getIndiceMat(gs1,pop))
+    # }
     gateDef = data.frame(
       QC = QCDEF,
       lymph = getIndiceMat(gs1, "lymph"),
@@ -664,7 +673,10 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
   gates1 =list()
   gates2 = list()
   # wsp = wsp[1:5]
+  cur = 0
   for(wsp in wsps){
+    cur =cur +1
+    print(cur)
      ws <- openWorkspace(wsp)
         gs <-
           parseWorkspace(
@@ -682,7 +694,6 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
             # compensation = comp
           )
         if(length(grep("panel1",wsp))){
-          print("Hi")
           gates1 = c(gates1,gs)
         }else{
           gates2 = c(gates2,gs)
