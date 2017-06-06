@@ -689,7 +689,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
             #sample group
             # subset = eval(fileToLoad),
             #load single fcs file
-            isNcdf = FALSE
+            isNcdf = TRUE
             # #not memory mapped
             # compensation = comp
           )
@@ -701,7 +701,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
   }
   
   outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
-  GatingSet2flowJo(GatingSetList(c(gates1,gates2)),outWsp1 )
+  GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
   
   outWsp2 = paste(outputDir, "panel2_full.wsp", sep = "")
   GatingSet2flowJo(GatingSetList(gates2),outWsp2 )
