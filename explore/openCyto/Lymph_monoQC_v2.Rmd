@@ -675,9 +675,9 @@ for(wsp in wsps){
           #sample group
           # subset = eval(fileToLoad),
           #load single fcs file
-          isNcdf = FALSE,
-          #not memory mapped
-          compensation = comp
+          isNcdf = FALSE
+          # #not memory mapped
+          # compensation = comp
         )
       if(length(grep("panel1",wsp))){
         print("Hi")
@@ -688,10 +688,24 @@ for(wsp in wsps){
 }
 
 outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
-GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
+GatingSet2flowJo(GatingSetList(c(gates1,gates2)),outWsp1 )
 
 outWsp2 = paste(outputDir, "panel2_full.wsp", sep = "")
 GatingSet2flowJo(GatingSetList(gates2),outWsp2 )
+
+p1sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\"/g\'"
+p1sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
+
+system(paste(p1sed1,outWsp1))
+system(paste(p1sed2,outWsp1))
+
+p2sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\"/g\'"
+p2sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
+
+system(paste(p2sed1,outWsp2))
+system(paste(p2sed2,outWsp2))
+
+
 
 write.table(
   d,
