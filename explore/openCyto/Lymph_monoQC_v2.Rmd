@@ -661,7 +661,7 @@ wsps = list.files(paste(outputDir,gateDir,sep = "") ,pattern = "wsp$", recursive
 
 gates1 =list()
 gates2 = list()
-wsp = wsp[1:5]
+# wsp = wsp[1:5]
 for(wsp in wsps){
    ws <- openWorkspace(wsp)
       gs <-
