@@ -400,6 +400,11 @@ compP2Frame <-
                 mapping = aes(x = "CD14", y = "CD20"),
                 subset = "CD14-") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
+    
+    t10= ggcyto(gs1,
+                mapping = aes(x = "CD14", y = "CD20"),
+                subset = "CD20-") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     # t7= ggcyto(gs1,
     #             mapping = aes(x = "PE-A", y = "FSC-H"),
     #             subset = "Live") +
@@ -418,6 +423,7 @@ compP2Frame <-
       as.ggplot(t7),
       as.ggplot(t8),
       as.ggplot(t9),
+      as.ggplot(t10),
 
       ncol = 2
     )
