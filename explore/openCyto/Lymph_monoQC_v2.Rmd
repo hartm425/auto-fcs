@@ -280,74 +280,7 @@ compP1Frame <-
             basename(file),
             "_panel1.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
-    
-    QCDEF = FALSE
-    if (qcVersion) {
-      QCDEF = getIndiceMat(gs1, "QC")
-    }
-    print(table(QCDEF))
-    
-    
-    # gateDef = data.frame(
-    #   QC = QCDEF)
-    # for(pop in autoCounts$Population){
-    #   gateDef = cbind(gateDef,getIndiceMat(gs1,pop))
-    # }
-    gateDef = data.frame(
-      QC = QCDEF,
-      lymph = getIndiceMat(gs1, "lymph"),
-      Singlets = getIndiceMat(gs1, "Singlets"),
-      PE_A_Minus = getIndiceMat(gs1, "PE-A"),
-      CD3Plus = getIndiceMat(gs1, "CD3+"),
-      cd4Pcd8M = getIndiceMat(gs1, "CD4"),
-      cd4Mcd8P = getIndiceMat(gs1, "CD8"),
-      HLADR = getIndiceMat(gs1, "ActivatedCD4"),
-      CD4_CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
-      CD4_CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
-      CD4_CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
-      CD4_CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
-      CD8_CCR7PCD45RAP = getIndiceMat(gs1, "CD8/CCR7+CD45RA+"),
-      CD8_CCR7PCD45RAM = getIndiceMat(gs1, "CD8/CCR7+CD45RA-"),
-      CD8_CCR7MCD45RAM = getIndiceMat(gs1, "CD8/CCR7-CD45RA-"),
-      CD8_CCR7MCD45RAP = getIndiceMat(gs1, "CD8/CCR7-CD45RA+"),
-      BCELL = getIndiceMat(gs1, "CD19gate")
-      
-    )
-    colnames(gateDef) = c(
-      "QC_FILTER",
-      "lymph",
-      "Singlets",
-      "PE_A",
-      "CD3_PLUS",
-      "CD4",
-      "CD8",
-      "ActivatedCD4",
-      "CD4_CCR7P_CD45RAP",
-      "CD4_CCR7P_CD45RAM",
-      "CD4_CCR7M_CD45RAM",
-      "CD4_CCR7M_CD45RAP",
-      "CD8_CCR7P_CD45RAP",
-      "CD8_CCR7P_CD45RAM",
-      "CD8_CCR7M_CD45RAM",
-      "CD8_CCR7M_CD45RAP",
-      "BCELL"
-    )
-    # APC-Cy7-A = CD4
-    # BUV 395-A =CD8
-    
-    write.table(
-      gateDef,
-      sep = "\t",
-      quote = FALSE,
-      file = paste(
-        outputDir,
-        gateDir,
-        basename(file),
-        "_panel1_gate_def.txt",
-        sep = ""
-      ),
-      row.names = FALSE
-    )
+  
     return(metrics)
     
   }
@@ -484,6 +417,7 @@ compP2Frame <-
       as.ggplot(t6),
       as.ggplot(t7),
       as.ggplot(t8),
+      as.ggplot(t9),
 
       ncol = 2
     )
@@ -494,68 +428,6 @@ compP2Frame <-
             basename(file),
             "_panel2.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
-    
-    QCDEF = FALSE
-    if (qcVersion) {
-      QCDEF = getIndiceMat(gs1, "QC")
-    }
-    print(table(QCDEF))
-    # getIndiceMat(gs1, "Monocytes")
-    # gateDef = data.frame(
-    #   QC = QCDEF,
-    #   lymph = getIndiceMat(gs1, "lymph"),
-    #   Singlets = getIndiceMat(gs1, "Singlets"),
-    #   PE_A_Minus = getIndiceMat(gs1, "PE-A"),
-    #   CD3Plus = getIndiceMat(gs1, "CD3+"),
-    #   cd4Pcd8M = getIndiceMat(gs1, "CD4"),
-    #   cd4Mcd8P = getIndiceMat(gs1, "CD8"),
-    #   HLADR = getIndiceMat(gs1, "ActivatedCD4"),
-    #   CD4_CCR7PCD45RAP = getIndiceMat(gs1, "CD4/CCR7+CD45RA+"),
-    #   CD4_CCR7PCD45RAM = getIndiceMat(gs1, "CD4/CCR7+CD45RA-"),
-    #   CD4_CCR7MCD45RAM = getIndiceMat(gs1, "CD4/CCR7-CD45RA-"),
-    #   CD4_CCR7MCD45RAP = getIndiceMat(gs1, "CD4/CCR7-CD45RA+"),
-    #   CD8_CCR7PCD45RAP = getIndiceMat(gs1, "CD8/CCR7+CD45RA+"),
-    #   CD8_CCR7PCD45RAM = getIndiceMat(gs1, "CD8/CCR7+CD45RA-"),
-    #   CD8_CCR7MCD45RAM = getIndiceMat(gs1, "CD8/CCR7-CD45RA-"),
-    #   CD8_CCR7MCD45RAP = getIndiceMat(gs1, "CD8/CCR7-CD45RA+"),
-    #   BCELL = getIndiceMat(gs1, "CD19gate")
-    #   
-    # )
-    # colnames(gateDef) = c(
-    #   "QC_FILTER",
-    #   "lymph",
-    #   "Singlets",
-    #   "PE_A",
-    #   "CD3_PLUS",
-    #   "CD4",
-    #   "CD8",
-    #   "ActivatedCD4",
-    #   "CD4_CCR7P_CD45RAP",
-    #   "CD4_CCR7P_CD45RAM",
-    #   "CD4_CCR7M_CD45RAM",
-    #   "CD4_CCR7M_CD45RAP",
-    #   "CD8_CCR7P_CD45RAP",
-    #   "CD8_CCR7P_CD45RAM",
-    #   "CD8_CCR7M_CD45RAM",
-    #   "CD8_CCR7M_CD45RAP",
-    #   "BCELL"
-    # )
-    # # APC-Cy7-A = CD4
-    # # BUV 395-A =CD8
-    # 
-    # write.table(
-    #   gateDef,
-    #   sep = "\t",
-    #   quote = FALSE,
-    #   file = paste(
-    #     outputDir,
-    #     gateDir,
-    #     basename(file),
-    #     "_panel2_gate_def.txt",
-    #     sep = ""
-    #   ),
-    #   row.names = FALSE
-    # )
     return(metrics)
     
   }
@@ -724,7 +596,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
 
 }
 
-combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputFCSDir)
+# combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputFCSDir)
 
 write.table(
   d,
