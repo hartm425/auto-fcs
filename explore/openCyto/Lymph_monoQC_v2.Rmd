@@ -64,8 +64,8 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-# fcsFilesAll =fcsFilesAll[8:10]
- fcsFilesAll =fcsFilesAll[307:309]
+fcsFilesAll =fcsFilesAll[8:10]
+ # fcsFilesAll =fcsFilesAll[307:309]
 
 fcsFilesAllProbs = c("NONE")
 
@@ -463,6 +463,10 @@ compP2Frame <-
                 subset = "CD14+") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
+    t9= ggcyto(gs1,
+                mapping = aes(x = "CD14", y = "CD20"),
+                subset = "CD14-") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     # t7= ggcyto(gs1,
     #             mapping = aes(x = "PE-A", y = "FSC-H"),
     #             subset = "Live") +
