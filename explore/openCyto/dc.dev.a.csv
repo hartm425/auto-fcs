@@ -10,3 +10,4 @@ D_NK_M,CD3-CD19-,PE-A,"CD3,CD19",refGate,CD3-:CD19-,NA,NA,NA,NA
 *,CD14+/-,D_NK_M,CD14,mindensity,"gate_range=c(90,200)",NA,NA,NA,NA
 *,CD16+/-,CD14+,CD16,mindensity,"gate_range=c(90,200)",NA,NA,NA,NA
 CD20-,CD20-,CD14-,CD20,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA
+CD16+,CD16+,CD20-,CD16,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA

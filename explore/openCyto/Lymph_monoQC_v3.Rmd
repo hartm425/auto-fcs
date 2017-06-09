@@ -402,7 +402,7 @@ compP2Frame <-
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     
     t10= ggcyto(gs1,
-                mapping = aes(x = "CD14", y = "CD20"),
+                mapping = aes(x = "CD14", y = "CD16"),
                 subset = "CD20-") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     # t7= ggcyto(gs1,
