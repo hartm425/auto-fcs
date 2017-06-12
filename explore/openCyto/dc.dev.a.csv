@@ -12,3 +12,5 @@ D_NK_M,CD3-CD19-,PE-A,"CD3,CD19",refGate,CD3-:CD19-,NA,NA,NA,NA
 CD20-,CD20-,CD14-,CD20,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA
 *,CD16+/-CD56+/-,CD20-,"CD16,CD56",flowClust,K=2,NA,NA,prior_flowClust,K=2
 CD56PlusPlus,CD56+,CD16+CD56+,CD56,tailgate,tol=1e-2,NA,NA,standardize_flowset,NA
+HLADR+,HLADR+,CD16-CD56-,HLADR,flowDensity,NA,NA,NA,standardize_flowset,NA
+*,*,HLADR+,"CD11c,CD123",quadGate.tmix,"prior=list(Mu0=matrix(c(100,300,100,100,300,150),3,2,byrow=T),w0=c(10,10,10),nu0 = c(4,4,4),Lambda0=array(c(rep(1e5,3),rep(0,3),rep(0,3),rep(1e5,3)),dim=c(3,2,2)),Omega0=array(c(rep(5e4,3),rep(0,3),rep(0,3),rep(5e4,3)),dim=c(3,2,2))),K=3,quantile3=0.75,quantile1=0.85",TRUE,NA,NA,NA
