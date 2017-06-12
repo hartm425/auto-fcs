@@ -64,7 +64,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[8:10]
+fcsFilesAll =fcsFilesAll[8:9]
  # fcsFilesAll =fcsFilesAll[307:309]
 
 fcsFilesAllProbs = c("NONE")
@@ -419,7 +419,7 @@ compP2Frame <-
     
      t13= ggcyto(gs1,
                 mapping = aes(x = "CD11C", y = "CD123"),
-                subset = "HLA-DR+") +
+                subset = "Dendritic") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
      
      
