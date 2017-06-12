@@ -417,7 +417,10 @@ compP2Frame <-
                 subset = "CD20-") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     
-     
+     t13= ggcyto(gs1,
+                mapping = aes(x = "CD11C", y = "CD123"),
+                subset = "HLA-DR+") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
      
      
      # t7= ggcyto(gs1,
@@ -440,7 +443,10 @@ compP2Frame <-
       as.ggplot(t9),
       as.ggplot(t10),
       as.ggplot(t11),
+      as.ggplot(t12),
+      as.ggplot(t13),
 
+    
       ncol = 2
     )
     
