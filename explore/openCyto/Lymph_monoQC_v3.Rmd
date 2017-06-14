@@ -34,7 +34,7 @@ registerPlugins(fun = .flowDensity,
                 "gating")
 
 
-
+map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap2.txt",stringsAsFactors = FALSE,sep = "\t") 
 inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
@@ -570,7 +570,7 @@ write.table(
 )
 
 
-combineWSP <- function(outputDir, gateDir,inputFCSDir) {
+combineWSP <- function(outputDir, gateDir,inputFCSDir,map) {
   
   wsps = list.files(paste(outputDir,gateDir,sep = "") ,pattern = "wsp$", recursive = TRUE,full = TRUE)
   
@@ -581,6 +581,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
   for(wsp in wsps){
     cur =cur +1
     print(cur)
+    # ws <- openWorkspace("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631931_006.fcs_panel1.wsp")
      ws <- openWorkspace(wsp)
         gs <-
           parseWorkspace(
@@ -597,6 +598,17 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
             # #not memory mapped
             # compensation = comp
           )
+        nodes = rev(getNodes(gs,path="auto"))
+        for(node in nodes){
+          if(node %in% map$Auto){
+            sub =map[which(map$Auto==node),]
+            print(node)
+            setNode(gs, node, gsub("/","_",sub$Manual))
+          }
+        }
+        
+        
+        
         if(length(grep("panel1",wsp))){
           gates1 = c(gates1,gs)
         }else{
@@ -623,6 +635,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir) {
   system(paste(p2sed2,outWsp2))
 
 }
+
 
 # combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputFCSDir)
 
