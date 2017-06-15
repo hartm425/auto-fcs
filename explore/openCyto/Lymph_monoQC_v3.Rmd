@@ -609,7 +609,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
               print(paste(node,"->",sub$Manual," num=",num))
               setNode(gs, node, gsub("/","_",sub$Manual))
             }
-            setNode(gs,"FSC-W+",FALSE)
+            
           }
         }
         
