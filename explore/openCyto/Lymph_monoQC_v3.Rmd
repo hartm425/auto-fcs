@@ -598,11 +598,15 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,map) {
             # #not memory mapped
             # compensation = comp
           )
-        nodes = rev(getNodes(gs,path="auto"))
+        #Have to rename in reverse order, else the h-archy is updated
+        nodes = rev(getNodes(gs,path="auto")) 
+        
+        num =0
         for(node in nodes){
           if(node %in% map$Auto){
             sub =map[which(map$Auto==node),]
-            print(node)
+            num =num+1
+            print(paste(node,"->",sub$Manual," num=",num))
             setNode(gs, node, gsub("/","_",sub$Manual))
           }
         }
@@ -637,7 +641,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,map) {
 }
 
 
-# combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputFCSDir)
+ combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputFCSDir,map = map)
 
 write.table(
   d,
