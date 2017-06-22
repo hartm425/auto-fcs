@@ -40,7 +40,7 @@ inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
-template = "~/git/auto-fcs/explore/openCyto/lymph.dev.d.csv"
+template = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
 templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.a.csv"
