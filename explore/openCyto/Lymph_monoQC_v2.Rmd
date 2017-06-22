@@ -203,11 +203,11 @@ compP1Frame <-
     
     t6 = ggcyto(gs1,
                 mapping = aes(x = "CD3", y = "CD19"),
-                subset = "PE-A") +
+                subset = "PE-A-") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     t6_1 = ggcyto(gs1,
                   mapping = aes(x = "CD3", y = "CD19"),
-                  subset = "CD3+") +
+                  subset = "Tcells") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t1Bcell = ggcyto(gs1,

@@ -34,12 +34,12 @@ registerPlugins(fun = .flowDensity,
                 "gating")
 
 
-panle1map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap2.txt",stringsAsFactors = FALSE,sep = "\t") 
+panle1map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt",stringsAsFactors = FALSE,sep = "\t") 
 inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
-template = "~/git/auto-fcs/explore/openCyto/lymph.dev.d.csv"
+template = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
 templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.a.csv"
@@ -64,7 +64,7 @@ fcsFilesAll <-
   list.files(inputFCSDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[8:9]
+# fcsFilesAll =fcsFilesAll[8:9]
  # fcsFilesAll =fcsFilesAll[307:309]
 
 fcsFilesAllProbs = c("NONE")
@@ -202,11 +202,11 @@ compP1Frame <-
     
     t6 = ggcyto(gs1,
                 mapping = aes(x = "CD3", y = "CD19"),
-                subset = "PE-A") +
+                subset = "PE-A-") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     t6_1 = ggcyto(gs1,
                   mapping = aes(x = "CD3", y = "CD19"),
-                  subset = "CD3+") +
+                  subset = "Tcells") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t1Bcell = ggcyto(gs1,
@@ -216,12 +216,12 @@ compP1Frame <-
     
     t2Bcell = ggcyto(gs1,
                      mapping = aes(x = "IgD", y = "CD27"),
-                     subset = "CD19gate") +
+                     subset = "Bcells") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t7 = ggcyto(gs1,
                 mapping = aes(x = "CD4", y = "CD8"),
-                subset = "CD3+") +
+                subset = "Tcells") +
       geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
     
     # t7_1 = ggcyto(gs1,
@@ -480,7 +480,7 @@ for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
   i
-  pdfFile = paste(outputDir, "panel1_test5_", i, ".pdf", sep = "")
+  pdfFile = paste(outputDir, "panel1_test6_", i, ".pdf", sep = "")
   pdf(file = pdfFile)
   i = i + 1
   for (file in files) {
