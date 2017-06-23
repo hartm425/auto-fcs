@@ -35,7 +35,7 @@ registerPlugins(fun = .flowDensity,
 
 
 panle1map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt",stringsAsFactors = FALSE,sep = "\t") 
-inputFCSDir = "/Volumes/Beta/data/flow/fcs3/"
+inputDir = "/Volumes/Beta/data/flow/fcs3/"
 cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
@@ -61,7 +61,7 @@ gt_mono <-
 gt_lymphQC <-
   gatingTemplate(templateQC, autostart = 1L)
 fcsFilesAll <-
-  list.files(inputFCSDir,
+  list.files(inputDir,
              pattern = ".fcs",
              full = FALSE)
 # fcsFilesAll =fcsFilesAll[8:9]
@@ -489,7 +489,7 @@ for (files in fcsFilesAll) {
     numProcessed = numProcessed + 1
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
-    frame = read.FCS(paste(inputFCSDir, file, sep = ""))
+    frame = read.FCS(paste(inputDir, file, sep = ""))
     try(if (length(exprs(frame)[, "FSC-H"]) > 10000) {
       description(frame)$FILENAME = file
       
@@ -520,7 +520,7 @@ for (files in fcsFilesAll) {
         gateDir = gateDir,
         qcVersion = FALSE,
         mapper,
-        inputFCSDir
+        inputDir
       )
       }else{
         #panel 2
@@ -533,7 +533,7 @@ for (files in fcsFilesAll) {
         gateDir = gateDir,
         qcVersion = FALSE,
         mapper,
-        inputFCSDir
+        inputDir
         )
       }
       metricBase$Panel = panel
@@ -621,7 +621,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
         }
   }
   
-  outWsp1 = paste(outputDir, "panel1_ssssfull.wsp", sep = "")
+  outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
   GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
   
   outWsp2 = paste(outputDir, "panel2_full.wsp", sep = "")
@@ -642,7 +642,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
 }
 
 
- combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputFCSDir,panle1map = panle1map)
+ combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
 
 write.table(
   d,
