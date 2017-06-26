@@ -22,11 +22,7 @@ registerPlugins(fun = .flowDensity,
                 "gating")
 
 
-panle1map = read.delim(
-  "/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt",
-  stringsAsFactors = FALSE,
-  sep = "\t"
-)
+panle1map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt",stringsAsFactors = FALSE,sep = "\t") 
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 # cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 # setwd(cleanDir)
@@ -39,9 +35,11 @@ mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
 # gateQCDir = "gatesQC5/"
-mapper = read.delim(mapperFile,
-                    stringsAsFactors = FALSE,
-                    sep = "\t")
+mapper = read.delim(
+  mapperFile,
+  stringsAsFactors = FALSE,
+  sep = "\t"
+)
 
 theme_set(theme_bw(5))
 gt_lymph <-
@@ -130,8 +128,8 @@ compP1Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
-      if (length(wsFile) > 0) {
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
+      if(length(wsFile) >0){
         ws <- openWorkspace(wsFile)
         gs <-
           parseWorkspace(
@@ -291,7 +289,8 @@ compP2Frame <-
            gateDir,
            qcVersion,
            mapper,
-           inputFCSDir) {
+           inputFCSDir
+  ) {
     print(paste("compensating ....", file))
     metrics = data.frame()
     comp <- compensation(keyword(frame)$`SPILL`)
@@ -321,30 +320,30 @@ compP2Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
-      if (length(wsFile) > 0) {
-        ws <- openWorkspace(wsFile)
-        gs <-
-          parseWorkspace(
-            ws,
-            #WSP file
-            path = inputFCSDir,
-            #FCS file
-            name = 1,
-            #sample group
-            subset = eval(fileToLoad),
-            #load single fcs file
-            isNcdf = FALSE,
-            #not memory mapped
-            compensation = comp
-          )
-        #
-        
-        manCounts = getStats(gs1 = gs,
-                             qcVersion = qcVersion,
-                             metric = "count",
-                             "MANUAL")
-        metrics = rbind(metrics, manCounts)
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
+      if(length(wsFile) >0){
+      ws <- openWorkspace(wsFile)
+      gs <-
+        parseWorkspace(
+          ws,
+          #WSP file 
+          path = inputFCSDir,
+          #FCS file
+          name = 1,
+          #sample group
+          subset = eval(fileToLoad),
+          #load single fcs file
+          isNcdf = FALSE,
+          #not memory mapped
+          compensation = comp
+        )
+      #
+      
+      manCounts = getStats(gs1 = gs,
+                           qcVersion = qcVersion,
+                           metric = "count",
+                           "MANUAL")
+      metrics = rbind(metrics, manCounts)
       }
     }
     print(paste("plotting ....", file))
@@ -382,49 +381,49 @@ compP2Frame <-
                 subset = "PE-A") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-    t7 = ggcyto(gs1,
-                mapping = aes(x = "CD14", y = "CD16"),
-                subset = "D_NK_M") +
+    t7= ggcyto(gs1,
+               mapping = aes(x = "CD14", y = "CD16"),
+               subset = "D_NK_M") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-    t8 = ggcyto(gs1,
-                mapping = aes(x = "CD14", y = "CD16"),
-                subset = "CD14+") +
+    t8= ggcyto(gs1,
+               mapping = aes(x = "CD14", y = "CD16"),
+               subset = "CD14+") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
-    t9 = ggcyto(gs1,
-                mapping = aes(x = "CD14", y = "CD20"),
-                subset = "CD14-") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t9= ggcyto(gs1,
+               mapping = aes(x = "CD14", y = "CD20"),
+               subset = "CD14-") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     
-    t10 = ggcyto(gs1,
-                 mapping = aes(x = "CD56", y = "CD16"),
-                 subset = "CD20-") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t10= ggcyto(gs1,
+                mapping = aes(x = "CD56", y = "CD16"),
+                subset = "CD20-") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     
-    t11 = ggcyto(gs1,
-                 mapping = aes(x = "CD56", y = "CD16"),
-                 subset = "CD16+CD56+") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t11= ggcyto(gs1,
+                mapping = aes(x = "CD56", y = "CD16"),
+                subset = "CD16+CD56+") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     
     
-    t12 = ggcyto(gs1,
-                 mapping = aes(x = "CD20", y = "HLA-DR"),
-                 subset = "CD20-") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t12= ggcyto(gs1,
+                mapping = aes(x = "CD20", y = "HLA-DR"),
+                subset = "CD20-") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     
-    t13 = ggcyto(gs1,
-                 mapping = aes(x = "CD11C", y = "CD123"),
-                 subset = "Dendritic") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    t13= ggcyto(gs1,
+                mapping = aes(x = "CD11C", y = "CD123"),
+                subset = "Dendritic") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
     
     
     # t7= ggcyto(gs1,
     #             mapping = aes(x = "PE-A", y = "FSC-H"),
     #             subset = "Live") +
     #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    #
-    #
+    # 
+    # 
     
     
     grid.arrange(
@@ -456,13 +455,13 @@ compP2Frame <-
     
   }
 
-getPanel <-
-  function(frame) {
-    t = pData(parameters(frame))
+getPanel <- 
+  function(frame){
+    t=pData(parameters(frame))
     p1Key = "CCR7"
-    if (p1Key %in% t$desc) {
+    if(p1Key %in% t$desc){
       return("panel1")
-    } else{
+    }else{
       return("panel2")
     }
   }
@@ -488,7 +487,7 @@ for (files in fcsFilesAll) {
     frame = read.FCS(paste(inputDir, file, sep = ""))
     try(if (length(exprs(frame)[, "FSC-H"]) > 10000) {
       description(frame)$FILENAME = file
-      #
+      # 
       # qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
       # qcFileFull = paste(cleanDir, "QC/", qcFile, sep = "")
       # if (!file.exists(qcFileFull)) {
@@ -506,7 +505,7 @@ for (files in fcsFilesAll) {
       # frame.c = read.FCS(qcFileFull)
       
       panel = getPanel(frame)
-      if (panel == "panel1") {
+      if(panel=="panel1"){
         metricBase = compP1Frame(
           frame = frame,
           file = file,
@@ -518,7 +517,7 @@ for (files in fcsFilesAll) {
           mapper,
           inputDir
         )
-      } else{
+      }else{
         #panel 2
         metricBase = compP2Frame(
           frame = frame,
@@ -574,87 +573,79 @@ write.table(
 
 
 
-combineWSP <- function(outputDir,
-                       gateDir,
-                       inputFCSDir,
-                       panle1map) {
-  wsps = list.files(
-    paste(outputDir, gateDir, sep = "") ,
-    pattern = "wsp$",
-    recursive = TRUE,
-    full = TRUE
-  )
+combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
   
-  gates1 = list()
+  wsps = list.files(paste(outputDir,gateDir,sep = "") ,pattern = "wsp$", recursive = TRUE,full = TRUE)
+  
+  gates1 =list()
   gates2 = list()
   # wsp = wsp[1:5]
   cur = 0
-  for (wsp in wsps) {
-    cur = cur + 1
+  for(wsp in wsps){
+    cur =cur +1
     print(cur)
     # ws <- openWorkspace("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631931_006.fcs_panel1.wsp")
     ws <- openWorkspace(wsp)
     gs <-
-      parseWorkspace(ws,
-                     #WSP file
-                     path = inputFCSDir,
-                     #FCS file
-                     name = 1,
-                     # execute = FALSE,
-                     #sample group
-                     # subset = eval(fileToLoad),
-                     #load single fcs file
-                     isNcdf = TRUE
-                     # #not memory mapped
-                     # compensation = comp)
-                     #Have to rename in reverse order, else the h-archy is updated
-                     renameNodes <- function(gs, map) {
-                       nodes = rev(getNodes(gs, path = "auto"))
-                       num = 0
-                       for (node in nodes) {
-                         if (node %in% map$Auto) {
-                           sub = map[which(map$Auto == node), ]
-                           num = num + 1
-                           print(paste(node, "->", sub$Manual, " num=", num))
-                           setNode(gs, node, gsub("/", "_", sub$Manual))
-                         }
-                         
-                       }
-                     }
-                     
-                     if (length(grep("panel1", wsp))) {
-                       renameNodes(gs, panle1map)
-                       gates1 = c(gates1, gs)
-                     } else{
-                       gates2 = c(gates2, gs)
-                     }
+      parseWorkspace(
+        ws,
+        #WSP file
+        path = inputFCSDir,
+        #FCS file
+        name = 1,
+        # execute = FALSE,
+        #sample group
+        # subset = eval(fileToLoad),
+        #load single fcs file
+        isNcdf = TRUE
+        # #not memory mapped
+        # compensation = comp
+      )
+    #Have to rename in reverse order, else the h-archy is updated
+    renameNodes <- function(gs,map) {
+      nodes = rev(getNodes(gs,path="auto")) 
+      num =0
+      for(node in nodes){
+        if(node %in% map$Auto){
+          sub =map[which(map$Auto==node),]
+          num =num+1
+          print(paste(node,"->",sub$Manual," num=",num))
+          setNode(gs, node, gsub("/","_",sub$Manual))
+        }
+        
+      }
+    }
+    
+    if(length(grep("panel1",wsp))){
+      renameNodes(gs,panle1map)
+      gates1 = c(gates1,gs)
+    }else{
+      gates2 = c(gates2,gs)
+    }
   }
   
   
   outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
-  GatingSet2flowJo(GatingSetList(gates1), outWsp1)
+  GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
   
   outWsp2 = paste(outputDir, "panel2_full.wsp", sep = "")
-  GatingSet2flowJo(GatingSetList(gates2), outWsp2)
+  GatingSet2flowJo(GatingSetList(gates2),outWsp2 )
   
-  p1sed1 = "sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
-  p1sed2 = "sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'"
+  p1sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
+  p1sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
   
-  system(paste(p1sed1, outWsp1))
-  system(paste(p1sed2, outWsp1))
+  system(paste(p1sed1,outWsp1))
+  system(paste(p1sed2,outWsp1))
   
-  p2sed1 = "sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
-  p2sed2 = "sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'"
+  p2sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
+  p2sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
   
-  system(paste(p2sed1, outWsp2))
-  system(paste(p2sed2, outWsp2))
+  system(paste(p2sed1,outWsp2))
+  system(paste(p2sed2,outWsp2))
   
 }
 
 
-combineWSP(
-  outputDir = outputDir,
-  gateDir = gateDir,
-  inputFCSDir = inputDir,
-  panle1map = panle1map
-)
+combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
+
+
