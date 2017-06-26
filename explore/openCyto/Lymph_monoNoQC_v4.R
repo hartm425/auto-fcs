@@ -61,8 +61,11 @@ fcsFilesAllProbs = c("NONE")
 
 
 # only use files with gates available
-fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
-print(length(fcsFilesAll))
+# fcsFilesAll = fcsFilesAll[fcsFilesAll %in% mapper$FCS]
+# print(length(fcsFilesAll))
+
+REPLACE_FOR_NEW_FILES = ""
+
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
 
 getStats <- function(gs1, qcVersion, metric, gate) {
