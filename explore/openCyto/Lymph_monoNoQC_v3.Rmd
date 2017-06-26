@@ -43,11 +43,12 @@ templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
 # templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.a.csv"
+mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
 # gateQCDir = "gatesQC5/"
 mapper = read.delim(
-  "/Volumes/Beta/data/flow/fcsMap.txt",
+  mapperFile,
   stringsAsFactors = FALSE,
   sep = "\t"
 )
@@ -136,6 +137,7 @@ compP1Frame <-
     
     if (!qcVersion) {
       wsFile = mapper[which(mapper$FCS == file),]$WSP
+     if(length(wsFile) >0){
       ws <- openWorkspace(wsFile)
       gs <-
         parseWorkspace(
@@ -158,7 +160,7 @@ compP1Frame <-
                            metric = "count",
                            "MANUAL")
       metrics = rbind(metrics, manCounts)
-      
+     }
       # manProps = getStats(gs1 = gs,
       #                     qcVersion = qcVersion,
       #                     metric = "freq",
