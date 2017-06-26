@@ -321,6 +321,7 @@ compP2Frame <-
     
     if (!qcVersion) {
       wsFile = mapper[which(mapper$FCS == file),]$WSP
+      if(length(wsFile) >0){
       ws <- openWorkspace(wsFile)
       gs <-
         parseWorkspace(
@@ -343,7 +344,7 @@ compP2Frame <-
                            metric = "count",
                            "MANUAL")
       metrics = rbind(metrics, manCounts)
-      
+      }
     }
     print(paste("plotting ....", file))
     
@@ -562,6 +563,14 @@ write.table(
   file = paste(outputDir, "testTypesTestMetrics5.txt", sep = ""),
   row.names = FALSE
 )
+write.table(
+  d,
+  sep = "\t",
+  quote = FALSE,
+  file = paste(outputDir, "testTypesTest5.txt", sep = ""),
+  row.names = FALSE
+)
+
 
 
 combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
@@ -615,6 +624,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
     }
   }
   
+  
   outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
   GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
   
@@ -638,11 +648,4 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
 
 combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
 
-write.table(
-  d,
-  sep = "\t",
-  quote = FALSE,
-  file = paste(outputDir, "testTypesTest5.txt", sep = ""),
-  row.names = FALSE
-)
 
