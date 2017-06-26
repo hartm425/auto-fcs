@@ -6,6 +6,16 @@ library(gridExtra)
 library(CytoML)
 library(flowAI)
 
+# source("https://bioconductor.org/biocLite.R")
+# biocLite("openCyto")
+# biocLite("flowCore")
+# biocLite("data.table")
+# biocLite("ggcyto")
+# biocLite("gridExtra")
+# biocLite("CytoML")
+# biocLite("flowAI")
+
+
 
 
 .flowDensity <- function(fr, pp_res, channels = NA, ...) {
@@ -625,27 +635,35 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
   }
   
   
+  if(length(gates1)>0){
   outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
   GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
-  
-  outWsp2 = paste(outputDir, "panel2_full.wsp", sep = "")
-  GatingSet2flowJo(GatingSetList(gates2),outWsp2 )
   
   p1sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
   p1sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
   
   system(paste(p1sed1,outWsp1))
   system(paste(p1sed2,outWsp1))
+  }
   
+  if(length(gates2)>0){
+    
+  outWsp2 = paste(outputDir, "panel2_full.wsp", sep = "")
+  GatingSet2flowJo(GatingSetList(gates2),outWsp2 )
   p2sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
   p2sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
   
   system(paste(p2sed1,outWsp2))
   system(paste(p2sed2,outWsp2))
   
+  }
+
+  
+
 }
 
 
-combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
+
+# combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
 
 

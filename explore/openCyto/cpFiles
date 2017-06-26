@@ -1,0 +1,11 @@
+
+#!/usr/bin/env bash
+
+FILES="/home/thyagara/shared/HRS/UPLOAD\ FCS\ HRS\ samples/*/*.fcs"
+for f in $FILES
+do
+	echo "Processing $f"
+done
+
+
+ find . -type f -name '*.fcs' -exec cp -t /scratch.global/lanej/flow/full/fcs {} \;
