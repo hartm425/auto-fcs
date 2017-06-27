@@ -7,13 +7,13 @@ library(CytoML)
 library(flowAI)
 
 # source("https://bioconductor.org/biocLite.R")
-# biocLite("openCyto")
-# biocLite("flowCore")
-# biocLite("data.table")
-# biocLite("ggcyto")
-# biocLite("gridExtra")
-# biocLite("CytoML")
-# biocLite("flowAI")
+biocLite("openCyto")
+biocLite("flowCore")
+biocLite("data.table")
+biocLite("ggcyto")
+biocLite("gridExtra")
+biocLite("CytoML")
+biocLite("flowAI")
 
 
 
