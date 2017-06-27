@@ -7,13 +7,13 @@ library(CytoML)
 library(flowAI)
 
 # source("https://bioconductor.org/biocLite.R")
-biocLite("openCyto")
-biocLite("flowCore")
-biocLite("data.table")
-biocLite("ggcyto")
-biocLite("gridExtra")
-biocLite("CytoML")
-biocLite("flowAI")
+# biocLite("openCyto")
+# biocLite("flowCore")
+# biocLite("data.table")
+# biocLite("ggcyto")
+# biocLite("gridExtra")
+# biocLite("CytoML")
+# biocLite("flowAI")
 
 
 
@@ -662,7 +662,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
 
 }
 
-
+sessionInfo()
 
 # combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
 
