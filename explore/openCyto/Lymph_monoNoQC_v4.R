@@ -664,6 +664,6 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
 
 sessionInfo()
 
-# combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
+combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1map)
 
 
