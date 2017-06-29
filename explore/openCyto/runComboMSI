@@ -1,1 +1,1 @@
-Rscript /Users/Kitty/git/auto-fcs/explore/openCyto/CombineWSP.R -p1 /home/pankrat2/shared/bin/auto-fcs/explore/openCyto/autoManMap3.txt -i /scratch.global/lanej/flow/full/fcs/ -g /scratch.global/lanej/flow/full/results/
+Rscript /home/pankrat2/shared/bin/auto-fcs/explore/openCyto/CombineWSP.R -p1 /home/pankrat2/shared/bin/auto-fcs/explore/openCyto/autoManMap3.txt -i /scratch.global/lanej/flow/full/fcs/ -g /scratch.global/lanej/flow/full/results/
