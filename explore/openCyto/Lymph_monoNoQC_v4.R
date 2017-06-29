@@ -483,6 +483,7 @@ i = 1
 numProcessed = 0
 d = data.frame()
 metrics = data.frame()
+counts = data.frame(FILE=character(),TOTAL_COUNTS=integer())
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
@@ -497,7 +498,16 @@ for (files in fcsFilesAll) {
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputDir, file, sep = ""))
-    try(if (length(exprs(frame)[, "FSC-H"]) > 10000) {
+    tmpCount = data.frame(
+      FILE =file,
+      TOTAL_COUNTS = length(exprs(frame)[, "FSC-H"])
+    )
+    counts = rbind(counts, tmpCount)
+    
+    try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
+      
+     
+      
       description(frame)$FILENAME = file
       # 
       # qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
@@ -582,6 +592,15 @@ write.table(
   file = paste(outputDir, "metrics.types.txt", sep = ""),
   row.names = FALSE
 )
+write.table(
+  counts,
+  sep = "\t",
+  quote = FALSE,
+  file = paste(outputDir, "metrics.totalCellCounts.txt", sep = ""),
+  row.names = FALSE
+)
+
+
 
 
 
