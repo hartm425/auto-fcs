@@ -32,7 +32,7 @@ panle1map = read.delim(opt$panle1map,stringsAsFactors = FALSE,sep = "\t")
 combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
   
   wsps = list.files(paste(outputDir,gateDir,sep = "") ,pattern = "wsp$", recursive = TRUE,full = TRUE)
-  
+  print(paste("found",length(wsps),"wsp files"))
   gates1 =list()
   gates2 = list()
   # wsp = wsp[1:5]

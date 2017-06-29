@@ -32,7 +32,9 @@ registerPlugins(fun = .flowDensity,
                 "gating")
 
 
-panle1map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt",stringsAsFactors = FALSE,sep = "\t") 
+panle1mapFile ="/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt"
+panle1map = read.delim(panle1mapFile,stringsAsFactors = FALSE,sep = "\t") 
+
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 # cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 # setwd(cleanDir)
