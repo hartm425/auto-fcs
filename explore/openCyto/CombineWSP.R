@@ -1,4 +1,5 @@
 
+
 library(openCyto)
 library(flowCore)
 library(data.table)
@@ -6,15 +7,9 @@ library(ggcyto)
 library(gridExtra)
 library(CytoML)
 library(flowAI)
-library(optparse)
-
-outputDir = "/scratch.global/lanej/flow/full/results/"
-inputFCSDir ="/scratch.global/lanej/flow/full/fcs/"
-p1map = "/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/autoManMap3.txt"
-gateDir = ""
 
 option_list = list(
-  make_option(c("-g", "--gatingDirectory"), type="character", default="~/results/", 
+  make_option(c("-g", "--gatingDirectory"), type="character", default=NULL, 
               help="directory, containing subdirectories with wsp files", metavar="character"),
   make_option(c("-i", "--inputFCSDir"), type="character", default="~/fcs/", 
               help="directroy with fcs files", metavar="character"),
@@ -26,13 +21,13 @@ option_list = list(
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
 
-panle1map = read.delim(opt$panle1map,stringsAsFactors = FALSE,sep = "\t") 
 
 
 combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
-  
-  wsps = list.files(paste(outputDir,gateDir,sep = "") ,pattern = "wsp$", recursive = TRUE,full = TRUE)
-  print(paste("found",length(wsps),"wsp files"))
+  panle1map = read.delim(panle1map,stringsAsFactors = FALSE,sep = "\t") 
+  dir =paste(outputDir,gateDir,sep = "")
+  wsps = list.files( dir,pattern = "wsp$", recursive = TRUE,full = TRUE)
+  print(paste("found",length(wsps),"wsp files in",dir))
   gates1 =list()
   gates2 = list()
   # wsp = wsp[1:5]
@@ -103,7 +98,16 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
     system(paste(p2sed2,outWsp2))
     
   }
-  
 }
 
-combineWSP(outputDir ="",gateDir = opt$gatingDirectory,inputFCSDir = opt$inputFCSDir,panle1map = panle1map)
+
+if (!is.null(opt$gatingDirectory)) {
+  combineWSP(
+    outputDir = "",
+    gateDir = opt$gatingDirectory,
+    inputFCSDir = opt$inputFCSDir,
+    panle1map = opt$panle1map
+  )
+}
+
+
