@@ -7,7 +7,7 @@ library(ggcyto)
 library(gridExtra)
 library(CytoML)
 library(flowAI)
-
+library(optparse)
 option_list = list(
   make_option(c("-g", "--gatingDirectory"), type="character", default=NULL, 
               help="directory, containing subdirectories with wsp files", metavar="character"),
