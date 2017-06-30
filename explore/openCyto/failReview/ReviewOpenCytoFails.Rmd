@@ -6,6 +6,10 @@ output:
   html_document: 
     keep_md: yes
 ---
+### NOTES:
+ - FORTESSA determined by filename, nothing else
+ - date determined by filename, nothing else
+
 
 ```{r setup,eval=FALSE, include=FALSE}
 counts =  read.delim("/Volumes/Beta/data/flow/checkFails/all.metrics.totalCellCounts.txt",stringsAsFactors = FALSE,sep = "\t") 
@@ -15,7 +19,7 @@ save(counts,file ="/Volumes/Beta/data/flow/checkFails/all.metrics.totalCellCount
 
 ```
 
-### SUCCESSFUL_GATING Cell counts
+### SUCCESSFUL_GATING Cell counts: All samples
 
 ```{r echo=FALSE,fig.width=10}
 # ,fig.height=8
@@ -30,30 +34,82 @@ load("/Volumes/Beta/data/flow/checkFails/all.metrics.totalCellCounts.Rdata")
 complete = counts$FILE %in% mets$name
 counts$SUCCESSFUL_GATING =complete 
 counts$LOG_TOTAL_COUNT = log10(counts$TOTAL_COUNTS)
+
+counts$PROCESS_DATE = gsub("PANEL 1.*","",counts$FILE)
+counts$FORTESSA = gsub(".*FORTESSA.*","FORTESSA",counts$FILE,fixed = FALSE)
+counts$FORTESSA = gsub(".*PANEL 1.*","NOT_FORTESSA",counts$FORTESSA,fixed = FALSE)
+
+
+counts$PROCESS_DATE =paste(counts$PROCESS_DATE,counts$FORTESSA)
+
+counts = counts[which(counts$FILE!="2016-05-03_P2_HB_panel 2_CTL-A_1715_001.fcs"&counts$FILE!="Specimen_001_WHOLE BLOOD BT RBC X1_014.fcs"&counts$FILE!="Specimen_001_WHOLE BLOOD BT RBC X2_015.fcs"&counts$FILE!="2016-05-03_P2_HB_panel 2_CTL-B_1722_002.fcs"),]
+
 ggplot(counts, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
   geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Log10 total cell count") +facet_wrap(~SUCCESSFUL_GATING)
 
-ggplot(counts, aes(TOTAL_COUNTS/1000,colour =SUCCESSFUL_GATING)) +
-  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("total cell count (thousands)") +facet_wrap(~SUCCESSFUL_GATING)
+```
+
+### SUCCESSFUL_GATING Cell counts: Split by machine
+
+
+```{r echo=FALSE,fig.width=10}
+ggplot(counts, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Log10 total cell count") +facet_wrap(FORTESSA~SUCCESSFUL_GATING)
+
 
 fails =counts[which(counts$SUCCESSFUL_GATING==FALSE),]
 pfail =length(fails$FILE)/length(counts$FILE)
+
+frT = 5
+t = as.data.frame(table(counts$PROCESS_DATE,counts$SUCCESSFUL_GATING))
+tf = t[which(t$Var2==FALSE),]
+tt = t[which(t$Var2==TRUE),]
+
+tm = merge(tf,tt,by.x = "Var1",by.y = "Var1")
+tm$PERCENT_FAIL_BY_BATCH =100* tm$Freq.x/(tm$Freq.y+tm$Freq.x)
+tm$FAIL_RANK = rank(tm$PERCENT_FAIL_BY_BATCH)
+
+counts =  merge(counts,tm,by.x = "PROCESS_DATE",by.y = "Var1")
+counts$FAIL_RANK = rank(counts$PERCENT_FAIL_BY_BATCH)
+countsGT10 = counts[which(counts$PERCENT_FAIL_BY_BATCH>frT),]
+countsLT10 = counts[which(counts$PERCENT_FAIL_BY_BATCH<=frT),]
+
 ```
+
+
+### SUCCESSFUL_GATING Cell counts: Only Batches with >`r frT`% failure rate (`r length(countsGT10$FILE)` total samples)
+
+
+```{r echo=FALSE,fig.width=10}
+
+# 
+ggplot(countsGT10, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Log10 total cell count") +facet_wrap(~SUCCESSFUL_GATING)
+
+```
+
+### SUCCESSFUL_GATING Cell counts: Only Batches with <=`r frT`% failure rate (`r length(countsLT10$FILE)` total samples)
+
+
+```{r echo=FALSE,fig.width=10}
+ggplot(countsLT10, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples (truncated)")+xlab("Log10 total cell count") +facet_wrap(~SUCCESSFUL_GATING) +ylim(0,50)
+ggplot(countsLT10, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Log10 total cell count") +facet_wrap(~SUCCESSFUL_GATING)
+```
+
 
 
 ### SUCCESSFUL_GATING NOTES
 
-***`r pfail`% failure rate**
+***`r pfail*100`% failure rate**
 
-
-```{r echo=FALSE,fig.width=10}
-table(counts$SUCCESSFUL_GATING)
-
-kable(fails[order(-fails$TOTAL_COUNTS),])
-```
 
 
 ```{r echo=FALSE,fig.width=10}
+
+kable(tm[order(-tm$PERCENT_FAIL_BY_BATCH),])
+
 table(counts$SUCCESSFUL_GATING)
 
 kable(fails[order(-fails$TOTAL_COUNTS),])
