@@ -1,0 +1,60 @@
+---
+title: "Review OpenCyto fails"
+author: "JL"
+date: "6/30/2017"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup,eval=FALSE, include=FALSE}
+counts =  read.delim("/Volumes/Beta/data/flow/checkFails/all.metrics.totalCellCounts.txt",stringsAsFactors = FALSE,sep = "\t") 
+mets =   read.delim("/Volumes/Beta/data/flow/checkFails/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
+save(mets,file ="/Volumes/Beta/data/flow/checkFails/all.metrics.Rdata" )
+save(counts,file ="/Volumes/Beta/data/flow/checkFails/all.metrics.totalCellCounts.Rdata" )
+
+```
+
+### SUCCESSFUL_GATING Cell counts
+
+```{r echo=FALSE,fig.width=10}
+# ,fig.height=8
+library(knitr)
+
+library(ggplot2)
+theme_set(theme_bw(20))
+
+load("/Volumes/Beta/data/flow/checkFails/all.metrics.Rdata")
+load("/Volumes/Beta/data/flow/checkFails/all.metrics.totalCellCounts.Rdata")
+
+complete = counts$FILE %in% mets$name
+counts$SUCCESSFUL_GATING =complete 
+counts$LOG_TOTAL_COUNT = log10(counts$TOTAL_COUNTS)
+ggplot(counts, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Log10 total cell count") +facet_wrap(~SUCCESSFUL_GATING)
+
+ggplot(counts, aes(TOTAL_COUNTS/1000,colour =SUCCESSFUL_GATING)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("total cell count (thousands)") +facet_wrap(~SUCCESSFUL_GATING)
+
+fails =counts[which(counts$SUCCESSFUL_GATING==FALSE),]
+pfail =length(fails$FILE)/length(counts$FILE)
+```
+
+
+### SUCCESSFUL_GATING NOTES
+
+***`r pfail`% failure rate**
+
+
+```{r echo=FALSE,fig.width=10}
+table(counts$SUCCESSFUL_GATING)
+
+kable(fails[order(-fails$TOTAL_COUNTS),])
+```
+
+
+```{r echo=FALSE,fig.width=10}
+table(counts$SUCCESSFUL_GATING)
+
+kable(fails[order(-fails$TOTAL_COUNTS),])
+```
