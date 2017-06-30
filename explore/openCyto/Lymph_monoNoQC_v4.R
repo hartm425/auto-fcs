@@ -5,6 +5,7 @@ library(ggcyto)
 library(gridExtra)
 library(CytoML)
 library(flowAI)
+source(file ="CombineWSP.R" )
 
 # source("https://bioconductor.org/biocLite.R")
 # biocLite("openCyto")
@@ -610,7 +611,6 @@ write.table(
 )
 
 
-source(file ="CombineWSP.R" )
 combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1mapFile)
 
 sessionInfo()
