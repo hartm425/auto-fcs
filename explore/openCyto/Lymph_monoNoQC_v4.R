@@ -292,7 +292,7 @@ compP1Frame <-
     outFileRename <-
       paste(outputDir, gateDir,
             basename(file),
-            "_panel1.wsp", sep = "")
+            "_panel1Rename.wsp", sep = "")
     
     renameNodes(gs1,read.delim(panle1map,stringsAsFactors = FALSE,sep = "\t"))
     GatingSet2flowJo(gs1, outFileRename)
@@ -613,7 +613,7 @@ write.table(
 )
 
 
-combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1mapFile)
+# combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1mapFile)
 
 sessionInfo()
 

@@ -39,9 +39,11 @@ renameNodes <- function(gs,map) {
 sed1 <- function(outWsp1) {
   p1sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
   p1sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
+  p1sed1 = paste(p1sed1," \"",outWsp1,"\"")
+  p1sed2 = paste(p1sed2," \"",outWsp1,"\"")
   
-  system(paste(p1sed1,outWsp1))
-  system(paste(p1sed2,outWsp1))
+  system(p1sed1)
+  system(p1sed2)
 }
 # outputDir =""
 # gateDir="/scratch.global/lanej/flow/full/results_r2/"
@@ -103,7 +105,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map,optWisp=NULL) {
   if(length(gates1)>0){
     outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
     GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
-    
+        
 
   }
   
