@@ -39,8 +39,8 @@ renameNodes <- function(gs,map) {
 sed1 <- function(outWsp1) {
   p1sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
   p1sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
-  p1sed1 = paste(p1sed1," \"",outWsp1,"\"")
-  p1sed2 = paste(p1sed2," \"",outWsp1,"\"")
+  p1sed1 = paste(p1sed1,gsub(" ","\ ",outWsp1))
+  p1sed2 = paste(p1sed2,gsub(" ","\ ",outWsp1))
   
   system(p1sed1)
   system(p1sed2)
