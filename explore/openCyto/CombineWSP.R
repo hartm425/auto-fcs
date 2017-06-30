@@ -43,6 +43,8 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
   for(wsp in wsps){
     cur =cur +1
     print(cur)
+    print(wsp)
+    
     # ws <- openWorkspace("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631931_006.fcs_panel1.wsp")
     try(if(TRUE){
     ws <- openWorkspace(wsp)#currently fortessa seems to fail
