@@ -105,7 +105,8 @@ compP1Frame <-
            gateDir,
            qcVersion,
            mapper,
-           inputFCSDir) {
+           inputFCSDir,
+           panle1map) {
     print(paste("compensating ....", file))
     metrics = data.frame()
     comp <- compensation(keyword(frame)$`SPILL`)
@@ -285,7 +286,14 @@ compP1Frame <-
             basename(file),
             "_panel1.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
+    outFileRename <-
+      paste(outputDir, gateDir,
+            basename(file),
+            "_panel1.wsp", sep = "")
     
+    renameNodes(gs1,read.delim(panle1map,stringsAsFactors = FALSE,sep = "\t"))
+    GatingSet2flowJo(gs1, outFileRename)
+    sed1(outFileRename)
     return(metrics)
     
   }
@@ -535,8 +543,10 @@ for (files in fcsFilesAll) {
           outputDir = outputDir,
           gateDir = gateDir,
           qcVersion = FALSE,
-          mapper,
-          inputDir
+          mapper = mapper,
+          inputFCSDir = ininputDir,
+          panle1map = panle1mapFile
+          
         )
       }else{
         #panel 2

@@ -21,6 +21,28 @@ option_list = list(
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
 
+
+
+renameNodes <- function(gs,map) {
+  nodes = rev(getNodes(gs,path="auto")) 
+  num =0
+  for(node in nodes){
+    if(node %in% map$Auto){
+      sub =map[which(map$Auto==node),]
+      num =num+1
+      print(paste(node,"->",sub$Manual," num=",num))
+      setNode(gs, node, gsub("/","_",sub$Manual))
+    }
+    
+  }
+}
+sed1 <- function(outWsp1) {
+  p1sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
+  p1sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
+  
+  system(paste(p1sed1,outWsp1))
+  system(paste(p1sed2,outWsp1))
+}
 # outputDir =""
 # gateDir="/scratch.global/lanej/flow/full/results_r2/"
 # inputFCSDir ="/scratch.global/lanej/flow/full/fcs/"
@@ -29,7 +51,7 @@ opt = parse_args(opt_parser);
 # frame = read.FCS(paste(inputFCSDir, file, sep = ""))
 # wsp ="/scratch.global/lanej/flow/full/results_r2/openCytoBatch_0/gates/2016-12-09_PANEL 1_HB_group one_F1636065_020.fcs_panel1.wsp"
 
-combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
+combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map,optWisp=NULL) {
   panle1map = read.delim(panle1map,stringsAsFactors = FALSE,sep = "\t") 
   dir =paste(outputDir,gateDir,sep = "")
   wsps = list.files( dir,pattern = "wsp$", recursive = TRUE,full = TRUE)
@@ -65,19 +87,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
         # compensation = comp
       )
     #Have to rename in reverse order, else the h-archy is updated
-    renameNodes <- function(gs,map) {
-      nodes = rev(getNodes(gs,path="auto")) 
-      num =0
-      for(node in nodes){
-        if(node %in% map$Auto){
-          sub =map[which(map$Auto==node),]
-          num =num+1
-          print(paste(node,"->",sub$Manual," num=",num))
-          setNode(gs, node, gsub("/","_",sub$Manual))
-        }
-        
-      }
-    }
+    
     
     if(length(grep("panel1",wsp))){
       renameNodes(gs,panle1map)
@@ -94,11 +104,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
     outWsp1 = paste(outputDir, "panel1_full.wsp", sep = "")
     GatingSet2flowJo(GatingSetList(gates1),outWsp1 )
     
-    p1sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P1\">/g\'"
-    p1sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P1\">/g\'" 
-    
-    system(paste(p1sed1,outWsp1))
-    system(paste(p1sed2,outWsp1))
+
   }
   
   if(length(gates2)>0){
