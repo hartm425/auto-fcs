@@ -21,13 +21,21 @@ option_list = list(
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
 
-
+# outputDir =""
+# gateDir="/scratch.global/lanej/flow/full/results_r2/"
+# inputFCSDir ="/scratch.global/lanej/flow/full/fcs/"
+# panle1map ="/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/autoManMap3.txt"
+# file ="2016-12-09_PANEL 1_HB_group one_F1636065_020.fcs"
+# frame = read.FCS(paste(inputFCSDir, file, sep = ""))
+# wsp ="/scratch.global/lanej/flow/full/results_r2/openCytoBatch_0/gates/2016-12-09_PANEL 1_HB_group one_F1636065_020.fcs_panel1.wsp"
 
 combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
   panle1map = read.delim(panle1map,stringsAsFactors = FALSE,sep = "\t") 
   dir =paste(outputDir,gateDir,sep = "")
   wsps = list.files( dir,pattern = "wsp$", recursive = TRUE,full = TRUE)
   print(paste("found",length(wsps),"wsp files in",dir))
+  
+  gates_Fortessa1 =list()
   gates1 =list()
   gates2 = list()
   # wsp = wsp[1:5]
@@ -36,7 +44,8 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
     cur =cur +1
     print(cur)
     # ws <- openWorkspace("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631931_006.fcs_panel1.wsp")
-    ws <- openWorkspace(wsp)
+    try(  ws <- openWorkspace(wsp),#currently fortessa seems to fail
+  
     gs <-
       parseWorkspace(
         ws,
@@ -51,7 +60,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
         isNcdf = TRUE
         # #not memory mapped
         # compensation = comp
-      )
+      ),
     #Have to rename in reverse order, else the h-archy is updated
     renameNodes <- function(gs,map) {
       nodes = rev(getNodes(gs,path="auto")) 
@@ -73,6 +82,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
     }else{
       gates2 = c(gates2,gs)
     }
+    )
   }
   
   
