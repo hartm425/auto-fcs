@@ -44,27 +44,24 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
     cur =cur +1
     print(cur)
     # ws <- openWorkspace("/Volumes/Beta/data/flow/gates5/2016-05-05_PANEL 1_HB_panel one_F1631931_006.fcs_panel1.wsp")
-  loadws <- function(wsp, inputFCSDir) {
+    try(if(TRUE){
     ws <- openWorkspace(wsp)#currently fortessa seems to fail
-    
-      gs <-
-        parseWorkspace(
-          ws,
-          #WSP file
-          path = inputFCSDir,
-          #FCS file
-          name = 1,
-          # execute = FALSE,
-          #sample group
-          # subset = eval(fileToLoad),
-          #load single fcs file
-          isNcdf = TRUE
-          # #not memory mapped
-          # compensation = comp
-        )
-      return(gs)
-  }
-  try(gs =loadws(wsp=wsp,inputFCSDir = inputFCSDir))
+  
+    gs <-
+      parseWorkspace(
+        ws,
+        #WSP file
+        path = inputFCSDir,
+        #FCS file
+        name = 1,
+        # execute = FALSE,
+        #sample group
+        # subset = eval(fileToLoad),
+        #load single fcs file
+        isNcdf = TRUE
+        # #not memory mapped
+        # compensation = comp
+      )
     #Have to rename in reverse order, else the h-archy is updated
     renameNodes <- function(gs,map) {
       nodes = rev(getNodes(gs,path="auto")) 
@@ -86,6 +83,7 @@ combineWSP <- function(outputDir, gateDir,inputFCSDir,panle1map) {
     }else{
       gates2 = c(gates2,gs)
     }
+    })
     
   }
   
