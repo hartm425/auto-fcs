@@ -5,7 +5,6 @@ library(ggcyto)
 library(gridExtra)
 library(CytoML)
 library(flowAI)
-source(file ="CombineWSP.R" )
 
 # source("https://bioconductor.org/biocLite.R")
 # biocLite("openCyto")
@@ -35,6 +34,9 @@ registerPlugins(fun = .flowDensity,
 
 panle1mapFile ="/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt"
 setwd(dirname(panle1mapFile))
+source(file ="CombineWSP.R" )
+
+
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 # cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
 # setwd(cleanDir)
