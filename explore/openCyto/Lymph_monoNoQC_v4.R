@@ -46,7 +46,7 @@ outputDir = "/Volumes/Beta/data/flow/"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
 # templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
-templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.a.csv"
+templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.b.csv"
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
