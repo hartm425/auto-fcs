@@ -43,7 +43,7 @@ sed1 <- function(outWsp1) {
   
   p1sed1 = paste(p1sed1,shQuote(outWsp1))
   p1sed2 = paste(p1sed2,shQuote(outWsp1))
-  
+  print(p1sed1)
   system(p1sed1)
   system(p1sed2)
 }

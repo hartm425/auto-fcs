@@ -26,6 +26,8 @@ library(flowAI)
   
 }
 
+
+
 registerPlugins(fun = .flowDensity,
                 methodName = "flowDensity",
                 dep = "flowDensity",
