@@ -405,6 +405,12 @@ compP2Frame <-
                 subset = "nonDebris") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
+    t6_1 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "PBMC") +
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    
     t7= ggcyto(gs1,
                mapping = aes(x = "CD14", y = "CD16"),
                subset = "D_NK_M") +
