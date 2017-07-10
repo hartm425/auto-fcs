@@ -46,7 +46,7 @@ outputDir = "/Volumes/Beta/data/flow/"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
 # templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
 
-templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.b.csv"
+templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.c.csv"
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
@@ -379,30 +379,30 @@ compP2Frame <-
     
     
     t2 = ggcyto(gs1,
-                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                mapping = aes(x = "CD45", y = "SSC-A"),
                 subset = "boundary") +
-      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+      geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  
     
     
     
     
     t3 = ggcyto(gs1,
-                mapping = aes(x = "FSC-A", y = "SSC-A"),
-                subset = "nonDebris") +
+                mapping = aes(x = "PE-A", y = "SSC-A"),
+                subset = "CD45+") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t4 = ggcyto(gs1,
                 mapping = aes(x = "FSC-W", y = "FSC-H"),
-                subset = "PBMC") +
+                subset = "PE-A") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     t5 = ggcyto(gs1,
-                mapping = aes(x = "PE-A", y = "FSC-H"),
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "Singlets") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t6 = ggcyto(gs1,
-                mapping = aes(x = "CD3", y = "CD19"),
-                subset = "PE-A") +
+                mapping = aes(x = "FSC-A", y = "SSC-A"),
+                subset = "nonDebris") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
     
     t7= ggcyto(gs1,
