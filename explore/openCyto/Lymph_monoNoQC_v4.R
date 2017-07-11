@@ -583,7 +583,7 @@ for (files in fcsFilesAll) {
           gateDir = gateDir,
           qcVersion = FALSE,
           mapper=mapper,
-          inputDir=inputDir,
+          inputFCSDir=inputDir,
           panle2map = panle2mapFile
         )
       }
