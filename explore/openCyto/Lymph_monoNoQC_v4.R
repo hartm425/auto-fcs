@@ -35,6 +35,8 @@ registerPlugins(fun = .flowDensity,
 
 
 panle1mapFile ="/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt"
+panle2mapFile ="/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt"
+
 setwd(dirname(panle1mapFile))
 source(file ="CombineWSP.R" )
 
@@ -313,7 +315,8 @@ compP2Frame <-
            gateDir,
            qcVersion,
            mapper,
-           inputFCSDir
+           inputFCSDir,
+           panle2map
   ) {
     print(paste("compensating ....", file))
     metrics = data.frame()
@@ -481,6 +484,16 @@ compP2Frame <-
             basename(file),
             "_panel2.wsp", sep = "")
     GatingSet2flowJo(gs1, outFile)
+    
+    outFileRename <-
+      paste(outputDir, gateDir,
+            basename(file),
+            "_panel2Rename.wsp", sep = "")
+    
+    renameNodes(gs1,read.delim(panle2map,stringsAsFactors = FALSE,sep = "\t"))
+    GatingSet2flowJo(gs1, outFileRename)
+    sed1(outFileRename)
+    
     return(metrics)
     
   }
@@ -555,7 +568,7 @@ for (files in fcsFilesAll) {
           gateDir = gateDir,
           qcVersion = FALSE,
           mapper = mapper,
-          inputFCSDir = ininputDir,
+          inputFCSDir = inputDir,
           panle1map = panle1mapFile
           
         )
@@ -569,8 +582,9 @@ for (files in fcsFilesAll) {
           outputDir = outputDir,
           gateDir = gateDir,
           qcVersion = FALSE,
-          mapper,
-          inputDir
+          mapper=mapper,
+          inputDir=inputDir,
+          panle2map = panle2mapFile
         )
       }
       metricBase$Panel = panel

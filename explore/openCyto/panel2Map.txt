@@ -1,0 +1,3 @@
+Auto	RealAutoParent	Manual
+Singlets	lymph	Single Cells (FSC-H v FSC-W)
+PE-A-	Singlets	Live cells (PE-)
