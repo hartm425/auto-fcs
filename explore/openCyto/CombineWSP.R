@@ -29,9 +29,11 @@ renameNodes <- function(gs,map) {
   for(node in nodes){
     if(node %in% map$Auto){
       sub =map[which(map$Auto==node),]
-      num =num+1
-      print(paste(node,"->",sub$Manual," num=",num))
-      setNode(gs, node, gsub("/","_",sub$Manual))
+      if(sub$Manual!="NA"){
+        num =num+1
+        print(paste(node,"->",sub$Manual," num=",num))
+        setNode(gs, node, gsub("/","_",sub$Manual))
+      }
     }
     
   }

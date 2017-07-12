@@ -309,7 +309,7 @@ compP1Frame <-
 compP2Frame <-
   function(frame,
            file,
-           gt_lymph,
+           gt_mono,
            d,
            outputDir,
            gateDir,
@@ -336,7 +336,7 @@ compP2Frame <-
     gs1 <- transform(gs1, tf)
     
     gh <- gs1[[1]]
-    gating(gt_lymph, gs1)
+    gating(gt_mono, gs1)
     
     
     
@@ -492,7 +492,7 @@ compP2Frame <-
     
     renameNodes(gs1,read.delim(panle2map,stringsAsFactors = FALSE,sep = "\t"))
     GatingSet2flowJo(gs1, outFileRename)
-    sed1(outFileRename)
+    sed2(outFileRename)
     
     return(metrics)
     

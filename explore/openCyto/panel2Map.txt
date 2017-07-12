@@ -1,3 +1,36 @@
 Auto	RealAutoParent	Manual
-Singlets	lymph	Single Cells (FSC-H v FSC-W)
-PE-A-	Singlets	Live cells (PE-)
+boundary	NA	NA
+CD45+	NA	NA
+PE-A+	NA	NA
+PE-A	NA	Live cells (PE-)
+FSC-H+	NA	NA
+SingletsH	NA	NA
+FSC-W+	NA	NA
+SingletsW	NA	NA
+Singlets	NA	Single Cells (FSC-H v FSC-W)
+nonDebris	NA	NA
+PBMC	NA	NA
+CD19+	NA	NA
+CD19-	NA	NA
+CD3+	NA	NA
+CD3-	NA	NA
+D_NK_M	NA	NA
+CD14+	NA	NA
+CD14+/CD16+	NA	NA
+CD16-	NA	NA
+CD14-	NA	NA
+CD20-	NA	NA
+HLA-DR+	NA	NA
+Dendritic	NA	NA
+BB515-A-BV 711-A+	NA	NA
+BB515-A+BV 711-A+	NA	NA
+BB515-A+BV 711-A-	NA	NA
+BB515-A-BV 711-A-	NA	NA
+CD56+	NA	NA
+CD20-/CD16+	NA	NA
+CD16-CD56-	NA	NA
+CD16+CD56-	NA	NA
+CD16-CD56+	NA	NA
+CD16+CD56+	NA	NA
+CD56PlusPlus	NA	NA
+CD45-	NA	NA
