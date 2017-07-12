@@ -1,5 +1,5 @@
 ---
-title: "replicate concordance"
+title: "Replicate Concordance"
 author: "JL"
 date: "7/12/2017"
 output: 
@@ -24,12 +24,28 @@ save(mets,file ="/Volumes/Beta/data/flow/concordance/all.metrics.Rdata" )
 
 ```
 
-```{r eval=TRUE, include=FALSE}
-
+```{r eval=TRUE, echo=FALSE}
+library(knitr)
 load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
+```
+
+```{r eval=TRUE, echo=FALSE}
 ctrlUse =grepl("_Ctl",mets$name)
 metsControls =mets[ctrlUse,]
+metsControls$CTRL_NAME = gsub(".*_Ctl","",metsControls$name)
+metsControls$CTRL_NAME = gsub("_.*","",metsControls$CTRL_NAME)
+# kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
+metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
+metsControls$CTRL_NAME = gsub("DHS","",metsControls$CTRL_NAME)
+metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
+
+kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
 
 ```
 
-Total number of Controls (currently) = `r length(unique(metsControls$name))`
+
+
+Total number of Control fcs files (currently) = `r length(unique(metsControls$name))`
+
+Total number of Control groups (currently) = `r length(unique(metsControls$CTRL_NAME))`
+
