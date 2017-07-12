@@ -88,6 +88,8 @@ fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
 
 getStats <- function(gs1, qcVersion, metric, gate) {
   autoStats = getPopStats(gs1, statistic = metric)
+ # t= getPopStats(gs1, statistic = "count")
+  # write.table(t,file="t1.txt",quote = FALSE,row.names = FALSE,sep = "\t")
   autoStats$METRIC = metric
   autoStats$GATE = gate
   autoStats$QC = qcVersion
