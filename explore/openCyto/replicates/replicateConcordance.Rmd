@@ -2,7 +2,9 @@
 title: "replicate concordance"
 author: "JL"
 date: "7/12/2017"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 TODO 
@@ -16,3 +18,18 @@ TODO
 3. min diff
 4. max diff
   
+```{r setup,eval=FALSE, include=FALSE}
+mets =   read.delim("/Volumes/Beta/data/flow/concordance/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
+save(mets,file ="/Volumes/Beta/data/flow/concordance/all.metrics.Rdata" )
+
+```
+
+```{r eval=TRUE, include=FALSE}
+
+load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
+ctrlUse =grepl("_Ctl",mets$name)
+metsControls =mets[ctrlUse,]
+
+```
+
+Total number of Controls (currently) = `r length(unique(metsControls$name))`
