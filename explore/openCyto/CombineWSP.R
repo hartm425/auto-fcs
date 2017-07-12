@@ -47,6 +47,17 @@ sed1 <- function(outWsp1) {
   system(p1sed1)
   system(p1sed2)
 }
+
+sed2 <- function(outWsp2) {
+  p2sed1="sed -i \'\' -e \'s/<GroupNode name=\"All Samples\">/<GroupNode name=\"P2\">/g\'"
+  p2sed2 ="sed -i \'\' -e \'s/<Group name=\"All Samples\">/<Group name=\"P2\">/g\'" 
+  
+  p2sed1 = paste(p2sed1,shQuote(outWsp2))
+  p2sed2 = paste(p2sed2,shQuote(outWsp2))
+  print(p2sed1)
+  system(p2sed1)
+  system(p2sed2)
+}
 # outputDir =""
 # gateDir="/scratch.global/lanej/flow/full/results_r2/"
 # inputFCSDir ="/scratch.global/lanej/flow/full/fcs/"
