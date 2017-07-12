@@ -108,9 +108,9 @@ ggplot(countsLT10, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
 
 ```{r echo=FALSE,fig.width=10}
 
-kable(tm[order(-tm$PERCENT_FAIL_BY_BATCH),])
+kable(tm[order(-tm$PERCENT_FAIL_BY_BATCH),],format = "markdown")
 
 table(counts$SUCCESSFUL_GATING)
 
-kable(fails[order(-fails$TOTAL_COUNTS),])
+kable(fails[order(-fails$TOTAL_COUNTS),],format = "markdown")
 ```
