@@ -1,0 +1,18 @@
+---
+title: "replicate concordance"
+author: "JL"
+date: "7/12/2017"
+output: html_document
+---
+
+TODO 
+
+- manual
+- automatic
+  - with/without QC
+  
+1. CV of reps
+2. ICC
+3. min diff
+4. max diff
+  
