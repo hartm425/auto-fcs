@@ -160,4 +160,38 @@ for (group in unique(metsControlsAuto$CTRL_NAME)) {
   print(p)
 }
 
+
+library(reshape2)
+library(superheat)
+
+metsControlsFilt =metsControlsAuto[which(metsControlsAuto$Population!="boundary"),]
+freqpart = dcast(metsControlsFilt,name~Population,value.var ="freqParent" )
+row.names(freqpart) = freqpart$name
+freqpart =freqpart[,c(-1)]
+clustDat = scale(as.matrix(freqpart),center = TRUE,scale = TRUE)
+superheat(freqpart, 
+
+          # place dendrograms on columns and rows 
+          row.dendrogram = T, 
+          col.dendrogram = T,
+          
+          # make gridlines white for enhanced prettiness
+          grid.hline.col = "white",
+          grid.vline.col = "white",
+          
+          # rotate bottom label text
+          bottom.label.text.angle = 90)
+
+
+hlustfunc <- function(x) hclust(x, method="complete")
+distfunc <- function(x) as.dist((1-cor(t(x)))/2)
+d <- distfunc(clustDat)
+fit <- hlustfunc(d)
+# plot(fit)
+
+clusterCut <- as.data.frame(cutree(fit, 8))
+# clusterCut= clusterCut[order(clusterCut$`cutree(fit, 8)`),] 
+
+kable(clusterCut,format = "markdown")
+
 ```
