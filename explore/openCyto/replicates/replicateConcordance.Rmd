@@ -30,6 +30,9 @@ load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
 ```
 
 ```{r eval=TRUE, echo=FALSE}
+
+map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt",stringsAsFactors = FALSE,sep = "\t") 
+
 ctrlUse =grepl("_Ctl",mets$name)
 metsControls =mets[ctrlUse,]
 metsControls$CTRL_NAME = gsub(".*_Ctl","",metsControls$name)
@@ -39,6 +42,26 @@ metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("DHS","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
 
+metsControlsAuto = metsControls[which(metsControls$GATE=="AUTOMATIC"&metsControls$QC=="FALSE"&(metsControls$Population %in% map$Auto|metsControls$Parent=="root")&metsControls$METRIC=="count"),]
+metsControlsAuto = merge(metsControlsAuto,map,by.x = "Population",by.y = "Auto",all.x = TRUE)
+
+for(pop in unique(map$Auto)) {
+  for (sample in unique(metsControlsAuto$name)) {
+    row = paste(pop, sample, sep = "_")
+    sub = metsControlsAuto[which(metsControlsAuto$Population == pop &
+                              metsControlsAuto$name == sample),]
+    realParentCount = metsControlsAuto[which(metsControlsAuto$Population == sub$RealAutoParent &
+                                          metsControlsAuto$name == sample),]$Count
+    if (sub$RealAutoParent != "root") {
+      metsControlsAuto[row, "freqParent"] = sub$Count / realParentCount
+    }else{
+      realParentCount = metsControlsAuto[which(metsControlsAuto$Parent == sub$RealAutoParent &
+                                          metsControlsAuto$name == sample),]$ParentCount
+      metsControlsAuto[row, "freqParent"] = sub$Count / realParentCount
+
+    }
+  }
+}
 kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
 
 ```
