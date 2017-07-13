@@ -27,6 +27,9 @@ save(mets,file ="/Volumes/Beta/data/flow/concordance/all.metrics.Rdata" )
 ```{r eval=TRUE, echo=FALSE,warning=FALSE,include=FALSE}
 library(knitr)
 library(raster)
+library("ggplot2")
+
+theme_set(theme_bw(20))
 
 load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
 ```
@@ -37,6 +40,7 @@ map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt",stri
 ctrlUse =grepl("_Ctl",mets$name)
 metsControls =mets[ctrlUse,]
 metsControls$CTRL_NAME = gsub(".*_Ctl","",metsControls$name)
+metsControls$CTRL_NAME = gsub("_G","G",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("_.*","",metsControls$CTRL_NAME)
 # kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
 metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
@@ -67,6 +71,8 @@ for(pop in unique(map$Auto)) {
   }
 }
 
+
+
 metsControlsAuto$GROUP = paste(metsControlsAuto$CTRL_NAME,metsControlsAuto$Population)
 kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
 
@@ -78,15 +84,43 @@ Total number of Control fcs files (currently) = `r length(unique(metsControls$na
 
 Total number of Control groups (currently) = `r length(unique(metsControls$CTRL_NAME))`
 
-```{r eval=TRUE, echo=FALSE}
+```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=10}
+df = data.frame()
+
 for(pop in unique(map$Auto)) {
   for (group in unique(metsControlsAuto$CTRL_NAME)) {
     sub = metsControlsAuto[which(metsControlsAuto$Population == pop &
                               metsControlsAuto$CTRL_NAME == group),]
-    print(paste(pop,group,cv(sub$freqParent,na.rm = TRUE)))
-        print(paste(pop,group,cv(sub$Count,na.rm = TRUE)))
+    # print(paste(pop,group,))
+    #     print(paste(pop,group,cv(sub$Count,na.rm = TRUE)))
+    tmp = data.frame(
+      POP = pop,
+      GROUP = group,
+      CV = cv(sub$freqParent,na.rm = TRUE)
+      
+    )
+    df = rbind.data.frame(df, tmp)
 
   }
 }
+
+
+p <- ggplot(metsControlsAuto, aes(x = Population, y = freqParent,colour = CTRL_NAME))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
+  1)) + ylab("% of parent") + xlab("population") + ggtitle("All Ctl groups")
+p
+
+p <- ggplot(metsControlsAuto[which(metsControlsAuto$CTRL_NAME %in% c("A","B","C","D")),], aes(x = Population, y = freqParent,colour = CTRL_NAME))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
+  1)) + ylab("% of parent") + xlab("population") + ggtitle("Ctl groups A,B,C,D")
+p
+for (group in unique(metsControlsAuto$CTRL_NAME)) {
+  sub = metsControlsAuto[which(
+  metsControlsAuto$CTRL_NAME == group), ]
+  p <- ggplot(sub, aes(x = Population, y = freqParent))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
+  1)) + ylab("% of parent") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
+  print(p)
+}
+
+p <- ggplot(df, aes(x=POP, y=CV))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group")+xlab("population")
 
 ```
