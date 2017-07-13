@@ -18,16 +18,16 @@ TODO
 
 
 
-|Var1 | Freq|
-|:----|----:|
-|A    |   21|
-|B    |   11|
-|C    |   17|
-|D    |   13|
-|E    |   16|
-|F    |   24|
-|G    |   19|
-|H    |   16|
+|REPLICATE | NUMBER_FCS_FILES|
+|:---------|----------------:|
+|A         |               21|
+|B         |               11|
+|C         |               17|
+|D         |               13|
+|E         |               16|
+|F         |               24|
+|G         |               19|
+|H         |               16|
 
 
 
@@ -66,101 +66,7 @@ Percent of lymph CV summary
 |G     |        16.22147|    12.757021|
 |H     |        32.46109|    14.221776|
 
-```
-## Warning: Removed 13 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
-
-```
-## Warning: Removed 13 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-2.png)<!-- -->
-
-```
-## Warning: Removed 16 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-3.png)<!-- -->
-
-```
-## Warning: Removed 16 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-4.png)<!-- -->
-
-```
-## Warning: Removed 16 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-5.png)<!-- -->
-
-```
-## Warning: Removed 16 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-6.png)<!-- -->
-
-```
-## Warning: Removed 21 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-7.png)<!-- -->
-
-```
-## Warning: Removed 21 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-8.png)<!-- -->
-
-```
-## Warning: Removed 19 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-9.png)<!-- -->
-
-```
-## Warning: Removed 19 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-10.png)<!-- -->
-
-```
-## Warning: Removed 17 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-11.png)<!-- -->
-
-```
-## Warning: Removed 17 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-12.png)<!-- -->
-
-```
-## Warning: Removed 11 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-13.png)<!-- -->
-
-```
-## Warning: Removed 11 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-14.png)<!-- -->
-
-```
-## Warning: Removed 24 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-15.png)<!-- -->
-
-```
-## Warning: Removed 24 rows containing non-finite values (stat_boxplot).
-```
-
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-16.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-17.png)<!-- -->
+![](replicateConcordance_files/figure-html/unnamed-chunk-5-1.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-2.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-3.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-4.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-5.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-6.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-7.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-8.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-9.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-10.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-11.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-12.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-13.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-14.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-15.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-16.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-17.png)<!-- -->
 
 |                                                                                         | cutree(fit, 8)|
 |:----------------------------------------------------------------------------------------|--------------:|

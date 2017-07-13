@@ -82,7 +82,10 @@ metsControlsAuto$GROUP = paste(metsControlsAuto$CTRL_NAME,metsControlsAuto$Popul
 
 
 # kable(as.data.frame(table(metsControlsAuto$CTRL_NAME)),format = "markdown")
-kable(as.data.frame(table(metsControlsAuto[which(metsControlsAuto$Population=="lymph"),]$CTRL_NAME)),format = "markdown")
+sum =as.data.frame(table(metsControlsAuto[which(metsControlsAuto$Population=="lymph"),]$CTRL_NAME))
+colnames(sum) =c("REPLICATE","NUMBER_FCS_FILES")
+kable(sum,format = "markdown")
+
 
 
 
@@ -94,7 +97,7 @@ Total number of Control fcs files (currently) = `r length(unique(metsControls$na
 
 Total number of Control groups (currently) = `r length(unique(metsControls$CTRL_NAME))`
 
-```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8}
+```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8,warning=FALSE}
 
 
 df = data.frame()
@@ -126,7 +129,7 @@ p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV 
 
 Percent of parent CV summary
 
-```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8}
+```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8,warning=FALSE}
 df$GROUP_MEDIAN_CV = df$CV_FREQ_PARENT
 df$GROUP_MAD_CV = df$CV_FREQ_PARENT
 
@@ -140,7 +143,7 @@ kable(merge(meds,mads,by.x = "GROUP",by.y = "GROUP"),format = "markdown")
 
 Percent of lymph CV summary
 
-```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8}
+```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8,warning=FALSE}
 df$GROUP_MEDIAN_CV = df$CV_FREQ_LYMPH
 df$GROUP_MAD_CV = df$CV_FREQ_LYMPH
 
