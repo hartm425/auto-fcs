@@ -84,6 +84,8 @@ for(pop in unique(map$Auto)) {
     sub = metsControlsAuto[which(metsControlsAuto$Population == pop &
                               metsControlsAuto$CTRL_NAME == group),]
     print(paste(pop,group,cv(sub$freqParent,na.rm = TRUE)))
+        print(paste(pop,group,cv(sub$Count,na.rm = TRUE)))
+
   }
 }
 
