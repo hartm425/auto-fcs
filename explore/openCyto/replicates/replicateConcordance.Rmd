@@ -24,13 +24,14 @@ save(mets,file ="/Volumes/Beta/data/flow/concordance/all.metrics.Rdata" )
 
 ```
 
-```{r eval=TRUE, echo=FALSE}
+```{r eval=TRUE, echo=FALSE,warning=FALSE,include=FALSE}
 library(knitr)
+library(raster)
+
 load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
 ```
 
 ```{r eval=TRUE, echo=FALSE}
-
 map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt",stringsAsFactors = FALSE,sep = "\t") 
 
 ctrlUse =grepl("_Ctl",mets$name)
@@ -44,6 +45,9 @@ metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
 
 metsControlsAuto = metsControls[which(metsControls$GATE=="AUTOMATIC"&metsControls$QC=="FALSE"&(metsControls$Population %in% map$Auto|metsControls$Parent=="root")&metsControls$METRIC=="count"),]
 metsControlsAuto = merge(metsControlsAuto,map,by.x = "Population",by.y = "Auto",all.x = TRUE)
+
+metsControlsAuto$Merge=paste(metsControlsAuto$Population,metsControlsAuto$name,sep = "_")
+row.names(metsControlsAuto) =metsControlsAuto$Merge
 
 for(pop in unique(map$Auto)) {
   for (sample in unique(metsControlsAuto$name)) {
@@ -62,6 +66,8 @@ for(pop in unique(map$Auto)) {
     }
   }
 }
+
+metsControlsAuto$GROUP = paste(metsControlsAuto$CTRL_NAME,metsControlsAuto$Population)
 kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
 
 ```
@@ -72,3 +78,13 @@ Total number of Control fcs files (currently) = `r length(unique(metsControls$na
 
 Total number of Control groups (currently) = `r length(unique(metsControls$CTRL_NAME))`
 
+```{r eval=TRUE, echo=FALSE}
+for(pop in unique(map$Auto)) {
+  for (group in unique(metsControlsAuto$CTRL_NAME)) {
+    sub = metsControlsAuto[which(metsControlsAuto$Population == pop &
+                              metsControlsAuto$CTRL_NAME == group),]
+    print(paste(pop,group,cv(sub$freqParent,na.rm = TRUE)))
+  }
+}
+
+```
