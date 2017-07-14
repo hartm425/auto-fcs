@@ -1,2 +1,0 @@
-Name file	n. of events	% anomalies	analysis from	% anomalies flow Rate	% anomalies Signal	% anomalies Margins
-2016-08-01_PANEL 1_DHS_Group two_F1631383_031	689945	9.05	Flow Rate and Flow Margin	1.8	29.12	7.39
