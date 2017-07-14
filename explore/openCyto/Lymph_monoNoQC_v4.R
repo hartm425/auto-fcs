@@ -42,17 +42,14 @@ source(file ="CombineWSP.R" )
 
 
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
-# cleanDir = "/Volumes/Beta/data/flow/fcs3Clean/"
-# setwd(cleanDir)
 outputDir = "/Volumes/Beta/data/flow/"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
-# templateQC = "~/git/auto-fcs/explore/openCyto/lymph.dev.qc.b.csv"
-
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.c.csv"
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
-# gateQCDir = "gatesQC5/"
+gateQCDir = "gatesQC/"
+
 mapper = read.delim(
   mapperFile,
   stringsAsFactors = FALSE,
@@ -543,18 +540,20 @@ for (files in fcsFilesAll) {
       
       description(frame)$FILENAME = file
       # 
-      # qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
-      # qcFileFull = paste(cleanDir, "QC/", qcFile, sep = "")
-      # if (!file.exists(qcFileFull)) {
-      #   flow_auto_qc(
-      #     frame,
-      #     folder_results = "QC",
-      #     mini_report = paste(basename(file), "mini"),
-      #     fcs_QC = "",
-      #     pen_valueFS = 50,
-      #     remove_from = "FM"
-      #   )
-      # }
+      qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
+      qcFileFull = paste(cleanDir, "QC/", qcFile, sep = "")
+      if (!file.exists(qcFileFull)) {
+        flow_auto_qc(
+          frame,
+          folder_results = "QC",
+          mini_report = paste(basename(file), "mini"),
+          fcs_QC = FALSE,
+          pen_valueFS = 50,
+          remove_from = "FR_FM",
+          fcs_highQ =""
+          
+        )
+      }
       
       
       # frame.c = read.FCS(qcFileFull)
@@ -588,25 +587,27 @@ for (files in fcsFilesAll) {
           inputFCSDir=inputDir,
           panle2map = panle2mapFile
         )
+        metricQC = compFrame(
+          frame = frame.c,
+          file = file,
+          gt_lymph = gt_lymphQC ,
+          d = d,
+          outputDir = outputDir,
+          gateDir = gateQCDir,
+          qcVersion = TRUE,
+          mapper,
+          inputFCSDir
+        )
+        metricQC$PDF = pdfFile
+        metricQC$FlaggedSample = file %in% fcsFilesAllProbs
+        metrics = rbind(metrics, metricQC)
+        
       }
       metricBase$Panel = panel
       metricBase$PDF = pdfFile
       metricBase$FlaggedSample = file %in% fcsFilesAllProbs
       metrics = rbind(metrics, metricBase)
-      # metricQC = compFrame(
-      #   frame = frame.c,
-      #   file = file,
-      #   gt_lymph = gt_lymphQC ,
-      #   d = d,
-      #   outputDir = outputDir,
-      #   gateDir = gateQCDir,
-      #   qcVersion = TRUE,
-      #   mapper,
-      #   inputFCSDir
-      # )
-      # metricQC$PDF = pdfFile
-      # metricQC$FlaggedSample = file %in% fcsFilesAllProbs
-      # metrics = rbind(metrics, metricQC)
+      
     })
     
   }
