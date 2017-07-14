@@ -1,36 +1,15 @@
 Auto	RealAutoParent	Manual
-boundary	NA	NA
-CD45+	NA	NA
-PE-A+	NA	NA
 PE-A	NA	Live immune cells (CD45+ PE-)
-FSC-H+	NA	NA
-SingletsH	NA	NA
-FSC-W+	NA	NA
-SingletsW	NA	NA
 Singlets	NA	Live Single immune cells(FSC-H/FSC-W)
-nonDebris	NA	NA
 PBMC	NA	Live Single PBMCs (SSC-A/FSC-A)
-CD19+	NA	NA
-CD19-	NA	NA
-CD3+	NA	NA
-CD3-	NA	NA
 D_NK_M	NA	DC NK MONOCYTES (CD3- CD19-)
 CD14+	NA	MONOCYTES (CD14+)
 CD14+/CD16+	NA	Non classical monocytes (CD16+ CD14+)
 CD16-	NA	Classical monocytes (CD16- CD14+)
-CD14-	NA	NA
 CD20-	NA	DC NK (CD20- CD14-)
-HLA-DR+	NA	NA
 Dendritic	NA	DC (HLA-DR+)
-BB515-A-BV 711-A+	NA	NA
-BB515-A+BV 711-A+	NA	NA
 BB515-A+BV 711-A-	NA	Myeloid DC (CD11c+ CD123-)
 BB515-A-BV 711-A-	NA	Plasmacytoid DC (CD11c- CD123+)
-CD56+	NA	NA
 CD20-/CD16+	NA	NK (CD16+)
-CD16-CD56-	NA	NA
-CD16+CD56-	NA	NA
-CD16-CD56+	NA	NA
 CD16+CD56+	NA	NK CD56LO
 CD56PlusPlus	NA	NK CD56HI
-CD45-	NA	NA
