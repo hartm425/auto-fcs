@@ -568,7 +568,7 @@ for (files in fcsFilesAll) {
         metricBase = compP2Frame(
           frame = frame,
           file = file,
-          gt_lymph = gt_mono ,
+          gt_mono = gt_mono ,
           d = d,
           outputDir = outputDir,
           gateDir = gateDir,
@@ -581,7 +581,7 @@ for (files in fcsFilesAll) {
           metricBaseQC = compP2Frame(
             frame = frame.c,
             file = qcFile,
-            gt_lymph = gt_lymph ,
+            gt_mono = gt_lymph ,
             d = d,
             outputDir = outputDir,
             gateDir = gateQCDir,
