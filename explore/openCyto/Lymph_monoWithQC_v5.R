@@ -6,17 +6,6 @@ library(gridExtra)
 library(CytoML)
 library(flowAI)
 
-# source("https://bioconductor.org/biocLite.R")
-# biocLite("openCyto")
-# biocLite("flowCore")
-# biocLite("data.table")
-# biocLite("ggcyto")
-# biocLite("gridExtra")
-# biocLite("CytoML")
-# biocLite("flowAI")
-
-
-
 
 .flowDensity <- function(fr, pp_res, channels = NA, ...) {
   if (length(channels) == 2)
@@ -138,11 +127,6 @@ compP1Frame <-
                           qcVersion = qcVersion,
                           metric = "count",
                           "AUTOMATIC")
-    # autoProps = getStats(gs1 = gs1,
-    #                      qcVersion = qcVersion,
-    #                      metric = "freq",
-    #                      "AUTOMATIC")
-    # metrics = rbind(autoCounts, autoProps)
     metrics = autoCounts
     
     if (!qcVersion) {
@@ -174,9 +158,6 @@ compP1Frame <-
       
     }
     print(paste("plotting ....", file))
-    # result <-
-    #   filter(frame, rectangleGate("remove_from_FM" = c(10000, Inf)))
-    # overlay.fr2 <- Subset(frame, result)
     t1 = ggcyto(gs1,
                 mapping = aes(x = "FSC-A", y = "SSC-A"),
                 subset = "root") +
@@ -321,7 +302,6 @@ compP2Frame <-
     tf <- transformerList(chnls, biexpTrans)
     
     print(paste("gating ....", file))
-    # gs <- GatingSet(c(new_frame))
     frames = c(frame)
     names(frames) = c(basename(file))
     fs =  as(frames, "flowSet")
@@ -443,16 +423,7 @@ compP2Frame <-
                 mapping = aes(x = "CD11C", y = "CD123"),
                 subset = "Dendritic") +
       geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate() 
-    
-    
-    # t7= ggcyto(gs1,
-    #             mapping = aes(x = "PE-A", y = "FSC-H"),
-    #             subset = "Live") +
-    #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-    # 
-    # 
-    
-    
+  
     grid.arrange(
       as.ggplot(t1),
       as.ggplot(t2),
@@ -575,7 +546,7 @@ for (files in fcsFilesAll) {
         )
         
         metricBaseQC = compP1Frame(
-          frame = frame,
+          frame = frame.c,
           file = qcFile,
           gt_lymph = gt_lymph ,
           d = d,
@@ -602,7 +573,7 @@ for (files in fcsFilesAll) {
           panle2map = panle2mapFile
         )
         metricBaseQC = compP2Frame(
-          frame = frame,
+          frame = frame.c,
           file = qcFile,
           gt_lymph = gt_lymph ,
           d = d,
