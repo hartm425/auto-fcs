@@ -1,3 +1,7 @@
 
-head -n 1 ./openCytoBatch_1/metrics.txt >all.metrics.txt
+head -n 1 ./openCytoBatch_10/metrics.txt >all.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.txt |grep -v "==>">>all.metrics.txt
+
+
+head -n 1 ./openCytoBatch_10/metrics.totalCellCounts.txt >all.totalCellCounts.metrics.txt
+tail -n+2 ./openCytoBatch_*/metrics.totalCellCounts.txt |grep -v "==>">>all.totalCellCounts.metrics.txt
