@@ -1,15 +1,15 @@
 Auto	RealAutoParent	Manual
-PE-A	NA	Live immune cells (CD45+ PE-)
-Singlets	NA	Live Single immune cells(FSC-H/FSC-W)
-PBMC	NA	Live Single PBMCs (SSC-A/FSC-A)
-D_NK_M	NA	DC NK MONOCYTES (CD3- CD19-)
-CD14+	NA	MONOCYTES (CD14+)
-CD14+/CD16+	NA	Non classical monocytes (CD16+ CD14+)
-CD16-	NA	Classical monocytes (CD16- CD14+)
-CD20-	NA	DC NK (CD20- CD14-)
-Dendritic	NA	DC (HLA-DR+)
-BB515-A+BV 711-A-	NA	Myeloid DC (CD11c+ CD123-)
-BB515-A-BV 711-A-	NA	Plasmacytoid DC (CD11c- CD123+)
-CD20-/CD16+	NA	NK (CD16+)
-CD16+CD56+	NA	NK CD56LO
-CD56PlusPlus	NA	NK CD56HI
+PE-A	root	Live immune cells (CD45+ PE-)
+Singlets	Live immune cells (CD45+ PE-)	Live Single immune cells(FSC-H/FSC-W)
+PBMC	Live Single immune cells(FSC-H/FSC-W)	Live Single PBMCs (SSC-A/FSC-A)
+D_NK_M	Live Single PBMCs (SSC-A/FSC-A)	DC NK MONOCYTES (CD3- CD19-)
+CD14+	DC NK MONOCYTES (CD3- CD19-)	MONOCYTES (CD14+)
+CD14+/CD16+	MONOCYTES (CD14+)	Non classical monocytes (CD16+ CD14+)
+CD16-	MONOCYTES (CD14+)	Classical monocytes (CD16- CD14+)
+CD20-	DC NK MONOCYTES (CD3- CD19-)	DC NK (CD20- CD14-)
+Dendritic	DC NK (CD20- CD14-)	DC (HLA-DR+)
+BB515-A+BV 711-A-	DC (HLA-DR+)	Myeloid DC (CD11c+ CD123-)
+BB515-A-BV 711-A-	DC (HLA-DR+)	Plasmacytoid DC (CD11c- CD123+)
+CD20-/CD16+	DC NK (CD20- CD14-)	NK (CD16+)
+CD16+CD56+	NK (CD16+)	NK CD56LO
+CD56PlusPlus	NK (CD16+)	NK CD56HI

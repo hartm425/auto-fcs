@@ -23,8 +23,8 @@ registerPlugins(fun = .flowDensity,
                 "gating")
 
 
-panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt"
-panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/autoManMap3.txt"
+panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
+panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
 
 setwd(dirname(panle1mapFile))
 source(file = "CombineWSP.R")
