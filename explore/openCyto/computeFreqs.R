@@ -10,6 +10,7 @@
 mets =  "/Volumes/Beta/data/flow/concordance/all.metrics.txt"
 p1map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 p2map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
+outputDir = "/Volumes/Beta/data/flow/concordance/"
 
 computFreqs <- function(metsD, map, panel, basePop, QC) {
   metsAuto = metsD[which(
@@ -64,10 +65,11 @@ compute <- function(mets, p1map, p2map, outputDir) {
   p2mapD = read.delim(p2map, stringsAsFactors = FALSE, sep = "\t")
   
   
-  panel = "panel1"
+  panels = "panel1"
   basePop = "lymph"
   QC = "FALSE"
   
+
   p1Mets = computFreqs(
     metsD = metsD,
     map = p1mapD,
@@ -75,8 +77,20 @@ compute <- function(mets, p1map, p2map, outputDir) {
     basePop = basePop,
     QC = QC
   )
-  print(p1Mets)
   
+  panels = "panel2"
+  basePop = "lymph"
+  QC = "FALSE"
+  
+  
+  p2Mets = computFreqs(
+    metsD = metsD,
+    map = p1mapD,
+    panel = panel,
+    basePop = basePop,
+    QC = QC
+  )
+
 }
 
 compute(mets = mets ,
