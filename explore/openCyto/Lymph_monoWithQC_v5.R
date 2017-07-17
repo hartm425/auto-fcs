@@ -530,7 +530,7 @@ for (files in fcsFilesAll) {
         tmpCount = data.frame(
           FILE = file,
           TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
-          QC = "FALSE"
+          QC = "TRUE"
         )
         counts = rbind(counts, tmpCount)
       }
@@ -600,7 +600,7 @@ for (files in fcsFilesAll) {
         metricBaseQC$Panel = panel
         metricBaseQC$PDF = pdfFile
         metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
-        metrics = rbind(metrics, metricBase)
+        metrics = rbind(metrics, metricBaseQC)
       }
       
     })
