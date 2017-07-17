@@ -484,7 +484,8 @@ d = data.frame()
 metrics = data.frame()
 counts = data.frame(FILE = character(),
                     TOTAL_COUNTS = integer(),
-                    QC = character())
+                    QC = character(),
+                    PANEL=character())
 for (files in fcsFilesAll) {
   # fcsFiles = files
   print(files)
@@ -499,9 +500,11 @@ for (files in fcsFilesAll) {
     print(paste("number processed ....", numProcessed))
     print(paste("loading ....", file))
     frame = read.FCS(paste(inputDir, file, sep = ""))
+    panel = getPanel(frame)
     tmpCount = data.frame(FILE = file,
                           TOTAL_COUNTS = length(exprs(frame)[, "FSC-H"]),
-                          QC = "FALSE")
+                          QC = "FALSE",
+                          PANEL=panel)
     counts = rbind(counts, tmpCount)
     
     try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
@@ -530,11 +533,11 @@ for (files in fcsFilesAll) {
         tmpCount = data.frame(
           FILE = file,
           TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
-          QC = "TRUE"
+          QC = "TRUE",
+          PANEL=panel
         )
         counts = rbind(counts, tmpCount)
       }
-      panel = getPanel(frame)
       if (panel == "panel1") {
         metricBase = compP1Frame(
           frame = frame,
@@ -577,11 +580,12 @@ for (files in fcsFilesAll) {
           inputFCSDir = inputDir,
           panle2map = panle2mapFile
         )
+        # print(metricBase)
         if (runFlowAI) {
           metricBaseQC = compP2Frame(
             frame = frame.c,
             file = qcFile,
-            gt_mono = gt_lymph ,
+            gt_mono = gt_mono ,
             d = d,
             outputDir = outputDir,
             gateDir = gateQCDir,

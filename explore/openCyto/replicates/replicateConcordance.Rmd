@@ -19,8 +19,8 @@ TODO
 4. max diff
   
 ```{r setup,eval=FALSE, include=FALSE}
-mets =   read.delim("/Volumes/Beta/data/flow/concordance/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
-save(mets,file ="/Volumes/Beta/data/flow/concordance/all.metrics.Rdata" )
+mets =   read.delim("/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
+save(mets,file ="/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.Rdata" )
 
 ```
 
@@ -31,7 +31,7 @@ library("ggplot2")
 library(plyr)
 theme_set(theme_bw(20))
 
-load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
+load("/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.Rdata")
 ```
 
 ```{r eval=TRUE, echo=FALSE}
