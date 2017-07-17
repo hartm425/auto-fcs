@@ -19,24 +19,26 @@ TODO
 4. max diff
   
 ```{r setup,eval=FALSE, include=FALSE}
-mets =   read.delim("/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
-save(mets,file ="/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.Rdata" )
+mets =   read.delim("/Volumes/Beta/data/flow/concordance/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
+save(mets,file ="/Volumes/Beta/data/flow/concordance/all.metrics.Rdata" )
 
 ```
 
 ```{r eval=TRUE, echo=FALSE,warning=FALSE,include=FALSE}
+source(file = "/Users/Kitty/git/auto-fcs/explore/openCyto/computeFreqs.R")
 library(knitr)
 library(raster)
 library("ggplot2")
 library(plyr)
 theme_set(theme_bw(20))
 
-load("/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.Rdata")
+load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
 ```
 
 ```{r eval=TRUE, echo=FALSE}
 map = read.delim("/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt",stringsAsFactors = FALSE,sep = "\t") 
-
+metsLymph = mets[which(mets$Population=="lymph"),]
+mets50K = metsLymph[which(metsLymph$Count>50000),]
 ctrlUse =grepl("_Ctl",mets$name)
 metsControls =mets[ctrlUse,]
 metsControls$CTRL_NAME = gsub(".*_Ctl","",metsControls$name)
@@ -47,38 +49,7 @@ metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("DHS","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
 
-metsControlsAuto = metsControls[which(metsControls$GATE=="AUTOMATIC"&metsControls$QC=="FALSE"&(metsControls$Population %in% map$Auto|metsControls$Parent=="root")&metsControls$METRIC=="count"),]
-metsControlsAuto = merge(metsControlsAuto,map,by.x = "Population",by.y = "Auto",all.x = TRUE)
-
-metsControlsAuto$Merge=paste(metsControlsAuto$Population,metsControlsAuto$name,sep = "_")
-row.names(metsControlsAuto) =metsControlsAuto$Merge
-
-for(pop in unique(map$Auto)) {
-  for (sample in unique(metsControlsAuto$name)) {
-    row = paste(pop, sample, sep = "_")
-    sub = metsControlsAuto[which(metsControlsAuto$Population == pop &
-                              metsControlsAuto$name == sample),]
-    realParentCount = metsControlsAuto[which(metsControlsAuto$Population == sub$RealAutoParent &
-                                          metsControlsAuto$name == sample),]$Count
-    lymphCount = metsControlsAuto[which(metsControlsAuto$Population == "lymph" &
-                                          metsControlsAuto$name == sample),]$Count
-    metsControlsAuto[row, "freqLymph"] = sub$Count / lymphCount
-
-    if (sub$RealAutoParent != "root") {
-      metsControlsAuto[row, "freqParent"] = sub$Count / realParentCount
-
-    }else{
-      realParentCount = metsControlsAuto[which(metsControlsAuto$Parent == sub$RealAutoParent &
-                                          metsControlsAuto$name == sample),]$ParentCount
-      metsControlsAuto[row, "freqParent"] = sub$Count / realParentCount
-
-    }
-  }
-}
-
-
-
-metsControlsAuto$GROUP = paste(metsControlsAuto$CTRL_NAME,metsControlsAuto$Population)
+metsControlsAuto =computFreqs(metsD =metsControls,panel = "panel1",map = map,basePop = "lymph",QC = "FALSE" )
 
 
 # kable(as.data.frame(table(metsControlsAuto$CTRL_NAME)),format = "markdown")
@@ -92,6 +63,8 @@ kable(sum,format = "markdown")
 ```
 
 
+Prop of  files with lymph counts > 50K  = `r length(mets50K$name)/length(metsLymph$name)`
+Prop of  files with lymph counts < 50K  = `r 1-(length(mets50K$name)/length(metsLymph$name))`
 
 Total number of Control fcs files (currently) = `r length(unique(metsControls$name))`
 
@@ -112,7 +85,7 @@ for(pop in unique(map$Auto)) {
       POP = pop,
       GROUP = group,
       CV_FREQ_PARENT = cv(sub$freqParent,na.rm = TRUE),
-      CV_FREQ_LYMPH = cv(sub$freqLymph,na.rm = TRUE)
+      CV_FREQ_LYMPH = cv(sub$freq_lymph,na.rm = TRUE)
 
     )
     df = rbind.data.frame(df, tmp)
@@ -158,11 +131,18 @@ for (group in unique(metsControlsAuto$CTRL_NAME)) {
   p <- ggplot(sub, aes(x = Population, y = 100*freqParent))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
   1)) + ylab("% of parent") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
   print(p)
-  p <- ggplot(sub, aes(x = Population, y = 100*freqLymph))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
+  p <- ggplot(sub, aes(x = Population, y = 100*freq_lymph))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
   1)) + ylab("% of lymph") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
   print(p)
 }
 
+
+```
+
+# Replicate data clustering
+
+
+```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8,warning=FALSE}
 
 library(reshape2)
 library(superheat)
@@ -171,6 +151,27 @@ metsControlsFilt =metsControlsAuto[which(metsControlsAuto$Population!="boundary"
 freqpart = dcast(metsControlsFilt,name~Population,value.var ="freqParent" )
 row.names(freqpart) = freqpart$name
 freqpart =freqpart[,c(-1)]
+
+freq.pca <- prcomp(freqpart,center = TRUE,scale = TRUE) 
+pcaDat = as.data.frame(freq.pca$x)
+pcaDat$CTRL_NAME = gsub(".*_Ctl","",row.names(pcaDat))
+pcaDat$CTRL_NAME = gsub("_G","G",pcaDat$CTRL_NAME)
+pcaDat$CTRL_NAME = gsub("_.*","",pcaDat$CTRL_NAME)
+# kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
+pcaDat$CTRL_NAME = gsub("-","",pcaDat$CTRL_NAME)
+pcaDat$CTRL_NAME = gsub("DHS","",pcaDat$CTRL_NAME)
+pcaDat$CTRL_NAME = gsub("newbiolegend","",pcaDat$CTRL_NAME)
+
+
+p = ggplot(pcaDat,aes(x=PC1,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC1")+ylab("PC2")
+p 
+
+p = ggplot(pcaDat,aes(x=PC3,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC3")+ylab("PC2")
+p 
+
+
+
+
 clustDat = scale(as.matrix(freqpart),center = TRUE,scale = TRUE)
 superheat(freqpart, 
 
@@ -195,6 +196,7 @@ fit <- hlustfunc(d)
 clusterCut <- as.data.frame(cutree(fit, 8))
 # clusterCut= clusterCut[order(clusterCut$`cutree(fit, 8)`),] 
 
-kable(clusterCut,format = "markdown")
+
+# kable(clusterCut,format = "markdown")
 
 ```
