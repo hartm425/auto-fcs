@@ -65,6 +65,7 @@ Total number of Control groups (currently) = 32
 
 Percent of parent CV summary
 
+![](replicateConcordance_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 |GROUP             | GROUP_MEDIAN_CV| GROUP_MAD_CV|
 |:-----------------|---------------:|------------:|
@@ -145,7 +146,4 @@ Percent of base population (lymph/PBMC) CV summary
 # Replicate data clustering
 
 
-
-```
-## Aggregation function missing: defaulting to length
-```
+![](replicateConcordance_files/figure-html/unnamed-chunk-6-1.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-2.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-3.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-4.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-5.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-6.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-7.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-8.png)<!-- -->

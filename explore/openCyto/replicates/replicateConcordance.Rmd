@@ -49,6 +49,7 @@ metsControls$CTRL_NAME = gsub("_.*","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("DHS","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
+metsControls$BASE_CTRL_NAME = metsControls$CTRL_NAME
 metsControls$CTRL_NAME =paste(metsControls$CTRL_NAME ,metsControls$Panel,"QC",metsControls$QC,sep="_" )
 metsControls$Population =gsub("FITC-A+BV711-A-","BB515-A+BV 711-A-",metsControls$Population,fixed = TRUE)
 metsControls$Population =gsub("FITC-A-BV711-A-","BB515-A-BV 711-A-",metsControls$Population,fixed = TRUE)
@@ -154,57 +155,71 @@ for (group in unique(metsControlsAuto$CTRL_NAME)) {
 
 ```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8,warning=FALSE}
 
+
 library(reshape2)
 library(superheat)
 
-metsControlsFilt =metsControlsAuto[which(metsControlsAuto$Population!="boundary"),]
-freqpart = dcast(metsControlsFilt,name~Population,value.var ="freqParent" )
-row.names(freqpart) = freqpart$name
-freqpart =freqpart[,c(-1)]
-# 
-# freq.pca <- prcomp(freqpart,center = TRUE,scale = TRUE) 
-# pcaDat = as.data.frame(freq.pca$x)
-# pcaDat$CTRL_NAME = gsub(".*_Ctl","",row.names(pcaDat))
-# pcaDat$CTRL_NAME = gsub("_G","G",pcaDat$CTRL_NAME)
-# pcaDat$CTRL_NAME = gsub("_.*","",pcaDat$CTRL_NAME)
-# # kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
-# pcaDat$CTRL_NAME = gsub("-","",pcaDat$CTRL_NAME)
-# pcaDat$CTRL_NAME = gsub("DHS","",pcaDat$CTRL_NAME)
-# pcaDat$CTRL_NAME = gsub("newbiolegend","",pcaDat$CTRL_NAME)
-# 
-# 
-# p = ggplot(pcaDat,aes(x=PC1,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC1")+ylab("PC2")
-# p 
-# 
-# p = ggplot(pcaDat,aes(x=PC3,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC3")+ylab("PC2")
-# p 
+for (panel in unique(metsControlsAuto$Panel)) {
+  for (q in unique(metsControlsAuto$QC)) {
+    metsControlsFilt = metsControlsAuto[which(
+      metsControlsAuto$Population !=
+        "boundary_panel1" & metsControlsAuto$Population !=
+        "boundary_panel2" &
+        metsControlsAuto$Panel == panel & metsControlsAuto$QC == q
+        ), ]
+      freqpart = dcast(metsControlsFilt, name ~ Population, value.var = "freqParent")
+      row.names(freqpart) = freqpart$name
+      freqpart = freqpart[, c(-1)]
+      #
+      freq.pca <- prcomp(freqpart, center = TRUE, scale = TRUE)
+      pcaDat = as.data.frame(freq.pca$x)
+      pcaDat$CTRL_NAME = gsub(".*_Ctl", "", row.names(pcaDat))
+      pcaDat$CTRL_NAME = gsub("_G", "G", pcaDat$CTRL_NAME)
+      pcaDat$CTRL_NAME = gsub("_.*", "", pcaDat$CTRL_NAME)
+      # kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
+      pcaDat$CTRL_NAME = gsub("-", "", pcaDat$CTRL_NAME)
+      pcaDat$CTRL_NAME = gsub("DHS", "", pcaDat$CTRL_NAME)
+      pcaDat$CTRL_NAME = gsub("newbiolegend", "", pcaDat$CTRL_NAME)
+      
+      
+      p = ggplot(pcaDat, aes(x = PC1, y = PC2, color = CTRL_NAME)) + geom_point() +
+      xlab("PC1") + ylab("PC2")+ggtitle(label = paste(panel,"QC = ",q))
+      print(p)
+      
+      p = ggplot(pcaDat, aes(x = PC3, y = PC2, color = CTRL_NAME)) + geom_point() +
+      xlab("PC3") + ylab("PC2")+ggtitle(label = paste(panel,"QC = ",q))
+       print(p)
+  }
+}
 
 
-
-# 
+#
 # clustDat = scale(as.matrix(freqpart),center = TRUE,scale = TRUE)
-# superheat(freqpart, 
-# 
-#           # place dendrograms on columns and rows 
-#           row.dendrogram = T, 
+# superheat(freqpart,
+#
+#           # place dendrograms on columns and rows
+#           row.dendrogram = T,
 #           col.dendrogram = T,
-#           
+#
 #           # make gridlines white for enhanced prettiness
 #           grid.hline.col = "white",
 #           grid.vline.col = "white",
-#           
+#
 #           # rotate bottom label text
 #           bottom.label.text.angle = 90)
-# 
-# 
+#
+#
 # hlustfunc <- function(x) hclust(x, method="complete")
 # distfunc <- function(x) as.dist((1-cor(t(x)))/2)
 # d <- distfunc(clustDat)
 # fit <- hlustfunc(d)
 # # plot(fit)
-# 
+#
 # clusterCut <- as.data.frame(cutree(fit, 8))
-# clusterCut= clusterCut[order(clusterCut$`cutree(fit, 8)`),] 
+# clusterCut= clusterCut[order(clusterCut$`cutree(fit, 8)`),]
+# }
+# }
+
 
 
 # kable(clusterCut,format = "markdown")
