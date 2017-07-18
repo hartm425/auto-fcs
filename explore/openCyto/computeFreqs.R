@@ -37,7 +37,7 @@ computFreqs <- function(metsD, map, panel, basePop, QC) {
   for (sample in unique(metsAuto$name)) {
     current = metsAuto[which(metsAuto$name == sample),]
     num = num + 1
-    print(paste(sample, num))
+    # print(paste(sample, num))
     for (pop in unique(map$Auto)) {
       # print(pop)
       # print(paste(pop, sample, num))
@@ -118,6 +118,6 @@ compute <- function(mets, p1map, p2map, outputDir) {
 }
 
 # #
-compute(mets = mets ,
-        p1map = p1map,
-        p2map = p2map,outputDir = outputDir)
+# compute(mets = mets ,
+#         p1map = p1map,
+#         p2map = p2map,outputDir = outputDir)

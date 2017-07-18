@@ -19,8 +19,8 @@ TODO
 4. max diff
   
 ```{r setup,eval=FALSE, include=FALSE}
-mets =   read.delim("/Volumes/Beta/data/flow/concordance/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
-save(mets,file ="/Volumes/Beta/data/flow/concordance/all.metrics.Rdata" )
+mets =   read.delim("/Volumes/Beta/data/flow/concordance/results_r6/freq.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
+save(mets,file ="/Volumes/Beta/data/flow/concordance/results_r6/freq.metrics.Rdata" )
 
 ```
 
@@ -32,7 +32,7 @@ library("ggplot2")
 library(plyr)
 theme_set(theme_bw(20))
 
-load("/Volumes/Beta/data/flow/concordance/all.metrics.Rdata")
+load("/Volumes/Beta/data/flow/concordance/results_r6/freq.metrics.Rdata")
 ```
 
 ```{r eval=TRUE, echo=FALSE}
@@ -48,10 +48,11 @@ metsControls$CTRL_NAME = gsub("_.*","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("DHS","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
-
-metsControlsAuto =computFreqs(metsD =metsControls,panel = "panel1",map = map,basePop = "lymph",QC = "FALSE" )
-
-
+metsControls$CTRL_NAME =paste(metsControls$CTRL_NAME ,metsControls$Panel )
+# 
+# metsControlsAuto =computFreqs(metsD =metsControls,panel = "panel1",map = map,basePop = "lymph",QC = "FALSE" )
+# 
+metsControlsAuto =metsControls
 # kable(as.data.frame(table(metsControlsAuto$CTRL_NAME)),format = "markdown")
 sum =as.data.frame(table(metsControlsAuto[which(metsControlsAuto$Population=="lymph"),]$CTRL_NAME))
 colnames(sum) =c("REPLICATE","NUMBER_FCS_FILES")
