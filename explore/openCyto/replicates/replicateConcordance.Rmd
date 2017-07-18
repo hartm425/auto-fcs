@@ -48,13 +48,16 @@ metsControls$CTRL_NAME = gsub("_.*","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("DHS","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
-metsControls$CTRL_NAME =paste(metsControls$CTRL_NAME ,metsControls$Panel )
-# 
+metsControls$CTRL_NAME =paste(metsControls$CTRL_NAME ,metsControls$Panel,sep="_" )
+metsControls$Population =gsub("FITC-A+BV711-A-","BB515-A+BV 711-A-",metsControls$Population,fixed = TRUE)
+metsControls$Population =gsub("FITC-A-BV711-A-","BB515-A-BV 711-A-",metsControls$Population,fixed = TRUE)
+
+metsControls$Population  =paste(metsControls$Population ,metsControls$Panel ,sep="_" )
 # metsControlsAuto =computFreqs(metsD =metsControls,panel = "panel1",map = map,basePop = "lymph",QC = "FALSE" )
 # 
 metsControlsAuto =metsControls
 # kable(as.data.frame(table(metsControlsAuto$CTRL_NAME)),format = "markdown")
-sum =as.data.frame(table(metsControlsAuto[which(metsControlsAuto$Population=="lymph"),]$CTRL_NAME))
+sum =as.data.frame(table(metsControlsAuto[which(metsControlsAuto$Parent=="root"),]$CTRL_NAME))
 colnames(sum) =c("REPLICATE","NUMBER_FCS_FILES")
 kable(sum,format = "markdown")
 
@@ -73,7 +76,7 @@ Total number of Control groups (currently) = `r length(unique(metsControls$CTRL_
 
 df = data.frame()
 
-for(pop in unique(map$Auto)) {
+for(pop in unique(metsControlsAuto$Population)) {
   for (group in unique(metsControlsAuto$CTRL_NAME)) {
     sub = metsControlsAuto[which(metsControlsAuto$Population == pop &
                               metsControlsAuto$CTRL_NAME == group),]
@@ -83,7 +86,7 @@ for(pop in unique(map$Auto)) {
       POP = pop,
       GROUP = group,
       CV_FREQ_PARENT = cv(sub$freqParent,na.rm = TRUE),
-      CV_FREQ_LYMPH = cv(sub$freq_lymph,na.rm = TRUE)
+      CV_FREQ_BASE = cv(sub$freq_lymph,na.rm = TRUE)
 
     )
     df = rbind.data.frame(df, tmp)
@@ -93,7 +96,7 @@ for(pop in unique(map$Auto)) {
 p <- ggplot(df, aes(x=POP, y=CV_FREQ_PARENT))
 p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group (freq of parent)")+xlab("population")
 
-p <- ggplot(df, aes(x=POP, y=CV_FREQ_LYMPH))
+p <- ggplot(df, aes(x=POP, y=CV_FREQ_BASE))
 p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group (freq of lymph)")+xlab("population")
 
 ```
@@ -112,11 +115,11 @@ kable(merge(meds,mads,by.x = "GROUP",by.y = "GROUP"),format = "markdown")
 ```
 
 
-Percent of lymph CV summary
+Percent of base population (lymph/PBMC) CV summary
 
 ```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8,warning=FALSE}
-df$GROUP_MEDIAN_CV = df$CV_FREQ_LYMPH
-df$GROUP_MAD_CV = df$CV_FREQ_LYMPH
+df$GROUP_MEDIAN_CV = df$CV_FREQ_BASE
+df$GROUP_MAD_CV = df$CV_FREQ_BASE
 
 meds= aggregate(GROUP_MEDIAN_CV ~ GROUP, df, FUN =median,na.action = na.omit)
 mads= aggregate(GROUP_MAD_CV ~ GROUP, df, FUN =mad,na.action = na.omit)
@@ -130,7 +133,7 @@ for (group in unique(metsControlsAuto$CTRL_NAME)) {
   1)) + ylab("% of parent") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
   print(p)
   p <- ggplot(sub, aes(x = Population, y = 100*freq_lymph))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
-  1)) + ylab("% of lymph") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
+  1)) + ylab("% of base pop (lymph/pbmc)") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
   print(p)
 }
 
@@ -149,49 +152,49 @@ metsControlsFilt =metsControlsAuto[which(metsControlsAuto$Population!="boundary"
 freqpart = dcast(metsControlsFilt,name~Population,value.var ="freqParent" )
 row.names(freqpart) = freqpart$name
 freqpart =freqpart[,c(-1)]
-
-freq.pca <- prcomp(freqpart,center = TRUE,scale = TRUE) 
-pcaDat = as.data.frame(freq.pca$x)
-pcaDat$CTRL_NAME = gsub(".*_Ctl","",row.names(pcaDat))
-pcaDat$CTRL_NAME = gsub("_G","G",pcaDat$CTRL_NAME)
-pcaDat$CTRL_NAME = gsub("_.*","",pcaDat$CTRL_NAME)
-# kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
-pcaDat$CTRL_NAME = gsub("-","",pcaDat$CTRL_NAME)
-pcaDat$CTRL_NAME = gsub("DHS","",pcaDat$CTRL_NAME)
-pcaDat$CTRL_NAME = gsub("newbiolegend","",pcaDat$CTRL_NAME)
-
-
-p = ggplot(pcaDat,aes(x=PC1,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC1")+ylab("PC2")
-p 
-
-p = ggplot(pcaDat,aes(x=PC3,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC3")+ylab("PC2")
-p 
-
-
+# 
+# freq.pca <- prcomp(freqpart,center = TRUE,scale = TRUE) 
+# pcaDat = as.data.frame(freq.pca$x)
+# pcaDat$CTRL_NAME = gsub(".*_Ctl","",row.names(pcaDat))
+# pcaDat$CTRL_NAME = gsub("_G","G",pcaDat$CTRL_NAME)
+# pcaDat$CTRL_NAME = gsub("_.*","",pcaDat$CTRL_NAME)
+# # kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
+# pcaDat$CTRL_NAME = gsub("-","",pcaDat$CTRL_NAME)
+# pcaDat$CTRL_NAME = gsub("DHS","",pcaDat$CTRL_NAME)
+# pcaDat$CTRL_NAME = gsub("newbiolegend","",pcaDat$CTRL_NAME)
+# 
+# 
+# p = ggplot(pcaDat,aes(x=PC1,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC1")+ylab("PC2")
+# p 
+# 
+# p = ggplot(pcaDat,aes(x=PC3,y=PC2, color=CTRL_NAME)) +geom_point()+xlab("PC3")+ylab("PC2")
+# p 
 
 
-clustDat = scale(as.matrix(freqpart),center = TRUE,scale = TRUE)
-superheat(freqpart, 
 
-          # place dendrograms on columns and rows 
-          row.dendrogram = T, 
-          col.dendrogram = T,
-          
-          # make gridlines white for enhanced prettiness
-          grid.hline.col = "white",
-          grid.vline.col = "white",
-          
-          # rotate bottom label text
-          bottom.label.text.angle = 90)
-
-
-hlustfunc <- function(x) hclust(x, method="complete")
-distfunc <- function(x) as.dist((1-cor(t(x)))/2)
-d <- distfunc(clustDat)
-fit <- hlustfunc(d)
-# plot(fit)
-
-clusterCut <- as.data.frame(cutree(fit, 8))
+# 
+# clustDat = scale(as.matrix(freqpart),center = TRUE,scale = TRUE)
+# superheat(freqpart, 
+# 
+#           # place dendrograms on columns and rows 
+#           row.dendrogram = T, 
+#           col.dendrogram = T,
+#           
+#           # make gridlines white for enhanced prettiness
+#           grid.hline.col = "white",
+#           grid.vline.col = "white",
+#           
+#           # rotate bottom label text
+#           bottom.label.text.angle = 90)
+# 
+# 
+# hlustfunc <- function(x) hclust(x, method="complete")
+# distfunc <- function(x) as.dist((1-cor(t(x)))/2)
+# d <- distfunc(clustDat)
+# fit <- hlustfunc(d)
+# # plot(fit)
+# 
+# clusterCut <- as.data.frame(cutree(fit, 8))
 # clusterCut= clusterCut[order(clusterCut$`cutree(fit, 8)`),] 
 
 

@@ -20,57 +20,78 @@ TODO
 
 |REPLICATE | NUMBER_FCS_FILES|
 |:---------|----------------:|
-|A         |               21|
-|B         |               11|
-|C         |               17|
-|D         |               13|
-|E         |               16|
-|F         |               24|
-|G         |               19|
-|H         |               16|
+|_panel2   |               22|
+|A_panel1  |               42|
+|A_panel2  |               28|
+|B_panel1  |               22|
+|B_panel2  |               12|
+|C_panel1  |               34|
+|C_panel2  |               18|
+|D_panel1  |               26|
+|D_panel2  |               12|
+|E_panel1  |               32|
+|E_panel2  |               18|
+|F_panel1  |               48|
+|F_panel2  |               30|
+|G_panel1  |               38|
+|G_panel2  |               24|
+|H_panel1  |               32|
+|H_panel2  |               18|
 
 
-Prop of  files with lymph counts > 50K  = 0.9685979
-Prop of  files with lymph counts < 50K  = 0.0314021
+Prop of  files with lymph counts > 50K  = 0.9709101
+Prop of  files with lymph counts < 50K  = 0.0290899
 
-Total number of Control fcs files (currently) = 137
+Total number of Control fcs files (currently) = 228
 
-Total number of Control groups (currently) = 8
+Total number of Control groups (currently) = 17
 
 ![](replicateConcordance_files/figure-html/unnamed-chunk-3-1.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
 
 Percent of parent CV summary
 
 
-|GROUP | GROUP_MEDIAN_CV| GROUP_MAD_CV|
-|:-----|---------------:|------------:|
-|A     |        12.26435|     11.09480|
-|B     |        13.33148|     11.76286|
-|C     |        12.99054|     10.14676|
-|D     |        22.46977|     12.80152|
-|E     |        25.53363|     17.64769|
-|F     |        20.54376|     19.90676|
-|G     |        14.00589|     14.03718|
-|H     |        14.57943|     15.49101|
+|GROUP    | GROUP_MEDIAN_CV| GROUP_MAD_CV|
+|:--------|---------------:|------------:|
+|_panel2  |        32.52019|    38.260513|
+|A_panel1 |        12.20578|    11.082615|
+|A_panel2 |        29.33195|    33.163277|
+|B_panel1 |        10.76501|     7.605525|
+|B_panel2 |        19.68432|    16.786948|
+|C_panel1 |        12.82536|    10.039333|
+|C_panel2 |        11.11351|     5.616338|
+|D_panel1 |        21.92303|    13.082674|
+|D_panel2 |        22.73467|    20.182015|
+|E_panel1 |        25.12323|    17.641241|
+|E_panel2 |        14.36604|    15.351661|
+|F_panel1 |        20.39913|    21.866917|
+|F_panel2 |        17.83741|    20.281833|
+|G_panel1 |        13.91622|    13.134659|
+|G_panel2 |        18.58631|    18.207699|
+|H_panel1 |        14.30045|    15.323726|
+|H_panel2 |        28.06433|    29.012563|
 
 
 Percent of lymph CV summary
 
 
-|GROUP | GROUP_MEDIAN_CV| GROUP_MAD_CV|
-|:-----|---------------:|------------:|
-|A     |        13.57145|    11.930342|
-|B     |        15.71823|    10.150433|
-|C     |        13.93569|     8.233016|
-|D     |        32.07279|     5.371330|
-|E     |        28.17266|    22.784927|
-|F     |        27.92368|    25.316248|
-|G     |        16.22147|    12.757021|
-|H     |        32.46109|    14.221776|
+|GROUP    | GROUP_MEDIAN_CV| GROUP_MAD_CV|
+|:--------|---------------:|------------:|
+|A_panel1 |        13.28149|    11.934802|
+|B_panel1 |        14.40307|     9.199097|
+|C_panel1 |        13.69781|     8.105083|
+|D_panel1 |        31.58159|     4.941907|
+|E_panel1 |        27.69392|    22.391223|
+|F_panel1 |        27.67787|    25.043098|
+|G_panel1 |        15.81788|    12.262463|
+|H_panel1 |        31.83468|    14.155940|
 
-![](replicateConcordance_files/figure-html/unnamed-chunk-5-1.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-2.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-3.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-4.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-5.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-6.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-7.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-8.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-9.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-10.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-11.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-12.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-13.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-14.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-15.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-16.png)<!-- -->
+![](replicateConcordance_files/figure-html/unnamed-chunk-5-1.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-2.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-3.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-4.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-5.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-6.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-7.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-8.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-9.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-10.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-11.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-12.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-13.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-14.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-15.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-16.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-17.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-18.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-19.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-20.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-21.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-22.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-23.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-24.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-25.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-26.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-27.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-28.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-29.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-30.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-31.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-32.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-33.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-34.png)<!-- -->
 
 # Replicate data clustering
 
 
-![](replicateConcordance_files/figure-html/unnamed-chunk-6-1.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-2.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-6-3.png)<!-- -->
+
+```
+## Aggregation function missing: defaulting to length
+```
