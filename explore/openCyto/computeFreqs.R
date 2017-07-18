@@ -66,6 +66,7 @@ computFreqs <- function(metsD, map, panel, basePop, QC) {
 }
 
 compute <- function(mets, p1map, p2map, outputDir) {
+  library(plyr)
   metsD  = read.delim(mets, stringsAsFactors = FALSE, sep = "\t")
   p1mapD = read.delim(p1map, stringsAsFactors = FALSE, sep = "\t")
   p2mapD = read.delim(p2map, stringsAsFactors = FALSE, sep = "\t")
@@ -91,7 +92,7 @@ compute <- function(mets, p1map, p2map, outputDir) {
           basePop = basePop,
           QC = q
         )
-        fullMets = rbind(fullMets, tmp)
+        fullMets = rbind.fill(fullMets, tmp)
         
       } else{
         tmp = computFreqs(
@@ -101,7 +102,7 @@ compute <- function(mets, p1map, p2map, outputDir) {
           basePop = basePop,
           QC = q
         )
-        fullMets = rbind(fullMets, tmp)
+        fullMets = rbind.fill(fullMets, tmp)
       }
     }
     panelNum = panelNum + 1
