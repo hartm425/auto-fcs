@@ -26,6 +26,8 @@ registerPlugins(fun = .flowDensity,
 panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
 
+panel1NodesToHide = c("CD8/HLA-DR+", "CD4/HLA-DR+", "FSC-W+")
+
 setwd(dirname(panle1mapFile))
 source(file = "CombineWSP.R")
 source(file = "computeFreqs.R")
@@ -56,8 +58,8 @@ fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
              full = FALSE)
-fcsFilesAll =fcsFilesAll[8:9]
-# fcsFilesAll =fcsFilesAll[307:309]
+# fcsFilesAll =fcsFilesAll[8:9]
+fcsFilesAll = fcsFilesAll[307:309]
 
 fcsFilesAllProbs = c("NONE")
 
@@ -129,7 +131,7 @@ compP1Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -273,6 +275,10 @@ compP1Frame <-
             basename(file),
             "_panel1Rename.wsp",
             sep = "")
+   
+     for (hideNode in panel1NodesToHide) {
+      setNode(gs1, hideNode, FALSE)
+     }
     
     renameNodes(gs1,
                 read.delim(panle1map, stringsAsFactors = FALSE, sep = "\t"))
@@ -322,7 +328,7 @@ compP2Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -444,6 +450,9 @@ compP2Frame <-
       ncol = 2
     )
     
+    
+    
+    
     d = rbind.data.frame(as.data.frame(getPopStats(gs1)), d)
     outFile <-
       paste(outputDir, gateDir,
@@ -458,6 +467,7 @@ compP2Frame <-
             "_panel2Rename.wsp",
             sep = "")
     
+
     renameNodes(gs1,
                 read.delim(panle2map, stringsAsFactors = FALSE, sep = "\t"))
     GatingSet2flowJo(gs1, outFileRename)
@@ -529,7 +539,7 @@ if (!file.exists(metricsFile)) {
             flow_auto_qc(
               frame,
               folder_results = "",
-              mini_report = paste(basename(file), "mini", sep =),
+              mini_report = paste(basename(file), "mini", sep = ),
               fcs_QC = FALSE,
               pen_valueFS = 50,
               remove_from = "FR_FM",

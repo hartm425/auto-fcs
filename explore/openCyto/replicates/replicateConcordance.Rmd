@@ -51,6 +51,9 @@ metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME =paste(metsControls$CTRL_NAME ,metsControls$Panel,sep="_" )
 metsControls$Population =gsub("FITC-A+BV711-A-","BB515-A+BV 711-A-",metsControls$Population,fixed = TRUE)
 metsControls$Population =gsub("FITC-A-BV711-A-","BB515-A-BV 711-A-",metsControls$Population,fixed = TRUE)
+metsControls$Freq_Base=NA
+metsControls$Freq_Base[metsControls$Panel=="panel1"] =metsControls$Freq_Base[metsControls$Panel=="panel1"]
+metsControls$Freq_Base[metsControls$Panel=="panel2"] =metsControls$freq_PBMC[metsControls$Panel=="panel2"]
 
 metsControls$Population  =paste(metsControls$Population ,metsControls$Panel ,sep="_" )
 # metsControlsAuto =computFreqs(metsD =metsControls,panel = "panel1",map = map,basePop = "lymph",QC = "FALSE" )
@@ -86,7 +89,7 @@ for(pop in unique(metsControlsAuto$Population)) {
       POP = pop,
       GROUP = group,
       CV_FREQ_PARENT = cv(sub$freqParent,na.rm = TRUE),
-      CV_FREQ_BASE = cv(sub$freq_lymph,na.rm = TRUE)
+      CV_FREQ_BASE = cv(sub$Freq_Base,na.rm = TRUE)
 
     )
     df = rbind.data.frame(df, tmp)
@@ -97,7 +100,7 @@ p <- ggplot(df, aes(x=POP, y=CV_FREQ_PARENT))
 p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group (freq of parent)")+xlab("population")
 
 p <- ggplot(df, aes(x=POP, y=CV_FREQ_BASE))
-p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group (freq of lymph)")+xlab("population")
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group (freq of lymph/pbmc)")+xlab("population")
 
 ```
 
@@ -132,7 +135,7 @@ for (group in unique(metsControlsAuto$CTRL_NAME)) {
   p <- ggplot(sub, aes(x = Population, y = 100*freqParent))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
   1)) + ylab("% of parent") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
   print(p)
-  p <- ggplot(sub, aes(x = Population, y = 100*freq_lymph))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
+  p <- ggplot(sub, aes(x = Population, y = 100*Freq_Base))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
   1)) + ylab("% of base pop (lymph/pbmc)") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
   print(p)
 }

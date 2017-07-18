@@ -72,19 +72,20 @@ Percent of parent CV summary
 |H_panel2 |        28.06433|    29.012563|
 
 
-Percent of lymph CV summary
+Percent of base population (lymph/PBMC) CV summary
 
 
 |GROUP    | GROUP_MEDIAN_CV| GROUP_MAD_CV|
 |:--------|---------------:|------------:|
-|A_panel1 |        13.28149|    11.934802|
-|B_panel1 |        14.40307|     9.199097|
-|C_panel1 |        13.69781|     8.105083|
-|D_panel1 |        31.58159|     4.941907|
-|E_panel1 |        27.69392|    22.391223|
-|F_panel1 |        27.67787|    25.043098|
-|G_panel1 |        15.81788|    12.262463|
-|H_panel1 |        31.83468|    14.155940|
+|_panel2  |        63.63640|     78.22637|
+|A_panel2 |        45.10160|     54.38206|
+|B_panel2 |        37.98665|     48.88351|
+|C_panel2 |        27.82104|     29.12217|
+|D_panel2 |        39.58664|     47.96504|
+|E_panel2 |        30.12134|     35.42778|
+|F_panel2 |        20.71549|     26.36199|
+|G_panel2 |        35.27614|     29.94670|
+|H_panel2 |        56.61476|     66.27062|
 
 ![](replicateConcordance_files/figure-html/unnamed-chunk-5-1.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-2.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-3.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-4.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-5.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-6.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-7.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-8.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-9.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-10.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-11.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-12.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-13.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-14.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-15.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-16.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-17.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-18.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-19.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-20.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-21.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-22.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-23.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-24.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-25.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-26.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-27.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-28.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-29.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-30.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-31.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-32.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-33.png)<!-- -->![](replicateConcordance_files/figure-html/unnamed-chunk-5-34.png)<!-- -->
 
