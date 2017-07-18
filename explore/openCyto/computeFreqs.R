@@ -9,11 +9,11 @@
 
 
 
-
-mets =  "/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.txt"
-p1map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
-p2map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
-outputDir = "/Volumes/Beta/data/flow/concordance/results_r6/"
+# 
+# mets =  "/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.txt"
+# p1map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
+# p2map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
+# outputDir = "/Volumes/Beta/data/flow/concordance/results_r6/"
 
 computFreqs <- function(metsD, map, panel, basePop, QC) {
   metsAuto = metsD[which(
@@ -112,7 +112,8 @@ compute <- function(mets, p1map, p2map, outputDir) {
     row.names = FALSE
   )
 }
-#
-compute(mets = mets ,
-        p1map = p1map,
-        p2map = p2map,outputDir = outputDir)
+
+# #
+# compute(mets = mets ,
+#         p1map = p1map,
+#         p2map = p2map,outputDir = outputDir)

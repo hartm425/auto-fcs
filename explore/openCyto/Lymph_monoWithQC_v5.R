@@ -478,168 +478,182 @@ getPanel <-
     }
   }
 
-# https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
-i = 1
-numProcessed = 0
-d = data.frame()
-metrics = data.frame()
-counts = data.frame(FILE = character(),
-                    TOTAL_COUNTS = integer(),
-                    QC = character(),
-                    PANEL=character())
-for (files in fcsFilesAll) {
-  # fcsFiles = files
-  print(files)
-  i
-  pdfFile = paste(outputDir, "gate_plots", i, ".pdf", sep = "")
-  pdf(file = pdfFile)
-  i = i + 1
-  for (file in files) {
-    fileToLoad <- file
-    
-    numProcessed = numProcessed + 1
-    print(paste("number processed ....", numProcessed))
-    print(paste("loading ....", file))
-    frame = read.FCS(paste(inputDir, file, sep = ""))
-    panel = getPanel(frame)
-    tmpCount = data.frame(FILE = file,
-                          TOTAL_COUNTS = length(exprs(frame)[, "FSC-H"]),
-                          QC = "FALSE",
-                          PANEL=panel)
-    counts = rbind(counts, tmpCount)
-    
-    try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
-      description(frame)$FILENAME = file
-      #
+metricsFile = paste(outputDir, "metrics.txt", sep = "")
+
+if (!file.exists(metricsFile)) {
+  # https://www.bioconductor.org/packages/devel/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
+  i = 1
+  numProcessed = 0
+  d = data.frame()
+  metrics = data.frame()
+  counts = data.frame(
+    FILE = character(),
+    TOTAL_COUNTS = integer(),
+    QC = character(),
+    PANEL = character()
+  )
+  for (files in fcsFilesAll) {
+    # fcsFiles = files
+    print(files)
+    i
+    pdfFile = paste(outputDir, "gate_plots", i, ".pdf", sep = "")
+    pdf(file = pdfFile)
+    i = i + 1
+    for (file in files) {
+      fileToLoad <- file
       
-      if (runFlowAI) {
-        qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
-        qcDir = paste(outputDir, "fcsQC/", sep = "")
-        qcFileFull = paste(qcDir, qcFile, sep = "")
+      numProcessed = numProcessed + 1
+      print(paste("number processed ....", numProcessed))
+      print(paste("loading ....", file))
+      frame = read.FCS(paste(inputDir, file, sep = ""))
+      panel = getPanel(frame)
+      tmpCount = data.frame(
+        FILE = file,
+        TOTAL_COUNTS = length(exprs(frame)[, "FSC-H"]),
+        QC = "FALSE",
+        PANEL = panel
+      )
+      counts = rbind(counts, tmpCount)
+      
+      try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
+        description(frame)$FILENAME = file
+        #
         
-        if (!file.exists(qcFileFull)) {
-          setwd(qcDir)
-          flow_auto_qc(
-            frame,
-            folder_results = "",
-            mini_report = paste(basename(file), "mini", sep =),
-            fcs_QC = FALSE,
-            pen_valueFS = 50,
-            remove_from = "FR_FM",
-            fcs_highQ = ""
-            
-          )
-        }
-        frame.c = read.FCS(qcFileFull)
-        tmpCount = data.frame(
-          FILE = file,
-          TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
-          QC = "TRUE",
-          PANEL=panel
-        )
-        counts = rbind(counts, tmpCount)
-      }
-      if (panel == "panel1") {
-        metricBase = compP1Frame(
-          frame = frame,
-          file = file,
-          gt_lymph = gt_lymph ,
-          d = d,
-          outputDir = outputDir,
-          gateDir = gateDir,
-          qcVersion = FALSE,
-          mapper = mapper,
-          inputFCSDir = inputDir,
-          panle1map = panle1mapFile
-        )
         if (runFlowAI) {
-          metricBaseQC = compP1Frame(
-            frame = frame.c,
-            file = qcFile,
+          qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
+          qcDir = paste(outputDir, "fcsQC/", sep = "")
+          qcFileFull = paste(qcDir, qcFile, sep = "")
+          
+          if (!file.exists(qcFileFull)) {
+            setwd(qcDir)
+            flow_auto_qc(
+              frame,
+              folder_results = "",
+              mini_report = paste(basename(file), "mini", sep =),
+              fcs_QC = FALSE,
+              pen_valueFS = 50,
+              remove_from = "FR_FM",
+              fcs_highQ = ""
+              
+            )
+          }
+          frame.c = read.FCS(qcFileFull)
+          tmpCount = data.frame(
+            FILE = file,
+            TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
+            QC = "TRUE",
+            PANEL = panel
+          )
+          counts = rbind(counts, tmpCount)
+        }
+        if (panel == "panel1") {
+          metricBase = compP1Frame(
+            frame = frame,
+            file = file,
             gt_lymph = gt_lymph ,
             d = d,
             outputDir = outputDir,
-            gateDir = gateQCDir,
-            qcVersion = TRUE,
+            gateDir = gateDir,
+            qcVersion = FALSE,
             mapper = mapper,
-            inputFCSDir = qcDir,
+            inputFCSDir = inputDir,
             panle1map = panle1mapFile
           )
-        }
-        
-      } else{
-        #panel 2
-        metricBase = compP2Frame(
-          frame = frame,
-          file = file,
-          gt_mono = gt_mono ,
-          d = d,
-          outputDir = outputDir,
-          gateDir = gateDir,
-          qcVersion = FALSE,
-          mapper = mapper,
-          inputFCSDir = inputDir,
-          panle2map = panle2mapFile
-        )
-        # print(metricBase)
-        if (runFlowAI) {
-          metricBaseQC = compP2Frame(
-            frame = frame.c,
-            file = qcFile,
+          if (runFlowAI) {
+            metricBaseQC = compP1Frame(
+              frame = frame.c,
+              file = qcFile,
+              gt_lymph = gt_lymph ,
+              d = d,
+              outputDir = outputDir,
+              gateDir = gateQCDir,
+              qcVersion = TRUE,
+              mapper = mapper,
+              inputFCSDir = qcDir,
+              panle1map = panle1mapFile
+            )
+          }
+          
+        } else{
+          #panel 2
+          metricBase = compP2Frame(
+            frame = frame,
+            file = file,
             gt_mono = gt_mono ,
             d = d,
             outputDir = outputDir,
-            gateDir = gateQCDir,
-            qcVersion = TRUE,
+            gateDir = gateDir,
+            qcVersion = FALSE,
             mapper = mapper,
-            inputFCSDir = qcDir,
-            panle2map  = panle2mapFile
+            inputFCSDir = inputDir,
+            panle2map = panle2mapFile
           )
+          # print(metricBase)
+          if (runFlowAI) {
+            metricBaseQC = compP2Frame(
+              frame = frame.c,
+              file = qcFile,
+              gt_mono = gt_mono ,
+              d = d,
+              outputDir = outputDir,
+              gateDir = gateQCDir,
+              qcVersion = TRUE,
+              mapper = mapper,
+              inputFCSDir = qcDir,
+              panle2map  = panle2mapFile
+            )
+          }
         }
-      }
-      metricBase$Panel = panel
-      metricBase$PDF = pdfFile
-      metricBase$FlaggedSample = file %in% fcsFilesAllProbs
-      metrics = rbind(metrics, metricBase)
-      if (runFlowAI) {
-        metricBaseQC$Panel = panel
-        metricBaseQC$PDF = pdfFile
-        metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
-        metrics = rbind(metrics, metricBaseQC)
-      }
+        metricBase$Panel = panel
+        metricBase$PDF = pdfFile
+        metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+        metrics = rbind(metrics, metricBase)
+        if (runFlowAI) {
+          metricBaseQC$Panel = panel
+          metricBaseQC$PDF = pdfFile
+          metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
+          metrics = rbind(metrics, metricBaseQC)
+        }
+        
+      })
       
-    })
+    }
+    dev.off()
     
   }
-  dev.off()
   
+  write.table(
+    d,
+    sep = "\t",
+    quote = FALSE,
+    file = paste(outputDir, "metrics.types.txt", sep = ""),
+    row.names = FALSE
+  )
+  write.table(
+    counts,
+    sep = "\t",
+    quote = FALSE,
+    file = paste(outputDir, "metrics.totalCellCounts.txt", sep = ""),
+    row.names = FALSE
+  )
+  
+  write.table(
+    metrics,
+    sep = "\t",
+    quote = FALSE,
+    file = metricsFile,
+    row.names = FALSE
+  )
+} else{
+  print(paste("metrics file", metricsFile, "exists"))
 }
 
-write.table(
-  d,
-  sep = "\t",
-  quote = FALSE,
-  file = paste(outputDir, "metrics.types.txt", sep = ""),
-  row.names = FALSE
+compute(
+  mets = metricsFile,
+  p1map = panle1mapFile,
+  p2map = panle2mapFile,
+  outputDir = outputDir
 )
-write.table(
-  counts,
-  sep = "\t",
-  quote = FALSE,
-  file = paste(outputDir, "metrics.totalCellCounts.txt", sep = ""),
-  row.names = FALSE
-)
-
-
-
-write.table(
-  metrics,
-  sep = "\t",
-  quote = FALSE,
-  file = metricsFile,
-  row.names = FALSE
-)
-compute(mets = metricsFile,p1map = panle1mapFile,p2map = panle2mapFile,outputDir = outputDir)
 
 
 

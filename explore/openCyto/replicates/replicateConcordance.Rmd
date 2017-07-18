@@ -57,9 +57,6 @@ sum =as.data.frame(table(metsControlsAuto[which(metsControlsAuto$Population=="ly
 colnames(sum) =c("REPLICATE","NUMBER_FCS_FILES")
 kable(sum,format = "markdown")
 
-
-
-
 ```
 
 
