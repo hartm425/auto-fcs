@@ -42,17 +42,18 @@ mets50K = metsLymph[which(metsLymph$Count>50000),]
 ctrlUse =grepl("_Ctl",mets$name)
 metsControls =mets[ctrlUse,]
 metsControls$CTRL_NAME = gsub(".*_Ctl","",metsControls$name)
-metsControls$CTRL_NAME = gsub("_G","G",metsControls$CTRL_NAME)
+metsControls$CTRL_NAME = gsub("^_","",metsControls$CTRL_NAME)
+
 metsControls$CTRL_NAME = gsub("_.*","",metsControls$CTRL_NAME)
 # kable(as.data.frame(table(metsControls$CTRL_NAME)),format = "markdown")
 metsControls$CTRL_NAME = gsub("-","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("DHS","",metsControls$CTRL_NAME)
 metsControls$CTRL_NAME = gsub("newbiolegend","",metsControls$CTRL_NAME)
-metsControls$CTRL_NAME =paste(metsControls$CTRL_NAME ,metsControls$Panel,sep="_" )
+metsControls$CTRL_NAME =paste(metsControls$CTRL_NAME ,metsControls$Panel,"QC",metsControls$QC,sep="_" )
 metsControls$Population =gsub("FITC-A+BV711-A-","BB515-A+BV 711-A-",metsControls$Population,fixed = TRUE)
 metsControls$Population =gsub("FITC-A-BV711-A-","BB515-A-BV 711-A-",metsControls$Population,fixed = TRUE)
 metsControls$Freq_Base=NA
-metsControls$Freq_Base[metsControls$Panel=="panel1"] =metsControls$Freq_Base[metsControls$Panel=="panel1"]
+metsControls$Freq_Base[metsControls$Panel=="panel1"] =metsControls$freq_lymph[metsControls$Panel=="panel1"]
 metsControls$Freq_Base[metsControls$Panel=="panel2"] =metsControls$freq_PBMC[metsControls$Panel=="panel2"]
 
 metsControls$Population  =paste(metsControls$Population ,metsControls$Panel ,sep="_" )
@@ -89,18 +90,20 @@ for(pop in unique(metsControlsAuto$Population)) {
       POP = pop,
       GROUP = group,
       CV_FREQ_PARENT = cv(sub$freqParent,na.rm = TRUE),
-      CV_FREQ_BASE = cv(sub$Freq_Base,na.rm = TRUE)
-
+      CV_FREQ_BASE = cv(sub$Freq_Base,na.rm = TRUE),
+      QC = grepl(pattern = "TRUE",x = group)
+      # ,
+      # PANEL = unique(sub$Panel)
     )
     df = rbind.data.frame(df, tmp)
 
   }
 }
-p <- ggplot(df, aes(x=POP, y=CV_FREQ_PARENT))
-p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group (freq of parent)")+xlab("population")
+p <- ggplot(df, aes(x=POP, y=CV_FREQ_PARENT,color=QC))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV Group (freq parent)")+xlab("population") +facet_grid(QC ~ .)
 
-p <- ggplot(df, aes(x=POP, y=CV_FREQ_BASE))
-p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV of Group (freq of lymph/pbmc)")+xlab("population")
+p <- ggplot(df, aes(x=POP, y=CV_FREQ_BASE,color=QC))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV Group (freq lymph/pbmc)")+xlab("population")+facet_grid(QC ~ .)
 
 ```
 
@@ -112,6 +115,9 @@ df$GROUP_MAD_CV = df$CV_FREQ_PARENT
 
 meds= aggregate(GROUP_MEDIAN_CV ~ GROUP, df, FUN =median,na.action = na.omit)
 mads= aggregate(GROUP_MAD_CV ~ GROUP, df, FUN =mad,na.action = na.omit)
+
+p <- ggplot(df, aes(x=POP, y=CV_FREQ_PARENT,color=QC))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV Group (freq parent)")+xlab("population") +facet_grid(QC ~ .)
 
 kable(merge(meds,mads,by.x = "GROUP",by.y = "GROUP"),format = "markdown")
 
