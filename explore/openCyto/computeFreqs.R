@@ -9,7 +9,8 @@
 
 
 
-# 
+
+#
 # mets =  "/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.txt"
 # p1map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 # p2map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
@@ -22,7 +23,7 @@ computFreqs <- function(metsD, map, panel, basePop, QC) {
       (metsD$Population %in% map$Auto |
          metsD$Parent == "root") & metsD$METRIC == "count"
     & metsD$Panel == panel
-  ), ]
+  ),]
   metsAuto = merge(metsAuto,
                    map,
                    by.x = "Population",
@@ -34,28 +35,30 @@ computFreqs <- function(metsD, map, panel, basePop, QC) {
   
   num = 0
   for (sample in unique(metsAuto$name)) {
-    current = metsAuto[which(metsAuto$name == sample), ]
+    current = metsAuto[which(metsAuto$name == sample),]
     num = num + 1
-    # print(paste(sample, num))
+    print(paste(sample, num))
     for (pop in unique(map$Auto)) {
       # print(pop)
       # print(paste(pop, sample, num))
-      row = paste(pop, sample, sep = "_")
-      sub = current[which(current$Population == pop &
-                            current$name == sample), ]
-      realParentCount = current[which(current$Population == sub$RealAutoParent &
-                                        current$name == sample), ]$Count
-      baseCount = current[which(current$Population == basePop &
-                                  current$name == sample), ]$Count
-      metsAuto[row, paste("freq_", basePop, sep = "")] = sub$Count / baseCount
-      
-      if (sub$RealAutoParent != "root") {
-        metsAuto[row, "freqParent"] = sub$Count / realParentCount
-      } else{
-        realParentCount = current[which(current$Parent == sub$RealAutoParent &
-                                          current$name == sample), ]$ParentCount
-        metsAuto[row, "freqParent"] = sub$Count / realParentCount
+      if (pop %in% current$Population) { 
+        row = paste(pop, sample, sep = "_")
+        sub = current[which(current$Population == pop &
+                              current$name == sample),]
+        realParentCount = current[which(current$Population == sub$RealAutoParent &
+                                          current$name == sample),]$Count
+        baseCount = current[which(current$Population == basePop &
+                                    current$name == sample),]$Count
+        metsAuto[row, paste("freq_", basePop, sep = "")] = sub$Count / baseCount
         
+        if (sub$RealAutoParent != "root") {
+          metsAuto[row, "freqParent"] = sub$Count / realParentCount
+        } else{
+          realParentCount = current[which(current$Parent == sub$RealAutoParent &
+                                            current$name == sample),]$ParentCount
+          metsAuto[row, "freqParent"] = sub$Count / realParentCount
+          
+        }
       }
     }
   }
@@ -79,7 +82,7 @@ compute <- function(mets, p1map, p2map, outputDir) {
   for (panel in panels) {
     basePop = basePops[panelNum]
     for (q in QC) {
-      print(paste(panel,"QC",q))
+      print(paste(panel, "QC", q))
       if (panel == "panel1") {
         tmp = computFreqs(
           metsD = metsD,
@@ -114,6 +117,6 @@ compute <- function(mets, p1map, p2map, outputDir) {
 }
 
 # #
-# compute(mets = mets ,
-#         p1map = p1map,
-#         p2map = p2map,outputDir = outputDir)
+compute(mets = mets ,
+        p1map = p1map,
+        p2map = p2map,outputDir = outputDir)

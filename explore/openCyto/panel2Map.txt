@@ -10,6 +10,8 @@ CD20-	D_NK_M	DC NK (CD20- CD14-)
 Dendritic	CD20-	DC (HLA-DR+)
 BB515-A+BV 711-A-	Dendritic	Myeloid DC (CD11c+ CD123-)
 BB515-A-BV 711-A-	Dendritic	Plasmacytoid DC (CD11c- CD123+)
+FITC-A+BV711-A-	Dendritic	Myeloid DC (CD11c+ CD123-)
+FITC-A-BV711-A-	Dendritic	Plasmacytoid DC (CD11c- CD123+)
 CD20-/CD16+	D_NK_M	NK (CD16+)
 CD16+CD56+	CD20-/CD16+	NK CD56LO
 CD56PlusPlus	CD20-/CD16+	NK CD56HI
