@@ -10,13 +10,12 @@ output:
 TODO 
 
 - manual
-- automatic
-  - with/without QC
+- automatic X
+  - with/without QC X 
   
-1. CV of reps
-2. ICC
-3. min diff
-4. max diff
+1. CV of reps X
+2. ICC ?
+
   
 ```{r setup,eval=FALSE, include=FALSE}
 mets =   read.delim("/Volumes/Beta/data/flow/concordance/results_r6/freq.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
@@ -64,13 +63,13 @@ metsControlsAuto =metsControls
 # kable(as.data.frame(table(metsControlsAuto$CTRL_NAME)),format = "markdown")
 sum =as.data.frame(table(metsControlsAuto[which(metsControlsAuto$Parent=="root"),]$CTRL_NAME))
 colnames(sum) =c("REPLICATE","NUMBER_FCS_FILES")
-kable(sum,format = "markdown")
+# kable(sum,format = "markdown")
 
 ```
 
 
-Prop of  files with lymph counts > 50K  = `r length(mets50K$name)/length(metsLymph$name)`
-Prop of  files with lymph counts < 50K  = `r 1-(length(mets50K$name)/length(metsLymph$name))`
+<!-- Prop of  files with lymph counts > 50K  = `r length(mets50K$name)/length(metsLymph$name)` -->
+<!-- Prop of  files with lymph counts < 50K  = `r 1-(length(mets50K$name)/length(metsLymph$name))` -->
 
 Total number of Control fcs files (currently) = `r length(unique(metsControls$name))`
 
@@ -85,18 +84,19 @@ for(pop in unique(metsControlsAuto$Population)) {
   for (group in unique(metsControlsAuto$CTRL_NAME)) {
     sub = metsControlsAuto[which(metsControlsAuto$Population == pop &
                               metsControlsAuto$CTRL_NAME == group),]
-    # print(paste(pop,group,))
-    #     print(paste(pop,group,cv(sub$Count,na.rm = TRUE)))
-    tmp = data.frame(
+    if (length(sub$name) > 0) {
+      # print(paste(pop,group,))
+      #     print(paste(pop,group,cv(sub$Count,na.rm = TRUE)))
+      tmp = data.frame(
       POP = pop,
       GROUP = group,
-      CV_FREQ_PARENT = cv(sub$freqParent,na.rm = TRUE),
-      CV_FREQ_BASE = cv(sub$Freq_Base,na.rm = TRUE),
-      QC = grepl(pattern = "TRUE",x = group)
-      # ,
-      # PANEL = unique(sub$Panel)
-    )
-    df = rbind.data.frame(df, tmp)
+      CV_FREQ_PARENT = cv(sub$freqParent, na.rm = TRUE),
+      CV_FREQ_BASE = cv(sub$Freq_Base, na.rm = TRUE),
+      QC = grepl(pattern = "TRUE", x = group),
+      PANEL = unique(sub$Panel)[1]
+      )
+      df = rbind.data.frame(df, tmp)
+    }
 
   }
 }
@@ -114,13 +114,14 @@ Percent of parent CV summary
 df$GROUP_MEDIAN_CV = df$CV_FREQ_PARENT
 df$GROUP_MAD_CV = df$CV_FREQ_PARENT
 
-meds= aggregate(GROUP_MEDIAN_CV ~ GROUP, df, FUN =median,na.action = na.omit)
-mads= aggregate(GROUP_MAD_CV ~ GROUP, df, FUN =mad,na.action = na.omit)
+df$PANEL_QC = paste(df$PANEL,"QC",df$QC)
+p <- ggplot(df, aes(x=PANEL_QC, y=CV_FREQ_PARENT,color=PANEL_QC))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV Group (freq parent)")+xlab("population") 
 
-p <- ggplot(df, aes(x=POP, y=CV_FREQ_PARENT,color=QC))
-p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV Group (freq parent)")+xlab("population") +facet_grid(QC ~ .)
+meds= aggregate(GROUP_MEDIAN_CV ~ PANEL_QC, df, FUN =median,na.action = na.omit)
+mads= aggregate(GROUP_MAD_CV ~ PANEL_QC, df, FUN =mad,na.action = na.omit)
 
-kable(merge(meds,mads,by.x = "GROUP",by.y = "GROUP"),format = "markdown")
+kable(merge(meds,mads,by.x = "PANEL_QC",by.y = "PANEL_QC"),format = "markdown")
 
 ```
 
@@ -131,21 +132,13 @@ Percent of base population (lymph/PBMC) CV summary
 df$GROUP_MEDIAN_CV = df$CV_FREQ_BASE
 df$GROUP_MAD_CV = df$CV_FREQ_BASE
 
-meds= aggregate(GROUP_MEDIAN_CV ~ GROUP, df, FUN =median,na.action = na.omit)
-mads= aggregate(GROUP_MAD_CV ~ GROUP, df, FUN =mad,na.action = na.omit)
+meds= aggregate(GROUP_MEDIAN_CV ~ PANEL_QC, df, FUN =median,na.action = na.omit)
+mads= aggregate(GROUP_MAD_CV ~ PANEL_QC, df, FUN =mad,na.action = na.omit)
 
-kable(merge(meds,mads,by.x = "GROUP",by.y = "GROUP"),format = "markdown")
+p <- ggplot(df, aes(x=PANEL_QC, y=CV_FREQ_BASE,color=PANEL_QC))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("CV Group (freq lymph/pbmc)")
 
-for (group in unique(metsControlsAuto$CTRL_NAME)) {
-  sub = metsControlsAuto[which(
-  metsControlsAuto$CTRL_NAME == group), ]
-  p <- ggplot(sub, aes(x = Population, y = 100*freqParent))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
-  1)) + ylab("% of parent") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
-  print(p)
-  p <- ggplot(sub, aes(x = Population, y = 100*Freq_Base))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
-  1)) + ylab("% of base pop (lymph/pbmc)") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
-  print(p)
-}
+kable(merge(meds,mads,by.x = "PANEL_QC",by.y = "PANEL_QC"),format = "markdown")
 
 
 ```
@@ -223,5 +216,21 @@ for (panel in unique(metsControlsAuto$Panel)) {
 
 
 # kable(clusterCut,format = "markdown")
+
+```
+
+```{r eval=TRUE, echo=FALSE,fig.width=10,fig.height=8,warning=FALSE}
+
+for (group in unique(metsControlsAuto$CTRL_NAME)) {
+  sub = metsControlsAuto[which(
+  metsControlsAuto$CTRL_NAME == group), ]
+  p <- ggplot(sub, aes(x = Population, y = 100*freqParent))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
+  1)) + ylab("% of parent") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
+  print(p)
+  p <- ggplot(sub, aes(x = Population, y = 100*Freq_Base))+ geom_boxplot() + theme(axis.text.x = element_text(angle = 90, hjust =
+  1)) + ylab("% of base pop (lymph/pbmc)") + xlab("population") + ggtitle(paste("Ctl",group,"n =",length(unique(sub$name))))
+  print(p)
+}
+
 
 ```
