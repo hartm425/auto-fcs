@@ -28,6 +28,7 @@ panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
 
 setwd(dirname(panle1mapFile))
 source(file = "CombineWSP.R")
+source(file = "computeFreqs.R")
 
 runFlowAI = TRUE
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
@@ -615,13 +616,6 @@ for (files in fcsFilesAll) {
 }
 
 write.table(
-  metrics,
-  sep = "\t",
-  quote = FALSE,
-  file = paste(outputDir, "metrics.txt", sep = ""),
-  row.names = FALSE
-)
-write.table(
   d,
   sep = "\t",
   quote = FALSE,
@@ -635,6 +629,18 @@ write.table(
   file = paste(outputDir, "metrics.totalCellCounts.txt", sep = ""),
   row.names = FALSE
 )
+
+
+
+write.table(
+  metrics,
+  sep = "\t",
+  quote = FALSE,
+  file = metricsFile,
+  row.names = FALSE
+)
+compute(mets = metricsFile,p1map = panle1mapFile,p2map = panle2mapFile,outputDir = outputDir)
+
 
 
 # combineWSP(outputDir =outputDir,gateDir = gateDir,inputFCSDir = inputDir,panle1map = panle1mapFile)

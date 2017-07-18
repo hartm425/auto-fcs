@@ -8,10 +8,12 @@
 
 
 
-mets =  "/Volumes/Beta/data/flow/concordance/all.metrics.txt"
+
+
+mets =  "/Volumes/Beta/data/flow/concordance/results_r6/all.metrics.txt"
 p1map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 p2map = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
-outputDir = "/Volumes/Beta/data/flow/concordance/"
+outputDir = "/Volumes/Beta/data/flow/concordance/results_r6/"
 
 computFreqs <- function(metsD, map, panel, basePop, QC) {
   metsAuto = metsD[which(
@@ -66,54 +68,51 @@ compute <- function(mets, p1map, p2map, outputDir) {
   p2mapD = read.delim(p2map, stringsAsFactors = FALSE, sep = "\t")
   
   
-  panel = "panel1"
-  basePop = "lymph"
-  QC = "FALSE"
+  panels = c("panel1", "panel2")
+  basePops = c("lymph", "PBMC")
+  QC = c("FALSE", "TRUE")
   
+  fullMets = data.frame()
+  outfile = paste(outputDir, "freq.metrics.txt", sep = "")
   
-  p1Mets = computFreqs(
-    metsD = metsD,
-    map = p1mapD,
-    panel = panel,
-    basePop = basePop,
-    QC = QC
-  )
+  panelNum = 1
+  for (panel in panels) {
+    basePop = basePops[panelNum]
+    for (q in QC) {
+      print(paste(panel,"QC",q))
+      if (panel == "panel1") {
+        tmp = computFreqs(
+          metsD = metsD,
+          map = p1mapD,
+          panel = panel,
+          basePop = basePop,
+          QC = q
+        )
+        fullMets = rbind(fullMets, tmp)
+        
+      } else{
+        tmp = computFreqs(
+          metsD = metsD,
+          map = p2mapD,
+          panel = panel,
+          basePop = basePop,
+          QC = q
+        )
+        fullMets = rbind(fullMets, tmp)
+      }
+    }
+    panelNum = panelNum + 1
+  }
   
-  outfile = paste(outputDir, panel, "_qc_", QC, ".metrics.txt", sep = "")
   write.table(
-    p1Mets,
+    fullMets,
     sep = "\t",
     quote = FALSE,
     file = outfile,
     row.names = FALSE
   )
-  
-  
-  
-  panel = "panel2"
-  basePop = "PBMC"
-  QC = "FALSE"
-  
-  
-  p2Mets = computFreqs(
-    metsD = metsD,
-    map = p1mapD,
-    panel = panel,
-    basePop = basePop,
-    QC = QC
-  )
-  
-  outfile = paste(outputDir, panel, "_qc_", QC, ".metrics.txt", sep = "")
-  write.table(
-    p2Mets,
-    sep = "\t",
-    quote = FALSE,
-    file = outfile,
-    row.names = FALSE
-  )
-  
 }
-# 
-# compute(mets = mets ,
-#         p1map = p1map,
-#         p2map = p2map)
+#
+compute(mets = mets ,
+        p1map = p1map,
+        p2map = p2map,outputDir = outputDir)
