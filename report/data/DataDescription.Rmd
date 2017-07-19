@@ -1,0 +1,82 @@
+---
+title: "OpenCyto"
+author: "JL"
+date: "7/19/2017"
+output: html_document
+---
+
+Almost Documentation ? 
+
+```{r pressure, echo=FALSE}
+library(readr)
+batch <- read_file("~/git/auto-fcs/explore/openCyto/msiScripts/runGateMSI")
+assemble <- read_file("~/git/auto-fcs/explore/openCyto/msiScripts/collectResultsMSI")
+
+
+```
+
+## Running OpenCyto
+
+1. Set up batches with genvisis
+
+```bash
+`r batch`
+```
+  - Result directories will be created in `$OUTDIR` that correspond to each batch
+    - e.g `$OUTDIR/openCytoBatch_0/` ,`$OUTDIR/openCytoBatch_1/`, etc
+2. Submit all .pbs scripts in `$OUTDIR`
+    - e.g `qp *.pbs`
+    
+## OpenCyto results
+
+Each batch output directory (as an example, `$OUTDIR/openCytoBatch_0/`) should contain the following:
+
+- `gates/`: **directory containing .wsp files for each successfully gated sample**
+    - each sample will have 2 .wsp files, `sampleName_panelX.wsp`, and `sampleName_panelXRename.wsp`
+        - `sampleName_panelXRename.wsp` contains gates named according to the manual hierarchy
+- `gatesQC/`: **directory containing .wsp files for each successfully gated sample, after QC processing**
+     - also will have 2 .wsp files per sample, `sampleName_panelX.wsp`, and `sampleName_panelXRename.wsp`
+
+- `fcsQC/`: **directory containing .fcs files representing HQ events, currently according to FlowAI**
+     - in order to reproduce the counts listed in gatesQC .wsp files, these files should be used
+
+- `gate_plotsXX.pdf`: **Plots of each OpenCyto gate**
+
+```{r headers, echo=FALSE}
+library(knitr)
+total = data.frame(HEADER = c("FILE","TOTAL_COUNTS","QC","PANEL"))
+
+```
+
+- `metrics.totalCellCounts.txt`: **File containing total cell counts for all samples**
+    - **FILE** : fcs file
+    - **TOTAL_COUNTS**: total number of events in the fcs file
+    - **QC** : whether QC was performed prior to counting
+    - **PANEL** :  panel analyzed
+    
+- `metrics.txt`: **Gate metrics for each succesfully gated sample**
+    - **name**         : fcs file
+    - **Population**   : Cell population
+    - **Parent**       : Parent population
+    - **Count**        : Event count for  population
+    - **ParentCount**  : Event count for parent population
+    - **METRIC**       : should be always counts
+    - **GATE**         : Whether we are currently reporting automatic (openCyto) or manual gating results
+    - **QC**           : Whether QC was applied prior to gating
+    - **Panel**           : panel1 or panel2
+    - **PDF**           : name of the pdf containing plots for this sample
+    - **FlaggedSample**           : placeholder to flag problematic samples for review
+- `freq.metrics.txt`: **Similar to `metrics.txt`, but with additional info**
+      - **RealAutoParent** : when the `Parent` gate is actually an intermediate step, this lists the actual parent population
+      - **Manual**   : Gate name in manual nomenclature
+      - **Merge**   : Data key of **population_sample**
+      - **freq_lymph**   : for panel1 samples, the frequency of the population relative to lymphocytes, and `NA` for panel2 samples
+      - **freqParent**   : for panel1 and panel2 samples, the frequency of the population relative to the `RealAutoParent` population
+      - **freq_PBMC**   : for panel2 samples, the frequency of the population relative to PBMCs, and `NA` for panel1 samples
+      
+      
+To assemble results files from each batch, run the following from within `$OUTDIR`:
+
+```bash
+`r assemble`
+```
