@@ -131,7 +131,7 @@ compP1Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -328,7 +328,7 @@ compP2Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -546,6 +546,10 @@ if (!file.exists(metricsFile)) {
             inputFCSDir = inputDir,
             panle1map = panle1mapFile
           )
+          metricBase$Panel = panel
+          metricBase$PDF = pdfFile
+          metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+          metrics = rbind(metrics, metricBase)
         } else if (panel == "panel2") {
           #panel 2
           metricBase = compP2Frame(
@@ -560,11 +564,12 @@ if (!file.exists(metricsFile)) {
             inputFCSDir = inputDir,
             panle2map = panle2mapFile
           )
+          metricBase$Panel = panel
+          metricBase$PDF = pdfFile
+          metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+          metrics = rbind(metrics, metricBase)
         }
-        metricBase$Panel = panel
-        metricBase$PDF = pdfFile
-        metricBase$FlaggedSample = file %in% fcsFilesAllProbs
-        metrics = rbind(metrics, metricBase)
+       
       })
       if (runFlowAI) {
         qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
@@ -576,7 +581,7 @@ if (!file.exists(metricsFile)) {
           flow_auto_qc(
             frame,
             folder_results = "",
-            mini_report = paste(basename(file), "mini", sep =),
+            mini_report = paste(basename(file), "mini", sep = ),
             fcs_QC = FALSE,
             pen_valueFS = 50,
             remove_from = "FR_FM",
@@ -594,7 +599,6 @@ if (!file.exists(metricsFile)) {
         counts = rbind(counts, tmpCount)
         
         try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
-          metricBaseQC = data.frame()
           if (panel == "panel1") {
             metricBaseQC = compP1Frame(
               frame = frame.c,
@@ -608,6 +612,10 @@ if (!file.exists(metricsFile)) {
               inputFCSDir = qcDir,
               panle1map = panle1mapFile
             )
+            metricBaseQC$Panel = panel
+            metricBaseQC$PDF = pdfFile
+            metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
+            metrics = rbind(metrics, metricBaseQC)
             
           } else if (panel == "panel2") {
             #panel 2
@@ -624,12 +632,13 @@ if (!file.exists(metricsFile)) {
               inputFCSDir = qcDir,
               panle2map  = panle2mapFile
             )
+            metricBaseQC$Panel = panel
+            metricBaseQC$PDF = pdfFile
+            metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
+            metrics = rbind(metrics, metricBaseQC)
             
           }
-          metricBaseQC$Panel = panel
-          metricBaseQC$PDF = pdfFile
-          metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
-          metrics = rbind(metrics, metricBaseQC)
+
         })
       }
       
