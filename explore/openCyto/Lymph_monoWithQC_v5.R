@@ -131,7 +131,7 @@ compP1Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file),]$WSP
+      wsFile = mapper[which(mapper$FCS == file), ]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -275,10 +275,10 @@ compP1Frame <-
             basename(file),
             "_panel1Rename.wsp",
             sep = "")
-   
-     for (hideNode in panel1NodesToHide) {
+    
+    for (hideNode in panel1NodesToHide) {
       setNode(gs1, hideNode, FALSE)
-     }
+    }
     
     renameNodes(gs1,
                 read.delim(panle1map, stringsAsFactors = FALSE, sep = "\t"))
@@ -328,7 +328,7 @@ compP2Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file),]$WSP
+      wsFile = mapper[which(mapper$FCS == file), ]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -467,7 +467,7 @@ compP2Frame <-
             "_panel2Rename.wsp",
             sep = "")
     
-
+    
     renameNodes(gs1,
                 read.delim(panle2map, stringsAsFactors = FALSE, sep = "\t"))
     GatingSet2flowJo(gs1, outFileRename)
@@ -529,6 +529,39 @@ if (!file.exists(metricsFile)) {
         description(frame)$FILENAME = file
         #
         
+        metricBase =data.frame()
+        if (panel == "panel1") {
+          metricBase = compP1Frame(
+            frame = frame,
+            file = file,
+            gt_lymph = gt_lymph ,
+            d = d,
+            outputDir = outputDir,
+            gateDir = gateDir,
+            qcVersion = FALSE,
+            mapper = mapper,
+            inputFCSDir = inputDir,
+            panle1map = panle1mapFile
+          )
+        } else{
+          #panel 2
+          metricBase = compP2Frame(
+            frame = frame,
+            file = file,
+            gt_mono = gt_mono ,
+            d = d,
+            outputDir = outputDir,
+            gateDir = gateDir,
+            qcVersion = FALSE,
+            mapper = mapper,
+            inputFCSDir = inputDir,
+            panle2map = panle2mapFile
+          )
+        }
+        metricBase$Panel = panel
+        metricBase$PDF = pdfFile
+        metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+        metrics = rbind(metrics, metricBase)
         if (runFlowAI) {
           qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
           qcDir = paste(outputDir, "fcsQC/", sep = "")
@@ -539,7 +572,7 @@ if (!file.exists(metricsFile)) {
             flow_auto_qc(
               frame,
               folder_results = "",
-              mini_report = paste(basename(file), "mini", sep = ),
+              mini_report = paste(basename(file), "mini", sep =),
               fcs_QC = FALSE,
               pen_valueFS = 50,
               remove_from = "FR_FM",
@@ -555,74 +588,45 @@ if (!file.exists(metricsFile)) {
             PANEL = panel
           )
           counts = rbind(counts, tmpCount)
-        }
-        if (panel == "panel1") {
-          metricBase = compP1Frame(
-            frame = frame,
-            file = file,
-            gt_lymph = gt_lymph ,
-            d = d,
-            outputDir = outputDir,
-            gateDir = gateDir,
-            qcVersion = FALSE,
-            mapper = mapper,
-            inputFCSDir = inputDir,
-            panle1map = panle1mapFile
-          )
-          if (runFlowAI) {
-            metricBaseQC = compP1Frame(
-              frame = frame.c,
-              file = qcFile,
-              gt_lymph = gt_lymph ,
-              d = d,
-              outputDir = outputDir,
-              gateDir = gateQCDir,
-              qcVersion = TRUE,
-              mapper = mapper,
-              inputFCSDir = qcDir,
-              panle1map = panle1mapFile
-            )
-          }
           
-        } else{
-          #panel 2
-          metricBase = compP2Frame(
-            frame = frame,
-            file = file,
-            gt_mono = gt_mono ,
-            d = d,
-            outputDir = outputDir,
-            gateDir = gateDir,
-            qcVersion = FALSE,
-            mapper = mapper,
-            inputFCSDir = inputDir,
-            panle2map = panle2mapFile
-          )
-          # print(metricBase)
-          if (runFlowAI) {
-            metricBaseQC = compP2Frame(
-              frame = frame.c,
-              file = qcFile,
-              gt_mono = gt_mono ,
-              d = d,
-              outputDir = outputDir,
-              gateDir = gateQCDir,
-              qcVersion = TRUE,
-              mapper = mapper,
-              inputFCSDir = qcDir,
-              panle2map  = panle2mapFile
-            )
-          }
-        }
-        metricBase$Panel = panel
-        metricBase$PDF = pdfFile
-        metricBase$FlaggedSample = file %in% fcsFilesAllProbs
-        metrics = rbind(metrics, metricBase)
-        if (runFlowAI) {
-          metricBaseQC$Panel = panel
-          metricBaseQC$PDF = pdfFile
-          metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
-          metrics = rbind(metrics, metricBaseQC)
+          try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
+            metricBaseQC =data.frame()
+            if (panel == "panel1") {
+              metricBaseQC = compP1Frame(
+                frame = frame.c,
+                file = qcFile,
+                gt_lymph = gt_lymph ,
+                d = d,
+                outputDir = outputDir,
+                gateDir = gateQCDir,
+                qcVersion = TRUE,
+                mapper = mapper,
+                inputFCSDir = qcDir,
+                panle1map = panle1mapFile
+              )
+              
+            } else{
+              #panel 2
+              # print(metricBase)
+              metricBaseQC = compP2Frame(
+                frame = frame.c,
+                file = qcFile,
+                gt_mono = gt_mono ,
+                d = d,
+                outputDir = outputDir,
+                gateDir = gateQCDir,
+                qcVersion = TRUE,
+                mapper = mapper,
+                inputFCSDir = qcDir,
+                panle2map  = panle2mapFile
+              )
+              
+            }
+            metricBaseQC$Panel = panel
+            metricBaseQC$PDF = pdfFile
+            metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
+            metrics = rbind(metrics, metricBaseQC)
+          })
         }
         
       })
