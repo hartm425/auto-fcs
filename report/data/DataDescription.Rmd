@@ -26,6 +26,7 @@ assemble <- read_file("~/git/auto-fcs/explore/openCyto/msiScripts/collectResults
     - e.g `$OUTDIR/openCytoBatch_0/` ,`$OUTDIR/openCytoBatch_1/`, etc
 2. Submit all .pbs scripts in `$OUTDIR`
     - e.g `qp *.pbs`
+    - Current runtime on for 16 batches on 2 pankrat q nodes is ~7hrs without QC, 37hrs with QC
     
 ## OpenCyto results
 
