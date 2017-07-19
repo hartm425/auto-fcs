@@ -33,7 +33,7 @@ qcMetrics$Name.file =paste(qcMetrics$Name.file,".fcs",sep = "")
 load("/Volumes/Beta/data/flow/checkFails/all.metrics.Rdata")
 load("/Volumes/Beta/data/flow/checkFails/all.totalCellCounts.metrics.Rdata")
 counts = counts[which(counts$PANEL=="panel1"&counts$QC=="FALSE"),]
-# counts = merge(counts,qcMetrics,by.x = "FILE",by.y ="Name.file" )
+counts = merge(counts,qcMetrics,by.x = "FILE",by.y ="Name.file" )
 complete = counts$FILE %in% mets$name
 counts$SUCCESSFUL_GATING =complete 
 counts$LOG_TOTAL_COUNT = log10(counts$TOTAL_COUNTS)
@@ -106,12 +106,32 @@ ggplot(countsLT10, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
 ### SUCCESSFUL_GATING QC comparison
 
 
-
+ All event counts
 ```{r echo=FALSE,fig.width=10}
-ggplot(counts, aes(LOG_TOTAL_COUNT,colour = SUCCESSFUL_GATING)) +
-  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Log10 total cell count") +facet_wrap(FORTESSA~SUCCESSFUL_GATING)
+p <- ggplot(counts, aes(x=SUCCESSFUL_GATING, y=X..anomalies.flow.Rate,color=SUCCESSFUL_GATING))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("percent anomalies.flow.Rate")+xlab("success")
+p <- ggplot(counts, aes(x=SUCCESSFUL_GATING, y=X..anomalies.Signal,color=SUCCESSFUL_GATING))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("percent anomalies.Signal")+xlab("success")
+p <- ggplot(counts, aes(x=SUCCESSFUL_GATING, y=X..anomalies.Margins,color=SUCCESSFUL_GATING))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("percent anomalies.Margins")+xlab("success")
+
+
 
 ```
+
+
+
+Event counts >100k
+```{r echo=FALSE,fig.width=10}
+p <- ggplot(counts[which(counts$TOTAL_COUNTS>100000),], aes(x=SUCCESSFUL_GATING, y=X..anomalies.flow.Rate,color=SUCCESSFUL_GATING))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("percent anomalies.flow.Rate")+xlab("success")
+p <- ggplot(counts[which(counts$TOTAL_COUNTS>100000),], aes(x=SUCCESSFUL_GATING, y=X..anomalies.Signal,color=SUCCESSFUL_GATING))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("percent anomalies.Signal")+xlab("success")
+p <- ggplot(counts[which(counts$TOTAL_COUNTS>100000),], aes(x=SUCCESSFUL_GATING, y=X..anomalies.Margins,color=SUCCESSFUL_GATING))
+p + geom_boxplot() +theme(axis.text.x=element_text(angle=90,hjust=1)) +ylab("percent anomalies.Margins")+xlab("success")
+
+```
+
 
 
 ### SUCCESSFUL_GATING NOTES
