@@ -167,7 +167,7 @@ cd $OUTDIR
 </ul></li>
 <li><code>fcsQC/</code>: <strong>directory containing .fcs files representing HQ events and QC summaries, currently according to FlowAI</strong>
 <ul>
-<li><strong>sampleName.fcs</strong> : in order to reproduce the counts listed in gatesQC .wsp files, the fcs files should be used</li>
+<li><strong>sampleName.fcs</strong> : in order to reproduce the counts listed in the gatesQC .wsp files, these fcs files should be used</li>
 <li><strong>sampleName.fcs mini.txt</strong> : basic QC report</li>
 <li><strong>sampleName_QC.html</strong> : html QC report with diagnostic plots</li>
 </ul></li>
@@ -204,16 +204,20 @@ cd $OUTDIR
 </ul></li>
 </ul>
 <p>To assemble results files from each batch, run the following from within <code>$OUTDIR</code>:</p>
-<pre class="bash"><code>
+<pre class="bash"><code>#!/usr/bin/env bash
+
+# metrics collect
 head -n 1 ./openCytoBatch_10/metrics.txt &gt;all.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.txt |grep -v &quot;==&gt;&quot;&gt;&gt;all.metrics.txt
 
-
+# total counts collect
 head -n 1 ./openCytoBatch_10/metrics.totalCellCounts.txt &gt;all.totalCellCounts.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.totalCellCounts.txt |grep -v &quot;==&gt;&quot;&gt;&gt;all.totalCellCounts.metrics.txt
 
-head -n 1 ./openCytoBatch_10/freq.metrics.txt &gt;all.freq.metrics.txt
-tail -n+2 ./openCytoBatch_*/freq.metrics.txt |grep -v &quot;==&gt;&quot;&gt;&gt;all.freq.metrics.txt</code></pre>
+# QC metrics collect
+cat ./*/fcsQC/*mini.txt &gt;all.mini.qc.tmp.txt
+head -n 1 all.mini.qc.tmp.txt &gt;all.mini.qc.txt
+tail -n+2 all.mini.qc.tmp.txt |grep -v &quot;Name file&quot;&gt;&gt;all.mini.qc.txt</code></pre>
 </div>
 
 

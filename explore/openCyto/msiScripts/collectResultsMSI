@@ -1,10 +1,14 @@
+#!/usr/bin/env bash
 
+# metrics collect
 head -n 1 ./openCytoBatch_10/metrics.txt >all.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.txt |grep -v "==>">>all.metrics.txt
 
-
+# total counts collect
 head -n 1 ./openCytoBatch_10/metrics.totalCellCounts.txt >all.totalCellCounts.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.totalCellCounts.txt |grep -v "==>">>all.totalCellCounts.metrics.txt
 
-head -n 1 ./openCytoBatch_10/freq.metrics.txt >all.freq.metrics.txt
-tail -n+2 ./openCytoBatch_*/freq.metrics.txt |grep -v "==>">>all.freq.metrics.txt
+# QC metrics collect
+cat ./*/fcsQC/*mini.txt >all.mini.qc.tmp.txt
+head -n 1 all.mini.qc.tmp.txt >all.mini.qc.txt
+tail -n+2 all.mini.qc.tmp.txt |grep -v "Name file">>all.mini.qc.txt

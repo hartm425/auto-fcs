@@ -113,4 +113,16 @@ kable(tm[order(-tm$PERCENT_FAIL_BY_BATCH),],format = "markdown")
 table(counts$SUCCESSFUL_GATING)
 
 kable(fails[order(-fails$TOTAL_COUNTS),],format = "markdown")
+
+tmFail = fails[which(fails$PROCESS_DATE=="2017-01-09_ NOT_FORTESSA"),]
+
+for(file in tmFail$FILE){
+  dir ="/Volumes/Beta/data/flow/checkFails/badBatch/"
+  qcFile = paste(dir,gsub(".fcs","",file,fixed = TRUE),"_QC.html",sep="")
+  qcFailFile = paste(dir,"fails/",gsub(".fcs","",file,fixed = TRUE),"_QC.html",sep="")
+
+  file.copy(qcFile,qcFailFile)
+  
+}
+
 ```

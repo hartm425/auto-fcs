@@ -36,7 +36,7 @@ Each batch output directory (as an example, `$OUTDIR/openCytoBatch_0/`) should c
      - also will have 2 .wsp files per sample, `sampleName_panelX.wsp`, and `sampleName_panelXRename.wsp`
 
 - `fcsQC/`: **directory containing .fcs files representing HQ events and QC summaries, currently according to FlowAI**
-     - **sampleName.fcs** : in order to reproduce the counts listed in gatesQC .wsp files, the fcs files should be used 
+     - **sampleName.fcs** : in order to reproduce the counts listed in the gatesQC .wsp files, these fcs files should be used 
      - **sampleName.fcs mini.txt** : basic QC report
      - **sampleName_QC.html** : html QC report with diagnostic plots
 
@@ -75,14 +75,18 @@ Each batch output directory (as an example, `$OUTDIR/openCytoBatch_0/`) should c
 To assemble results files from each batch, run the following from within `$OUTDIR`:
 
 ```bash
+#!/usr/bin/env bash
 
+# metrics collect
 head -n 1 ./openCytoBatch_10/metrics.txt >all.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.txt |grep -v "==>">>all.metrics.txt
 
-
+# total counts collect
 head -n 1 ./openCytoBatch_10/metrics.totalCellCounts.txt >all.totalCellCounts.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.totalCellCounts.txt |grep -v "==>">>all.totalCellCounts.metrics.txt
 
-head -n 1 ./openCytoBatch_10/freq.metrics.txt >all.freq.metrics.txt
-tail -n+2 ./openCytoBatch_*/freq.metrics.txt |grep -v "==>">>all.freq.metrics.txt
+# QC metrics collect
+cat ./*/fcsQC/*mini.txt >all.mini.qc.tmp.txt
+head -n 1 all.mini.qc.tmp.txt >all.mini.qc.txt
+tail -n+2 all.mini.qc.tmp.txt |grep -v "Name file">>all.mini.qc.txt
 ```
