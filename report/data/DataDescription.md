@@ -1,28 +1,23 @@
----
-title: "OpenCyto"
-author: "JL"
-date: "7/19/2017"
-output: 
-  html_document: 
-    keep_md: yes
----
+# OpenCyto
+JL  
+7/19/2017  
 
 Almost Documentation ? 
 
-```{r pressure, echo=FALSE}
-library(readr)
-batch <- read_file("~/git/auto-fcs/explore/openCyto/msiScripts/runGateMSI")
-assemble <- read_file("~/git/auto-fcs/explore/openCyto/msiScripts/collectResultsMSI")
 
-
-```
 
 ## Running OpenCyto
 
 1. Set up batches with genvisis
 
 ```bash
-`r batch`
+OUTDIR="/scratch.global/lanej/flow/full/results_r6/"
+
+java -jar /home/pankrat2/lane0212/genvisisOC.jar one.JL.fcs.OpenCyto inputFCS=/scratch.global/lanej/flow/full/fcs/ panel1Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel1Map.txt panel2Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel2Map.txt templateLymph=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.e.csv outDir=$OUTDIR rSource=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/Lymph_monoWithQC_v5.R templateMonocyte=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.csv mapFile=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/fcsMapBlankMap.txt genvisis=/home/pankrat2/lane0212/genvisisOC.jar batch=16 memoryInMb=30000 threads=1 wallTimeInHour=50
+
+cd $OUTDIR
+#sed -i 's/nodes=1/nodes=cn5601/g' *.pbs
+
 ```
   - Result directories will be created in `$OUTDIR` that correspond to each batch
     - e.g `$OUTDIR/openCytoBatch_0/` ,`$OUTDIR/openCytoBatch_1/`, etc
@@ -45,11 +40,7 @@ Each batch output directory (as an example, `$OUTDIR/openCytoBatch_0/`) should c
 
 - `gate_plotsXX.pdf`: **Plots of each OpenCyto gate**
 
-```{r headers, echo=FALSE}
-library(knitr)
-total = data.frame(HEADER = c("FILE","TOTAL_COUNTS","QC","PANEL"))
 
-```
 
 - `metrics.totalCellCounts.txt`: **File containing total cell counts for all samples**
     - **FILE** : fcs file
@@ -81,5 +72,14 @@ total = data.frame(HEADER = c("FILE","TOTAL_COUNTS","QC","PANEL"))
 To assemble results files from each batch, run the following from within `$OUTDIR`:
 
 ```bash
-`r assemble`
+
+head -n 1 ./openCytoBatch_10/metrics.txt >all.metrics.txt
+tail -n+2 ./openCytoBatch_*/metrics.txt |grep -v "==>">>all.metrics.txt
+
+
+head -n 1 ./openCytoBatch_10/metrics.totalCellCounts.txt >all.totalCellCounts.metrics.txt
+tail -n+2 ./openCytoBatch_*/metrics.totalCellCounts.txt |grep -v "==>">>all.totalCellCounts.metrics.txt
+
+head -n 1 ./openCytoBatch_10/freq.metrics.txt >all.freq.metrics.txt
+tail -n+2 ./openCytoBatch_*/freq.metrics.txt |grep -v "==>">>all.freq.metrics.txt
 ```
