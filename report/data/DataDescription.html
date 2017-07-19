@@ -165,9 +165,11 @@ cd $OUTDIR
 <ul>
 <li>also will have 2 .wsp files per sample, <code>sampleName_panelX.wsp</code>, and <code>sampleName_panelXRename.wsp</code></li>
 </ul></li>
-<li><code>fcsQC/</code>: <strong>directory containing .fcs files representing HQ events, currently according to FlowAI</strong>
+<li><code>fcsQC/</code>: <strong>directory containing .fcs files representing HQ events and QC summaries, currently according to FlowAI</strong>
 <ul>
-<li>in order to reproduce the counts listed in gatesQC .wsp files, these files should be used</li>
+<li><strong>sampleName.fcs</strong> : in order to reproduce the counts listed in gatesQC .wsp files, the fcs files should be used</li>
+<li><strong>sampleName.fcs mini.txt</strong> : basic QC report</li>
+<li><strong>sampleName_QC.html</strong> : html QC report with diagnostic plots</li>
 </ul></li>
 <li><p><code>gate_plotsXX.pdf</code>: <strong>Plots of each OpenCyto gate</strong></p></li>
 <li><code>metrics.totalCellCounts.txt</code>: <strong>File containing total cell counts for all samples</strong>

@@ -40,8 +40,10 @@ Each batch output directory (as an example, `$OUTDIR/openCytoBatch_0/`) should c
 - `gatesQC/`: **directory containing .wsp files for each successfully gated sample, after QC processing**
      - also will have 2 .wsp files per sample, `sampleName_panelX.wsp`, and `sampleName_panelXRename.wsp`
 
-- `fcsQC/`: **directory containing .fcs files representing HQ events, currently according to FlowAI**
-     - in order to reproduce the counts listed in gatesQC .wsp files, these files should be used
+- `fcsQC/`: **directory containing .fcs files representing HQ events and QC summaries, currently according to FlowAI**
+     - **sampleName.fcs** : in order to reproduce the counts listed in gatesQC .wsp files, the fcs files should be used 
+     - **sampleName.fcs mini.txt** : basic QC report
+     - **sampleName_QC.html** : html QC report with diagnostic plots
 
 - `gate_plotsXX.pdf`: **Plots of each OpenCyto gate**
 
