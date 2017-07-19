@@ -23,7 +23,7 @@ cd $OUTDIR
     - e.g `$OUTDIR/openCytoBatch_0/` ,`$OUTDIR/openCytoBatch_1/`, etc
 2. Submit all .pbs scripts in `$OUTDIR`
     - e.g `qp *.pbs`
-    - Current runtime on for 16 batches on 2 pankrat q nodes is ~7hrs without QC, 37hrs with QC
+    - Current run-time on for 16 batches on 2 pankrat q nodes is ~7hrs without QC, 37hrs with QC
     
 ## OpenCyto results
 
@@ -61,7 +61,7 @@ Each batch output directory (as an example, `$OUTDIR/openCytoBatch_0/`) should c
     - **PDF**           : name of the pdf containing plots for this sample
     - **FlaggedSample**           : placeholder to flag problematic samples for review
 
-- `freq.metrics.txt`: **Similar to `metrics.txt`, but with additional info**
+- `freq.metrics.txt`: **Similar to `metrics.txt`, but with additional columns, and subset to only populations of interest (intermediate gates etc are removed)**
      - **RealAutoParent** : when the `Parent` gate is actually an intermediate step, this lists the actual parent population
       - **Manual**   : Gate name in manual nomenclature
       - **Merge**   : Data key of **population_sample**

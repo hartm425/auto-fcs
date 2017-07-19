@@ -146,7 +146,7 @@ cd $OUTDIR
 <li>Submit all .pbs scripts in <code>$OUTDIR</code>
 <ul>
 <li>e.g <code>qp *.pbs</code></li>
-<li>Current runtime on for 16 batches on 2 pankrat q nodes is ~7hrs without QC, 37hrs with QC</li>
+<li>Current run-time on for 16 batches on 2 pankrat q nodes is ~7hrs without QC, 37hrs with QC</li>
 </ul></li>
 </ol>
 </div>
@@ -191,7 +191,7 @@ cd $OUTDIR
 <li><strong>PDF</strong> : name of the pdf containing plots for this sample</li>
 <li><strong>FlaggedSample</strong> : placeholder to flag problematic samples for review</li>
 </ul></li>
-<li><code>freq.metrics.txt</code>: <strong>Similar to <code>metrics.txt</code>, but with additional info</strong>
+<li><code>freq.metrics.txt</code>: <strong>Similar to <code>metrics.txt</code>, but with additional columns, and subset to only populations of interest (intermediate gates etc are removed)</strong>
 <ul>
 <li><strong>RealAutoParent</strong> : when the <code>Parent</code> gate is actually an intermediate step, this lists the actual parent population</li>
 <li><strong>Manual</strong> : Gate name in manual nomenclature</li>

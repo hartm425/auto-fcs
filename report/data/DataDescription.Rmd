@@ -70,7 +70,7 @@ total = data.frame(HEADER = c("FILE","TOTAL_COUNTS","QC","PANEL"))
     - **PDF**           : name of the pdf containing plots for this sample
     - **FlaggedSample**           : placeholder to flag problematic samples for review
 
-- `freq.metrics.txt`: **Similar to `metrics.txt`, but with additional info**
+- `freq.metrics.txt`: **Similar to `metrics.txt`, but with additional columns, and subset to only populations of interest (intermediate gates etc are removed)**
      - **RealAutoParent** : when the `Parent` gate is actually an intermediate step, this lists the actual parent population
       - **Manual**   : Gate name in manual nomenclature
       - **Merge**   : Data key of **population_sample**
