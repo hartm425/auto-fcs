@@ -59,7 +59,7 @@ fcsFilesAll <-
              pattern = ".fcs",
              full = FALSE)
 # fcsFilesAll =fcsFilesAll[8:9]
-fcsFilesAll = fcsFilesAll[307:309]
+# fcsFilesAll = fcsFilesAll[307:309]
 
 fcsFilesAllProbs = c("NONE")
 
@@ -481,10 +481,13 @@ getPanel <-
   function(frame) {
     t = pData(parameters(frame))
     p1Key = "CCR7"
+    p2Key = "CD45"
     if (p1Key %in% t$desc) {
       return("panel1")
-    } else{
+    } else if (p2Key %in% t$desc) {
       return("panel2")
+    } else{
+      return("panel_undetermined")
     }
   }
 
@@ -529,7 +532,7 @@ if (!file.exists(metricsFile)) {
         description(frame)$FILENAME = file
         #
         
-        metricBase =data.frame()
+        metricBase = data.frame()
         if (panel == "panel1") {
           metricBase = compP1Frame(
             frame = frame,
@@ -543,7 +546,7 @@ if (!file.exists(metricsFile)) {
             inputFCSDir = inputDir,
             panle1map = panle1mapFile
           )
-        } else{
+        } else if (panel == "panel2") {
           #panel 2
           metricBase = compP2Frame(
             frame = frame,
@@ -562,74 +565,75 @@ if (!file.exists(metricsFile)) {
         metricBase$PDF = pdfFile
         metricBase$FlaggedSample = file %in% fcsFilesAllProbs
         metrics = rbind(metrics, metricBase)
-        if (runFlowAI) {
-          qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
-          qcDir = paste(outputDir, "fcsQC/", sep = "")
-          qcFileFull = paste(qcDir, qcFile, sep = "")
-          
-          if (!file.exists(qcFileFull)) {
-            setwd(qcDir)
-            flow_auto_qc(
-              frame,
-              folder_results = "",
-              mini_report = paste(basename(file), "mini", sep =),
-              fcs_QC = FALSE,
-              pen_valueFS = 50,
-              remove_from = "FR_FM",
-              fcs_highQ = ""
-              
-            )
-          }
-          frame.c = read.FCS(qcFileFull)
-          tmpCount = data.frame(
-            FILE = file,
-            TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
-            QC = "TRUE",
-            PANEL = panel
-          )
-          counts = rbind(counts, tmpCount)
-          
-          try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
-            metricBaseQC =data.frame()
-            if (panel == "panel1") {
-              metricBaseQC = compP1Frame(
-                frame = frame.c,
-                file = qcFile,
-                gt_lymph = gt_lymph ,
-                d = d,
-                outputDir = outputDir,
-                gateDir = gateQCDir,
-                qcVersion = TRUE,
-                mapper = mapper,
-                inputFCSDir = qcDir,
-                panle1map = panle1mapFile
-              )
-              
-            } else{
-              #panel 2
-              # print(metricBase)
-              metricBaseQC = compP2Frame(
-                frame = frame.c,
-                file = qcFile,
-                gt_mono = gt_mono ,
-                d = d,
-                outputDir = outputDir,
-                gateDir = gateQCDir,
-                qcVersion = TRUE,
-                mapper = mapper,
-                inputFCSDir = qcDir,
-                panle2map  = panle2mapFile
-              )
-              
-            }
-            metricBaseQC$Panel = panel
-            metricBaseQC$PDF = pdfFile
-            metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
-            metrics = rbind(metrics, metricBaseQC)
-          })
-        }
-        
       })
+      if (runFlowAI) {
+        qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
+        qcDir = paste(outputDir, "fcsQC/", sep = "")
+        qcFileFull = paste(qcDir, qcFile, sep = "")
+        
+        if (!file.exists(qcFileFull)) {
+          setwd(qcDir)
+          flow_auto_qc(
+            frame,
+            folder_results = "",
+            mini_report = paste(basename(file), "mini", sep =),
+            fcs_QC = FALSE,
+            pen_valueFS = 50,
+            remove_from = "FR_FM",
+            fcs_highQ = ""
+            
+          )
+        }
+        frame.c = read.FCS(qcFileFull)
+        tmpCount = data.frame(
+          FILE = file,
+          TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
+          QC = "TRUE",
+          PANEL = panel
+        )
+        counts = rbind(counts, tmpCount)
+        
+        try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
+          metricBaseQC = data.frame()
+          if (panel == "panel1") {
+            metricBaseQC = compP1Frame(
+              frame = frame.c,
+              file = qcFile,
+              gt_lymph = gt_lymph ,
+              d = d,
+              outputDir = outputDir,
+              gateDir = gateQCDir,
+              qcVersion = TRUE,
+              mapper = mapper,
+              inputFCSDir = qcDir,
+              panle1map = panle1mapFile
+            )
+            
+          } else if (panel == "panel2") {
+            #panel 2
+            # print(metricBase)
+            metricBaseQC = compP2Frame(
+              frame = frame.c,
+              file = qcFile,
+              gt_mono = gt_mono ,
+              d = d,
+              outputDir = outputDir,
+              gateDir = gateQCDir,
+              qcVersion = TRUE,
+              mapper = mapper,
+              inputFCSDir = qcDir,
+              panle2map  = panle2mapFile
+            )
+            
+          }
+          metricBaseQC$Panel = panel
+          metricBaseQC$PDF = pdfFile
+          metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
+          metrics = rbind(metrics, metricBaseQC)
+        })
+      }
+      
+      
       
     }
     dev.off()
