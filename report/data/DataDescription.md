@@ -60,9 +60,9 @@ Each batch output directory (as an example, `$OUTDIR/openCytoBatch_0/`) should c
     - **Panel**           : panel1 or panel2
     - **PDF**           : name of the pdf containing plots for this sample
     - **FlaggedSample**           : placeholder to flag problematic samples for review
-- `freq.metrics.txt`: **Similar to `metrics.txt`, but with additional info**
 
-      - **RealAutoParent** : when the `Parent` gate is actually an intermediate step, this lists the actual parent population
+- `freq.metrics.txt`: **Similar to `metrics.txt`, but with additional info**
+     - **RealAutoParent** : when the `Parent` gate is actually an intermediate step, this lists the actual parent population
       - **Manual**   : Gate name in manual nomenclature
       - **Merge**   : Data key of **population_sample**
       - **freq_lymph**   : for panel1 samples, the frequency of the population relative to lymphocytes, and `NA` for panel2 samples
