@@ -31,7 +31,8 @@ counts = data.frame(
   FILE = character(),
   TOTAL_COUNTS = integer(),
   QC = character(),
-  PANEL = character()
+  PANEL = character(),
+  DESC = character()
 )
 num = 0
 
@@ -39,15 +40,18 @@ for (file in fcsFilesAll) {
   frame = read.FCS(paste(inputDir, file, sep = ""))
   panel = getPanel(frame)
   countCurrent = length(exprs(frame)[, "FSC-H"])
+  desc = paste(unique(pData(parameters(frame))$desc), collapse = ";")
   tmpCount = data.frame(
     FILE = file,
     TOTAL_COUNTS = countCurrent,
     QC = "FALSE",
-    PANEL = panel
+    PANEL = panel,
+    DESC = desc
   )
   counts = rbind(counts, tmpCount)
   num = num + 1
-  print(paste(file, num,countCurrent,panel))
+  print(paste(file, num, countCurrent, panel, desc))
+  
 }
 
 write.table(
