@@ -131,7 +131,7 @@ compP1Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file),]$WSP
+      wsFile = mapper[which(mapper$FCS == file), ]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -328,7 +328,7 @@ compP2Frame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file),]$WSP
+      wsFile = mapper[which(mapper$FCS == file), ]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -569,9 +569,9 @@ if (!file.exists(metricsFile)) {
           metricBase$FlaggedSample = file %in% fcsFilesAllProbs
           metrics = rbind(metrics, metricBase)
         }
-       
+        
       })
-      if (runFlowAI) {
+      try(if (runFlowAI) {
         qcFile = paste(tools::file_path_sans_ext(file), ".fcs", sep = "")
         qcDir = paste(outputDir, "fcsQC/", sep = "")
         qcFileFull = paste(qcDir, qcFile, sep = "")
@@ -581,7 +581,7 @@ if (!file.exists(metricsFile)) {
           flow_auto_qc(
             frame,
             folder_results = "",
-            mini_report = paste(basename(file), "mini", sep = ),
+            mini_report = paste(basename(file), "mini", sep =),
             fcs_QC = FALSE,
             pen_valueFS = 50,
             remove_from = "FR_FM",
@@ -638,9 +638,9 @@ if (!file.exists(metricsFile)) {
             metrics = rbind(metrics, metricBaseQC)
             
           }
-
+          
         })
-      }
+      })
       
       
       
