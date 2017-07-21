@@ -7,12 +7,28 @@ output:
     keep_md: yes
 ---
 
+### NOTES
+
+- Currently not removing cells filtered by signal acquisition metric
+     - unsure if accurate, and removes a lot
+     - So, "total % anomalies" only includes flow rate and flow margin
+- Metrics from FlowAI
+
+TODO, can split by panel
+
+
 ```{r setup, include=FALSE}
-qcMetrics =  read.delim("/Volumes/Beta/data/flow/QCeval/all.mini.qc.txt",stringsAsFactors = FALSE,sep = "\t") 
-qcMetrics$Name.file =paste(qcMetrics$Name.file,".fcs",sep = "")
+qcMetrics =  read.delim(
+  "/Volumes/Beta/data/flow/QCeval/all.mini.qc.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  )
+  qcMetrics$Name.file = paste(qcMetrics$Name.file, ".fcs", sep = "")
 ```
 
 ## Anomaly distributions
+
+Currently `r length(qcMetrics$Name.file)` samples
 
 ```{r echo=FALSE}
 library(knitr)
@@ -20,21 +36,28 @@ library(knitr)
 library(ggplot2)
 theme_set(theme_bw(20))
 
-metrics = c("n..of.events","X..anomalies","X..anomalies.flow.Rate","X..anomalies.Signal","X..anomalies.Margins")
+metrics = c(
+"X..anomalies",
+"X..anomalies.flow.Rate",
+"X..anomalies.Signal",
+"X..anomalies.Margins"
+)
 for(metric in metrics) {
   xlab = gsub(".", " ", metric, fixed = TRUE)
   xlab = gsub("X", "%", xlab, fixed = TRUE)
-  
+  xlab =paste("total",xlab)
   p = ggplot(qcMetrics, aes_string(metric)) +
   geom_histogram(bins = 300) + ylab("Number of Samples") + xlab(xlab)
   print(p)
-  outliers <- boxplot.stats(qcMetrics[,metric])$out
-  qcMetrics$OUTLIERS = qcMetrics[,metric] %in% outliers
-  qcMetrics$OUTLIERS =gsub("TRUE","OUTLIER",qcMetrics$OUTLIERS)
-  qcMetrics$OUTLIERS =gsub("FALSE","NOT_OUTLIER",qcMetrics$OUTLIERS)
+  outliers <- boxplot.stats(qcMetrics[, metric])$out
+  qcMetrics$OUTLIERS = qcMetrics[, metric] %in% outliers
+  qcMetrics$OUTLIERS = gsub("TRUE", "OUTLIER", qcMetrics$OUTLIERS)
+  qcMetrics$OUTLIERS = gsub("FALSE", "NOT_OUTLIER", qcMetrics$OUTLIERS)
   p = ggplot(qcMetrics, aes_string(metric)) +
   geom_histogram(bins = 300) + ylab("Number of Samples") + xlab(xlab)
-  print(p +facet_wrap(~OUTLIERS))
-  }
+  print(p + facet_wrap( ~ OUTLIERS))
+  
+  # print(kable(qcMetrics[which(qcMetrics$OUTLIERS=="OUTLIER"),],format = "markdown"))
+}
 
 ```
