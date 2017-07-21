@@ -20,17 +20,21 @@ library(knitr)
 library(ggplot2)
 theme_set(theme_bw(20))
 
-
-ggplot(qcMetrics, aes(n..of.events)) +
-  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Number of events")
-
-ggplot(qcMetrics, aes(X..anomalies)) +
-  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("% Total anomalies (Flow Rate and Flow Margin)")
-
-ggplot(qcMetrics, aes(X..anomalies.Signal)) +
-  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("% Signal acquisition anomalies (not used)")
-ggplot(qcMetrics, aes(X..anomalies.Margins)) +
-  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("% Margins anomalies")
-
+metrics = c("n..of.events","X..anomalies","X..anomalies.flow.Rate","X..anomalies.Signal","X..anomalies.Margins")
+for(metric in metrics) {
+  xlab = gsub(".", " ", metric, fixed = TRUE)
+  xlab = gsub("X", "%", xlab, fixed = TRUE)
+  
+  p = ggplot(qcMetrics, aes_string(metric)) +
+  geom_histogram(bins = 300) + ylab("Number of Samples") + xlab(xlab)
+  print(p)
+  outliers <- boxplot.stats(qcMetrics[,metric])$out
+  qcMetrics$OUTLIERS = qcMetrics[,metric] %in% outliers
+  qcMetrics$OUTLIERS =gsub("TRUE","OUTLIER",qcMetrics$OUTLIERS)
+  qcMetrics$OUTLIERS =gsub("FALSE","NOT_OUTLIER",qcMetrics$OUTLIERS)
+  p = ggplot(qcMetrics, aes_string(metric)) +
+  geom_histogram(bins = 300) + ylab("Number of Samples") + xlab(xlab)
+  print(p +facet_wrap(~OUTLIERS))
+  }
 
 ```
