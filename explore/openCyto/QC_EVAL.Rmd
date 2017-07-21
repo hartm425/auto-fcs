@@ -10,22 +10,25 @@ qcMetrics =  read.delim("/Volumes/Beta/data/flow/QCeval/all.mini.qc.txt",strings
 qcMetrics$Name.file =paste(qcMetrics$Name.file,".fcs",sep = "")
 ```
 
-## Ano
+## Anomaly distributions
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r echo=FALSE}
+library(knitr)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+library(ggplot2)
+theme_set(theme_bw(20))
 
-```{r cars}
-summary(cars)
+
+ggplot(qcMetrics, aes(n..of.events)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("Number of events")
+
+ggplot(qcMetrics, aes(X..anomalies)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("% Total anomalies (Flow Rate and Flow Margin)")
+
+ggplot(qcMetrics, aes(X..anomalies.Signal)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("% Signal acquisition anomalies (not used)")
+ggplot(qcMetrics, aes(X..anomalies.Margins)) +
+  geom_histogram(bins = 300)+ylab("Number of Samples")+xlab("% Margins anomalies")
+
+
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
