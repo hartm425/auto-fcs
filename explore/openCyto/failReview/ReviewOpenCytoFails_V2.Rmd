@@ -27,13 +27,13 @@ library(knitr)
 
 library(ggplot2)
 theme_set(theme_bw(20))
-
+skip =  read.delim("/Volumes/Beta/data/flow/checkFails/axe.txt",stringsAsFactors = FALSE,sep = "\t",header = FALSE) 
 qcMetrics =  read.delim("/Volumes/Beta/data/flow/checkFails/all.mini.qc.txt",stringsAsFactors = FALSE,sep = "\t") 
 qcMetrics$Name.file =paste(qcMetrics$Name.file,".fcs",sep = "")
 load("/Volumes/Beta/data/flow/checkFails/all.metrics.Rdata")
 load("/Volumes/Beta/data/flow/checkFails/all.totalCellCounts.metrics.Rdata")
 counts = counts[which(counts$PANEL=="panel1"&counts$QC=="FALSE"),]
-counts = merge(counts,qcMetrics,by.x = "FILE",by.y ="Name.file" )
+counts = merge(counts,qcMetrics,by.x = "FILE",by.y ="Name.file",all.x = TRUE )
 complete = counts$FILE %in% mets$name
 counts$SUCCESSFUL_GATING =complete 
 counts$LOG_TOTAL_COUNT = log10(counts$TOTAL_COUNTS)
