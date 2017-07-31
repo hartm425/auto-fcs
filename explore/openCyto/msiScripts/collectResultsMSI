@@ -4,6 +4,10 @@
 head -n 1 ./openCytoBatch_10/metrics.txt >all.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.txt |grep -v "==>">>all.metrics.txt
 
+# freq metrics collect
+head -n 1 ./openCytoBatch_10/freq.metrics.txt >all.freq.metrics.txt
+tail -n+2 ./openCytoBatch_*/freq.metrics.txt |grep -v "==>">>all.freq.metrics.txt
+
 # total counts collect
 head -n 1 ./openCytoBatch_10/metrics.totalCellCounts.txt >all.totalCellCounts.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.totalCellCounts.txt |grep -v "==>">>all.totalCellCounts.metrics.txt
