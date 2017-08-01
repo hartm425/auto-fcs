@@ -11,11 +11,17 @@ output:
  - date determined by filename, nothing else
 
 
+```{r eval=TRUE, echo=FALSE,warning=FALSE,include=FALSE}
+resultDir = "/Users/Kitty/temp/fcs/results_r7/"
+```
+
+
 ```{r setup,eval=FALSE, include=FALSE}
-counts =  read.delim("/Volumes/Beta/data/flow/checkFails/all.totalCellCounts.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
-mets =   read.delim("/Volumes/Beta/data/flow/checkFails/all.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
-save(mets,file ="/Volumes/Beta/data/flow/checkFails/all.metrics.Rdata" )
-save(counts,file ="/Volumes/Beta/data/flow/checkFails/all.totalCellCounts.metrics.Rdata" )
+
+counts =  read.delim(paste0(resultDir,"all.totalCellCounts.metrics.txt"),stringsAsFactors = FALSE,sep = "\t") 
+mets =   read.delim(paste0(resultDir,"all.metrics.txt"),stringsAsFactors = FALSE,sep = "\t") 
+save(mets,file =paste0(resultDir,"all.metrics.Rdata") )
+save(counts,file =paste0(resultDir,"all.totalCellCounts.metrics.Rdata") )
 
 ```
 
@@ -27,20 +33,16 @@ library(knitr)
 
 library(ggplot2)
 theme_set(theme_bw(20))
-skip =  read.delim("/Volumes/Beta/data/flow/checkFails/axe.txt",stringsAsFactors = FALSE,sep = "\t",header = FALSE) 
-qcMetrics =  read.delim("/Volumes/Beta/data/flow/QCeval/all.mini.qc.txt",stringsAsFactors = FALSE,sep = "\t") 
+qcMetrics =  read.delim(paste0(resultDir,"all.mini.qc.txt"),stringsAsFactors = FALSE,sep = "\t") 
 qcMetrics$Name.file =paste(qcMetrics$Name.file,".fcs",sep = "")
-load("/Volumes/Beta/data/flow/checkFails/all.metrics.Rdata")
-load("/Volumes/Beta/data/flow/checkFails/all.totalCellCounts.metrics.Rdata")
+load(paste0(resultDir,"all.metrics.Rdata"))
+load(paste0(resultDir,"all.totalCellCounts.metrics.Rdata"))
 # counts = counts[which(counts$PANEL=="panel1"&counts$QC=="FALSE"),]
 counts = merge(counts,qcMetrics,by.x = "FILE",by.y ="Name.file",all.x = TRUE )
-NO_DESC=counts$FILE %in% skip$V1
+# NO_DESC=counts$FILE %in% skip$V1
 complete = counts$FILE %in% mets$name
 counts$SUCCESSFUL_GATING =complete 
-counts$NO_DESC =NO_DESC
-counts$NO_DESC =gsub("TRUE","NO_DESC",counts$NO_DESC )
-counts$NO_DESC =gsub("FALSE","DESC",counts$NO_DESC )
-
+counts$NO_DESC =counts$PANEL
 counts$LOG_TOTAL_COUNT = log10(counts$TOTAL_COUNTS)
 
 counts$PROCESS_DATE = gsub("PANEL 1.*","",counts$FILE)

@@ -16,11 +16,19 @@ TODO
 1. CV of reps X
 2. ICC ?
 
+
+```{r eval=TRUE, echo=FALSE,warning=FALSE,include=FALSE}
+resultDir = "/Users/Kitty/temp/fcs/results_r7/"
+```
   
 ```{r setup,eval=FALSE, include=FALSE}
-mets =   read.delim("/Volumes/Beta/data/flow/concordance/results_r6/freq.metrics.txt",stringsAsFactors = FALSE,sep = "\t") 
-save(mets,file ="/Volumes/Beta/data/flow/concordance/results_r6/freq.metrics.Rdata" )
-
+mets =   read.delim(
+  paste(resultDir, "all.freq.metrics.txt", sep = ""),
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  )
+  save(mets, file = paste(resultDir, "freq.metrics.Rdata", sep = ""))
+  
 ```
 
 ```{r eval=TRUE, echo=FALSE,warning=FALSE,include=FALSE}
@@ -31,7 +39,7 @@ library("ggplot2")
 library(plyr)
 theme_set(theme_bw(20))
 
-load("/Volumes/Beta/data/flow/concordance/results_r6/freq.metrics.Rdata")
+load(paste(resultDir, "freq.metrics.Rdata", sep = ""))
 ```
 
 ```{r eval=TRUE, echo=FALSE}
