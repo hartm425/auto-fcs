@@ -32,7 +32,7 @@ setwd(dirname(panle1mapFile))
 source(file = "CombineWSP.R")
 source(file = "computeFreqs.R")
 
-runFlowAI = TRUE
+runFlowAI = FALSE
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 outputDir = "/Volumes/Beta/data/flow/"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
