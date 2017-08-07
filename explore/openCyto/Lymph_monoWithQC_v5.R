@@ -35,8 +35,8 @@ source(file = "computeFreqs.R")
 runFlowAI = FALSE
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 outputDir = "/Volumes/Beta/data/flow/"
-templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.csv"
-templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.c.csv"
+templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.txt"
+templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.c.txt"
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
