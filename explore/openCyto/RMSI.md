@@ -11,4 +11,4 @@ done
  cp -vr /home/thyagara/shared/HRS/UPLOAD\ FCS\ HRS\ samples/ -t ./fcs/
  
  
- find . -type f -name '*.fcs' -exec cp -t /scratch.global/lanej/flow/full/fcs {} 
+ find . -type f -name '*.fcs' -exec cp -t /scratch.global/lanej/flow/full/fcs {} \;
