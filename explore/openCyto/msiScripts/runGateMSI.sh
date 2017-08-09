@@ -1,5 +1,5 @@
 #!/usr/bin/env bash 
-
+module load java
 OUTDIR="/scratch.global/lanej/flow/full/results_r9/"
 
 p2=$OUTDIR"p2Trim.txt"
