@@ -86,3 +86,9 @@ To assemble results files from each batch, run the following from within `$OUTDI
 ```bash
 `r assemble`
 ```
+
+This script will create consolidated files of the following:
+
+- `all.metrics.txt` -> consolidated `metrics.txt` files from batches
+- `all.freq.metrics.txt` -> consolidated `freq.metrics.txt` files from batches
+- `all.totalCellCounts.metrics.txt` -> consolidated `metrics.totalCellCounts.txt` files from batches

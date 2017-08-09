@@ -11,9 +11,16 @@ Almost Documentation ?
 1. Set up batches with genvisis
 
 ```bash
-OUTDIR="/scratch.global/lanej/flow/full/results_r7/"
+#!/usr/bin/env bash 
 
-java -jar /home/pankrat2/lane0212/genvisisOC.jar one.JL.fcs.OpenCyto inputFCS=/scratch.global/lanej/flow/full/fcs/ panel1Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel1Map.txt panel2Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel2Map.txt templateLymph=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.e.csv outDir=$OUTDIR rSource=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/Lymph_monoWithQC_v5.R templateMonocyte=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.csv mapFile=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/fcsMapBlankMap.txt genvisis=/home/pankrat2/lane0212/genvisisOC.jar batch=16 memoryInMb=30000 threads=1 wallTimeInHour=100
+OUTDIR="/scratch.global/lanej/flow/full/results_r8/"
+
+head -n4 /home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.csv > $OUTDIR
+
+java -jar /home/pankrat2/lane0212/genvisisOC.jar one.JL.fcs.OpenCyto inputFCS=/scratch.global/lanej/flow/full/fcs/ panel1Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel1Map.txt panel2Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel2Map.txt templateLymph=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.e.csv outDir=$OUTDIR rSource=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/Lymph_monoWithQC_v5.R templateMonocyte= mapFile=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/fcsMapBlankMap.txt genvisis=/home/pankrat2/lane0212/genvisisOC.jar batch=16 memoryInMb=30000 threads=1 wallTimeInHour=100
+
+
+#java -jar /home/pankrat2/lane0212/genvisisOC.jar one.JL.fcs.OpenCyto inputFCS=/scratch.global/lanej/flow/full/fcs/ panel1Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel1Map.txt panel2Map=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/panel2Map.txt templateLymph=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.e.csv outDir=$OUTDIR rSource=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/Lymph_monoWithQC_v5.R templateMonocyte=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.csv mapFile=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/fcsMapBlankMap.txt genvisis=/home/pankrat2/lane0212/genvisisOC.jar batch=16 memoryInMb=30000 threads=1 wallTimeInHour=100
 
 cd $OUTDIR
 sed -i 's/nodes=1/nodes=cn5601/g' *.pbs
@@ -81,6 +88,10 @@ To assemble results files from each batch, run the following from within `$OUTDI
 head -n 1 ./openCytoBatch_10/metrics.txt >all.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.txt |grep -v "==>">>all.metrics.txt
 
+# freq metrics collect
+head -n 1 ./openCytoBatch_10/freq.metrics.txt >all.freq.metrics.txt
+tail -n+2 ./openCytoBatch_*/freq.metrics.txt |grep -v "==>">>all.freq.metrics.txt
+
 # total counts collect
 head -n 1 ./openCytoBatch_10/metrics.totalCellCounts.txt >all.totalCellCounts.metrics.txt
 tail -n+2 ./openCytoBatch_*/metrics.totalCellCounts.txt |grep -v "==>">>all.totalCellCounts.metrics.txt
@@ -90,3 +101,9 @@ cat ./*/fcsQC/*mini.txt >all.mini.qc.tmp.txt
 head -n 1 all.mini.qc.tmp.txt >all.mini.qc.txt
 tail -n+2 all.mini.qc.tmp.txt |grep -v "Name file">>all.mini.qc.txt
 ```
+
+This script will create consolidated files of the following:
+
+- `all.metrics.txt` -> consolidated `metrics.txt` files from batches
+- `all.freq.metrics.txt` -> consolidated `freq.metrics.txt` files from batches
+- `all.totalCellCounts.metrics.txt` -> consolidated `metrics.totalCellCounts.txt` files from batches
