@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 
-OUTDIR="/scratch.global/lanej/flow/full/results_r8/"
+OUTDIR="/scratch.global/lanej/flow/full/results_r9/"
 
 p2=$OUTDIR"p2Trim.txt"
 p1=$OUTDIR"p1Trim.txt"
