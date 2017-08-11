@@ -159,8 +159,9 @@ compP1Frame <-
       }
       
     }
-    print(paste("plotting ....", file))
     try(if (plot) {
+      print(paste("plotting ....", file))
+      
       t1 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "root") +
@@ -358,8 +359,9 @@ compP2Frame <-
         metrics = rbind(metrics, manCounts)
       }
     }
-    print(paste("plotting ....", file))
     try(if (plot) {
+      print(paste("plotting ....", file))
+      
       t1 = ggcyto(gs1,
                   mapping = aes(x = "FSC-A", y = "SSC-A"),
                   subset = "root") +
@@ -552,12 +554,15 @@ if (!file.exists(metricsFile)) {
               qcVersion = FALSE,
               mapper = mapper,
               inputFCSDir = inputDir,
-              panle1map = panle1mapFile
+              panle1map = panle1mapFile,
+              plot = TRUE
             )
             metricBase$Panel = panel
             metricBase$PDF = pdfFile
             metricBase$FlaggedSample = file %in% fcsFilesAllProbs
             metrics = rbind(metrics, metricBase)
+            print(metricBase)
+            
           } else if (panel == "panel2") {
             #panel 2
             metricBase = compP2Frame(
@@ -576,6 +581,8 @@ if (!file.exists(metricsFile)) {
             metricBase$Panel = panel
             metricBase$PDF = pdfFile
             metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+            print(metricBase)
+            
             metrics = rbind(metrics, metricBase)
           }
           
@@ -619,7 +626,8 @@ if (!file.exists(metricsFile)) {
                 qcVersion = TRUE,
                 mapper = mapper,
                 inputFCSDir = qcDir,
-                panle1map = panle1mapFile
+                panle1map = panle1mapFile,
+                plot = TRUE
               )
               metricBaseQC$Panel = panel
               metricBaseQC$PDF = pdfFile
@@ -639,7 +647,8 @@ if (!file.exists(metricsFile)) {
                 qcVersion = TRUE,
                 mapper = mapper,
                 inputFCSDir = qcDir,
-                panle2map  = panle2mapFile
+                panle2map  = panle2mapFile,
+                plot = TRUE
               )
               metricBaseQC$Panel = panel
               metricBaseQC$PDF = pdfFile
