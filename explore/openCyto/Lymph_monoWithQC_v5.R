@@ -59,8 +59,8 @@ fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
              full = FALSE)
-# fcsFilesAll =fcsFilesAll[8:9]
-# fcsFilesAll = fcsFilesAll[307:309]
+# fcsFilesAll = fcsFilesAll[8:9]
+fcsFilesAll = fcsFilesAll[307:309]
 
 fcsFilesAllProbs = c("NONE")
 
@@ -338,7 +338,7 @@ compFrame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -366,7 +366,7 @@ compFrame <-
       
     }
     try(if (plot) {
-      print(paste("plotting ....", file))
+      print(paste("plotting ",panel,"....", file))
       if (panel == "panel1") {
         plotP1(gs1 = gs1)
       } else if (panel == "panel2") {
@@ -389,9 +389,10 @@ compFrame <-
             "Rename.wsp",
             sep = "")
     
-    t = pData(parameters(frame))
+    nodes =getNodes(gs1,path="auto")
     for (hideNode in nodesToHide) {
-      if (hideNode %in% t$desc) {
+      if (hideNode %in% nodes) {
+        print(paste("hiding node ", hideNode))
         setNode(gs1, hideNode, FALSE)
       }
     }
@@ -488,7 +489,7 @@ if (!file.exists(metricsFile)) {
             
           } else if (panel == "panel2") {
             #panel 2
-            metricBase = compP2Frame(
+            metricBase = compFrame(
               frame = frame,
               file = file,
               gateTemplate = gt_mono ,
@@ -522,7 +523,7 @@ if (!file.exists(metricsFile)) {
             flow_auto_qc(
               frame,
               folder_results = "",
-              mini_report = paste(basename(file), "mini", sep =),
+              mini_report = paste(basename(file), "mini", sep = ),
               fcs_QC = FALSE,
               pen_valueFS = 50,
               remove_from = "FR_FM",
