@@ -1,0 +1,34 @@
+---
+title: "LOD"
+author: "JL"
+date: "8/14/2017"
+output: html_document
+---
+
+
+## Lymph LOD
+
+```{r setup}
+counts =   read.delim(
+  "/Volumes/Beta/data/flow/results_r9/all.totalCellCounts.metrics.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  ) 
+
+gates =   read.delim(
+  "/Volumes/Beta/data/flow/results_r9/all.freq.metrics.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  ) 
+
+gates = merge(gates,counts,by.x = "name",by.y = "FILE",all.y = TRUE)
+
+```
+
+
+
+```{r cars}
+gatesLymph =gates[which(gates$Population=="lymph"),]
+summary(gatesLymph$Count)
+plot(gatesLymph$Count,gatesLymph$TOTAL_COUNT)
+

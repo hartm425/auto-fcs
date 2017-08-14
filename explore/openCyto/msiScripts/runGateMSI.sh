@@ -6,7 +6,7 @@ p2=$OUTDIR"p2Trim.txt"
 p1=$OUTDIR"p1Trim.txt"
 
 head -n9 /home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.txt > $p2
-head -n4 /home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.e.txt > $p1
+head -n8 /home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.e.txt > $p1
 
 # p1=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.e.txt
 # p2=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.txt
