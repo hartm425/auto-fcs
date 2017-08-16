@@ -36,7 +36,7 @@ source(file = "computeFreqs.R")
 runFlowAI = FALSE
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 outputDir = "/Volumes/Beta/data/flow/"
-templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.e.txt"
+templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.c.txt"
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
@@ -60,7 +60,7 @@ fcsFilesAll <-
              pattern = ".fcs",
              full = FALSE)
 # fcsFilesAll = fcsFilesAll[8:9]
-# fcsFilesAll = fcsFilesAll[307:309]
+fcsFilesAll = fcsFilesAll[307:309]
 
 fcsFilesAllProbs = c("NONE")
 
