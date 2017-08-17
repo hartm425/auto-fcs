@@ -53,15 +53,13 @@ gt_lymph <-
 gt_mono <-
   gatingTemplate(templateMono, autostart = 1L)
 
-# gt_lymphQC <-
-#   gatingTemplate(templateQC, autostart = 1L)
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
              full = FALSE)
 # fcsFilesAll = fcsFilesAll[8:9]
-fcsFilesAll = fcsFilesAll[307:309]
-
+# fcsFilesAll = fcsFilesAll[307:309]
+fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 fcsFilesAllProbs = c("NONE")
 
 
