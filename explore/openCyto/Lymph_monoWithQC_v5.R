@@ -60,7 +60,7 @@ fcsFilesAll <-
 # fcsFilesAll = fcsFilesAll[8:9]
 # fcsFilesAll = fcsFilesAll[307:309]
 # BCELL test: 2016-05-11_PANEL 1_ZF_panel one_F1631925_005.fcs
-fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
+# fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 fcsFilesAllProbs = c("NONE")
 
 
