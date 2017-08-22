@@ -68,7 +68,7 @@ fcsFilesAll <-
 # BCELL test: 2016-05-11_PANEL 1_ZF_panel one_F1631925_005.fcs
 # fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 # fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
-fcsFilesAll[grepl("PANEL 1_FORTESSA",fcsFilesAll)]
+fcsFilesAll =fcsFilesAll[grepl("PANEL 1_FORTESSA",fcsFilesAll)]
 fcsFilesAllProbs = c("NONE")
 
 
@@ -480,9 +480,9 @@ if (!file.exists(metricsFile)) {
           if (panel == "panel1") {
             templateToUse = NULL
             if (machine == "FORTESSA") {
-              templateToUse = gt_lymph
+              templateToUse = gt_lymphFortessa
             } else if (machine == "LSR") {
-              templateToUse = templateLymphFortessa
+              templateToUse = gt_lymph
             }
             metricBase = compFrame(
               frame = frame,
@@ -567,9 +567,9 @@ if (!file.exists(metricsFile)) {
             if (panel == "panel1") {
               templateToUse = NULL
               if (machine == "FORTESSA") {
-                templateToUse = gt_lymph
+                templateToUse = gt_lymphFortessa
               } else if (machine == "LSR") {
-                templateToUse = templateLymphFortessa
+                templateToUse = gt_lymph
               }
               metricBaseQC = compFrame(
                 frame = frame.c,
