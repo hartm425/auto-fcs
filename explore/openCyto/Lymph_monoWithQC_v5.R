@@ -33,11 +33,14 @@ setwd(dirname(panle1mapFile))
 source(file = "CombineWSP.R")
 source(file = "computeFreqs.R")
 source(file = "machineType.R")
+source(file = "generateFortessa.R")
 
 runFlowAI = FALSE
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 outputDir = "/Volumes/Beta/data/flow/"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
+templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir)
+
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.c.txt"
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
@@ -51,6 +54,8 @@ mapper = read.delim(mapperFile,
 theme_set(theme_bw(5))
 gt_lymph <-
   gatingTemplate(templateLymph, autostart = 1L)
+gt_lymphFortessa <-
+  gatingTemplate(templateLymphFortessa, autostart = 1L)
 gt_mono <-
   gatingTemplate(templateMono, autostart = 1L)
 
@@ -62,6 +67,8 @@ fcsFilesAll <-
 # fcsFilesAll = fcsFilesAll[307:309]
 # BCELL test: 2016-05-11_PANEL 1_ZF_panel one_F1631925_005.fcs
 # fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
+# fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
+fcsFilesAll[grepl("PANEL 1_FORTESSA",fcsFilesAll)]
 fcsFilesAllProbs = c("NONE")
 
 
@@ -338,7 +345,7 @@ compFrame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file),]$WSP
+      wsFile = mapper[which(mapper$FCS == file), ]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -366,7 +373,7 @@ compFrame <-
       
     }
     try(if (plot) {
-      print(paste("plotting ",panel,"....", file))
+      print(paste("plotting ", panel, "....", file))
       if (panel == "panel1") {
         plotP1(gs1 = gs1)
       } else if (panel == "panel2") {
@@ -389,7 +396,7 @@ compFrame <-
             "Rename.wsp",
             sep = "")
     
-    nodes =getNodes(gs1,path="auto")
+    nodes = getNodes(gs1, path = "auto")
     for (hideNode in nodesToHide) {
       if (hideNode %in% nodes) {
         print(paste("hiding node ", hideNode))
@@ -434,7 +441,8 @@ if (!file.exists(metricsFile)) {
     FILE = character(),
     TOTAL_COUNTS = integer(),
     QC = character(),
-    PANEL = character()
+    PANEL = character(),
+    MACHINE=character()
   )
   for (files in fcsFilesAll) {
     # fcsFiles = files
@@ -452,11 +460,15 @@ if (!file.exists(metricsFile)) {
       frame = read.FCS(paste(inputDir, file, sep = ""))
       if (validFrame(frame = frame)) {
         panel = getPanel(frame)
+        machine = getMachineType(frame = frame)
+        print(paste("finished loading ....", file," panel=",panel," machine=",machine))
+        
         tmpCount = data.frame(
           FILE = file,
           TOTAL_COUNTS = length(exprs(frame)[, "FSC-H"]),
           QC = "FALSE",
-          PANEL = panel
+          PANEL = panel,
+          MACHINE=machine
         )
         counts = rbind(counts, tmpCount)
         
@@ -466,10 +478,16 @@ if (!file.exists(metricsFile)) {
           
           metricBase = data.frame()
           if (panel == "panel1") {
+            templateToUse = NULL
+            if (machine == "FORTESSA") {
+              templateToUse = gt_lymph
+            } else if (machine == "LSR") {
+              templateToUse = templateLymphFortessa
+            }
             metricBase = compFrame(
               frame = frame,
               file = file,
-              gateTemplate = gt_lymph ,
+              gateTemplate = templateToUse ,
               d = d,
               outputDir = outputDir,
               gateDir = gateDir,
@@ -484,6 +502,8 @@ if (!file.exists(metricsFile)) {
             metricBase$Panel = panel
             metricBase$PDF = pdfFile
             metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+            metricBase$MACHINE = machine
+            
             metrics = rbind(metrics, metricBase)
             print(metricBase)
             
@@ -507,6 +527,7 @@ if (!file.exists(metricsFile)) {
             metricBase$Panel = panel
             metricBase$PDF = pdfFile
             metricBase$FlaggedSample = file %in% fcsFilesAllProbs
+            metricBase$MACHINE = machine
             print(metricBase)
             
             metrics = rbind(metrics, metricBase)
@@ -523,7 +544,7 @@ if (!file.exists(metricsFile)) {
             flow_auto_qc(
               frame,
               folder_results = "",
-              mini_report = paste(basename(file), "mini", sep = ),
+              mini_report = paste(basename(file), "mini", sep =),
               fcs_QC = FALSE,
               pen_valueFS = 50,
               remove_from = "FR_FM",
@@ -536,16 +557,24 @@ if (!file.exists(metricsFile)) {
             FILE = file,
             TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
             QC = "TRUE",
-            PANEL = panel
+            PANEL = panel,
+            MACHINE=machine
+            
           )
           counts = rbind(counts, tmpCount)
           
           try(if (length(exprs(frame)[, "FSC-H"]) > 0) {
             if (panel == "panel1") {
+              templateToUse = NULL
+              if (machine == "FORTESSA") {
+                templateToUse = gt_lymph
+              } else if (machine == "LSR") {
+                templateToUse = templateLymphFortessa
+              }
               metricBaseQC = compFrame(
                 frame = frame.c,
                 file = qcFile,
-                gateTemplate = gt_lymph ,
+                gateTemplate = templateToUse ,
                 d = d,
                 outputDir = outputDir,
                 gateDir = gateQCDir,
@@ -561,6 +590,8 @@ if (!file.exists(metricsFile)) {
               metricBaseQC$Panel = panel
               metricBaseQC$PDF = pdfFile
               metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
+              metricBaseQC$MACHINE = machine
+              
               metrics = rbind(metrics, metricBaseQC)
               
             } else if (panel == "panel2") {
@@ -585,6 +616,7 @@ if (!file.exists(metricsFile)) {
               metricBaseQC$PDF = pdfFile
               metricBaseQC$FlaggedSample = file %in% fcsFilesAllProbs
               metrics = rbind(metrics, metricBaseQC)
+              metricBaseQC$MACHINE = machine
               
             }
             
