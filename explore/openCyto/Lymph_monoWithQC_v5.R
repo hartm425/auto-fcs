@@ -32,6 +32,7 @@ panel2NodesToHide = c()
 setwd(dirname(panle1mapFile))
 source(file = "CombineWSP.R")
 source(file = "computeFreqs.R")
+source(file = "machineType.R")
 
 runFlowAI = FALSE
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
