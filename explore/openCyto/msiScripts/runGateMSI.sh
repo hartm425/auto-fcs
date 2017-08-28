@@ -23,4 +23,4 @@ java -jar /home/pankrat2/lane0212/genvisisOC.jar one.JL.fcs.OpenCyto inputFCS=/s
 
 
 cd "$OUTDIR"
-#sed -i 's/nodes=1/nodes=cn5601/g' *.pbs
+sed -i 's/nodes=1/nodes=cn5601/g' *.pbs
