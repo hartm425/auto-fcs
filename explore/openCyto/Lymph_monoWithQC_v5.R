@@ -407,7 +407,11 @@ compFrame <-
     renameNodes(gs1,
                 read.delim(panelMap, stringsAsFactors = FALSE, sep = "\t"))
     GatingSet2flowJo(gs1, outFileRename)
-    sed1(outFileRename)
+    if (panel == "panel1") {
+      sed1(outFileRename)
+    } else if (panel == "panel2") {
+      sed2(outFileRename)
+    }
     return(metrics)
     
   }
