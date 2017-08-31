@@ -5,26 +5,69 @@ date: "8/31/2017"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
+
+
+manual =   read.delim(
+  "/Volumes/Beta/data/flow/manualComp/dhsp1fj.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  ) 
+manual =manual[which(manual$B.cells..CD3..CD19..<=manual$Live.cells..PE..),]
+manual =manual[which(manual$cytotoxic.Tcells.CD8.<=manual$Live.cells..PE..),]
+
+autoR7 =   read.delim(
+  "/Volumes/Beta/data/flow/manualComp/all.r7.freq.metrics.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  )
+
+autoR7B = autoR7[which(autoR7$Population=="Bcells"&autoR7$QC=="FALSE"),]
+
+mergeB = merge(manual,autoR7B,by.x = "Sample",by.y="name")
+cor.test(mergeB$B.cells..CD3..CD19..,mergeB$Count)
+
+
+manual =   read.delim(
+  "/Volumes/Beta/data/flow/manualComp/dhsp1fj.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  ) 
+manual =manual[which(manual$B.cells..CD3..CD19..<=manual$Live.cells..PE..),]
+manual =manual[which(manual$cytotoxic.Tcells.CD8.<=manual$Live.cells..PE..),]
+
+autoR7 =   read.delim(
+  "/Volumes/Beta/data/flow/manualComp/all.r12.freq.metrics.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  )
+
+autoR7B = autoR7[which(autoR7$Population=="Bcells"&autoR7$QC=="FALSE"),]
+
+mergeB = merge(manual,autoR7B,by.x = "Sample",by.y="name")
+cor.test(mergeB$B.cells..CD3..CD19..,mergeB$Count)
+
+
+
+manual =   read.delim(
+  "/Volumes/Beta/data/flow/manualComp/dhsp1fj.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  ) 
+manual =manual[which(manual$B.cells..CD3..CD19..<=manual$Live.cells..PE..),]
+manual =manual[which(manual$cytotoxic.Tcells.CD8.<=manual$Live.cells..PE..),]
+
+autoR7 =   read.delim(
+  "/Volumes/Beta/data/flow/manualComp/all.r13.freq.metrics.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  )
+
+autoR7B = autoR7[which(autoR7$Population=="Bcells"&autoR7$QC=="FALSE"),]
+
+mergeB = merge(manual,autoR7B,by.x = "Sample",by.y="name")
+cor.test(mergeB$B.cells..CD3..CD19..,mergeB$Count)
+
+
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
