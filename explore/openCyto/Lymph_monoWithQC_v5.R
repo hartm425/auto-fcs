@@ -188,6 +188,10 @@ plotP1 <- function(gs1) {
                mapping = aes(x = "CD95", y = "CD28"),
                subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
+  t14 = ggcyto(gs1,
+               mapping = aes(x = "CD95", y = "CD28"),
+               subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  
   grid.arrange(
     as.ggplot(t1),
     as.ggplot(t2),
@@ -206,6 +210,8 @@ plotP1 <- function(gs1) {
     as.ggplot(t10),
     as.ggplot(t11),
     as.ggplot(t12),
+    as.ggplot(t13),
+    as.ggplot(t14),
     
     ncol = 2
   )
