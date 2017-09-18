@@ -1,0 +1,4 @@
+for file in *.pbs
+do
+   qsub -q small "$file"
+done
