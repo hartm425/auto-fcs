@@ -11,5 +11,37 @@ output:
 
 results = read.delim("/Volumes/Beta/data/flow/r15/all.freq.metrics.txt", stringsAsFactors = FALSE)
 
+
+m1 =c("CD4/CCR7+CD45RA-",
+"CD4/CCR7-CD45RA+",
+"CD4/CCR7-CD45RA-",
+"CD4/CCR7+CD45RA+",
+"CD8/CCR7+CD45RA-",
+"CD8/CCR7-CD45RA+",
+"CD8/CCR7-CD45RA-",
+"CD8/CCR7+CD45RA+")
+
+# central memory helper Tcells (CCR7+ CD45RA-)
+# effector helper Tcells (CCR7- CD45RA+)
+# effector memory helper Tcells (CCR7- CD45RA-)
+# naive helper Tcells (CCR7+ CD45RA+)
+# central memory cytotoxic Tcells (CCR7+ , CD45RA-)
+# effector cytotoxic Tcells  (CCR7-  CD45RA+)
+# effector memory cytotoxic Tcells (CCR7- , CD45RA-)
+# naive cytotoxic Tcells (CCR7+ , CD45RA+)
+
+# naive helper Tcells (CD95- CD28+)
+# effector memory helper Tcells (CD95- CD28-)
+# central memory helper Tcells (CD95+ CD28+)
+# naive cytotoxic Tcells (CD95- , CD28+)
+# central memory cytotoxic Tcells (CD95+ , CD28+)
+# effector memory cytotoxic Tcells (CD95- , CD28-)
+m2 = c("CD4/CD95-CD28+",
+"CD4/CD95-CD28-",
+"CD4/CD95+CD28+",
+"CD8/CD95-CD28+",
+"CD8/CD95+CD28+",
+"CD8/CD95-CD28-") 
+
 ```
 
