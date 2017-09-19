@@ -1,0 +1,15 @@
+---
+title: "comp"
+author: "JL"
+date: "9/19/2017"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+
+results = read.delim("/Volumes/Beta/data/flow/r15/all.freq.metrics.txt", stringsAsFactors = FALSE)
+
+```
+
