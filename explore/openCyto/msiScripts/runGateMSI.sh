@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 module load java
-OUTDIR="/scratch.global/lanej/flow/full/results_r15/"
+OUTDIR="/scratch.global/lanej/flow/full/results_r16/"
 p1Full=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt
 p2Full=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.txt
 
