@@ -1,0 +1,1097 @@
+WSP	FCS
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-09_PANEL 1_DHS_panel one_F1631929_002.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631930_002.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1632174_015.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1632230_011.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631935_001.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631943_005.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-09_PANEL 1_DHS_panel one_F1631955_005.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631947_008.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631915_003.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-09_PANEL 1_DHS_panel one_F1631951_003.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1632231_009.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1632183_014.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631939_004.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-09_PANEL 1_DHS_panel one_F1631953_006.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1632181_010.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631938_007.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1632222_013.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1631945_006.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-16_PANEL 1_DHS_panel one_F1632219_012.fcs
+/scratch.global/lanej/flow/wsps//509_516_Panel 1_DHS.wsp	2016-05-09_PANEL 1_DHS_panel one_F1631949_004.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1631925_001.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1631920_007.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1631942_011.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_Ctl-A_006.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1632176_004.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1632227_006.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1632229_003.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1631919_009.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1632184_001.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1631942_008.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_Ctl-A_011.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1631919_009.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1632184_005.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1632176_004.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1632214_010.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1632171_003.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1631925_005.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1632227_010.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1631920_007.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 1_ZF_panel one_F1632171_002.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1632214_008.fcs
+/scratch.global/lanej/flow/wsps//51116 zf HRS samples.wsp	2016-05-11_PANEL 2_ZF_panel 2_F1632229_002.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1632164_014.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 2_ZF_panel 2_F1631924_002.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1632217_009.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1631988_002.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1631993_003.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1632002_008.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1632197_010.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1636757_013.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1632217_007.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1632212_008.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1631977_006.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 1_ZF_panel one_F1632235_005.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1632197_015.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1631990_005.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1632002_006.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 2_ZF_panel 2_F1631922_005.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1632191_006.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1632258_005.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1632191_007.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1631974_008.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 1_ZF_panel one_F1632182_002.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1632193_007.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1632203_001.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1631977_003.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1631997_009.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 1_ZF_panel one_F1632233_004.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1632006_005.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1636464_011.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 2_ZF_panel 2_F1632233_004.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1631990_004.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1631974_007.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1631995_001.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1631997_006.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 2_ZF_panel 2_F1632235_003.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1632193_003.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 1_ZF_panel one_F1631922_003.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1631988_001.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1632258_004.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1632006_008.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1636724_011.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1631991_012.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1636757_010.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 1_ZF_panel one_F1631924_001.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1631992_004.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1631992_004.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1636464_013.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1632206_002.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1636739_014.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1631995_002.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1632164_009.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1631991_012.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1632206_002.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 1_ZF_panel one_F1636724_015.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1632212_005.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-18_PANEL 2_ZF_panel 2_F1636739_009.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 1_ZF_panel one_F1632203_001.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-13_PANEL 2_ZF_panel 2_F1632182_001.fcs
+/scratch.global/lanej/flow/wsps//513-520 HRS p1&p2.wsp	2016-05-20_PANEL 2_ZF_panel 2_F1631993_003.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1631996_015.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636504_003.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632201_010.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636503_005.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1636501_008.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1632250_004.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636490_012.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636508_019.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632205_012.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1636480_003.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636719_020.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632198_001.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1636500_006.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632199_007.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632190_014.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1632253_015.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636497_010.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1631983_014.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632244_002.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632196_013.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636506_009.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636493_006.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1636715_011.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636747_007.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632207_004.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636758_016.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636750_017.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1632209_002.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636740_021.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636502_008.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1632188_001.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1636498_009.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636748_013.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-24_PANEL 1_DHS_panel one_F1636499_018.fcs
+/scratch.global/lanej/flow/wsps//523_524_Panel 1_DHS.wsp	2016-05-23_PANEL 1_DHS_panel one_F1632189_005.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1631967_005.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1632256_031.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1632215_007.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1632247_027.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1631987_006.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1632254_008.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1631966_024.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1632243_003.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1631969_005.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1632004_002.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1631979_007.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1632179_006.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1631975_004.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1631965_028.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1631978_026.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1632169_010.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1631963_001.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1631998_008.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1636496_032.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1631973_030.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1632259_009.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1632165_009.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1632252_004.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1632202_029.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1632239_003.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group one_F1631971_002.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-06-06_PANEL 1_DHS_Group two_F1631986_025.fcs
+/scratch.global/lanej/flow/wsps//531_606_Panel 1_DHS.wsp	2016-05-31_PANEL 1_DHS_panel one_F1631972_001.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631026_004.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631352_005.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1631038_029.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1632272_032.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631358_006.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1632308_009.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631343_003.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1631035_027.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631345_007.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631123_011.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1631255_028.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1632269_008.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631313_001.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1632043_002.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1631060_031.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1631350_025.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1631339_026.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group two_F1631020_030.fcs
+/scratch.global/lanej/flow/wsps//607_Panel 1_DHS.wsp	2016-06-07_PANEL 1_DHS_Group one_F1631047_010.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group two_F1636744_029.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636495_013.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636745_004.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group two_F1636735_028.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636713_003.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636731_011.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636478_007.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636738_014.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636491_005.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636472_002.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group two_F1636482_031.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636720_001.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636477_006.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636718_010.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636755_009.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group two_F1636730_032.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636732_008.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group two_F1636484_033.fcs
+/scratch.global/lanej/flow/wsps//613_Panel 1_DHS.wsp	2016-06-13_PANEL 1_DHS_Group one_F1636467_012.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group two_F1636855_026.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636492_004.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group two_F1631155_030.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group two_F1636716_031.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636729_007.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636754_006.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636470_003.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636862_008.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636471_011.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1631921_005.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group two_F1631157_028.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636752_009.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1631970_010.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636741_001.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group two_F1631156_027.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group two_F1636476_029.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1636858_012.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group two_F1631159_032.fcs
+/scratch.global/lanej/flow/wsps//614_Panel 1_DHS.wsp	2016-06-14_PANEL 1_DHS_Group one_F1631014_002.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1631283_025.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1631126_005.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1632303_030.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632321_006.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1632313_024.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632263_003.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1631283_026.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1632035_027.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632029_008.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1632313_023.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632060_010.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632060_010.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1632270_029.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632195_001.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1632302_028.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1631277_024.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1632035_026.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632301_009.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1632021_028.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1632270_031.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632029_008.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1632059_031.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632023_002.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1632059_029.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632291_004.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632195_001.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632023_002.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632291_004.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632301_009.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1631277_025.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632095_007.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1632303_032.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632095_007.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group one_F1632321_006.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-16_PANEL 1_ZF_Group two_F1632302_030.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group one_F1632263_003.fcs
+/scratch.global/lanej/flow/wsps//615-617.wsp	2016-06-17_PANEL 2_ZF_Group two_F1632021_027.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1631114_009.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636795_007.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632050_003.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group two_F1636825_030.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636792_006.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632334_010.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group two_F1649318_030.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1631376_005.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636807_008.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632274_011.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632307_007.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636829_001.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632032_012.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632330_005.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632040_004.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group two_F1636828_026.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group two_F1636848_028.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group two_F1632289_029.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1631278_001.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636527_002.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1631334_003.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632306_006.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632031_014.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636799_012.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636516_004.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group two_F1632022_032.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group two_F1632067_029.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632294_008.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group two_F1636809_027.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group two_F1636810_031.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group two_F1632347_028.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636834_009.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636791_010.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1632318_002.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group two_F1632336_031.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group one_F1636782_011.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-21_PANEL 1_DHS_Group two_F1636797_032.fcs
+/scratch.global/lanej/flow/wsps//620_621_Panel 1_DHS.wsp	2016-06-20_PANEL 1_DHS_Group one_F1631263_013.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1631118_006.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632013_025.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632017_005.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632333_025.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1631281_026.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1632028_002.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632062_001.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632047_009.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632090_010.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1630917_004.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1649317_004.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1649317_003.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1632309_006.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632317_028.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1636726_010.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1632326_002.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1631118_005.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632108_003.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1632053_005.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632341_026.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1632271_004.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632017_004.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1631318_007.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632046_028.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1632348_009.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632055_029.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1631281_026.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632062_001.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1631362_003.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1631021_010.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632314_029.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632331_002.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1632016_009.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1636726_008.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632295_029.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632068_004.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632055_029.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632354_024.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1632352_005.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1632053_006.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632305_027.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632333_028.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632047_009.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632331_003.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1636468_001.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1632309_001.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632298_027.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1631318_008.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1630917_004.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1631362_001.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632335_031.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632322_007.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1632316_007.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1632028_001.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1632327_007.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632329_007.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1632036_005.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632354_027.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1632327_008.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632013_033.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632300_031.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632298_030.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632046_030.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632337_030.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632041_023.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1632316_008.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632045_031.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632332_032.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632305_025.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632041_025.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632322_006.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632335_027.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1631015_009.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632341_032.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632295_032.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632332_031.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1632037_008.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632068_005.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632337_024.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1632326_002.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632304_024.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632300_028.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1631021_009.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1636468_002.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1632352_006.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group two_F1632314_026.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group one_F1631015_010.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632090_008.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 2_ZF_Group two_F1632317_030.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 2_ZF_Group one_F1632329_006.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group two_F1632304_024.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1632037_007.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group two_F1632045_023.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-22_PANEL 1_ZF_Group one_F1632271_003.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-24_PANEL 1_ZF_Group one_F1632108_002.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 2_ZF_Group one_F1632016_010.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1632036_003.fcs
+/scratch.global/lanej/flow/wsps//622-624 sample analysis .wsp	2016-06-23_PANEL 1_ZF_Group one_F1632348_010.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632061_008.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group two_F1636756_031.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1632078_006.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632049_002.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1631341_005.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1632051_009.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632136_011.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1631287_007.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632297_009.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1631188_001.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1631260_010.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1632355_003.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632034_013.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group two_F1632042_030.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632097_010.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632015_012.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group two_F1632324_033.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group two_F1632320_032.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1632109_002.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632315_003.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632048_007.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1632018_008.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group two_F1632290_028.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-27_PANEL 1_DHS_Group one_F1632039_014.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1632014_005.fcs
+/scratch.global/lanej/flow/wsps//627_628_Panel 1_DHS.wsp	2016-06-28_PANEL 1_DHS_Group one_F1632111_004.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1631353_023.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1636746_031.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1636489_001.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1631044_024.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1631351_006.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1636742_008.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1636736_004.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1636759_002.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1631040_029.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1631050_003.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1631040_028.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1632296_002.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1636485_028.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1631314_003.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1631189_031.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1631049_007.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1632292_010.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1636483_009.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1632025_001.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1631119_007.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1636725_006.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1631349_030.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1631342_027.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1631044_025.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1631356_027.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1631275_004.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1636736_004.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1636746_029.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1631314_003.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1631275_004.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1631980_027.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1636489_001.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1636742_008.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1631356_026.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1632319_008.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1631050_003.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1632296_002.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1632264_032.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1631154_003.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1636725_006.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1636488_005.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1631033_030.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1631153_030.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1632026_026.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1631052_006.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1631052_006.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1631119_007.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1631049_007.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1632255_009.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1631122_004.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1632312_009.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1631351_006.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1632288_005.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1636483_009.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1636488_005.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1632312_010.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1631342_028.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1636728_028.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1631349_031.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1632293_024.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1631121_023.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1631046_001.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1632255_010.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1631043_005.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1631353_024.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1632264_031.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1631121_024.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1631048_009.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1631989_007.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1631048_009.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1632026_025.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1631046_001.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1632292_010.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1636759_002.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 1_ZF_Group one_F1631989_007.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1631153_032.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1632024_025.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1631259_002.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1632293_025.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1631033_029.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1632319_008.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group one_F1631122_004.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1636728_030.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1631043_005.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 2_ZF_Group two_F1636485_027.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group two_F1632024_026.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1631259_002.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1632288_005.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-08_PANEL 1_ZF_Group one_F1632025_001.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group two_F1631980_026.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-10_PANEL 2_ZF_Group one_F1631154_003.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group one_F1631315_008.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 2_ZF_Group one_F1631315_008.fcs
+/scratch.global/lanej/flow/wsps//68-610.wsp	2016-06-09_PANEL 1_ZF_Group two_F1631189_029.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group two_F1632378_029.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632143_008.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632404_003.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group two_F1632377_028.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632368_013.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632148_010.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632119_012.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632397_006.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632121_001.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group two_F1632125_030.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632072_002.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632344_004.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632110_011.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1649817_014.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632157_009.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group two_F1632158_032.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group two_F1632132_031.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1632382_007.fcs
+/scratch.global/lanej/flow/wsps//711_Panel 1_DHS.wsp	2016-07-11_PANEL 1_DHS_Group one_F1631266_005.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group two_F1632285_030.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632085_012.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632281_002.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group two_F1632107_031.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632104_014.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632142_011.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1631201_007.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632266_004.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1631296_001.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1630926_010.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632405_008.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group two_F1632150_033.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632127_003.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1631198_006.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632116_013.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632394_005.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group two_F1631236_029.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1632162_015.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group two_F1631205_032.fcs
+/scratch.global/lanej/flow/wsps//712_Panel 1_DHS.wsp	2016-07-12_PANEL 1_DHS_Group one_F1630920_009.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632122_009.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1631192_023.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1632403_027.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1631207_005.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1631190_006.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632139_008.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1631297_002.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1631213_008.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1632086_004.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1630993_032.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1631229_007.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1630993_009.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1632087_005.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1632138_028.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632122_031.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1632160_008.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1631196_002.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1632287_009.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1632082_002.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1636778_028.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632154_029.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1631230_004.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1631207_005.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1631271_008.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1630990_027.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1631190_029.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1631276_027.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1632066_001.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1631297_002.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1632273_032.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632064_001.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1632390_006.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1632070_003.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1631227_031.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1630931_001.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1631309_003.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1631276_004.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632386_010.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1630932_010.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1632082_002.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1632114_024.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1632403_026.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1631213_008.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1632390_006.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632391_004.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1632087_005.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1631300_025.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1631229_007.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1631230_004.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1632066_001.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1631196_024.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632156_003.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1632311_007.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632159_027.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632139_030.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1632077_009.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1632389_010.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1630931_001.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632159_005.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1631192_024.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1632146_029.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1631271_031.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1631300_024.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1631195_003.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1636734_026.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632156_025.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1632409_030.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1631211_032.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1632114_001.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1631195_026.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1632311_007.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1630932_010.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1631209_006.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1636778_029.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1631227_030.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1632409_007.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1632079_006.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1631309_003.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1636734_025.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1632160_008.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1632080_002.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632064_023.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1632146_030.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632391_026.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1632386_032.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group one_F1631209_028.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1632273_033.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1632086_004.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 2_ZF_Group two_F1632138_005.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group two_F1632080_025.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 2_ZF_Group one_F1632389_010.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1632079_006.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-13_PANEL 1_ZF_Group one_F1632154_007.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group two_F1631211_031.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-15_PANEL 1_ZF_Group one_F1632287_009.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group one_F1632077_009.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 2_ZF_Group one_F1632070_003.fcs
+/scratch.global/lanej/flow/wsps//713-715.wsp	2016-07-14_PANEL 1_ZF_Group two_F1630990_028.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group two_F1636787_031.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1631237_011.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1632398_008.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group two_F1636786_030.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1631290_012.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1632115_009.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1631225_013.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1632310_004.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1631235_014.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1631208_010.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group two_F1630918_032.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1632063_002.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1631217_003.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1631308_005.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1636513_007.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group two_F1631293_029.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1632275_001.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group two_F1630988_028.fcs
+/scratch.global/lanej/flow/wsps//718_Panel 1_DHS.wsp	2016-07-18_PANEL 1_DHS_Group one_F1630997_006.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636784_032.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1632277_010.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636859_028.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1636520_028.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1632400_006.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636523_008.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1636515_032.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1636515_031.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1631111_029.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1631224_003.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1631330_030.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1632384_007.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636837_007.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1631305_002.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1636531_001.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636528_002.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1636785_029.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636525_023.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1636806_025.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1636520_029.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1632384_007.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636542_004.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636783_009.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636856_031.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636816_025.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1636806_024.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636517_010.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1631148_028.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636837_005.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1636835_027.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636859_027.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1632369_008.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1631199_031.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1631111_028.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636823_026.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636528_002.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636523_006.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636542_006.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1631369_009.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1636532_005.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1632400_006.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1636535_004.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636802_003.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1631369_009.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636784_033.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636833_029.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636823_025.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1636785_030.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1636535_004.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1631100_007.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1636521_023.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1636532_005.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636796_027.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1631305_002.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1636835_026.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1636521_024.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1632280_001.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636517_010.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636816_024.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1632280_001.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636814_008.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1631224_003.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1631330_031.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1636821_025.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636833_030.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1632369_008.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1631199_030.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group two_F1636821_026.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group two_F1631148_027.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636814_004.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636856_032.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 2_ZF_Group one_F1632277_010.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1631100_003.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group two_F1636796_026.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-27_PANEL 1_ZF_Group one_F1636531_001.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 2_ZF_Group one_F1636783_009.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group one_F1636802_005.fcs
+/scratch.global/lanej/flow/wsps//727-729 samples.wsp	2016-07-29_PANEL 1_ZF_Group two_F1636525_024.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632112_009.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632363_026.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1632339_003.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1631269_003.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632161_033.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632030_006.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632379_030.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632372_023.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1632399_005.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632351_004.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632098_005.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632134_029.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632076_032.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632350_008.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632340_001.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632057_001.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632278_033.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632381_005.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632030_006.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1631274_024.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1632153_010.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1631273_025.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632363_025.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1632342_002.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632358_028.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632284_029.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1631284_003.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632112_009.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1632345_001.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1632345_001.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632098_005.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1631265_008.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632044_004.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632381_007.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632284_028.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632343_030.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1632380_007.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632383_031.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1632338_008.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632057_001.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632054_032.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632117_007.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1631269_009.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1632342_002.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632278_032.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632091_010.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632131_025.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632358_028.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632353_008.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1632339_009.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632359_006.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632351_006.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632030B_007.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632038_003.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632396_009.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632076_032.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632131_024.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1632399_007.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1632338_006.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632044_004.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632325_002.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632134_027.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1649319_028.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632385_027.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632350_008.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1631270_010.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632343_030.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1631274_024.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632161_031.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632346_008.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632103_002.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632325_002.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632054_031.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632346_001.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632091_010.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1632153_004.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632379_031.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632340_010.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1631285_030.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1632385_026.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group one_F1631270_004.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632102_026.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1631284_009.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632383_029.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632359_004.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632105_027.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group two_F1632102_026.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1631265_006.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632353_002.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1649319_027.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632117_003.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 1_ZF_Group one_F1632038_003.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 1_ZF_Group one_F1632103_010.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1631273_023.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group two_F1632372_024.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-06_PANEL 2_ZF_Group one_F1632030B_007.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 2_ZF_Group two_F1631285_029.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-08_PANEL 1_ZF_Group one_F1632380_005.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group one_F1632396_005.fcs
+/scratch.global/lanej/flow/wsps//76-78 samples zf.wsp	2016-07-07_PANEL 2_ZF_Group two_F1632105_025.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group two_F1636830_032.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636533_004.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636850_009.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group two_F1636774_030.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636819_011.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636775_013.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1631366_002.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636847_014.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1631377_003.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group two_F1631147_029.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1631107_010.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636818_005.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1631332_012.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636851_001.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636790_006.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group two_F1631383_031.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group two_F1631374_028.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1636826_007.fcs
+/scratch.global/lanej/flow/wsps//801_Panel 1_DHS.wsp	2016-08-01_PANEL 1_DHS_Group one_F1630927_008.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1631138_006.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636772_001.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1631098_033.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1631386_028.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636804_008.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636843_004.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636526_007.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1631080_029.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636536_009.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1632365_002.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1631145_030.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1636820_026.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636832_012.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636524_005.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636815_011.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1631140_032.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1631384_027.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1636849_010.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group two_F1631382_031.fcs
+/scratch.global/lanej/flow/wsps//802_Panel 1_DHS.wsp	2016-08-02_PANEL 1_DHS_Group one_F1631337_003.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group two_F1631367_031.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631078_016.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631378_008.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group two_F1631335_030.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631321_010.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631090_011.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631076_007.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631336_001.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631077_012.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631406_009.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1630962_006.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631097_002.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631072_003.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631380_015.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631095_013.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group two_F1631238_032.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1636763_004.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1631323_005.fcs
+/scratch.global/lanej/flow/wsps//809_Panel 1_DHS.wsp	2016-08-09_PANEL 1_DHS_Group one_F1630948_014.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group two_F1632410_028.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1631177_003.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1636844_014.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group two_F1631175_030.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1631180_012.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1631289_006.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1630987_002.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1632395_004.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1631141_005.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1630924_010.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group two_F1630946_029.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1631286_001.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1630978_013.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1631202_007.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1636885_011.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group two_F1631169_031.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1631408_008.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group two_F1630983_032.fcs
+/scratch.global/lanej/flow/wsps//815_Panel 1_DHS.wsp	2016-08-15_PANEL 1_DHS_Group one_F1630919_009.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1630955_011.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1631244_003.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1631150_030.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1636540_033.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1631247_008.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1632323_004.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1631233_005.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1630967_032.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1631241_010.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1630981_001.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1631249_026.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1636883_029.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1632265_007.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1631082_012.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1632081_002.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1631172_028.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1632075_027.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1636765_006.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group two_F1631331_031.fcs
+/scratch.global/lanej/flow/wsps//816_Panel 1_DHS.wsp	2016-08-16_PANEL 1_DHS_Group one_F1630961_009.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 1_ZF_panel one_CTL-A_001.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 2_ZF_panel 2_CTL-A_001.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 2_ZF_panel 2_F1631944_005.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 2_ZF_panel 2_F1631956_004.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 1_ZF_panel one_F1631956_004.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 1_ZF_panel one_F1631957_002.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 1_ZF_panel one_F1631950_006.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 2_ZF_panel 2_F1631954_003.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 1_ZF_panel one_F1631954_003.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 2_ZF_panel 2_F1631950_006.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 2_ZF_panel 2_F1631957_002.fcs
+/scratch.global/lanej/flow/wsps//flaten 5616 samples.wsp	2016-05-06_PANEL 1_ZF_panel one_F1631944_005.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632173_013.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632240_012.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1631984_010.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1631932_015.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632260_014.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632225_001.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1631940_004.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632232_002.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632220_007.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1631928_016.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632224_005.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632168_009.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1631914_006.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1631937_003.fcs
+/scratch.global/lanej/flow/wsps//hb hrs P1 sample 12-May-2016.wsp	2016-05-12_PANEL 1_HB_panel one_F1632185_008.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631127_027.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1631067_003.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631025_022.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631115_026.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631317_026.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group one_F1631261-bad_001.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631025_018.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631338_023.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631057_029.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631037_024.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631347_024.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1636475_009.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631127_031.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1636743-bad_006.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1631136_004.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631041_021.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group one_F1636743-bad_002.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631347_028.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631056_023.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1631261-bad_001.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631317_022.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631037_020.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631338_027.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1631019-bad_008.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631041_025.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1631018_002.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group one_F1631116-bad_003.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631057_025.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group one_F1631019-bad_004.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group two_F1631115_030.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1631053_005.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 1_ZF_Group two_F1631056_019.fcs
+/scratch.global/lanej/flow/wsps//HRS P1&P2 analysis 6316.wsp	2016-06-03_PANEL 2_ZF_Group one_F1631116-bad_007.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632003_012.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632177_008.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1631976_010.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632000_006.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632251_002.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632194_011.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632163_009.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1631968_003.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632166_007.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1631982_013.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632008_018.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632248_019.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632010_004.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1631981_014.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632216_001.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1631999_015.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1631985_017.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1631964_005.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 1_HB_panel one_F1632007_016.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 1_HB_panel one_F1631959_005.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1632180_006.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1631916_003.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1632186_008.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1632228_009.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 1_HB_panel one_F1631931_006.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_Ctl-D_011.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 1_HB_panel one_F1631958_002.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 1_HB_panel one_F1631961_003.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1631927_005.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1632226_001.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 1_HB_panel one_CTL-C_001.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1632223_007.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1631918_002.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1632236_004.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 1_HB_panel one_F1632175_010.fcs
+/scratch.global/lanej/flow/wsps//P1 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 1_HB_panel one_F1631960_004.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632007_016.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632194_011.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632251_002.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631985_017.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631999_015.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632008_018.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631968_003.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632177_008.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632008_018.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632248_019.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631976_010.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632166_007.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632216_001.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632000_006.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631985_017.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632163_009.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632007_016.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631981_014.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631964_005.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632003_012.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632000_006.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1631982_013.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-19 27-Aug-2016.wsp	2016-05-19_PANEL 2_HB_panel 2_F1632010_004.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 2_HB_panel two_F1631959_005.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1632186_006.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1631918_002.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1632223_007.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1632236_004.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 2_HB_panel two_F1631931_006.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1631916_003.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 2_HB_panel two_F1631958_002.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 2_HB_panel two_F1631961_003.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1632175_010.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1632228_009.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 2_HB_panel two_CTL-C_001.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1632226_001.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1631927_005.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_Ctl-D_011.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-10_PANEL 2_HB_panel 2_F1632180_008.fcs
+/scratch.global/lanej/flow/wsps//P2 HRS 5-5&5-10 27-Aug-2016.wsp	2016-05-05_PANEL 2_HB_panel two_F1631960_004.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1631940_003.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632224_002.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1631928_015.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632260_008.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632225_006.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632185_009.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1631914_001.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632220_012.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1631937_004.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632168_010.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632240_007.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632173_013.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1631932_016.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1632232_005.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_Ctl-C_014.fcs
+/scratch.global/lanej/flow/wsps//panel 2 hb hrs samples 12-May-2016.wsp	2016-05-12_PANEL 2_HB_panel 2_F1631984_011.fcs
