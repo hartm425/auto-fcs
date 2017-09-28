@@ -23,4 +23,10 @@ gating(gateTemplate, gs1)
 ggcyto(gs1,
        mapping = aes(x = "CD4", y = "CD8"),
        subset = "Tcells") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+ geom_stats("CD4")
+
+
+ggcyto(gs1,
+       mapping = aes(x = "CD4", y = "CD8"),
+       subset = "Tcells") +
     geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+ geom_stats("CD8")
