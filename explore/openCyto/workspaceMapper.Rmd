@@ -12,12 +12,12 @@ output: html_document
 library(openCyto)
 library(ggcyto)
 library(flowCore)
-outDir = "/Volumes/Beta/data/flow/"
-wsDir = "/Volumes/Beta/data/flow/wsp"
+outDir = "/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/"
+wsDir = "/scratch.global/lanej/flow/wsps"
 wsps <-
   list.files(wsDir,
              pattern = "wsp$",
-             full = TRUE)
+             full = TRUE,recursive = TRUE)
 df = data.frame(
   WSP = character(0),
   FCS = character(0)
@@ -35,7 +35,7 @@ for(file in wsps){
   df = rbind(df,tmp)
 }
 
-write.table( df,file = paste(outDir,"fcsMap.txt",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE)
+write.table( df,file = paste(outDir,"fcsMSIMap.txt",sep = ""),sep = "\t",quote = FALSE,row.names = FALSE)
 ```
 
 
