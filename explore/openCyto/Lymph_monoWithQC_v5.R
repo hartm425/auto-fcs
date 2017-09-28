@@ -69,6 +69,7 @@ fcsFilesAll <-
 # fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 # fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
+fcsFilesAll =fcsFilesAll[grepl("1_FORTESSA",fcsFilesAll)]
 fcsFilesAllProbs = c("NONE")
 
 
@@ -198,8 +199,8 @@ plotP1 <- function(gs1) {
     # as.ggplot(t3),
     # as.ggplot(t4),
     # as.ggplot(t5),
-    # as.ggplot(t6),
-    # as.ggplot(t6_1),
+    as.ggplot(t6),
+    as.ggplot(t6_1),
     # as.ggplot(t1Bcell),
     # as.ggplot(t2Bcell),
     # as.ggplot(t7),
@@ -210,9 +211,9 @@ plotP1 <- function(gs1) {
     # as.ggplot(t10),
     # as.ggplot(t11),
     # as.ggplot(t12),
-    as.ggplot(t13),
-    as.ggplot(t14),
-    
+    # as.ggplot(t13),
+    # as.ggplot(t14),
+    # 
     ncol = 2
   )
   
