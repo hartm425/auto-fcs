@@ -247,10 +247,7 @@ plotP2 <- function(gs1) {
   t4 = ggcyto(gs1,
               mapping = aes(x = "FSC-W", y = "FSC-H"),
               subset = "PE-A") +
-    geom_hex(bins = ggcyto(gs1,
-                           mapping = aes(x = "FSC-W", y = "FSC-H"),
-                           subset = "PE-A") +
-               geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+geom_stats("Singlets")00) + ggcyto_par_set(limits = "data") + geom_gate()
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   t5 = ggcyto(gs1,
               mapping = aes(x = "FSC-A", y = "SSC-A"),
               subset = "Singlets") +
