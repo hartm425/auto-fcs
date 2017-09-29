@@ -23,7 +23,7 @@ CD8	CD4-CD8+	Tcells	"CD4,CD8"	refGate	CD4-:CD8+	NA	NA	NA	NA
 ActivatedCD4	HLA-DR+	CD4	HLA-DR	tailgate	tol=9.9e-6	NA	NA	standardize_flowset	NA
 *	CD45RA+/-	CD4	CD45RA	mindensity	NA	NA	NA	NA	NA
 CCR7gate	CCR7	CD4/CD45RA+	CCR7	tailgate	"tol=2e-4, positive = FALSE,side='left',num_peaks=2,ref_peak=2"	NA	NA	NA	NA
-CCR7gate	CCR7	CD4/CD45RA-	CCR7	flowClust	"K=2,cutpoint_method='min_density',quantile=0.97"	NA	NA	NA	NA
+CCR7gate	CCR7	CD4/CD45RA-	CCR7	flowClust	"K=2,cutpoint_method='min_density',quantile=0.95"	NA	NA	NA	NA
 *	CCR7+/-CD45RA+	CD4	"CCR7,CD45RA"	refGate	CD4/CD45RA+/CCR7gate:CD4/CD45RA+	NA	NA	NA	NA
 *	CCR7+/-CD45RA-	CD4	"CCR7,CD45RA"	refGate	CD4/CD45RA-/CCR7gate:CD4/CD45RA-	NA	NA	NA	NA
 ActivatedCD8	HLA-DR+	CD8	HLA-DR	flowDensity	"percentile=.95,use.percentile=T"	NA	NA	NA	NA
