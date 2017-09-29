@@ -16,9 +16,7 @@ IgDgate	IgD-	Bcells	IgD	tailgate	"tol=5e-5, positive = FALSE,side='left'"	NA	NA	
 *	CD4+/-	Tcells	CD4	mindensity	NA	NA	NA	NA	NA
 CD8-	CD8-	Tcells	CD8	mindensity	NA	NA	NA	NA	NA
 CD8+	CD8+	CD4-	CD8	tailgate	"tol=5e-4, positive = FALSE,side='left'"	NA	NA	NA	NA
-CD4One	CD4+CD8-	Tcells	"CD4,CD8"	refGate	CD4+:CD8-	NA	NA	NA	NA
-CD4Two	CD4Two	CD4One	CD8	tailgate	"tol=5e-4, positive = TRUE,side='right'"	NA	NA	NA	NA
-CD4	CD4	Tcells	"CD4,CD8"	refGate	CD4Two:CD8-	NA	NA	NA	NA
+CD4	CD4+CD8-	Tcells	"CD4,CD8"	refGate	CD4+:CD8-	NA	NA	NA	NA
 CD8	CD4-CD8+	Tcells	"CD4,CD8"	refGate	CD4-:CD8+	NA	NA	NA	NA
 ActivatedCD4	HLA-DR+	CD4	HLA-DR	tailgate	tol=9.9e-6	NA	NA	standardize_flowset	NA
 *	CD45RA+/-	CD4	CD45RA	mindensity	NA	NA	NA	NA	NA
