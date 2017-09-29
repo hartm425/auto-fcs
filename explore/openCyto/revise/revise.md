@@ -42,7 +42,8 @@ ggcyto(gs1,
     geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+ geom_stats("CD8")
 
 ### next
-    
+    source(file = "generateFortessa.R")
+
     templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
 templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir)
     gt_lymphFortessa <-

@@ -70,8 +70,8 @@ fcsFilesAll <-
 # fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 # fcsFilesAll ="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs" CD4/CD8 examples
-# fcsFilesAll ="2016-12-30_PANEL 1_HB_group two_F1636025_025.fcs"
-# file="2017-01-12_PANEL 1_HB_group two_F1638569_026.fcs" CD19
+# file ="2016-12-30_PANEL 1_HB_group two_F1636025_025.fcs"
+# file="2017-01-20_PANEL 1_HB_group two_F1652562_031.fcs" CD19
 # fcsFilesAll =fcsFilesAll[grepl("1_FORTESSA",fcsFilesAll)]
 fcsFilesAllProbs = c("NONE")
 
