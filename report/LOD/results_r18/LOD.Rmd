@@ -107,7 +107,7 @@ ggplot(data=fails, aes(x=PLOT_NAME, y=TOTAL_COUNTS, fill=fails$SUCCESS_PANEL)) +
 
 ```{r echo=FALSE,fig.height=10,fig.width=12}
 
-kable(counts[,c("FILE","PLOT_NAME")],format = "markdown")
+kable(counts[,c("FILE","PLOT_NAME","TOTAL_COUNTS")],format = "markdown")
 
 ```
 
