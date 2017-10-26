@@ -66,7 +66,7 @@ fcsFilesAll <-
 # fcsFilesAll = fcsFilesAll[8:9]
 # fcsFilesAll = fcsFilesAll[307:309]
 # BCELL test: 2016-05-11_PANEL 1_ZF_panel one_F1631925_005.fcs
-# fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
+fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
 # fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 # fcsFilesAll ="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs" CD4/CD8 examples
@@ -214,12 +214,12 @@ plotP1 <- function(gs1) {
     # as.ggplot(t8),
     as.ggplot(t9),
     # as.ggplot(tCD8Active),
-    # as.ggplot(t10),
+    as.ggplot(t10),
     as.ggplot(t11),
     # as.ggplot(t12),
     # as.ggplot(t13),
     # as.ggplot(t14),
-    # 
+    #
     ncol = 2
   )
   
@@ -362,7 +362,7 @@ compFrame <-
     metrics = autoCounts
     
     if (!qcVersion) {
-      wsFile = mapper[which(mapper$FCS == file), ]$WSP
+      wsFile = mapper[which(mapper$FCS == file),]$WSP
       if (length(wsFile) > 0) {
         ws <- openWorkspace(wsFile)
         gs <-
@@ -463,7 +463,7 @@ if (!file.exists(metricsFile)) {
     TOTAL_COUNTS = integer(),
     QC = character(),
     PANEL = character(),
-    MACHINE=character()
+    MACHINE = character()
   )
   for (files in fcsFilesAll) {
     # fcsFiles = files
@@ -482,14 +482,21 @@ if (!file.exists(metricsFile)) {
       if (validFrame(frame = frame)) {
         panel = getPanel(frame)
         machine = getMachineType(frame = frame)
-        print(paste("finished loading ....", file," panel=",panel," machine=",machine))
+        print(paste(
+          "finished loading ....",
+          file,
+          " panel=",
+          panel,
+          " machine=",
+          machine
+        ))
         
         tmpCount = data.frame(
           FILE = file,
           TOTAL_COUNTS = length(exprs(frame)[, "FSC-H"]),
           QC = "FALSE",
           PANEL = panel,
-          MACHINE=machine
+          MACHINE = machine
         )
         counts = rbind(counts, tmpCount)
         
@@ -565,7 +572,7 @@ if (!file.exists(metricsFile)) {
             flow_auto_qc(
               frame,
               folder_results = "",
-              mini_report = paste(basename(file), "mini", sep =),
+              mini_report = paste(basename(file), "mini", sep = ),
               fcs_QC = FALSE,
               pen_valueFS = 50,
               remove_from = "FR_FM",
@@ -579,7 +586,7 @@ if (!file.exists(metricsFile)) {
             TOTAL_COUNTS = length(exprs(frame.c)[, "FSC-H"]),
             QC = "TRUE",
             PANEL = panel,
-            MACHINE=machine
+            MACHINE = machine
             
           )
           counts = rbind(counts, tmpCount)
