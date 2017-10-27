@@ -18,7 +18,7 @@ convertP1ToFortessa <- function(templateFile, outputDir) {
 }
 
 converTCellGate  <- function(template) {
-  template[which(template$pop == "CD3+/-"), c("gating_args")] = "gate_range=c(120,185)"
+  template[which(template$pop == "CD3+/-"), c("gating_args")] = "gate_range=c(140,185)"
   template[which(template$pop == "CD19+/-"), c("gating_args")] = "gate_range=c(100,155),adjust=1.5"
   return(template)
 }
