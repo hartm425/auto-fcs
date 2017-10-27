@@ -3,10 +3,19 @@
 
 
 
-convertP1ToFortessa <- function(templateFile, outputDir) {
+convertP1ToFortessa <- function(templateFile, outputDir,spliceFile) {
   outFile = paste0(outputDir, basename(gsub("LSR", "FORTESSA", templateFile)))
   template = read.delim(templateFile, stringsAsFactors = FALSE)
-  template = converTCellGate(template = template)
+  templateSplice = read.delim(spliceFile, stringsAsFactors = FALSE)
+  
+  top =grep("PE-A-",template$alias)
+  templateTop =template[c(1:grep("PE-A-",template$alias)),]
+  
+  templateBot =template[c(grep("CD27gate",template$alias):length(rownames(template))),]
+
+  template =rbind(templateTop,templateSplice)
+  template =rbind(template,templateBot)
+  
   write.table(
     x = template,
     file = outFile,
@@ -17,11 +26,6 @@ convertP1ToFortessa <- function(templateFile, outputDir) {
   return(outFile)
 }
 
-converTCellGate  <- function(template) {
-  template[which(template$pop == "CD3+/-"), c("gating_args")] = "gate_range=c(140,185)"
-  template[which(template$pop == "CD19+/-"), c("gating_args")] = "gate_range=c(100,155),adjust=1.5"
-  return(template)
-}
 convertP2ToFortessa <- function(templateFile, outputDir) {
   outFile = paste0(outputDir, basename(gsub("LSR", "FORTESSA", templateFile)))
   template = read.delim(templateFile, stringsAsFactors = FALSE)

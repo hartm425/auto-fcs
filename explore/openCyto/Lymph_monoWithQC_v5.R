@@ -34,12 +34,13 @@ source(file = "CombineWSP.R")
 source(file = "computeFreqs.R")
 source(file = "machineType.R")
 source(file = "generateFortessa.R")
+spliceFile = "TBSpliceFortessa.txt"
 
 runFlowAI = FALSE
 inputDir = "/Volumes/Beta/data/flow/fcs3/"
 outputDir = "/Volumes/Beta/data/flow/"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
-templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir)
+templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir,spliceFile = spliceFile)
 
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.LSR.c.txt"
 templateMonoFortessa =convertP2ToFortessa(templateFile = templateMono, outputDir = outputDir)

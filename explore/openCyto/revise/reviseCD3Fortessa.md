@@ -1,11 +1,14 @@
 file="2017-03-01_PANEL 1_FORTESSA_HB_group two_Ctl-D_032.fcs"    
 file="2017-01-05_PANEL 1_ZF_Group one_F1636254_024.fcs"
+file="2017-01-24_PANEL 1_ZF_group one_F1638554_028.fcs"
     frame = read.FCS(paste(inputDir, file, sep = ""))
 
     source(file = "generateFortessa.R")
+spliceFile = "TBSpliceFortessa.txt"
 
     templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
-templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir)
+templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir,spliceFile = spliceFile)
+
     gt_lymphFortessa <-
   gatingTemplate(templateLymphFortessa, autostart = 1L)
     gateTemplate = gt_lymphFortessa
