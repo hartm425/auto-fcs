@@ -42,6 +42,8 @@ templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
 templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir)
 
 templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.LSR.c.txt"
+templateMonoFortessa =convertP1ToFortessa(templateFile = templateMono, outputDir = outputDir)
+
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
@@ -58,6 +60,9 @@ gt_lymphFortessa <-
   gatingTemplate(templateLymphFortessa, autostart = 1L)
 gt_mono <-
   gatingTemplate(templateMono, autostart = 1L)
+
+gt_monoFortessa <-
+  gatingTemplate(templateMonoFortessa, autostart = 1L)
 
 fcsFilesAll <-
   list.files(inputDir,
@@ -538,10 +543,16 @@ if (!file.exists(metricsFile)) {
             
           } else if (panel == "panel2") {
             #panel 2
+            templateToUse = NULL
+            if (machine == "FORTESSA") {
+              templateToUse = gt_monoFortessa
+            } else if (machine == "LSR") {
+              templateToUse = gt_mono
+            }
             metricBase = compFrame(
               frame = frame,
               file = file,
-              gateTemplate = gt_mono ,
+              gateTemplate = templateToUse ,
               d = d,
               outputDir = outputDir,
               gateDir = gateDir,
