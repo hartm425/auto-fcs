@@ -41,7 +41,7 @@ outputDir = "/Volumes/Beta/data/flow/"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
 templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir)
 
-templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.c.txt"
+templateMono = "~/git/auto-fcs/explore/openCyto/dc.dev.LSR.c.txt"
 mapperFile = "/Volumes/Beta/data/flow/fcsMap.txt"
 
 gateDir = "gates/"
