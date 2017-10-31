@@ -1,8 +1,8 @@
 #!/usr/bin/env bash 
 module load java
-OUTDIR="/scratch.global/lanej/flow/full/results_r18/"
+OUTDIR="/scratch.global/lanej/flow/full/results_r19/"
 p1Full=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt
-p2Full=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.c.txt
+p2Full=/home/pankrat2/shared/bin/auto-fcs/explore/openCyto/dc.dev.LSR.c.txt
 
 p2=$OUTDIR"p2Trim.txt"
 p1=$OUTDIR"p1Trim.txt"
