@@ -34,3 +34,8 @@ gating(gateTemplate, gs1)
               mapping = aes(x = "CD3", y = "CD19"),
               subset = "PE-A-") +
     geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+ geom_stats("Bcells")
+    
+     ggcyto(gs1,
+              mapping = aes(x = "CD3", y = "CD19"),
+              subset = "Tcells") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+ geom_stats("Tcells")
