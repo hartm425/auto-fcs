@@ -1,0 +1,1 @@
+*	CD3+/-	PE-A-	CD3	mindensity	gate_range=c(80,150)	NA	NA	NA	NACD19B	CD19+	CD3-	CD19	mindensity	gate_range=c(125,200),adjust=1.5	NA	NA	NA	NACD19T	CD19-	CD3+	CD19	tailgate	tol=1e-4, positive = FALSE,side='left'	NA	NA	NA	NABcells	CD3-CD19+	PE-A-	CD3,CD19	refGate	CD3-:CD19B	NA	NA	NA	NATcells	CD3+CD19-	PE-A-	CD3,CD19	refGate	CD3+:CD19T	NA	NA	NA	NA
