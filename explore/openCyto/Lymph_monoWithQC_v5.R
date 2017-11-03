@@ -93,7 +93,7 @@ fcsFilesAllProbs = c("NONE")
 
 REPLACE_FOR_NEW_FILES = ""
 
-fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
 getStats <- function(gs1, qcVersion, metric, gate) {
   autoStats = getPopStats(gs1, statistic = metric)
