@@ -1,0 +1,114 @@
+---
+title: "results_r18 LOD"
+author: "JL"
+date: "10/10/2017"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+##  LOD testing
+
+
+
+```{r setup,echo=FALSE}
+library(ggplot2)
+library(knitr)
+theme_set(theme_bw(20))
+t2 <- theme(
+    axis.line = element_line(colour = "black"),
+    axis.text = element_text(colour = "black"),
+    axis.ticks = element_line(colour = "black"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.border = element_blank(),
+    panel.background = element_blank(),
+    axis.text.x=element_text(angle=90,hjust=1)
+)
+
+gates =   read.delim(
+  "/Volumes/Beta/data/flow/results_r20/LOD/all.freq.metrics.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  ) 
+gates$key=paste(gates$name,gates$Panel)
+
+counts =   read.delim(
+  "/Volumes/Beta/data/flow/results_r20/LOD/all.totalCellCounts.metrics.txt",
+  stringsAsFactors = FALSE,
+  sep = "\t"
+  ) 
+counts$PLOT_NAME=counts$FILE
+
+counts$PLOT_NAME=gsub("2017-10-05_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("LSR_ZF_LOD_Group one_Ctl-G_LOD_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("2017-03-02_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("ZF_group two_Ctl-G_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("DHS_group two_Ctl-G_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("FORTESSA_HB_group two_Ctl-G_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("2017-03-07_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("2017-02-13_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("2017-02-27_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("_group two_Ctl_G_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("_Group two_Ctl-G_","",counts$PLOT_NAME)
+counts$PLOT_NAME=gsub("PANEL ","",counts$PLOT_NAME)
+
+
+counts$key=paste(counts$FILE,counts$PANEL)
+
+# gates = merge(gates,counts,by.x = "key",by.y = "key",all.y = TRUE)
+
+counts$PANEL=as.factor(counts$PANEL)
+
+
+```
+
+- total of `r length(counts$PANEL)` fcs files
+
+```{r echo=FALSE,fig.height=10,fig.width=12}
+
+counts$SUCCESS =counts$FILE %in% gates$name
+ggplot(data=counts, aes(x=PLOT_NAME, y=TOTAL_COUNTS, fill=counts$PANEL)) +
+    geom_bar(colour="black", stat="identity") +t2+xlab("Trimmed fcs name")
+
+```
+
+- TOTAL_COUNTS is the total number of cells in the .fcs file
+- one sample had an "undetermined panel" , meaning the .fcs file was probably missing a desc column
+
+
+```{r echo=FALSE,fig.height=10,fig.width=12}
+
+counts$SUCCESS_PANEL =as.factor(paste0(counts$PANEL,counts$SUCCESS))
+
+ggplot(data=counts, aes(x=PLOT_NAME, y=TOTAL_COUNTS, fill=counts$SUCCESS_PANEL)) +
+    geom_bar(colour="black", stat="identity") +t2+xlab("Trimmed fcs name")
+```
+
+- panel1TRUE means the sample was successfully gated
+- panel1FALSE means the sample was not successfully gated
+- panel2TRUE means the sample was successfully gated
+- panel2FALSE means the sample was not successfully gated
+
+
+```{r echo=FALSE,fig.height=10,fig.width=12}
+fails =counts[which(counts$SUCCESS==FALSE),]
+ggplot(data=fails, aes(x=PLOT_NAME, y=TOTAL_COUNTS, fill=fails$SUCCESS_PANEL)) +
+    geom_bar(colour="black", stat="identity") +t2+xlab("Trimmed fcs name")
+```
+
+
+
+- only the samples that failed gating
+
+### File name mappings 
+
+```{r echo=FALSE,fig.height=10,fig.width=12}
+
+kable(counts[,c("FILE","PLOT_NAME","TOTAL_COUNTS")],format = "markdown")
+
+```
+
+
