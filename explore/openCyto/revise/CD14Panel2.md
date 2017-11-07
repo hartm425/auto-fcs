@@ -35,7 +35,7 @@ gating(gateTemplate, gs1)
 
 ggcyto(gs1,
        mapping = aes(x = "CD14"),
-       subset = "D_NK_M") + ggcyto_par_set(limits = "data") + geom_gate()+ geom_histogram(bins = 300) 
+       subset = "D_NK_M") + ggcyto_par_set(limits = "data") + geom_gate("Mono")+ geom_histogram(bins = 300) 
  ggcyto(gs1,
               mapping = aes(x = "CD14", y = "CD16"),
               subset = "D_NK_M") +

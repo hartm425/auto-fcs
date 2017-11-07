@@ -277,12 +277,12 @@ plotP2 <- function(gs1) {
               mapping = aes(x = "CD14", y = "CD16"),
               subset = "D_NK_M") +
     geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  
-  t8 = ggcyto(gs1,
-              mapping = aes(x = "CD14", y = "CD16"),
-              subset = "CD14+") +
-    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  
+  # 
+  # t8 = ggcyto(gs1,
+  #             mapping = aes(x = "CD14", y = "CD16"),
+  #             subset = "CD14+") +
+  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  # 
   t9 = ggcyto(gs1,
               mapping = aes(x = "CD14", y = "CD20"),
               subset = "CD14-") +
@@ -317,7 +317,7 @@ plotP2 <- function(gs1) {
     as.ggplot(t5),
     as.ggplot(t6),
     as.ggplot(t7),
-    as.ggplot(t8),
+    # as.ggplot(t8),
     as.ggplot(t9),
     as.ggplot(t10),
     as.ggplot(t11),
