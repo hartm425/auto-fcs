@@ -73,17 +73,22 @@ fcsFilesAll <-
 # fcsFilesAll = fcsFilesAll[307:309]
 # BCELL test: 2016-05-11_PANEL 1_ZF_pfile="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
 # anel one_F1631925_005.fcs
-fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
+# fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
+#fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
+
 # fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 # fcsFilesAll ="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs" CD4/CD8 examples
 # file ="2016-12-30_PANEL 1_HB_group two_F1636025_025.fcs"
 # file="2017-01-20_PANEL 1_HB_group two_F1652562_031.fcs" CD19
 # fcsFilesAll =fcsFilesAll[grepl("1_FORTESSA",fcsFilesAll)]
-# fcsFilesAll =fcsFilesAll[grepl("PANEL 2",fcsFilesAll)]
+fcsFilesAll =fcsFilesAll[grepl("PANEL 2",fcsFilesAll)]
 # fcsFilesAll =c("2017-01-19_PANEL 1_HB_group one_F1635866_023.fcs","2017-01-26_PANEL 1_DHS_Group two_F1638715_037.fcs")
-fcsFilesAll =c("2017-01-23_PANEL 2_DHS_Group one_F1636334_010.fcs","2017-01-23_PANEL 2_DHS_Group one_F1638605_013.fcs","2016-09-13_PANEL 2_DHS_Group one_F1631262_014.fcs")
-
+# fcsFilesAll =c("2017-01-23_PANEL 2_DHS_Group one_F1636334_010.fcs","2017-01-23_PANEL 2_DHS_Group one_F1638605_013.fcs","2016-09-13_PANEL 2_DHS_Group one_F1631262_014.fcs")
+# fcsFilesAll =c("2017-01-23_PANEL 2_DHS_Group one_F1636334_010.fcs",
+#                "2017-01-23_PANEL 2_DHS_Group one_F1638605_013.fcs",
+#                "2016-09-13_PANEL 2_DHS_Group one_F1631262_014.fcs",
+#                "2016-12-12_PANEL 2_DHS_Group two_F1636111_040.fcs")
 fcsFilesAllProbs = c("NONE")
 
 

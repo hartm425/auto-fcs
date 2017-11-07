@@ -1,6 +1,7 @@
-file="2017-01-23_PANEL 2_DHS_Group one_F1636334_010.fcs"
 file="2017-01-23_PANEL 2_DHS_Group one_F1638605_013.fcs"
 file="2016-09-13_PANEL 2_DHS_Group one_F1631262_014.fcs"
+file="2016-12-12_PANEL 2_DHS_Group two_F1636111_040.fcs"
+file="2017-01-23_PANEL 2_DHS_Group one_F1636334_010.fcs"
 
 
     source(file = "generateFortessa.R")
