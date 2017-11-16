@@ -310,24 +310,29 @@ plotP2 <- function(gs1) {
                subset = "CD20-") +
     geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
+  t12.1 =ggcyto(gs1,
+                mapping = aes(x = "HLA-DR"),
+                subset = "CD20-") + ggcyto_par_set(limits = "data") + geom_gate("HLA-DR+")+ geom_histogram(bins = 300) 
+  
   t13 = ggcyto(gs1,
                mapping = aes(x = "CD11C", y = "CD123"),
                subset = "Dendritic") +
     geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
   grid.arrange(
-    as.ggplot(t1),
-    as.ggplot(t2),
-    as.ggplot(t3),
-    as.ggplot(t4),
-    as.ggplot(t5),
-    as.ggplot(t6),
-    as.ggplot(t7),
-    # as.ggplot(t8),
-    as.ggplot(t9),
-    as.ggplot(t10),
-    as.ggplot(t11),
+    # as.ggplot(t1),
+    # as.ggplot(t2),
+    # as.ggplot(t3),
+    # as.ggplot(t4),
+    # as.ggplot(t5),
+    # as.ggplot(t6),
+    # as.ggplot(t7),
+    # # as.ggplot(t8),
+    # as.ggplot(t9),
+    # as.ggplot(t10),
+    # as.ggplot(t11),
     as.ggplot(t12),
+    as.ggplot(t12.1),
     as.ggplot(t13),
     
     
