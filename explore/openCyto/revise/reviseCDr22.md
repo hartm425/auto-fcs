@@ -1,11 +1,11 @@
 
-file="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
 file="2016-11-29_PANEL 1_HB_group one_F1631006_025.fcs"
 file="2016-05-13_PANEL 1_ZF_panel one_F1631922_003.fcs"
+
+file="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
 file="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs"
-
 file="2016-11-29_PANEL 1_HB_group one_F1631006_025.fcs"
-
+file="2016-05-11_PANEL 1_ZF_panel one_F1632176_004.fcs"
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 gt_lymph <-
@@ -37,4 +37,7 @@ gating(gateTemplate, gs1)
               mapping = aes(x = "CD4", y = "CD8"),
               subset = "CD8") +
     geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  
+   ggcyto(gs1,
+              mapping = aes(x = "CD4", y = "CD8"),
+              subset = "Tcells") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+ geom_stats("CD8")
