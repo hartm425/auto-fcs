@@ -6,6 +6,7 @@ file="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
 file="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs"
 file="2016-11-29_PANEL 1_HB_group one_F1631006_025.fcs"
 file="2016-05-11_PANEL 1_ZF_panel one_F1632176_004.fcs"
+file="2016-05-11_PANEL 1_ZF_panel one_F1631925_005.fcs"
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 gt_lymph <-
