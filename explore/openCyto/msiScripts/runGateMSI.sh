@@ -43,7 +43,7 @@ for i in `seq 0 $batchIters`;do
 	sub="$OUTDIR/FULL/openCytoBatch_$i.pbs"
 	wsp="$OUTDIR/FULL/openCytoBatch_$i/gates/"
 	outP1="$OUTDIR/FULL/openCytoBatch_$i/panel1Vis/"
-	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar /home/pankrat2/cole0482/genvisisFCS.jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wsp fcs=$fcsDir out=$outP1 pipe=VIZ panel=1" > $sub
+	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar /home/pankrat2/cole0482/genvisisFCS.jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wsp fcs=$fcsDir out=$outP1 pipe=VIZ panel=1" >> $sub
 	outP2="$OUTDIR/FULL/openCytoBatch_$i/panel2Vis/"
-	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar /home/pankrat2/cole0482/genvisisFCS.jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wsp fcs=$fcsDir out=$outP2 pipe=VIZ panel=2" > $sub
+	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar /home/pankrat2/cole0482/genvisisFCS.jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wsp fcs=$fcsDir out=$outP2 pipe=VIZ panel=2" >> $sub
 done 
