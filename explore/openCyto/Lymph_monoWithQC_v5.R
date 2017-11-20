@@ -92,7 +92,7 @@ fcsFilesAll <-
 #                "2016-05-11_PANEL 2_ZF_panel 2_F1631920_007.fcs")
 
 # fcsFilesAll =c("2016-12-30_PANEL 2_HB_group two_F1636018_024.fcs")
-# fcsFilesAll=c("2016-05-11_PANEL 2_ZF_panel 2_F1631920_007.fcs")
+fcsFilesAll=c("2016-05-11_PANEL 2_ZF_panel 2_F1631920_007.fcs")
 
 fcsFilesAllProbs = c("NONE")
 
