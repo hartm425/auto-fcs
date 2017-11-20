@@ -74,13 +74,13 @@ fcsFilesAll <-
 # BCELL test: 2016-05-11_PANEL 1_ZF_pfile="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
 # anel one_F1631925_005.fcs
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
-fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
+# fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
 
 # fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 # fcsFilesAll ="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs" CD4/CD8 examples
 # file ="2016-12-30_PANEL 1_HB_group two_F1636025_025.fcs"
-# file="2017-01-20_PANEL 1_HB_group two_F1652562_031.fcs" CD19
+# fcsFilesAll =c("2017-01-20_PANEL 1_HB_group two_F1652562_031.fcs" )
 # fcsFilesAll =fcsFilesAll[grepl("1_FORTESSA",fcsFilesAll)]
 #fcsFilesAll =fcsFilesAll[grepl("PANEL 2",fcsFilesAll)]
 # fcsFilesAll =c("2017-01-19_PANEL 1_HB_group one_F1635866_023.fcs","2017-01-26_PANEL 1_DHS_Group two_F1638715_037.fcs")
@@ -92,6 +92,7 @@ fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
 #                "2016-05-11_PANEL 2_ZF_panel 2_F1631920_007.fcs")
 
 # fcsFilesAll =c("2016-12-30_PANEL 2_HB_group two_F1636018_024.fcs")
+# fcsFilesAll=c("2016-05-11_PANEL 2_ZF_panel 2_F1631920_007.fcs")
 
 fcsFilesAllProbs = c("NONE")
 
@@ -323,17 +324,17 @@ plotP2 <- function(gs1) {
     geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
   grid.arrange(
-    # as.ggplot(t1),
-    # as.ggplot(t2),
-    # as.ggplot(t3),
-    # as.ggplot(t4),
-    # as.ggplot(t5),
-    # as.ggplot(t6),
-    # as.ggplot(t7),
-    # # as.ggplot(t8),
-    # as.ggplot(t9),
-    # as.ggplot(t10),
-    # as.ggplot(t11),
+    as.ggplot(t1),
+    as.ggplot(t2),
+    as.ggplot(t3),
+    as.ggplot(t4),
+    as.ggplot(t5),
+    as.ggplot(t6),
+    as.ggplot(t7),
+    # as.ggplot(t8),
+    as.ggplot(t9),
+    as.ggplot(t10),
+    as.ggplot(t11),
     as.ggplot(t12),
     as.ggplot(t12.1),
     as.ggplot(t13),
