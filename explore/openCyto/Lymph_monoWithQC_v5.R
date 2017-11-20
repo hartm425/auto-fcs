@@ -22,6 +22,7 @@ registerPlugins(fun = .flowDensity,
                 dep = "flowDensity",
                 "gating")
 
+plotData=FALSE
 
 panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
@@ -127,221 +128,221 @@ biexpTrans <-
 
 
 plotP1 <- function(gs1) {
-  # t1 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-A", y = "SSC-A"),
-  #             subset = "root") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-  # 
-  # # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-  # 
-  # t2 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-A", y = "SSC-A"),
-  #             subset = "boundary") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-  # 
-  # 
-  # t3 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-A", y = "SSC-A"),
-  #             subset = "nonDebris") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-  # # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
-  # 
-  # 
-  # t4 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-W", y = "FSC-H"),
-  #             subset = "lymph") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t5 = ggcyto(gs1,
-  #             mapping = aes(x = "PE-A", y = "FSC-H"),
-  #             subset = "Singlets") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t6 = ggcyto(gs1,
-  #             mapping = aes(x = "CD3", y = "CD19"),
-  #             subset = "PE-A-") +
+  t1 = ggcyto(gs1,
+              mapping = aes(x = "FSC-A", y = "SSC-A"),
+              subset = "root") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+
+  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+
+  t2 = ggcyto(gs1,
+              mapping = aes(x = "FSC-A", y = "SSC-A"),
+              subset = "boundary") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+
+
+  t3 = ggcyto(gs1,
+              mapping = aes(x = "FSC-A", y = "SSC-A"),
+              subset = "nonDebris") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+  # + scale_x_flowJo_biexp()+ scale_y_flowJo_biexp()
+
+
+  t4 = ggcyto(gs1,
+              mapping = aes(x = "FSC-W", y = "FSC-H"),
+              subset = "lymph") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t5 = ggcyto(gs1,
+              mapping = aes(x = "PE-A", y = "FSC-H"),
+              subset = "Singlets") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t6 = ggcyto(gs1,
+              mapping = aes(x = "CD3", y = "CD19"),
+              subset = "PE-A-") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+  t6_1 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "Tcells") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t1Bcell = ggcyto(gs1,
+                   mapping = aes(x = "CD3", y = "CD19"),
+                   subset = "CD3-") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t2Bcell = ggcyto(gs1,
+                   mapping = aes(x = "IgD", y = "CD27"),
+                   subset = "Bcells") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t7 = ggcyto(gs1,
+              mapping = aes(x = "CD4", y = "CD8"),
+              subset = "Tcells") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  # t7_1 = ggcyto(gs1,
+  #               mapping = aes(x = "CD4", y = "CD8"),
+  #               subset = "CD4_1") +
   #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  # t6_1 = ggcyto(gs1,
-  #               mapping = aes(x = "CD3", y = "CD19"),
-  #               subset = "Tcells") +
-  #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t1Bcell = ggcyto(gs1,
-  #                  mapping = aes(x = "CD3", y = "CD19"),
-  #                  subset = "CD3-") +
-  #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t2Bcell = ggcyto(gs1,
-  #                  mapping = aes(x = "IgD", y = "CD27"),
-  #                  subset = "Bcells") +
-  #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t7 = ggcyto(gs1,
-  #             mapping = aes(x = "CD4", y = "CD8"),
-  #             subset = "Tcells") +
-  #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # # t7_1 = ggcyto(gs1,
-  # #               mapping = aes(x = "CD4", y = "CD8"),
-  # #               subset = "CD4_1") +
-  # #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t8 = ggcyto(gs1,
-  #             mapping = aes(x = "CD4", y = "HLA-DR"),
-  #             subset = "CD4") +
-  #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t9 = ggcyto(gs1,
-  #             mapping = aes(x = "CCR7", y = "CD45RA"),
-  #             subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # tCD8Active = ggcyto(gs1,
-  #                     mapping = aes(x = "CD8", y = "HLA-DR"),
-  #                     subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # t10 = ggcyto(gs1,
-  #              mapping = aes(x = "CCR7", y = "CD45RA"),
-  #              subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t11 = ggcyto(gs1,
-  #              mapping = aes(x = "CD28", y = "CD27"),
-  #              subset = "CD8/CCR7-CD45RA-") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # t12 = ggcyto(gs1,
-  #              mapping = aes(x = "CD28", y = "CD27"),
-  #              subset = "CD8/CCR7-CD45RA+") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t13 = ggcyto(gs1,
-  #              mapping = aes(x = "CD95", y = "CD28"),
-  #              subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t14 = ggcyto(gs1,
-  #              mapping = aes(x = "CD95", y = "CD28"),
-  #              subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # grid.arrange(
-  #   # as.ggplot(t1),
-  #   # as.ggplot(t2),
-  #   # as.ggplot(t3),
-  #   # as.ggplot(t4),
-  #   # as.ggplot(t5),
-  #   as.ggplot(t6),
-  #   as.ggplot(t6_1),
-  #   # as.ggplot(t1Bcell),
-  #   # as.ggplot(t2Bcell),
-  #   as.ggplot(t7),
-  #   # # as.ggplot(t7_1),
-  #   # as.ggplot(t8),
-  #   as.ggplot(t9),
-  #   # as.ggplot(tCD8Active),
-  #   as.ggplot(t10),
-  #   as.ggplot(t11),
-  #   # as.ggplot(t12),
-  #   # as.ggplot(t13),
-  #   # as.ggplot(t14),
-  #   #
-  #   ncol = 2
-  # )
+
+  t8 = ggcyto(gs1,
+              mapping = aes(x = "CD4", y = "HLA-DR"),
+              subset = "CD4") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t9 = ggcyto(gs1,
+              mapping = aes(x = "CCR7", y = "CD45RA"),
+              subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  tCD8Active = ggcyto(gs1,
+                      mapping = aes(x = "CD8", y = "HLA-DR"),
+                      subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  t10 = ggcyto(gs1,
+               mapping = aes(x = "CCR7", y = "CD45RA"),
+               subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t11 = ggcyto(gs1,
+               mapping = aes(x = "CD28", y = "CD27"),
+               subset = "CD8/CCR7-CD45RA-") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  t12 = ggcyto(gs1,
+               mapping = aes(x = "CD28", y = "CD27"),
+               subset = "CD8/CCR7-CD45RA+") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t13 = ggcyto(gs1,
+               mapping = aes(x = "CD95", y = "CD28"),
+               subset = "CD4") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t14 = ggcyto(gs1,
+               mapping = aes(x = "CD95", y = "CD28"),
+               subset = "CD8") + geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  grid.arrange(
+    # as.ggplot(t1),
+    # as.ggplot(t2),
+    # as.ggplot(t3),
+    # as.ggplot(t4),
+    # as.ggplot(t5),
+    as.ggplot(t6),
+    as.ggplot(t6_1),
+    # as.ggplot(t1Bcell),
+    # as.ggplot(t2Bcell),
+    as.ggplot(t7),
+    # # as.ggplot(t7_1),
+    # as.ggplot(t8),
+    as.ggplot(t9),
+    # as.ggplot(tCD8Active),
+    as.ggplot(t10),
+    as.ggplot(t11),
+    # as.ggplot(t12),
+    # as.ggplot(t13),
+    # as.ggplot(t14),
+    #
+    ncol = 2
+  )
   
 }
 
 plotP2 <- function(gs1) {
-  # t1 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-A", y = "SSC-A"),
-  #             subset = "root") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
-  # 
-  # 
-  # t2 = ggcyto(gs1,
-  #             mapping = aes(x = "CD45", y = "SSC-A"),
-  #             subset = "boundary") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # 
-  # 
-  # 
-  # t3 = ggcyto(gs1,
-  #             mapping = aes(x = "PE-A", y = "SSC-A"),
-  #             subset = "CD45+") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t4 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-W", y = "FSC-H"),
-  #             subset = "PE-A") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # t5 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-A", y = "SSC-A"),
-  #             subset = "Singlets") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t6 = ggcyto(gs1,
-  #             mapping = aes(x = "FSC-A", y = "SSC-A"),
-  #             subset = "nonDebris") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t6_1 = ggcyto(gs1,
-  #               mapping = aes(x = "CD3", y = "CD19"),
-  #               subset = "PBMC") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # 
-  # t7 = ggcyto(gs1,
+  t1 = ggcyto(gs1,
+              mapping = aes(x = "FSC-A", y = "SSC-A"),
+              subset = "root") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))
+
+
+  t2 = ggcyto(gs1,
+              mapping = aes(x = "CD45", y = "SSC-A"),
+              subset = "boundary") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+
+
+
+  t3 = ggcyto(gs1,
+              mapping = aes(x = "PE-A", y = "SSC-A"),
+              subset = "CD45+") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t4 = ggcyto(gs1,
+              mapping = aes(x = "FSC-W", y = "FSC-H"),
+              subset = "PE-A") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  t5 = ggcyto(gs1,
+              mapping = aes(x = "FSC-A", y = "SSC-A"),
+              subset = "Singlets") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t6 = ggcyto(gs1,
+              mapping = aes(x = "FSC-A", y = "SSC-A"),
+              subset = "nonDebris") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t6_1 = ggcyto(gs1,
+                mapping = aes(x = "CD3", y = "CD19"),
+                subset = "PBMC") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+
+  t7 = ggcyto(gs1,
+              mapping = aes(x = "CD14", y = "CD16"),
+              subset = "D_NK_M") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  #
+  # t8 = ggcyto(gs1,
   #             mapping = aes(x = "CD14", y = "CD16"),
-  #             subset = "D_NK_M") +
+  #             subset = "CD14+") +
   #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # # 
-  # # t8 = ggcyto(gs1,
-  # #             mapping = aes(x = "CD14", y = "CD16"),
-  # #             subset = "CD14+") +
-  # #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # # 
-  # t9 = ggcyto(gs1,
-  #             mapping = aes(x = "CD14", y = "CD20"),
-  #             subset = "CD14-") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t10 = ggcyto(gs1,
-  #              mapping = aes(x = "CD56", y = "CD16"),
-  #              subset = "CD20-") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t11 = ggcyto(gs1,
-  #              mapping = aes(x = "CD56", y = "CD16"),
-  #              subset = "CD16+CD56+") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # 
-  # t12 = ggcyto(gs1,
-  #              mapping = aes(x = "CD20", y = "HLA-DR"),
-  #              subset = "CD20-") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # t12.1 =ggcyto(gs1,
-  #               mapping = aes(x = "HLA-DR"),
-  #               subset = "CD20-") + ggcyto_par_set(limits = "data") + geom_gate("HLA-DR+")+ geom_histogram(bins = 300) 
-  # 
-  # t13 = ggcyto(gs1,
-  #              mapping = aes(x = "CD11C", y = "CD123"),
-  #              subset = "Dendritic") +
-  #   geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  # 
-  # grid.arrange(
-  #   as.ggplot(t1),
-  #   as.ggplot(t2),
-  #   as.ggplot(t3),
-  #   as.ggplot(t4),
-  #   as.ggplot(t5),
-  #   as.ggplot(t6),
-  #   as.ggplot(t7),
-  #   # as.ggplot(t8),
-  #   as.ggplot(t9),
-  #   as.ggplot(t10),
-  #   as.ggplot(t11),
-  #   as.ggplot(t12),
-  #   as.ggplot(t12.1),
-  #   as.ggplot(t13),
-  #   
-  #   
-  #   ncol = 2
-  # )
+  #
+  t9 = ggcyto(gs1,
+              mapping = aes(x = "CD14", y = "CD20"),
+              subset = "CD14-") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t10 = ggcyto(gs1,
+               mapping = aes(x = "CD56", y = "CD16"),
+               subset = "CD20-") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t11 = ggcyto(gs1,
+               mapping = aes(x = "CD56", y = "CD16"),
+               subset = "CD16+CD56+") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+
+  t12 = ggcyto(gs1,
+               mapping = aes(x = "CD20", y = "HLA-DR"),
+               subset = "CD20-") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  t12.1 =ggcyto(gs1,
+                mapping = aes(x = "HLA-DR"),
+                subset = "CD20-") + ggcyto_par_set(limits = "data") + geom_gate("HLA-DR+")+ geom_histogram(bins = 300)
+
+  t13 = ggcyto(gs1,
+               mapping = aes(x = "CD11C", y = "CD123"),
+               subset = "Dendritic") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+
+  grid.arrange(
+    as.ggplot(t1),
+    as.ggplot(t2),
+    as.ggplot(t3),
+    as.ggplot(t4),
+    as.ggplot(t5),
+    as.ggplot(t6),
+    as.ggplot(t7),
+    # as.ggplot(t8),
+    as.ggplot(t9),
+    as.ggplot(t10),
+    as.ggplot(t11),
+    as.ggplot(t12),
+    as.ggplot(t12.1),
+    as.ggplot(t13),
+
+
+    ncol = 2
+  )
 }
 compFrame <-
   function(frame,
@@ -546,7 +547,7 @@ if (!file.exists(metricsFile)) {
               mapper = mapper,
               inputFCSDir = inputDir,
               panelMap = panle1mapFile,
-              plot = TRUE,
+              plot = plotData,
               panel = panel,
               nodesToHide = panel1NodesToHide
             )
@@ -577,7 +578,7 @@ if (!file.exists(metricsFile)) {
               mapper = mapper,
               inputFCSDir = inputDir,
               panelMap = panle2mapFile,
-              plot = TRUE,
+              plot = plotData,
               panel = panel,
               nodesToHide = panel2NodesToHide
             )
@@ -639,7 +640,7 @@ if (!file.exists(metricsFile)) {
                 mapper = mapper,
                 inputFCSDir = qcDir,
                 panelMap = panle1mapFile,
-                plot = TRUE,
+                plot = plotData,
                 panel = panel,
                 nodesToHide = panel1NodesToHide
                 
@@ -665,7 +666,7 @@ if (!file.exists(metricsFile)) {
                 mapper = mapper,
                 inputFCSDir = qcDir,
                 panelMap =  panle2mapFile,
-                plot = TRUE,
+                plot = plotData,
                 panel = panel,
                 nodesToHide = panel2NodesToHide
               )
