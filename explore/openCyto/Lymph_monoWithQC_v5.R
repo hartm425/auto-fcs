@@ -66,14 +66,12 @@ gt_mono <-
 gt_monoFortessa <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
 
-sub=10
+sub=100
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
              full = FALSE)
-if(sub>0){
-  fcsFilesAll =sample(fcsFilesAll,sub,replace = FALSE)
-}
+
 # fcsFilesAll = fcsFilesAll[8:9]
 # fcsFilesAll = fcsFilesAll[307:309]
 # BCELL test: 2016-05-11_PANEL 1_ZF_pfile="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
@@ -109,6 +107,9 @@ fcsFilesAllProbs = c("NONE")
 
 REPLACE_FOR_NEW_FILES = ""
 
+if(sub>0){
+  fcsFilesAll =sample(fcsFilesAll,sub,replace = FALSE)
+}
 fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
 
 getStats <- function(gs1, qcVersion, metric, gate) {

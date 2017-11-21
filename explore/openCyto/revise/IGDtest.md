@@ -1,0 +1,1 @@
+IgDgate	IgD-	Bcells	IgD	tailgate	tol=1e-4, positive = FALSE,side='left',num_peaks=2,ref_peak=2,strict=FALSE	NA	NA	NA	NA
