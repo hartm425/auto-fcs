@@ -1,6 +1,6 @@
 
-file="2016-08-04_PANEL 1_ZF_Group one_F1636831_001.fcs"
 file="2016-08-17_PANEL 1_ZF_Group two_F1631183_030.fcs"
+file="2016-08-04_PANEL 1_ZF_Group one_F1636831_001.fcs"
 
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
@@ -29,3 +29,9 @@ ggcyto(gs1,
                    mapping = aes(x = "IgD", y = "CD27"),
                    subset = "Bcells") +
     geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+    
+    
+     ggcyto(gs1,
+              mapping = aes(x = "FSC-W", y = "FSC-H"),
+              subset = "SingletsTmp") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()

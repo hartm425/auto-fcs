@@ -54,4 +54,10 @@ ggcyto(gs1,
               subset = "D_NK_M") +
     geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
+     ggcyto(gs1,
+              mapping = aes(x = "CD14", y = "CD16"),
+              subset = "D_NK_M") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
+  
+ 
  

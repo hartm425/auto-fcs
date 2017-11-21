@@ -66,10 +66,14 @@ gt_mono <-
 gt_monoFortessa <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
 
+sub=10
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
              full = FALSE)
+if(sub>0){
+  fcsFilesAll =sample(fcsFilesAll,sub,replace = FALSE)
+}
 # fcsFilesAll = fcsFilesAll[8:9]
 # fcsFilesAll = fcsFilesAll[307:309]
 # BCELL test: 2016-05-11_PANEL 1_ZF_pfile="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
