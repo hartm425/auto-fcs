@@ -21,7 +21,7 @@ CD4HTOne	CD4+CD8-	Tcells	"CD4,CD8"	refGate	CD4+:CD8-	NA	NA	NA	NA
 CD4HTTwo	CD8-	CD4HTOne	CD8	tailgate	"tol=1e-6, positive = FALSE,side='right'"	NA	NA	NA	NA
 CD4	CD4+CD8-	Tcells	"CD4,CD8"	refGate	CD4+:CD4HTTwo	NA	NA	NA	NA
 CD8CTOne	CD4-CD8+	Tcells	"CD4,CD8"	refGate	CD4-:CD8POne	NA	NA	NA	NA
-CD8CTTwo	CD4-	CD8CTOne	CD4	tailgate	"tol=7e-7, positive = FALSE,side='right',num_peaks=2,ref_peak=1,strict=FALSE,min=50"	NA	NA	NA	NA
+CD8CTTwo	CD4-	CD8CTOne	CD4	mindensity	"gate_range=c(85,150),positive=TRUE,adjust=2.5"	NA	NA	NA	NA
 CD8+	CD8+	CD8CTTwo	CD8	tailgate	"tol=1e-4, positive = FALSE,side='left'"	NA	NA	NA	NA
 CD8	CD4-CD8+	Tcells	"CD4,CD8"	refGate	CD8CTTwo:CD8+	NA	NA	NA	NA
 CD8Bool		Tcells	"CD4,CD8"	boolGate	CD4-&CD8	NA	NA	NA	NA
