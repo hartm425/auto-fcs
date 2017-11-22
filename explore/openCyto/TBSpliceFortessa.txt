@@ -1,6 +1,6 @@
 alias	pop	parent	dims	gating_method	gating_args	collapseDataForGating	groupBy	preprocessing_method	preprocessing_args
 *	CD19+/-	PE-A-	CD19	mindensity	"gate_range=c(100,155),adjust=1.5"	NA	NA	NA	NA
 CD3T	CD3+	CD19-	CD3	tailgate	"tol=1e-4, positive = FALSE,side='left'"	NA	NA	NA	NA
-CD3B	CD3-	CD19+	CD3	tailgate	"tol=1e-4, positive = FALSE,side='right'"	NA	NA	NA	NA
+CD3B	CD3-	CD19+	CD3	tailgate	"tol=1e-4, positive = FALSE,side='right',num_peaks=2,ref_peak=2,strict=FALSE,max=150"	NA	NA	NA	NA
 Bcells	CD3-CD19+	PE-A-	"CD3,CD19"	refGate	CD3B:CD19+	NA	NA	NA	NA
 Tcells	CD3+CD19-	PE-A-	"CD3,CD19"	refGate	CD3T:CD19-	NA	NA	NA	NA
