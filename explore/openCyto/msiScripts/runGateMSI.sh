@@ -8,7 +8,7 @@ jar=/home/pankrat2/lane0212/genvisisOC.jar
 p2=$OUTDIR"p2Trim.txt"
 p1=$OUTDIR"p1Trim.txt"
 batch=32
-threads=10
+threads=2
 
 head -n9 $p2Full > $p2
 head -n8 $p1Full > $p1
