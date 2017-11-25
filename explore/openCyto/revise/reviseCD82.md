@@ -21,6 +21,10 @@ frame = read.FCS(paste(inputDir, file, sep = ""))
 gt_lymph <-
     gatingTemplate(templateLymph, autostart = 1L)
     gateTemplate = gt_lymph
+templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir,spliceFile = spliceFile)
+  gt_lymph <-
+    gatingTemplate(templateLymphFortessa, autostart = 1L)
+    gateTemplate = gt_lymph
     
 print(paste("compensating ....", file))
 metrics = data.frame()
