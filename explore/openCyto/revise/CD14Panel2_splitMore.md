@@ -5,6 +5,7 @@ file = "2016-09-13_PANEL 2_DHS_Group one_F1631262_014.fcs"
 file = "2016-12-12_PANEL 2_DHS_Group two_F1636111_040.fcs"
 file = "2016-05-11_PANEL 2_ZF_panel 2_F1631920_007.fcs"
 file = "2016-12-01_PANEL 2_HB_group one_F1652726_008.fcs"
+file = "2017-04-14_PANEL 2_FORTESSA_RR_group two_F1642602_025.fcs"
 source(file = "generateFortessa.R")
 
 frame = read.FCS(paste(inputDir, file, sep = ""))
@@ -45,22 +46,8 @@ gating(gateTemplate, gs1)
 
 ggcyto(gs1,
        mapping = aes(x = "CD14"),
-       subset = "D_NK_M") + ggcyto_par_set(limits = "data") + geom_gate("Mono")+ geom_histogram(bins = 300) 
+       subset = "D_NK_M") + ggcyto_par_set(limits = "data") + geom_histogram(bins = 300) + geom_gate("CD14_MinusTrim")
 
-  ggcyto(gs1,
-              mapping = aes(x = "CD14", y = "CD16"),
-              subset = "Class") +
-    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
-  
-   ggcyto(gs1,
-              mapping = aes(x = "CD14", y = "CD16"),
-              subset = "D_NK_M") +
-    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate("Class")
-  
-   ggcyto(gs1,
-              mapping = aes(x = "CD14", y = "CD16"),
-              subset = "D_NK_M") +
-    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()
   
      ggcyto(gs1,
               mapping = aes(x = "CD14", y = "CD16"),
