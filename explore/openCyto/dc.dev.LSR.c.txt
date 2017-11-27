@@ -18,7 +18,7 @@ NonClassT	CD14+CD16+	D_NK_M	"CD14,CD16"	refGate	Mono:D_NK_M/CD16+	NA	NA	NA	NA
 NonClass		D_NK_M	"CD14,CD16"	boolGate	D_NK_M/CD14+&NonClassT	NA	NA	NA	NA
 ClassT	CD14+CD16-	D_NK_M	"CD14,CD16"	refGate	Mono:D_NK_M/CD16-	NA	NA	NA	NA
 Class		D_NK_M	"CD14,CD16"	boolGate	D_NK_M/CD14+&ClassT	NA	NA	NA	NA
-CD14_MinusTmp	CD14-	CD14-	CD14	tailgate	"tol=2e-4, positive = FALSE,side='right',num_peaks=2,ref_peak=1,strict=FALSE,max=150"	NA	NA	NA	NA
+CD14_MinusTmp	CD14-	CD14-	CD14	tailgate	"tol=5e-4, positive = FALSE,side='right'"	NA	NA	NA	NA
 CD14_MinusTrim	CD14-	D_NK_M	CD14	refGate	CD14_MinusTmp	NA	NA	NA	NA
 CD20-	CD20-	CD14-	CD20	tailgate	tol=1e-2	NA	NA	standardize_flowset	NA
 NKCells	CD16+	CD20-	CD16	refGate	D_NK_M/CD16+	NA	NA	NA	NA
