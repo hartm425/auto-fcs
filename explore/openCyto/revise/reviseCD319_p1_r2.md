@@ -28,7 +28,7 @@ gating(gateTemplate, gs1)
 
 ggcyto(gs1,
        mapping = aes(x = "CD19"),
-       subset = "CD3-") + ggcyto_par_set(limits = "data") + geom_gate()+ geom_histogram(bins = 300) 
+       subset = "CD3+") + ggcyto_par_set(limits = "data") + geom_gate()+ geom_histogram(bins = 300) 
 ggcyto(gs1,
        mapping = aes(x = "CD3", y = "CD19"),
        subset = "PE-A-") +
