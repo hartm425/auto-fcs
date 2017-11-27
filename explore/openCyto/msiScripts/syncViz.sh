@@ -9,3 +9,5 @@ mkdir -p $outDir"panel2/"
 
 rsync -rv $baseInDir*/panel1Vis/* $outDir"panel1/"
 rsync -rv $baseInDir*/panel2Vis/* $outDir"panel2/"
+
+
