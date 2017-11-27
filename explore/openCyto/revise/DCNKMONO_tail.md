@@ -11,8 +11,7 @@ templateMonoFortessa =convertP2ToFortessa(templateFile = templateMono, outputDir
 
 gt_mono <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
-}
-else{
+}else{
 gt_mono <-
   gatingTemplate(templateMono, autostart = 1L)
 }
