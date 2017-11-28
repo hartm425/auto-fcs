@@ -22,7 +22,7 @@ registerPlugins(fun = .flowDensity,
                 dep = "flowDensity",
                 "gating")
 
-plotData=FALSE
+plotData=TRUE
 
 panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
@@ -66,7 +66,7 @@ gt_mono <-
 gt_monoFortessa <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
 
-sub=100
+sub=-1
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
@@ -77,7 +77,7 @@ fcsFilesAll <-
 # BCELL test: 2016-05-11_PANEL 1_ZF_pfile="2017-01-26_PANEL 1_DHS_Group two_F1638623_035.fcs"
 # anel one_F1631925_005.fcs
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
-# fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
+fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
 
 # fcsFilesAll =c( "2017-05-02_PANEL 1_FORTESSA_DHS_group one_F1640599_029.fcs")
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
@@ -225,8 +225,8 @@ plotP1 <- function(gs1) {
 
   grid.arrange(
     # as.ggplot(t1),
-    # as.ggplot(t2),
-    # as.ggplot(t3),
+    as.ggplot(t2),
+    as.ggplot(t3),
     # as.ggplot(t4),
     # as.ggplot(t5),
     as.ggplot(t6),

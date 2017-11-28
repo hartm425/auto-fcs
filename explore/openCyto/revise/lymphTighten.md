@@ -1,7 +1,15 @@
 
 file="2017-02-28_PANEL 1_RR_group one_F1638804_022.fcs"
 file="2017-02-30_PANEL 1_LSR_RR_Group one_F1634154_002.fcs"
-file="2017-03-06_PANEL 1_LSR_ZF_Group one_F1652967_001.fcs"
+
+file="2017-02-03_PANEL 1_HB_group one_F1635792_023.fcs"
+file="2016-12-09_PANEL 1_HB_group one_F1652236_017.fcs"
+file="2017-03-20_PANEL 1_FORTESSA_HB_group one_F1637970_014.fcs"
+
+
+strange Bcells
+file="2016-11-14_PANEL 1_DHS_Group one_F1652417_010.fcs"
+file="2017-01-30_PANEL 1_DHS_Group two_F1635796_038.fcs"
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
@@ -38,17 +46,7 @@ gs1 <- transform(gs1, tf)
 gh <- gs1[[1]]
 gating(gateTemplate, gs1)
 
-
-   ggcyto(gs1,
-              mapping = aes(x = "CD4", y = "CD8"),
-              subset = "CD8") +
-    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
-    
-    ggcyto(gs1,
-       mapping = aes(x = "CD4"),
-       subset = "CD4-") + ggcyto_par_set(limits = "data") + geom_histogram(bins = 300) 
-       
-   ggcyto(gs1,
-              mapping = aes(x = "CD4", y = "CD8"),
-              subset = "Tcells") +
-    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()+ geom_stats("CD8")
+ggcyto(gs1,
+              mapping = aes(x = "FSC-A", y = "SSC-A"),
+              subset = "nonDebris") +
+    geom_hex(bins = 100) + ggcyto_par_set(limits = "data") + geom_gate()  + xlim(c(0, 2e5)) + ylim(c(0, 2e5))

@@ -1,7 +1,7 @@
 alias	pop	parent	dims	gating_method	gating_args	collapseDataForGating	groupBy	preprocessing_method	preprocessing_args
-boundary	boundary	root	"FSC-A,SSC-A"	boundary	"min=c(5e4,0),max=c(2.5e5,2.5e5)"	NA	NA	NA	NA
+boundary	boundary	root	"FSC-A,SSC-A"	boundary	"min=c(5e4,0),max=c(2.5e5,1.25e5)"	NA	NA	NA	NA
 nonDebris	nonDebris+	boundary	FSC-A	mindensity	"gate_range=c(5e4,1e5)"	NA	NA	NA	NA
-lymph	lymph	nonDebris	"FSC-A,SSC-A"	flowClust	"K=2,quantile=0.90,target=c(1e5,5e4)"	NA	NA	prior_flowClust	K=2
+lymph	lymph	nonDebris	"FSC-A,SSC-A"	flowClust	"K=2,quantile=0.85,target=c(1e5,5e4)"	NA	NA	prior_flowClust	K=2
 SingletsW	FSC-W-	lymph	FSC-W	tailgate	tol=9e-6	NA	NA	standardize_flowset	NA
 SingletsH	FSC-H-	lymph	FSC-H	tailgate	tol=5e-7	NA	NA	standardize_flowset	NA
 Singlets	SingletsW-SingletsH-	lymph	"FSC-W,FSC-H"	refGate	SingletsW:SingletsH	NA	NA	NA	NA
