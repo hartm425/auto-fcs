@@ -32,8 +32,8 @@ mkdir -p $coleOutDir
 cp -r $coleInDir"panel1/" $coleOutDir"panel1/"
 cp -r $coleInDir"panel2/" $coleOutDir"panel2/"
 cp $coleInDir"submit.sh" $coleOutDir"submit.sh"
-priorityFile=/scratch.global/cole0482/fcsVizPipe/lowPriority.txt
-lowPriorityFile=/scratch.global/cole0482/fcsVizPipe/highPriority.txt
+lowPriorityFile=/scratch.global/cole0482/fcsVizPipe/lowPriority.txt
+priorityFile=/scratch.global/cole0482/fcsVizPipe/highPriority.txt
 
 sed -i "s/rev=r21/rev=$rev/g" $coleOutDir/*/*.qsub
 
@@ -41,9 +41,13 @@ batchIters=$(($batch-1))
 for i in `seq 0 $batchIters`;do
 	sub="$OUTDIR/FULL/openCytoBatch_$i.pbs"
 	wsp="$OUTDIR/FULL/openCytoBatch_$i/gates/"
-	outP2="$OUTDIR/FULL/openCytoBatch_$i/panel2Vis/"
-	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar $jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wsp fcs=$fcsDir out=$outP2 pipe=VIZ panel=2 priority=$priorityFile lowPriority=$lowPriorityFile" >> $sub
-
+	wspRename="$OUTDIR/FULL/openCytoBatch_$i/gatesRename/"
+	echo "cp $wsp/*Rename.wsp $wspRename" >> $sub
+	
 	outP1="$OUTDIR/FULL/openCytoBatch_$i/panel1Vis/"
-	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar $jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wsp fcs=$fcsDir out=$outP1 pipe=VIZ panel=1 priority=$priorityFile lowPriority=$lowPriorityFile" >> $sub
+	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar $jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wspRename fcs=$fcsDir out=$outP1 pipe=VIZ panel=1 priority=$priorityFile lowPriority=$lowPriorityFile" >> $sub
+	outP2="$OUTDIR/FULL/openCytoBatch_$i/panel2Vis/"
+	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar $jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wspRename fcs=$fcsDir out=$outP2 pipe=VIZ panel=2 priority=$priorityFile lowPriority=$lowPriorityFile" >> $sub
+
+	
 	done 

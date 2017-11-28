@@ -7,6 +7,8 @@ file="2017-03-02_PANEL 1_FORTESSA_HB_group two_ZF_F1634018_036.fcs"
 file="2017-02-21_PANEL 1_DHS_group two_F1635759_033.fcs"
 file="2017-02-17_PANEL 1_ZF_group two_F1635741_026.fcs"
 file="2017-02-27_PANEL 1_DHS_group one_F1653141_026.fcs"
+file="2017-03-07_PANEL 1_FORTESSA_DHS_group one_F1635689_022.fcs"
+
 
     frame = read.FCS(paste(inputDir, file, sep = ""))
 
