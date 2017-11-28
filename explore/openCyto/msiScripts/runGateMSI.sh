@@ -44,7 +44,6 @@ for i in `seq 0 $batchIters`;do
 	wspRename="$OUTDIR/FULL/openCytoBatch_$i/gatesRename/"
     echo "mkdir -p $wspRename" >> $sub
     echo "cp $wsp/*Rename.wsp $wspRename" >> $sub
-	
 	outP1="$OUTDIR/FULL/openCytoBatch_$i/panel1Vis/"
 	echo "java -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -Xmx90G -jar $jar org.genvisis.one.ben.fcs.auto.FCSProcessingPipeline wsp=$wspRename fcs=$fcsDir out=$outP1 pipe=VIZ panel=1 priority=$priorityFile lowPriority=$lowPriorityFile" >> $sub
 	outP2="$OUTDIR/FULL/openCytoBatch_$i/panel2Vis/"
