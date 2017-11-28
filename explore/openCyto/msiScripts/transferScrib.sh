@@ -26,6 +26,11 @@ scp msi:/scratch.global/lanej/flow/full/fcs/*F1635689_022* ./
 scp msi:/scratch.global/lanej/flow/full/fcs/*F1652389_016* ./
 scp msi:/scratch.global/lanej/flow/full/fcs/*F1634341_039* ./
 
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1635792_023* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1652236_017* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1637970_014* ./
+
+
 
 rev=r24/
 mkdir ./Live_Single_PBMCs__SSC
