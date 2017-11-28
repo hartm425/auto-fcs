@@ -46,7 +46,7 @@ scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel2"/*/*Live_Single_PBMCs__
 scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*Tcells__CD3+_CD19-_* ./Tcells__CD3
 scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*cytotoxic_Tcells-CD8+.png ./cytotoxic_Tcells
 
-scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*Lymph* ./Tcells__CD3
+scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*Lymph* ./Lymph
 
 
 
