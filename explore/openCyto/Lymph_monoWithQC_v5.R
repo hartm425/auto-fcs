@@ -66,7 +66,7 @@ gt_mono <-
 gt_monoFortessa <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
 
-sub=-1
+sub=100
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
@@ -335,7 +335,7 @@ plotP2 <- function(gs1) {
     as.ggplot(t3),
     as.ggplot(t4),
     as.ggplot(t5),
-    # as.ggplot(t6),
+    as.ggplot(t6_1),
     as.ggplot(t7),
     # as.ggplot(t8),
     as.ggplot(t9),
