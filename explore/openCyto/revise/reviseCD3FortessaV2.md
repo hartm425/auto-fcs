@@ -4,7 +4,8 @@ file="2017-01-24_PANEL 1_ZF_group one_F1638554_028.fcs"
 file="2017-03-03_PANEL 1_FORTESSA_ZF_group two_F1634221_033.fcs"
 file="2017-03-01_PANEL 1_FORTESSA_HB_group one_F1638418_023.fcs"
 file="2017-03-02_PANEL 1_FORTESSA_HB_group two_ZF_F1634018_036.fcs"
-
+file="2017-02-21_PANEL 1_DHS_group two_F1635759_033.fcs"
+file="2017-02-17_PANEL 1_ZF_group two_F1635741_026.fcs"
     frame = read.FCS(paste(inputDir, file, sep = ""))
 
     source(file = "generateFortessa.R")
