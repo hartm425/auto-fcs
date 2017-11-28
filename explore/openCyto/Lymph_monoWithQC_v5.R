@@ -22,7 +22,7 @@ registerPlugins(fun = .flowDensity,
                 dep = "flowDensity",
                 "gating")
 
-plotData=TRUE
+plotData=FALSE
 
 panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
