@@ -22,7 +22,7 @@ registerPlugins(fun = .flowDensity,
                 dep = "flowDensity",
                 "gating")
 
-plotData=TRUE
+plotData=FALSE
 
 panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
@@ -66,7 +66,7 @@ gt_mono <-
 gt_monoFortessa <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
 
-sub=-1
+sub=100
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
@@ -84,7 +84,7 @@ fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
 # fcsFilesAll ="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs" CD4/CD8 examples
 # file ="2016-12-30_PANEL 1_HB_group two_F1636025_025.fcs"
 # fcsFilesAll =c("2017-01-20_PANEL 1_HB_group two_F1652562_031.fcs" )
-# fcsFilesAll =fcsFilesAll[grepl("1_FORTESSA",fcsFilesAll)]
+fcsFilesAll =fcsFilesAll[grepl("1_FORTESSA",fcsFilesAll)]
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 2",fcsFilesAll)]
 # fcsFilesAll =c("2017-01-19_PANEL 1_HB_group one_F1635866_023.fcs","2017-01-26_PANEL 1_DHS_Group two_F1638715_037.fcs")
 # fcsFilesAll =c("2017-01-23_PANEL 2_DHS_Group one_F1636334_010.fcs","2017-01-23_PANEL 2_DHS_Group one_F1638605_013.fcs","2016-09-13_PANEL 2_DHS_Group one_F1631262_014.fcs")
@@ -172,10 +172,10 @@ plotP1 <- function(gs1) {
                 subset = "Tcells") +
     geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
 
-  t1Bcell = ggcyto(gs1,
-                   mapping = aes(x = "CD3", y = "CD19"),
-                   subset = "CD3-") +
-    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
+  # t1Bcell = ggcyto(gs1,
+  #                  mapping = aes(x = "CD3", y = "CD19"),
+  #                  subset = "CD3-") +
+  #   geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
 
   t2Bcell = ggcyto(gs1,
                    mapping = aes(x = "IgD", y = "CD27"),

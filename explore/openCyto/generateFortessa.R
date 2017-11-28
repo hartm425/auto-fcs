@@ -6,6 +6,8 @@
 convertP1ToFortessa <- function(templateFile, outputDir,spliceFile) {
   outFile = paste0(outputDir, basename(gsub("LSR", "FORTESSA", templateFile)))
   template = read.delim(templateFile, stringsAsFactors = FALSE)
+  template[which(template$pop == "boundary"), c("gating_args")] = "min=c(5e4,0),max=c(2.5e5,1.25e5)"
+  
   templateSplice = read.delim(spliceFile, stringsAsFactors = FALSE)
   
   top =grep("PE-A-",template$alias)

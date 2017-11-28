@@ -6,14 +6,21 @@ file="2017-02-03_PANEL 1_HB_group one_F1635792_023.fcs"
 file="2016-12-09_PANEL 1_HB_group one_F1652236_017.fcs"
 file="2017-03-20_PANEL 1_FORTESSA_HB_group one_F1637970_014.fcs"
 
-
 strange Bcells
 file="2016-11-14_PANEL 1_DHS_Group one_F1652417_010.fcs"
 file="2017-01-30_PANEL 1_DHS_Group two_F1635796_038.fcs"
+
+file="2016-05-05_PANEL 1_HB_panel one_F1631961_003.fcs"
+
+
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
-
+source(file = "CombineWSP.R")
+source(file = "computeFreqs.R")
+source(file = "machineType.R")
+source(file = "generateFortessa.R")
+spliceFile = "TBSpliceFortessa.txt"
 
 if(getMachineType(frame)=="FORTESSA"){
 templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir,spliceFile = spliceFile)
