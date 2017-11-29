@@ -13,7 +13,7 @@ convertP1ToFortessa <- function(templateFile, outputDir,spliceFile) {
   top =grep("PE-A-",template$alias)
   templateTop =template[c(1:grep("PE-A-",template$alias)),]
   
-  templateBot =template[c(grep("CD27gate",template$alias):length(rownames(template))),]
+  templateBot =template[c(grep("^CD27$",template$alias):length(rownames(template))),]
 
   template =rbind(templateTop,templateSplice)
   template =rbind(template,templateBot)
