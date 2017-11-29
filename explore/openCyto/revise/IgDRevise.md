@@ -1,12 +1,28 @@
 
 file="2016-08-04_PANEL 1_ZF_Group one_F1636831_001.fcs"
 file="2016-08-17_PANEL 1_ZF_Group two_F1631183_030.fcs"
+file="2017-03-07_PANEL 1_FORTESSA_DHS_group one_F1634020_019.fcs"
+templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
+source(file = "CombineWSP.R")
+source(file = "computeFreqs.R")
+source(file = "machineType.R")
+source(file = "generateFortessa.R")
+spliceFile = "TBSpliceFortessa.txt"
+
+if(getMachineType(frame)=="FORTESSA"){
+templateLymphFortessa = convertP1ToFortessa(templateFile = templateLymph, outputDir = outputDir,spliceFile = spliceFile)
+
+gt_lymph <-
+  gatingTemplate(templateLymphFortessa, autostart = 1L)
+  print(getMachineType(frame))
+}else{
+gt_lymph <-
+    gatingTemplate(templateLymph, autostart = 1L)
+}
 
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
-gt_lymph <-
-    gatingTemplate(templateLymph, autostart = 1L)
-    gateTemplate = gt_lymph
+gateTemplate = gt_lymph
     
 print(paste("compensating ....", file))
 metrics = data.frame()
