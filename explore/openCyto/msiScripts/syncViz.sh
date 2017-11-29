@@ -1,9 +1,10 @@
 #!/usr/bin/env bash 
 
-rev=r24/
+revIn=r25/
+revOut=lymphBcellTest_77_67/
 
-baseInDir="/scratch.global/lanej/flow/full/results_"$rev"/FULL/"
-outDir=/home/thyagara/shared/HRS/annotation/$rev
+baseInDir="/scratch.global/lanej/flow/full/results_"$revIn"/FULL/"
+outDir=/home/thyagara/shared/HRS/annotation/$revOut
 mkdir -p $outDir"panel1/"
 mkdir -p $outDir"panel2/"
 rsync -rv $baseInDir*/panel1Vis/* $outDir"panel1/"
