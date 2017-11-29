@@ -3,6 +3,8 @@ file="2016-08-04_PANEL 1_ZF_Group one_F1636831_001.fcs"
 file="2016-08-17_PANEL 1_ZF_Group two_F1631183_030.fcs"
 file="2017-03-07_PANEL 1_FORTESSA_DHS_group one_F1634020_019.fcs"
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
+  template = read.delim(templateLymph, stringsAsFactors = FALSE)
+
 source(file = "CombineWSP.R")
 source(file = "computeFreqs.R")
 source(file = "machineType.R")

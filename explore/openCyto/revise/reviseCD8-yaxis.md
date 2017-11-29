@@ -4,7 +4,12 @@ file="2017-02-28_PANEL 1_RR_group one_F1638804_022.fcs"
 file="2017-02-30_PANEL 1_LSR_RR_Group one_F1634154_002.fcs"
 file="2017-03-06_PANEL 1_LSR_ZF_Group one_F1652967_001.fcs"
 file="2017-02-27_PANEL 1_DHS_group one_F1653150_021.fcs"
-file="
+
+file="2016-05-05_PANEL 1_HB_panel one_F1631959_005.fcs"
+file="2016-05-12_PANEL 1_HB_panel one_F1632220_007.fcs"
+file="2017-03-02_PANEL 1_FORTESSA_HB_group two_F1635738_024.fcs"
+file="2017-02-30_PANEL 1_LSR_RR_Group one_F1642545_006.fcs"
+
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
@@ -53,6 +58,11 @@ gating(gateTemplate, gs1)
        ggcyto(gs1,
        mapping = aes(x = "CD4"),
        subset = "Tcells") + ggcyto_par_set(limits = "data") + geom_histogram(bins = 300)  +geom_gate("CD4+")  
+  
+  ggcyto(gs1,
+       mapping = aes(x = "CD3", y = "CD19"),
+       subset = "PE-A-") +
+    geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
    ggcyto(gs1,
               mapping = aes(x = "CD4", y = "CD8"),
               subset = "Tcells") +
