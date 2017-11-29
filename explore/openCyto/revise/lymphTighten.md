@@ -5,7 +5,7 @@ file="2017-02-30_PANEL 1_LSR_RR_Group one_F1634154_002.fcs"
 file="2017-02-03_PANEL 1_HB_group one_F1635792_023.fcs"
 file="2016-12-09_PANEL 1_HB_group one_F1652236_017.fcs"
 file="2017-03-20_PANEL 1_FORTESSA_HB_group one_F1637970_014.fcs"
-
+file="2016-06-07_PANEL 1_DHS_Group one_F1632269_008.fcs"
 strange Bcells
 file="2016-11-14_PANEL 1_DHS_Group one_F1652417_010.fcs"
 file="2017-01-30_PANEL 1_DHS_Group two_F1635796_038.fcs"

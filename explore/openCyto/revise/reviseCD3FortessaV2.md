@@ -10,6 +10,9 @@ file="2017-02-27_PANEL 1_DHS_group one_F1653141_026.fcs"
 file="2017-03-07_PANEL 1_FORTESSA_DHS_group one_F1635689_022.fcs"
 file="2017-02-17_PANEL 1_ZF_group one_F1652389_016.fcs"
 file="2017-03-28_PANEL 1_FORTESSA_DHS_group two_F1634341_039.fcs"
+
+file="2017-01-27_PANEL 1_HB_group one_F1637121_017.fcs"
+file="2017-01-31_PANEL 1_HB_group one_F1653165_014.fcs"
     frame = read.FCS(paste(inputDir, file, sep = ""))
 
     source(file = "generateFortessa.R")

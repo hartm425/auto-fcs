@@ -1,0 +1,1 @@
+CD4HTTrim	CD4+	CD4HTOne	CD4	tailgate	tol=1e-6, positive = TRUE,side='left'	NA	NA	NA	NACD4	CD4+CD8-	Tcells	CD4,CD8	refGate	CD4HTTrim:CD4HTTwo	NA	NA	NA	NA

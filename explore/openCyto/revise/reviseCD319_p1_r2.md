@@ -3,7 +3,8 @@ file="2017-1-03_PANEL 1_DHS_Group one_F1635942_002.fcs"
 file="2016-05-24_PANEL 1_DHS_panel one_F1636748_013.fcs"
 file="2016-05-24_PANEL 1_DHS_panel one_F1632188_001.fcs"
 
-
+file="2016-11-14_PANEL 1_DHS_Group one_F1652417_010.fcs"
+file="2017-01-30_PANEL 1_DHS_Group two_F1635796_038.fcs"
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 gt_lymph <-
