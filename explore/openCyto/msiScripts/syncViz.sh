@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 
 revIn=r25/
-revOut=lymphBcellTest_77_67/
+revOut=IgD_HelperT_test_79_64/
 
 baseInDir="/scratch.global/lanej/flow/full/results_"$revIn"/FULL/"
 outDir=/home/thyagara/shared/HRS/annotation/$revOut

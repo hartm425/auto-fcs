@@ -47,11 +47,24 @@ scp msi:/scratch.global/lanej/flow/full/fcs/*F1632269* ./
 scp msi:/scratch.global/lanej/flow/full/fcs/*F1634020_019* ./
 
 
-rev=lymphBcellTest_77_67/
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1631959_005* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1632220_007* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1635738_024* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1642545_006* ./
+
+
+
+rev=IgD_HelperT_test_79_64/
 mkdir ./Live_Single_PBMCs__SSC
 mkdir ./Tcells__CD3
 mkdir ./cytotoxic_Tcells
 mkdir ./Lymph
+mkdir ./Igd
+
+mkdir ./HelperT
+
+scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*IgD-_memory_Bcells__CD27+* ./Igd
+scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*Helper_Tcells-CD4* ./HelperT
 
 scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*Tcells__CD3+_CD19-_* ./Tcells__CD3
 
@@ -59,6 +72,7 @@ scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel2"/*/*Live_Single_PBMCs__
 scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*cytotoxic_Tcells-CD8+.png ./cytotoxic_Tcells
 
 scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*Lymph* ./Lymph
+
 
 
 
