@@ -225,7 +225,7 @@ plotP1 <- function(gs1) {
 
   grid.arrange(
     # as.ggplot(t1),
-    grid.arrange(as.ggplot(hist_top), empty, as.ggplot(scatter), as.ggplot(hist_right), ncol=2, nrow=2, widths=c(4, 1), heights=c(1, 4))t2),
+    as.ggplot(t2),
     as.ggplot(t3),
     # as.ggplot(t4),
     # as.ggplot(t5),
