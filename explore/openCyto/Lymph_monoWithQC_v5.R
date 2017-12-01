@@ -22,7 +22,7 @@ registerPlugins(fun = .flowDensity,
                 dep = "flowDensity",
                 "gating")
 
-plotData=FALSE
+plotData=TRUE
 
 panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
@@ -66,7 +66,7 @@ gt_mono <-
 gt_monoFortessa <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
 
-sub=250
+sub=-1
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
@@ -80,7 +80,7 @@ fcsFilesAll <-
 # fcsFilesAll =fcsFilesAll[grepl("PANEL 1", fcsFilesAll)]
 
 # fcsFilesAll =c( "2017-02-27_PANEL 1_DHS_group one_F1653150_021.fcs")
-# fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
+fcsFilesAll =fcsFilesAll[grepl("PANEL 1",fcsFilesAll)]
 # fcsFilesAll ="2016-12-27_PANEL 1_ZF_Group two_F1637410_033.fcs" CD4/CD8 examples
 # file ="2016-12-30_PANEL 1_HB_group two_F1636025_025.fcs"
 # fcsFilesAll =c("2017-01-20_PANEL 1_HB_group two_F1652562_031.fcs" )
@@ -110,7 +110,7 @@ REPLACE_FOR_NEW_FILES = ""
 if(sub>0){
   fcsFilesAll =sample(fcsFilesAll,sub,replace = FALSE)
 }
-fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 5))
+fcsFilesAll = split(fcsFilesAll, ceiling(seq_along(fcsFilesAll) / 15))
 
 getStats <- function(gs1, qcVersion, metric, gate) {
   autoStats = getPopStats(gs1, statistic = metric)

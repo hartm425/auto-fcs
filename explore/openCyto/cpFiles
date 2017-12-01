@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 FILES="/home/thyagara/shared/HRS/UPLOAD\ FCS\ HRS\ samples/*/*.fcs"
@@ -8,4 +7,15 @@ do
 done
 
 
- find . -type f -name '*.fcs' -exec cp -t /scratch.global/lanej/flow/full/fcs {} \;
+FILES="/home/thyagara/shared/HRS/UPLOAD FCS HRS samples/" 
+cd 
+find . -type f -name '*.fcs' -exec cp -n -v -t /scratch.global/lanej/flow/full/fcs2/ {} \;
+find . -type f -name '*.fcs' -exec rsync -a {} /scratch.global/lanej/flow/full/fcs2/  \;
+
+
+rsync -av --include='*/' --include='*.fcs' --exclude='*' "$FILES" /scratch.global/lanej/flow/full/fcs/
+
+
+
+
+ find . -type f -name '*.fcs' -exec rsync -av {} /scratch.global/lanej/flow/full/fcs3/  \; >/scratch.global/lanej/flow/rsync.log
