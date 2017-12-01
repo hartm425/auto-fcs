@@ -3,6 +3,7 @@ file="2016-05-24_PANEL 1_DHS_panel one_F1632188_001.fcs"
 file="2016-05-24_PANEL 1_DHS_panel one_F1636748_013.fcs"
 file="2016-11-14_PANEL 1_DHS_Group two_F1636568_039.fcs"
 
+file="2016-07-13_PANEL 1_ZF_Group two_F1631195_026.fcs"
 
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
