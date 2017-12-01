@@ -1,19 +1,18 @@
 
 file="2017-02-13_PANEL 1_ZF_group one_F1652540_019.fcs"
+file="2017-03-02_PANEL 1_FORTESSA_HB_group two_ZF_F1633999_037.fcs"
+file="2017-02-23_PANEL 1_ZF_Group two_F1652508_032.fcs"
 
 file="2017-02-28_PANEL 1_RR_group one_F1638804_022.fcs"
 file="2017-02-30_PANEL 1_LSR_RR_Group one_F1634154_002.fcs"
 file="2017-03-06_PANEL 1_LSR_ZF_Group one_F1652967_001.fcs"
 file="2017-02-27_PANEL 1_DHS_group one_F1653150_021.fcs"
 
-orig probs
 file="2016-05-05_PANEL 1_HB_panel one_F1631959_005.fcs"
 file="2016-05-12_PANEL 1_HB_panel one_F1632220_007.fcs"
 file="2017-03-02_PANEL 1_FORTESSA_HB_group two_F1635738_024.fcs"
 file="2017-02-30_PANEL 1_LSR_RR_Group one_F1642545_006.fcs"
 
-
-file="2017-02-27_PANEL 1_DHS_group one_F1653150_021.fcs"
 
 probSamps
 file="2016-05-26_PANEL 1_ZF_panel one_F1636717_006.fcs"
@@ -108,16 +107,16 @@ grid.arrange(as.ggplot(hist_top), empty, as.ggplot(scatter) + theme(legend.posit
                axis.title.x=element_blank(), axis.title.y=element_blank())      
 scatter =   ggcyto(gs1,
               mapping = aes(x = "CD4", y = "CD8"),
-              subset = "CD8CTOne") +
+              subset = "CD4HTTwo") +
     geom_hex(bins = 200) + ggcyto_par_set(limits = "data") + geom_gate()
    
     
 hist_top =   ggcyto(gs1,
        mapping = aes(x = "CD4"),
-       subset = "CD8CTOne") + ggcyto_par_set(limits = "data") + geom_histogram(bins = 300)   
+       subset = "CD4HTTwo") + ggcyto_par_set(limits = "data") + geom_histogram(bins = 300)   
        hist_right =   ggcyto(gs1,
        mapping = aes(x = "CD8"),
-       subset = "CD8CTOne") + ggcyto_par_set(limits = "data") + geom_histogram(bins = 300)
+       subset = "CD4HTTwo") + ggcyto_par_set(limits = "data") + geom_histogram(bins = 300)
     
 grid.arrange(as.ggplot(hist_top), empty, as.ggplot(scatter) + theme(legend.position="none"), as.ggplot(hist_right)+coord_flip(), ncol=2, nrow=2, widths=c(4, 1), heights=c(1, 4))
     

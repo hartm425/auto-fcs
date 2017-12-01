@@ -54,6 +54,20 @@ scp msi:/scratch.global/lanej/flow/full/fcs/*F1642545_006* ./
 
 
 
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1636717_006* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1636884_031* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1635646_003* ./
+
+
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1636717_* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1652540_019* ./
+
+
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1652508_032* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1633999_037* ./
+
+
+
 rev=IgD_HelperT_test_79_64/
 mkdir ./Live_Single_PBMCs__SSC
 mkdir ./Tcells__CD3
@@ -72,6 +86,21 @@ scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel2"/*/*Live_Single_PBMCs__
 scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*cytotoxic_Tcells-CD8+.png ./cytotoxic_Tcells
 
 scp msi:/home/thyagara/shared/HRS/annotation/$rev"panel1"/*/*Lymph* ./Lymph
+
+
+
+
+
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1635738_024* ./
+
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1637629_017* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1635867_017* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1652582_028* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1652358_014* ./
+scp msi:/scratch.global/lanej/flow/full/fcs/*F1633097_020* ./
+
+
+
 
 
 
