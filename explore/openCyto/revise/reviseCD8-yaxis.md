@@ -31,6 +31,15 @@ file="2016-05-26_PANEL 1_ZF_panel one_F1636717_006.fcs"
 file="2016-08-30_PANEL 1_DHS_Group two_F1636884_031.fcs"
 file="2016-11-28_PANEL 1_DHS_Group one_F1635646_003.fcs"
 
+file="2016-11-29_PANEL 1_HB_group one_F1652719_016.fcs"
+
+enbiggen
+file= "2016-10-04_PANEL 1_DHS_Group two_F1636703_032.fcs "
+file="2016-11-30_PANEL 1_DHS_ZF_Group two_ZF_F1652875_041.fcs"
+file="2016-08-09_PANEL 1_DHS_Group one_F1631380_015.fcs"
+file="2016-12-08_PANEL 1_HB_group one_F1652807_021.fcs"
+file="2016-10-17_PANEL 1_DHS_Group two_F1637164_037.fcs"
+file="2016-11-28_PANEL 1_DHS_Group one_F1635620_006.fcs"
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"

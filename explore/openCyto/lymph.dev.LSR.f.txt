@@ -7,7 +7,7 @@ SingletsH	FSC-H-	lymph	FSC-H	tailgate	tol=5e-7	NA	NA	standardize_flowset	NA
 Singlets	SingletsW-SingletsH-	lymph	"FSC-W,FSC-H"	refGate	SingletsW:SingletsH	NA	NA	NA	NA
 PE-A-	PE-A-	Singlets	PE-A	tailgate	tol=5e-2	NA	NA	standardize_flowset	NA
 CD3	CD3+/-	PE-A-	CD3	mindensity	"gate_range=c(80,150)"	NA	NA	NA	NA
-CD19B	CD19+	CD3-	CD19	mindensity	"gate_range=c(125,200),min=125,adjust=1.5"	NA	NA	NA	NA
+CD19B	CD19+	CD3-	CD19	mindensity	"gate_range=c(125,200),min=100,adjust=1.5,max=195"	NA	NA	NA	NA
 CD19T	CD19-	CD3+	CD19	tailgate	"tol=1e-5, positive = FALSE,side='right',adjust=2.5,max=175,num_peaks=2,ref_peak=2,strict=FALSE"	NA	NA	NA	NA
 Bcells	CD3-CD19+	PE-A-	"CD3,CD19"	refGate	CD3-:CD19B	NA	NA	NA	NA
 Tcells	CD3+CD19-	PE-A-	"CD3,CD19"	refGate	CD3+:CD19T	NA	NA	NA	NA
@@ -22,7 +22,7 @@ CD4HTTwo	CD8-	CD4HTOne	CD8	tailgate	"tol=2e-5, positive = FALSE,side='right'"	NA
 CD4HTTrim	CD4+	CD4HTOne	CD4	tailgate	"tol=1e-6, positive = TRUE,side='left'"	NA	NA	NA	NA
 CD4	CD4+CD8-	Tcells	"CD4,CD8"	refGate	CD4HTTrim:CD4HTTwo	NA	NA	NA	NA
 CD8CTOne	CD4-CD8+	Tcells	"CD4,CD8"	refGate	CD4-:CD8POne	NA	NA	NA	NA
-CD8CTTwo	CD4-	CD8CTOne	CD4	mindensity	"gate_range=c(85,150),positive=TRUE,adjust=3.5"	NA	NA	NA	NA
+CD8CTTwo	CD4-	CD8CTOne	CD4	mindensity	"gate_range=c(85,150),positive=TRUE,adjust=3.7"	NA	NA	NA	NA
 CD8+	CD8+	CD8CTTwo	CD8	tailgate	"tol=1e-4, positive = FALSE,side='left',adjust=2.5,max=200"	NA	NA	NA	NA
 CD8	CD4-CD8+	Tcells	"CD4,CD8"	refGate	CD8CTTwo:CD8+	NA	NA	NA	NA
 CD8Bool		Tcells	"CD4,CD8"	boolGate	CD4-&CD8	NA	NA	NA	NA

@@ -1,5 +1,12 @@
 
 file="2016-07-29_PANEL 1_ZF_Group one_F1631100_003.fcs"
+file="2016-08-12_PANEL 1_ZF_Group one_F1636854_006.fcs"
+file="2016-09-08_PANEL 1_ZF_Group two_F1631174_024.fcs"
+file="2016-08-19_PANEL 1_ZF_Group one_F1632151_003.fcs"
+file="2016-08-12_PANEL 1_ZF_Group one_F1636854_006.fcs"
+file="2016-09-15_PANEL 1_ZF_Group two_F1636889_027.fcs"
+file="2016-09-09_PANEL 1_ZF_Group two_F1632402_029.fcs"
+
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
