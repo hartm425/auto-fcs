@@ -18,4 +18,4 @@ rsync -av --include='*/' --include='*.fcs' --exclude='*' "$FILES" /scratch.globa
 
 
 
- find . -type f -name '*.fcs' -exec rsync -av {} /scratch.global/lanej/flow/full/fcs3/  \; >/scratch.global/lanej/flow/rsync.log
+ find . -type f -name '*.fcs' -exec rsync -av {} /scratch.global/lanej/flow/full/fcs/  \; >/scratch.global/lanej/flow/rsync.log
