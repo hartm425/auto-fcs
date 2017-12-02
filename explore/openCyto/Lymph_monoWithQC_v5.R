@@ -22,7 +22,7 @@ registerPlugins(fun = .flowDensity,
                 dep = "flowDensity",
                 "gating")
 
-plotData=FALSE
+plotData=TRUE
 
 panle1mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel1Map.txt"
 panle2mapFile = "/Users/Kitty/git/auto-fcs/explore/openCyto/panel2Map.txt"
@@ -66,7 +66,7 @@ gt_mono <-
 gt_monoFortessa <-
   gatingTemplate(templateMonoFortessa, autostart = 1L)
 
-sub=200
+sub=100
 fcsFilesAll <-
   list.files(inputDir,
              pattern = ".fcs",
