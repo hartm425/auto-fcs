@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 
 revIn=r25/
-revOut=CD8_sens_Tcells_71_72_69/
+revOut=CD8_63_69_73_Tcells_71_Bcells_78/
 
 baseInDir="/scratch.global/lanej/flow/full/results_"$revIn"/FULL/"
 outDir=/home/thyagara/shared/HRS/annotation/$revOut
