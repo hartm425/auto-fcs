@@ -8,6 +8,9 @@ file="2017-07-19_PANEL 1_FORTESSA_RR_group one_EC_F1633097_020.fcs"
 file="2017-03-03_PANEL 1_FORTESSA_ZF_group one_F1634171_023.fcs"
 file="2017-03-02_PANEL 1_FORTESSA_HB_group one_F1638641_021.fcs"
 file="2017-03-01_PANEL 1_FORTESSA_HB_group two_ZF_F1635754_036.fcs"
+
+file="2016-12-08_PANEL 1_HB_group one_F1652807_021.fcs"
+file="2016-11-29_PANEL 1_HB_group two_F1652429_028.fcs"
 frame = read.FCS(paste(inputDir, file, sep = ""))
 
 templateLymph = "~/git/auto-fcs/explore/openCyto/lymph.dev.LSR.f.txt"
